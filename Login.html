@@ -37,9 +37,12 @@
         <div class="container">
             <a href="#" class="brand-logo">HonduMedics</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#" class="btn btn-pink btn-bordes white-text waves-effect waves-pink">Incluya su práctica en
+                <li><a href="#" class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
+                        data-position="left" data-tooltip="Ingresa aquí." id="btnHM">Incluya su
+                        práctica en
                         HonduMedics</a></li>
-                <li><a href="#" data-test="signin-link" tabindex="0" role="button"><span>Iniciar Sesión</span></a></li>
+                <li><a href="Login.html" data-test="signin-link" tabindex="0" role="button"><span>Iniciar
+                            Sesión</span></a></li>
             </ul>
         </div>
     </nav>
@@ -52,16 +55,18 @@
                 <div class="col s12 m4 l4">
                     <p></p>
                 </div>
-                <div class="col s12 m4 l4"><a href="#"
-                        class="btn btn-pink white-text waves-effect waves-pink btn-large">Regístrate
-                        con correo electrónico</a></div>
+                <div class="col s12 m4 l4"><a href="Registro.html"
+                        class="btn tooltipped btn-pink white-text waves-effect waves-pink btn-large"
+                        data-position="left" data-tooltip="Regístrate con Correo Electrónico."
+                        id="btnRegistrate">Regístrate
+                        <i class="material-icons left">create</i></a></div>
                 <div class="col s12 m4 l4">
                     <p></p>
                 </div>
                 <br>
                 <div class="col s12">
                     <p style="text-align: center;">
-                        <h5>or</h5>
+                        <h5>ó</h5>
                     </p>
                 </div>
                 <div class="col s12">
@@ -96,7 +101,7 @@
                 <div class="row">
                     <p>
                         <label>
-                            <input type="checkbox" class="filled-in" checked="checked" />
+                            <input type="checkbox" class="filled-in" checked="checked" id="chk1" />
                             <span>Mantenme conectado</span>
                         </label>
                     </p>
@@ -106,17 +111,20 @@
                         <p></p>
                     </div>
                     <div class="col s12 m4 l4"><a href="#"
-                            class="btn btn-pink white-text waves-effect waves-pink btn-large">Iniciar Sesión</a></div>
+                            class="btn btn-pink white-text waves-effect waves-pink btn-large"
+                            id="btnIniciarSesion">Iniciar Sesión</a>
+                    </div>
                     <div class="col s12 m4 l4">
                         <p></p>
                     </div>
                 </div>
                 <div class="row">
-                    <a data-test="sign-in-forgot-password" href="#" target="_self" role="button"
-                        tabindex="0"><span>¿Olvidaste tu contraseña?</span></a>
+                    <a data-test="sign-in-forgot-password" href="#" target="_self" role="button" tabindex="0"
+                        id="linkContraOlivi"><span>¿Olvidaste tu contraseña?</span></a>
                 </div>
                 <div class="row">
-                    <a data-test="patient-provider-mode-toggle" role="button" tabindex="0"><span>Iniciar Sesión del Paciente</span></a>
+                    <a data-test="patient-provider-mode-toggle" href="#" role="button" tabindex="0"
+                        id="linkIniSesPac"><span>Iniciar Sesión del Paciente</span></a>
                 </div>
             </div>
     </div>
@@ -127,66 +135,71 @@
                 <div class="col s2">
                     <h6 class="white-text"><b>HonduMedics</b></h6>
                     <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Accerca de</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Carreras</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Contacto</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Respuestas</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Blog Médico</a></li>
-                </ul>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkAcerca">Accerca de</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkCarreras">Carreras</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkContacto">Contacto</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkRespuestas">Respuestas</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkBlogMed">Blog Médico</a></li>
+                    </ul>
                 </div>
                 <div class="col s2">
                     <h6 class="white-text"><b>Buscar en el mercado de HonduMedics</b></h6>
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Speciality</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Procedure</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Language</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Location</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Insurance</a></li>
-                        
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkEspecialidad">Especialidad</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkProcedimientos">Procedimiento</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkIdioma">Idioma</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkUbicacion">Ubicación</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkSeguro">Seguro</a></li>
+
                     </ul>
                 </div>
                 <div class="col s2">
-                        <h6 class="white-text"><b>Encuentra a tu doctor</b></h6>
-                        <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Nombre del doctor</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Nombre de la práctica</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Hospital</a></li>
-                        </ul>
-                    </div>
-                    <div class="col s2">
-                            <h6 class="white-text"><b>Ciudades</b></h6>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Francisco Morazán</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Cortés</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Atlántida</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Comayagua</a></li>
-                            </ul>
-                        </div>
-                        <div class="col s2">
-                                <h6 class="white-text"><b>Especialidades</b></h6>
-                                <ul>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Psiquiatras</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Quiroprácticos</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Denttistas</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Médicos de atención primaria</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Ginecólogos</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Oftamólogos</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Dermatólogos</a></li>
-                                </ul>
-                            </div>
-            </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2019 HonduMedics
+                    <h6 class="white-text"><b>Encuentra a tu doctor</b></h6>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkNombreDoctor">Nombre del doctor</a>
+                        </li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkNomrePractica">Nombre de la
+                                práctica</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkHospital">Hospital</a></li>
+                    </ul>
+                </div>
+                <div class="col s2">
+                    <h6 class="white-text"><b>Ciudades</b></h6>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkFM">Francisco Morazán</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkCortes">Cortés</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkAtlantida">Atlántida</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkComayagua">Comayagua</a></li>
+                    </ul>
+                </div>
+                <div class="col s2">
+                    <h6 class="white-text"><b>Especialidades</b></h6>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkPsiquiatras">Psiquiatras</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkQuiropracticos">Quiroprácticos</a>
+                        </li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkDentistas">Dentistas</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkMedicosAtencion">Médicos de atención
+                                primaria</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkGinecologos">Ginecólogos</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkOftamologos">Oftamólogos</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!" id="linkDermatologos">Dermatólogos</a></li>
+                    </ul>
                 </div>
             </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2019 HonduMedics
+            </div>
+        </div>
     </footer>
 
 
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav();
+            $('.tooltipped').tooltip();
         }); 
     </script>
 </body>

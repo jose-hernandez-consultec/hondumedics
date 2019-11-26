@@ -49,8 +49,8 @@
                     </p>
                 </div>
                 <div class="row">
-                    <a data-test="sign-in-forgot-password" href="Login.html" target="_self" role="button"
-                        tabindex="0"><span>¿Ya tienes uno? Iniciar Sesión</span></a>
+                    <a data-test="create-account-have-account-link" href="Login.html" target="_self" role="button"
+                        tabindex="0" id="linkIniciarSesion"><span>¿Ya tienes uno? Iniciar Sesión</span></a>
                 </div>
                 <div class="row">
                     <div class="col s12 m6 l6">
@@ -69,8 +69,8 @@
                         <p></p>
                     </div>
                     <div class="input-field col s10">
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Confirme su correo electrónico</label>
+                        <input id="email2" type="email" class="validate">
+                        <label for="email2">Confirme su correo electrónico</label>
                     </div>
                     <div class="col s12 m6 l6">
                         <p></p>
@@ -87,10 +87,14 @@
                     </div>
                     <div class="col s12 m6 l6">
                         <p><b>Reglas de contraseña</b></p>
-                        <p>1. Tiene al menos 8 caracteres</p>
-                        <p>2. Tiene letras, números y caracteres especiales</p>
-                        <p>3. No tiene caracteres de espacio en blanco</p>
-                        <p>4. No es fácil de adivinar</p>
+                        <p style="font-family: Arial, Helvetica, sans-serif; font-size: small;">1. Tiene al menos 8
+                            caracteres</p>
+                        <p style="font-family: Arial, Helvetica, sans-serif; font-size: small;">2. Tiene letras, números
+                            y caracteres especiales</p>
+                        <p style="font-family: Arial, Helvetica, sans-serif; font-size: small;">3. No tiene caracteres
+                            de espacio en blanco</p>
+                        <p style="font-family: Arial, Helvetica, sans-serif; font-size: small;">4. No es fácil de
+                            adivinar</p>
                     </div>
                 </div>
                 <div class="row">
@@ -119,22 +123,46 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input type="text" class="datepicker" placeholder="Fecha de Nacimiento">
+                        <input type="text" class="datepicker" placeholder="Fecha de Nacimiento" id="fechaNac">
                     </div>
                 </div>
                 <div class="row">
                     <fieldset>
-                    <legend><h4>Sexo</h4></legend>
-                            <input name="group1" class="with-gap" type="radio" id="opcion1"/>
-                            <span for="opcion1">Masculino</span>
-                            <input name="group1" class="with-gap" type="radio" id="opcion2" />
-                            <span for="opcion2">Femenino</span>
-                </fieldset>
+                        <legend>
+                            <h4>Sexo</h4>
+                        </legend>
+                        <center>
+                            <form action="#">
+                                <p>
+                                    <label>
+                                        <input class="with-gap" name="yourchoice" type="radio" />
+                                        <span>Masculino</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input class="with-gap" name="yourchoice" type="radio" />
+                                        <span>Femenino</span>
+                                    </label>
+                                </p>
+                            </form>
+                        </center>
+                    </fieldset>
                 </div>
                 <div class="row">
                     <p>
                         <label>
-                            <input type="checkbox" class="filled-in" checked="checked" />
+                            <input type="checkbox" class="filled-in" id="chk3" />
+                            <span>He leído y acepto los
+                                <a href="">Términos de uso </a> y <a href="">la Política de privacidad de</a>
+                                HonduMedics</span>
+                        </label>
+                    </p>
+                </div>
+                <div class="row">
+                    <p>
+                        <label>
+                            <input type="checkbox" class="filled-in" checked="checked" id="chk2" />
                             <span>Mantenme conectado</span>
                         </label>
                     </p>
@@ -144,7 +172,9 @@
                         <p></p>
                     </div>
                     <div class="col s12 m4 l4"><a href="#"
-                            class="btn btn-pink white-text waves-effect waves-pink btn-large">Guardar</a></div>
+                            class="btn tooltipped btn-pink white-text waves-effect waves-pink btn-large" id="btnGuardar"
+                            data-position="left" data-tooltip="Guardar registro.">Guardar<i
+                                class="material-icons left">save</i></a></div>
                     <div class="col s12 m4 l4">
                         <p></p>
                     </div>
@@ -153,17 +183,36 @@
         </div>
     </div>
     <footer class="page-footer">
-            <div class="footer-copyright">
-                    <div class="container">
-                        © 2019 HonduMedics
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col s2">
+                        <ul>
+                            <li><a class="white-text text-lighten-3" href="#!" id="linkTerms"><span>Términos de uso</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="col s2">
+                        <ul>
+                            <li><a class="white-text text-lighten-3" href="#!" id="linkPrivacy"><span>Privacidad</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="col s4">
+                        <ul>
+                            <li>
+                                <p>© 2019 HonduMedics</p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
+            </div>
+        </div>
     </footer>
 
 
     <script>
         $(document).ready(function () {
             $('.datepicker').datepicker();
+            $('.tooltipped').tooltip();
         }); 
     </script>
 </body>
