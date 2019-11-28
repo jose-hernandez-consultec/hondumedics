@@ -3,6 +3,7 @@
 
 <head>
     <title>HonduMedics / Inicio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- JQuery JavaScript -->
@@ -33,6 +34,14 @@
         .page-footer {
             background: #FC5A5A;
         }
+
+        .dropdown-content {
+            overflow-y: visible !important;
+        }
+
+        .dropdown-content .dropdown-content {
+            margin-left: 100%;
+        }
     </style>
 </head>
 
@@ -46,26 +55,98 @@
                         práctica en
                         HonduMedics</a></li>
                 <li>
-                    <a href="#" class="dropdown-trigger" data-target="id_drop">
+                    <a href="#" class="dropdown-trigger" data-target="dropdown1">
                         Iniciar Sesión/Registrarse
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
-                    <ul id="id_drop" class="dropdown-content">
-                        <li><a href="hondumedics/Login.html" target="_self">Pacientes</a></li>
-                        <li><a href="hondumedics/LoginDoctor.html" target="_self">Doctores</a></li>
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a class='dropdown-button2 d' href='#' data-activates='dropdown2' data-hover="hover"
+                                data-alignment="left">Pacientes</a>
+                        </li>
                         <li class="divider"></li>
+                        <li><a class='dropdown-button3 d' href='#' data-activates='dropdown3' data-hover="hover"
+                                data-alignment="left">Doctor</a>
+                        </li>
+                        <ul id='dropdown2' class='dropdown-content'>
+                            <li><a href="hondumedics/Login.html">Login</a></li>
+                            <li class="divider"></li>
+                            <li><a href="hondumedics/Registro.html">Registro</a></li>
+                        </ul>
+                        <ul id='dropdown3' class='dropdown-content'>
+                            <li><a href="hondumedics/LoginDoctor.html">Login</a></li>
+                        </ul>
                     </ul>
                 </li>
             </ul>
         </div>
     </nav>
-
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="row">
+                    <div class="input-field col s4">
+                        <i class="material-icons prefix">search</i>
+                        <input type="text" id="search-input" class="autocomplete"
+                            placeholder="Condición, Nombre del doctor, Procedimiento... ">
+                    </div>
+                    <div class="input-field col s3">
+                        <i class="material-icons prefix">place</i>
+                        <input type="text" id="place-input" class="autocomplete" placeholder="Ciudad o código postal ">
+                    </div>
+                    <div class="input-field col s2">
+                        <i class="material-icons prefix">date_range</i>
+                        <input type="text" id="date-input" class="datepicker" placeholder="Fecha...">
+                    </div>
+                    <div class="input-field col s2">
+                        <i class="material-icons prefix">help</i>
+                        <select>
+                            <optgroup label="team 1">
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                            </optgroup>
+                            <optgroup label="team 2">
+                                <option value="3">Option 3</option>
+                                <option value="4">Option 4</option>
+                            </optgroup>
+                        </select>
+                        <label>Elegir Seguro</label>
+                    </div>
+                    <div class="input-field col s1">
+                        <a class="waves-effect waves-light btn btn-pink"><i class="material-icons center">search</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         $(document).ready(function () {
             $('.sidenav').sidenav();
             $('.tooltipped').tooltip();
-            $(".dropdown-trigger").dropdown();
-        }); 
+            $('.datepicker').datepicker();
+            $('select').formSelect();
+            $('.dropdown-trigger').dropdown();
+            $('.dropdown-button2').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: false, // Does not change width of dropdown to that of the activator
+                hover: true, // Activate on hover
+                gutter: ($('.dropdown-content').width() * 3) / 2.5 + 5, // Spacing from edge
+                belowOrigin: false, // Displays dropdown below the button
+                alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            });
+            $('.dropdown-button3').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrain_width: false, // Does not change width of dropdown to that of the activator
+                hover: true, // Activate on hover
+                gutter: ($('.dropdown-content').width() * 3) / 2.5 + 5, // Spacing from edge
+                belowOrigin: false, // Displays dropdown below the button
+                alignment: 'left' // Displays dropdown with edge aligned to the left of button
+            });
+        });
     </script>
 </body>
 
