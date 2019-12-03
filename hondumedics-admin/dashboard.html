@@ -99,11 +99,12 @@
                         </div>
                     </li>
                     <!--Notifications-->
-                    <li>
-                        <a href="#" class="dropdown-trigger" data-target="dropdown2">
-                            Notificaciones
-                            <i class="material-icons right">arrow_drop_down</i>
-                        </a></li>
+                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                            <span style="color: #464646;">Notificación</span>
+                            <span class="new badge red">3</span><i class="material-icons right">notifications_none
+                                <small class="notification-badge">3</small>
+                            </i></a>
+                    </li>
 
                     <!-- Dropdown Trigger -->
                     <li>
@@ -136,26 +137,49 @@
             </a></li>
     </ul>
 
-    <ul id="dropdown2" class="dropdown-content collection">
+    <ul id="dropdown2" class="dropdown-content collection with-header">
+        <li class="collection-header"><a href="" style="color: red;">Borrar Todo</a></li>
+
         <li class="collection-item avatar">
             <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
-            <font face="times new roman" size=2><p class="noti-details"><span class="noti-title">Dr. Ruby Perrin</span> Schedule <span
-                    class="noti-title">her appointment</span></p></font>
-                    <font face="times new roman"><p class="noti-time"><span class="notification-time">4 mins ago</span></p></font>
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Dr. Ruby Perrin</span> Schedule <span
+                            class="noti-title">her appointment</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 4 minutos</span></p>
+                </font>
+            </center>
         </li>
         <li class="collection-item avatar">
             <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
-            <font face="times new roman" size=2><p class="noti-details"><span class="noti-title">Charlene Reed</span> has booked her appointment to <span
-                class="noti-title">Dr. Ruby Perrin</span></p></font>
-                <font face="times new roman"><p class="noti-time"><span class="notification-time">10 mins ago</span></p></font>
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Charlene Reed</span> has booked her appointment to
+                        <span class="noti-title">Dr. Ruby Perrin</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 10 minutos</span></p>
+                </font>
+            </center>
         </li>
         <li class="collection-item avatar">
             <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
-            <font face="times new roman" size=2><p class="noti-details"><span class="noti-title">Travis Trimble</span> sent a amount of $210 for his <span
-                class="noti-title">appointment</span></p></font>
-                <font face="times new roman"><p class="noti-time"><span class="notification-time">10 mins ago</span></p></font>
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Travis Trimble</span> sent a amount of $210 for his
+                        <span class="noti-title">appointment</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 30 minutos</span></p>
+                </font>
+            </center>
         </li>
     </ul>
+
+
+
 
     <!-- Dropdown Structure -->
     <ul id="dropdown" class="dropdown-content collection" style="position: absolute; left: 100%;">
@@ -233,6 +257,90 @@
     </ul>
     <!--SideNav Finished-->
 
+    <!--Dashboard-->
+    <div class="" style="min-height: 657px;">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 l3">
+                    <div class="card">
+                        <center>
+                            <div class="card-content green white-text">
+                                <a class="btn-floating btn-large waves-effect waves-light green btn-bordes"><i
+                                        class="material-icons">people</i></a>
+                                <br><span><b>Doctores</b></span>
+                                <h4>168</h4>
+                            </div>
+                        </center>
+                        <div class="card-action green darken-2">
+                            <div class="progress">
+                                <div class="determinate" style="width: 34%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3">
+                    <div class="card">
+                        <center>
+                            <div class="card-content purple white-text">
+                                <a class="btn-floating btn-large waves-effect waves-light purple btn-bordes"><i
+                                        class="material-icons">person</i></a>
+                                <br><span><b>Pacientes</b></span>
+                                <h4>110</h4>
+                            </div>
+                        </center>
+                        <div class="card-action purple darken-2">
+                            <div class="progress">
+                                <div class="determinate" style="width: 23%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3">
+                    <div class="card">
+                        <center>
+                            <div class="card-content blue-grey white-text">
+                                <a class="btn-floating btn-large waves-effect waves-light blue-grey btn-bordes"><i
+                                        class="material-icons">date_range</i></a>
+                                <br><span><b>Citas</b></span>
+                                <h4>56</h4>
+                            </div>
+                        </center>
+                        <div class="card-action blue-grey darken-2">
+                            <div class="progress">
+                                <div class="determinate" style="width: 13%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l3">
+                    <div class="card">
+                        <center>
+                            <div class="card-content deep-purple white-text">
+                                <a class="btn-floating btn-large waves-effect waves-light deep-purple btn-bordes"><i
+                                        class="material-icons">attach_money</i></a>
+                                <br><span><b>Ingresos</b></span>
+                                <h4>$ 58654</h4>
+                            </div>
+                        </center>
+                        <div class="card-action  deep-purple darken-2">
+                            <div class="progress">
+                                <div class="determinate" style="width: 76%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 
     <script>
         $(document).ready(function () {
@@ -242,6 +350,7 @@
                 coverTrigger: false,
                 belowOrigin: true
             });
+            $('.tooltipped').tooltip();
         });
 
     </script>
