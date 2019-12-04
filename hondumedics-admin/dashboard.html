@@ -14,6 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Charts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
     <style>
         .nav-wrapper {
@@ -73,6 +75,97 @@
             white-space: nowrap;
             z-index: 1;
             will-change: width, height;
+        }
+
+        #back1 {
+            z-index: 10;
+            position: relative;
+        }
+
+        #back2 {
+            z-index: 10;
+            position: relative;
+        }
+
+        #back3 {
+            z-index: 0;
+            position: relative;
+        }
+
+        #back4 {
+            z-index: 0;
+            position: relative;
+        }
+
+        .content {
+            padding-left: 300px;
+            height: 100%;
+        }
+
+        .card-bg {
+            background: white;
+        }
+
+        .table-responsive {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        .ec-stars-wrapper {
+            /* Espacio entre los inline-block (los hijos, los `a`) 
+	   http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
+            font-size: 0;
+            /* Podríamos quitarlo, 
+		pero de esta manera (siempre que no le demos padding), 
+		sólo aplicará la regla .ec-stars-wrapper:hover a cuando
+		también se esté haciendo hover a alguna estrella */
+            display: inline-block;
+        }
+
+        .ec-stars-wrapper a {
+            text-decoration: none;
+            display: inline-block;
+            /* Volver a dar tamaño al texto */
+            font-size: 32px;
+            font-size: 1.3rem;
+
+            color: #888;
+        }
+
+        .ec-stars-wrapper:hover a {
+            color: rgb(255, 251, 1);
+        }
+
+        /*
+ * El selector de hijo, es necesario para aumentar la especifidad
+ */
+        .ec-stars-wrapper>a:hover~a {
+            color: #888;
+        }
+
+        .imgRedonda {
+            width: 60px;
+            height: 60px;
+            border-radius: 150px;
+        }
+
+        table {
+            width: 150%;
+            height: 80½;
+            text-align: center;
+        }
+
+        th{
+            text-align: center;
+        }
+
+        td {
+            width: 50px;
+            height: 30px;
+            text-align: center;
         }
     </style>
 </head>
@@ -263,97 +356,365 @@
             <!-- Page Header -->
             <div class="page-header">
                 <div class="row">
+                    <div class="col s12">
+                        <h1 class="black-text center">DashBoard</h1>
+                        <h4 class="blue-text center">Administrador</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6 l3">
+                            <div class="card">
+                                <center>
+                                    <div class="card-content green white-text">
+                                        <a id="back1"
+                                            class="btn-floating btn-large waves-effect waves-light green btn-bordes"><i
+                                                class="material-icons">people</i></a>
+                                        <br><span><b>Doctores</b></span>
+                                        <h4>168</h4>
+                                    </div>
+                                </center>
+                                <div class="card-action green darken-2">
+                                    <div class="progress">
+                                        <div class="determinate" style="width: 34%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l3">
+                            <div class="card">
+                                <center>
+                                    <div class="card-content purple white-text">
+                                        <a id="back2"
+                                            class="btn-floating btn-large waves-effect waves-light purple btn-bordes"><i
+                                                class="material-icons">person</i></a>
+                                        <br><span><b>Pacientes</b></span>
+                                        <h4>110</h4>
+                                    </div>
+                                </center>
+                                <div class="card-action purple darken-2">
+                                    <div class="progress">
+                                        <div class="determinate" style="width: 23%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l3">
+                            <div class="card">
+                                <center>
+                                    <div class="card-content blue-grey white-text">
+                                        <a id="back3"
+                                            class="btn-floating btn-large waves-effect waves-light blue-grey btn-bordes"><i
+                                                class="material-icons">date_range</i></a>
+                                        <br><span><b>Citas</b></span>
+                                        <h4>56</h4>
+                                    </div>
+                                </center>
+                                <div class="card-action blue-grey darken-2">
+                                    <div class="progress">
+                                        <div class="determinate" style="width: 13%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6 l3">
+                            <div class="card">
+                                <center>
+                                    <div class="card-content deep-purple white-text">
+                                        <a id="back4"
+                                            class="btn-floating btn-large waves-effect waves-light deep-purple btn-bordes"><i
+                                                class="material-icons">attach_money</i></a>
+                                        <br><span><b>Ingresos</b></span>
+                                        <h4>$ 58654</h4>
+                                    </div>
+                                </center>
+                                <div class="card-action  deep-purple darken-2">
+                                    <div class="progress">
+                                        <div class="determinate" style="width: 76%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l6 m6 s6">
+                            <div class="card card-bg">
+                                <div class="card-content">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l6 m6 s6">
+                            <div class="card card-bg">
+                                <div class="card-content">
+                                    <canvas id="myChart2"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6">
+                            <div class="card">
+                                <div class="card-content">
+                                    <span class="card-title center"><b>Lista de Doctores</b></span>
+                                    <div class="table-responsive">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre de Doctor</th>
+                                                    <th>Especialidad</th>
+                                                    <th>Ganado</th>
+                                                    <th>Comentarios</th>
+                                                </tr>
+                                            </thead>
 
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="#">
+                                                            <img src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg"
+                                                                class="imgRedonda" /></a><br><a href="#">Dra. Ruby Taylor</a>
+                                                    </td>
+                                                    <td>Dentista</td>
+                                                    <td>$ 3200.00</td>
+                                                    <td>
+                                                        <div class="ec-stars-wrapper">
+                                                            <a href="#" data-value="1"
+                                                                title="Votar con 1 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="2"
+                                                                title="Votar con 2 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="3"
+                                                                title="Votar con 3 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="4"
+                                                                title="Votar con 4 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="5"
+                                                                title="Votar con 5 estrellas">&#9733;</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td><a href="#">
+                                                                <img src="https://www.odontologos.mx/noticias/noticias/nota-odonto-independ-interna-01.jpg"
+                                                                    class="imgRedonda" /></a><br><a href="#">Dr. Darren Elder</a>
+                                                        </td>
+                                                    <td>Dentista</td>
+                                                    <td>$ 3100.00</td>
+                                                    <td>
+                                                        <div class="ec-stars-wrapper">
+                                                            <a href="#" data-value="1"
+                                                                title="Votar con 1 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="2"
+                                                                title="Votar con 2 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="3"
+                                                                title="Votar con 3 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="4"
+                                                                title="Votar con 4 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="5"
+                                                                title="Votar con 5 estrellas">&#9733;</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td><a href="#">
+                                                                <img src="https://previews.123rf.com/images/dolgachov/dolgachov1405/dolgachov140501318/28136642-atenci%C3%B3n-sanitaria-m%C3%A9dico-y-el-concepto-de-cardiolog%C3%ADa-doctora-africano-con-el-coraz%C3%B3n.jpg"
+                                                                    class="imgRedonda" /></a><br><a href="#">Dra. Deborah Angel</a>
+                                                        </td>
+                                                    <td>Cardiologista</td>
+                                                    <td>$ 4000.00</td>
+                                                    <td>
+                                                        <div class="ec-stars-wrapper">
+                                                            <a href="#" data-value="1"
+                                                                title="Votar con 1 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="2"
+                                                                title="Votar con 2 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="3"
+                                                                title="Votar con 3 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="4"
+                                                                title="Votar con 4 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="5"
+                                                                title="Votar con 5 estrellas">&#9733;</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td><a href="#">
+                                                                <img src="http://urosassociats.com/wp-content/uploads/2014/10/dra_Ochoa_urologo_barcelona.jpg"
+                                                                    class="imgRedonda" /></a><br><a href="#">Dra. Sofia Brient</a>
+                                                        </td>
+                                                    <td>Urologista</td>
+                                                    <td>$ 3200.00</td>
+                                                    <td>
+                                                        <div class="ec-stars-wrapper">
+                                                            <a href="#" data-value="1"
+                                                                title="Votar con 1 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="2"
+                                                                title="Votar con 2 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="3"
+                                                                title="Votar con 3 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="4"
+                                                                title="Votar con 4 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="5"
+                                                                title="Votar con 5 estrellas">&#9733;</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td><a href="#">
+                                                                <img src="https://i.pinimg.com/564x/74/b7/f0/74b7f007fee8c5e2ed1da05c75a496ad.jpg"
+                                                                    class="imgRedonda" /></a><br><a href="#">Dr. Marvin Campbell</a>
+                                                        </td>
+                                                    <td>Ortopedista</td>
+                                                    <td>$ 3500.00</td>
+                                                    <td>
+                                                        <div class="ec-stars-wrapper">
+                                                            <a href="#" data-value="1"
+                                                                title="Votar con 1 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="2"
+                                                                title="Votar con 2 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="3"
+                                                                title="Votar con 3 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="4"
+                                                                title="Votar con 4 estrellas">&#9733;</a>
+                                                            <a href="#" data-value="5"
+                                                                title="Votar con 5 estrellas">&#9733;</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <span class="card-title center"><b>Lista de Pacientes</b></span>
+                                        <div class="table-responsive">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre del Paciente</th>
+                                                        <th>Teléfono</th>
+                                                        <th>Última visita</th>
+                                                        <th>Pagado</th>
+                                                    </tr>
+                                                </thead>
+    
+                                                <tbody>
+                                                    <tr>
+                                                        <td><a href="#">
+                                                                <img src="http://cdn2.upsocl.com/wp-content/uploads/2045/06/mujer-372x248.jpg"
+                                                                    class="imgRedonda" /></a><br><a href="#">Gina Padilla</a>
+                                                        </td>
+                                                        <td>99999999</td>
+                                                        <td>20 de Octubre 2019</td>
+                                                        <td>$ 100.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                            <td><a href="#">
+                                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcz1sSva7aFhG4cnwa6JkdFz5sIU4hw7cEX1m3pSOyUMZNnMUX&s"
+                                                                        class="imgRedonda" /></a><br><a href="#">Erick Bu</a>
+                                                            </td>
+                                                        <td>88888888</td>
+                                                        <td>12 de Octubre 2019</td>
+                                                        <td>$ 200.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                            <td><a href="#">
+                                                                    <img src="https://image.shutterstock.com/image-photo/closeup-portrait-beautiful-woman-smiling-260nw-693028582.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Marleen Vargas</a>
+                                                            </td>
+                                                        <td>77777777</td>
+                                                        <td>15 de Noviembre 2019</td>
+                                                        <td>$ 250.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                            <td><a href="#">
+                                                                    <img src="https://image.shutterstock.com/image-photo/smiling-man-crossed-arms-over-260nw-371570986.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Víctor Guzmán</a>
+                                                            </td>
+                                                        <td>55555555</td>
+                                                        <td>23 de Septiembre 2019</td>
+                                                        <td>$ 240.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                            <td><a href="#">
+                                                                    <img src="https://static4.depositphotos.com/1005592/337/i/950/depositphotos_3371246-stock-photo-attractive-latino-women.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Ericka Bueso</a>
+                                                            </td>
+                                                        <td>44444444</td>
+                                                        <td>10 de Julio 2019</td>
+                                                        <td>$ 100.00</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <!--Lista de citas-->
                 </div>
             </div>
-            <div class="row">
-                <div class="col s12 m6 l3">
-                    <div class="card">
-                        <center>
-                            <div class="card-content green white-text">
-                                <a class="btn-floating btn-large waves-effect waves-light green btn-bordes"><i
-                                        class="material-icons">people</i></a>
-                                <br><span><b>Doctores</b></span>
-                                <h4>168</h4>
-                            </div>
-                        </center>
-                        <div class="card-action green darken-2">
-                            <div class="progress">
-                                <div class="determinate" style="width: 34%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m6 l3">
-                    <div class="card">
-                        <center>
-                            <div class="card-content purple white-text">
-                                <a class="btn-floating btn-large waves-effect waves-light purple btn-bordes"><i
-                                        class="material-icons">person</i></a>
-                                <br><span><b>Pacientes</b></span>
-                                <h4>110</h4>
-                            </div>
-                        </center>
-                        <div class="card-action purple darken-2">
-                            <div class="progress">
-                                <div class="determinate" style="width: 23%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m6 l3">
-                    <div class="card">
-                        <center>
-                            <div class="card-content blue-grey white-text">
-                                <a class="btn-floating btn-large waves-effect waves-light blue-grey btn-bordes"><i
-                                        class="material-icons">date_range</i></a>
-                                <br><span><b>Citas</b></span>
-                                <h4>56</h4>
-                            </div>
-                        </center>
-                        <div class="card-action blue-grey darken-2">
-                            <div class="progress">
-                                <div class="determinate" style="width: 13%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m6 l3">
-                    <div class="card">
-                        <center>
-                            <div class="card-content deep-purple white-text">
-                                <a class="btn-floating btn-large waves-effect waves-light deep-purple btn-bordes"><i
-                                        class="material-icons">attach_money</i></a>
-                                <br><span><b>Ingresos</b></span>
-                                <h4>$ 58654</h4>
-                            </div>
-                        </center>
-                        <div class="card-action  deep-purple darken-2">
-                            <div class="progress">
-                                <div class="determinate" style="width: 76%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
 
-
-
-    <script>
-        $(document).ready(function () {
-            $('.sidenav').sidenav();
-            $('.sidenav-trigger').sidenav();
-            $('.dropdown-trigger').dropdown({
-                coverTrigger: false,
-                belowOrigin: true
+        <script>
+            $(document).ready(function () {
+                $('.sidenav').sidenav();
+                $('.sidenav-trigger').sidenav();
+                $('.dropdown-trigger').dropdown({
+                    coverTrigger: false,
+                    belowOrigin: true
+                });
             });
-            $('.tooltipped').tooltip();
-        });
+            var chr = document.getElementById("myChart").getContext("2d");
+            var chr2 = document.getElementById("myChart2").getContext("2d");
+            var myChart = new Chart(chr, {
+                type: 'bar',
+                data: {
+                    labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019'],
+                    datasets: [{
+                        label: 'Ingresos',
+                        data: [10000, 30000, 50000, 20000, 60000, 40000, 70000],
+                        backgroundColor: 'rgba(0,0,255,0.6)',
+                        borderColor: '#000000',
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    legend: {
+                        labels: {
+                            fontColor: '#000000',
+                        }
 
-    </script>
+                    }
+                }
+            });
+            var myChart2 = new Chart(chr2, {
+                type: 'line',
+                data: {
+                    labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019'],
+                    datasets: [{
+                        label: 'Médico',
+                        data: [10, 250, 300, 150, 100, 50, 200],
+                        backgroundColor: 'rgba(0,0,255,0.6)',
+                        borderColor: '#000000',
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Paciente',
+                        data: [20, 210, 304, 458, 223, 123, 180],
+                        backgroundColor: 'rgba(249, 255, 138, 1)',
+                        borderColor: '#000000',
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    legend: {
+                        labels: {
+                            fontColor: '#000000',
+                        }
+                    }
+                }
+            });
+        </script>
 </body>
 
 </html>
