@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pacientes Administrador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- JQuery JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--DataTable-->
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <style>
+        .nav-wrapper {
+            background-color: #464646;
+        }
+
+        .waves-effect.waves-pink .waves-ripple {
+            background-color: #464646;
+        }
+
+        .btn-pink {
+            background-color: #464646;
+        }
+
+        .btn-bordes {
+            border: white 2px solid;
+        }
+
+        .page-footer {
+            background: #464646;
+        }
+
+        #topbarsearch .input-field .prefix {
+            width: 0rem !important;
+        }
+
+        #topbarsearch nav ul li:hover,
+        nav ul li.active {
+            background-color: none !important;
+        }
+
+        .input-field .prefix~input,
+        .input-field .prefix~textarea,
+        .input-field .prefix~label,
+        .input-field .prefix~.validate~label,
+        .input-field .prefix~.autocomplete-content {
+            margin-left: 1rem !important;
+        }
+
+        .brand-logo {
+            font-weight: 900;
+        }
+
+        .dropdown-content {
+            background-color: #FFFFFF;
+            margin: 0;
+            display: none;
+            min-width: 300px;
+            /* Changed this to accomodate content width */
+            max-height: auto;
+            margin-left: -1px;
+            /* Add this to keep dropdown in line with edge of navbar */
+            overflow: hidden;
+            /* Changed this from overflow-y:auto; to overflow:hidden; */
+            opacity: 0;
+            position: absolute;
+            white-space: nowrap;
+            z-index: 1;
+            will-change: width, height;
+        }
+
+        #back1 {
+            z-index: 10;
+            position: relative;
+        }
+
+        #back2 {
+            z-index: 10;
+            position: relative;
+        }
+
+        #back3 {
+            z-index: 0;
+            position: relative;
+        }
+
+        #back4 {
+            z-index: 0;
+            position: relative;
+        }
+
+        .content {
+            padding-left: 300px;
+            height: 100%;
+        }
+
+        .card-bg {
+            background: white;
+        }
+
+        .table-responsive {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        .imgRedonda {
+            width: 60px;
+            height: 60px;
+            border-radius: 150px;
+        }
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav-wrapper">
+        <div class="nav-wrapper">
+            <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
+                <i class="material-icons">menu</i></a>
+            <div class="container">
+                <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <div class="center row">
+                            <div class="col s12">
+                                <div class="row" id="topbarsearch">
+                                    <div class="input-field col s6 s12 white-text">
+                                        <i class="white-text material-icons prefix">search</i>
+                                        <input type="text" placeholder="search" id="autocomplete-input"
+                                            class="autocomplete white-text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--Notifications-->
+                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                            <span style="color: #464646;">Notificación</span>
+                            <span class="new badge red">3</span><i class="material-icons right">notifications_none
+                                <small class="notification-badge">3</small>
+                            </i></a>
+                    </li>
+
+                    <!-- Dropdown Trigger -->
+                    <li>
+                        <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                            Administrador
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="Perfil.html">
+                <span style="color: #464646;">
+                    <center>Mi perfil</center>
+                </span>
+            </a></li>
+        <li class="divider"></li>
+        <li><a href="Configuracion.html">
+                <span style="color: #464646;">
+                    <center>Configuración</center>
+                </span>
+            </a></li>
+        <li class="divider"></li>
+        <li><a href="CerrarSesion.html">
+                <span style="color: #464646;">
+                    <center>Cerrar Sesión</center>
+                </span>
+            </a></li>
+    </ul>
+
+    <ul id="dropdown2" class="dropdown-content collection with-header">
+        <li class="collection-header"><a href="" style="color: red;">Borrar Todo</a></li>
+
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Dr. Ruby Perrin</span> Schedule <span
+                            class="noti-title">her appointment</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 4 minutos</span></p>
+                </font>
+            </center>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Charlene Reed</span> has booked her appointment to
+                        <span class="noti-title">Dr. Ruby Perrin</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 10 minutos</span></p>
+                </font>
+            </center>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Travis Trimble</span> sent a amount of $210 for his
+                        <span class="noti-title">appointment</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 30 minutos</span></p>
+                </font>
+            </center>
+        </li>
+    </ul>
+
+    <!-- Dropdown Structure -->
+    <ul id="dropdown" class="dropdown-content collection" style="position: absolute; left: 100%;">
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+    </ul>
+
+    <ul class="sidenav fixed" id="menu-responsive">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfI-Br-mSWIntUtgd1zmsl9L552Zeslarlror_mMKvgkIzL3Lng&s"
+                        alt="" class="responsive-img">
+                </div>
+                <a href="">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjf_mMlWmPrhB7-ifZVsjOgsJHDLe_QvLbLhW5bwtSW8fVNYfI&s"
+                        alt="" class="circle">
+                </a>
+                <span class="white-text name">Admin</span>
+                <span class="white-text email">admin@admin.com</span>
+            </div>
+        </li>
+        <li>
+            <a href="dashboard.html"><i class="material-icons black-text">dashboard</i>Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="ListaPacientes.html"><i class="material-icons black-text">person</i>Pacientes
+            </a>
+        </li>
+
+        <li>
+            <a href=""><i class="material-icons black-text">people</i>Doctores
+            </a>
+        </li>
+        <li>
+            <a href=""><i class="material-icons black-text">date_range</i>Citas
+            </a>
+        </li>
+        <li>
+            <a href=""><i class="material-icons black-text">local_hospital</i>Hospitales
+            </a>
+        </li>
+        <li>
+            <a href=""><i class="material-icons black-text">format_align_justify</i>Especialidades
+            </a>
+        </li>
+        <li>
+            <a href=""><i class="material-icons black-text">format_align_justify</i>Enfermedades
+            </a>
+        </li>
+        <div class="divider"></div>
+
+        <li>
+            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            </a>
+        </li>
+    </ul>
+    <!--SideNav Finished-->
+
+    <!--Dashboard-->
+    <div class="" style="min-height: 657px;">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="black-text">Lista de Pacientes</h3>
+                        <h6 class="blue-text"><b>Dashboard / Usuarios /</b> Pacientes</h6>
+                    </div>
+                    <!--Lista de Pacientes-->
+                    <div class="row">
+                        <div class="col s12 m6 l12">
+                            <br>
+                            <br>
+                            <br>
+                            <div class="card">
+                                    <div class="card-content">
+                                            <table id="example" class="display highlight" cellspacing="0" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Id Paciente</th>
+                                                            <th>Nombre del Paciente</th>
+                                                            <th>Edad</th>
+                                                            <th>Dirección</th>
+                                                            <th>Teléfono</th>
+                                                            <th>Última Visita</th>
+                                                            <th>Pagado</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tfoot>
+                                                        <tr>
+                                                                <th>Id Paciente</th>
+                                                                <th>Nombre del Paciente</th>
+                                                                <th>Edad</th>
+                                                                <th>Dirección</th>
+                                                                <th>Teléfono</th>
+                                                                <th>Última Visita</th>
+                                                                <th>Pagado</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>PT001</td>
+                                                            <td><a href="#">
+                                                                    <img src="http://cdn2.upsocl.com/wp-content/uploads/2045/06/mujer-372x248.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Gina
+                                                                    Padilla</a></td>
+                                                            <td>35</td>
+                                                            <td>0101 - La ensenada, La Ceiba, Atántida</td>
+                                                            <td>99999999</td>
+                                                            <td>21 Sep 2919</td>
+                                                            <td>$150.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT002</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcz1sSva7aFhG4cnwa6JkdFz5sIU4hw7cEX1m3pSOyUMZNnMUX&s"
+                                                                        class="imgRedonda" /></a><br><a href="#">Erick Bu</a></td>
+                                                            <td>29</td>
+                                                            <td>1916 – Caseríos de Chenales, San José del Boquerón, La Esperanza, Intibucá</td>
+                                                            <td>88888888</td>
+                                                            <td>10 Oct 2019</td>
+                                                            <td>$350.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT003</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://image.shutterstock.com/image-photo/closeup-portrait-beautiful-woman-smiling-260nw-693028582.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Marleen
+                                                                    Vargas</a></td>
+                                                            <td>31</td>
+                                                            <td>1925 – Barrio Paz Barahona, SPS Cortés</td>
+                                                            <td>77777777</td>
+                                                            <td>05 OCt 2019</td>
+                                                            <td>$300.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT004</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://image.shutterstock.com/image-photo/smiling-man-crossed-arms-over-260nw-371570986.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Víctor
+                                                                    Guzmán</a></td>
+                                                            <td>27</td>
+                                                            <td>1976 – Barrio Suyapa y Colonia Suyapa Anach, SPS, Cortés</td>
+                                                            <td>55555555</td>
+                                                            <td>02 Nov 2019</td>
+                                                            <td>$250.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT005</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://static4.depositphotos.com/1005592/337/i/950/depositphotos_3371246-stock-photo-attractive-latino-women.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Ericka
+                                                                    Bueso</a></td>
+                                                            <td>26</td>
+                                                            <td>1982 – Colonia El Carmen, Santa Rosa, Copán</td>
+                                                            <td>44444444</td>
+                                                            <td>12 Nov 2019</td>
+                                                            <td>$150.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT006</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://www.ohioattorneygeneral.gov/getattachment/ce053fd0-1177-4d98-af51-e379958224a5/Reed-(16).aspx"
+                                                                        class="imgRedonda" /></a><br><a href="#">Charleene
+                                                                    Reed</a></td>
+                                                            <td>40</td>
+                                                            <td>1990 – Colonia Brisas del Canadá, Zacapa, Santa Bárbara</td>
+                                                            <td>33333333</td>
+                                                            <td>25 Oct 2019</td>
+                                                            <td>$100.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT007</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://www.diariohispaniola.com/fotos/1/F84F6F54-9C16-439D-8AE3-9BA9D98C6C9E_cx0_cy4_cw0_w1023_r1_s.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Travis
+                                                                    Fernández</a></td>
+                                                            <td>42</td>
+                                                            <td>0201 - Colo. Los Maestros, Trujillo, Colón</td>
+                                                            <td>2222222</td>
+                                                            <td>17 Sep 2019</td>
+                                                            <td>$120.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT008</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://media.bizj.us/view/img/10384378/carlos-kelly-6070667*220xx456-608-97-0.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Carlos
+                                                                    Kelly</a></td>
+                                                            <td>56</td>
+                                                            <td>0301, Rancho Gloria, Comayagua, Comayagua</td>
+                                                            <td>98989898</td>
+                                                            <td>11 Nov 2019</td>
+                                                            <td>$130.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT009</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://i2.wp.com/metricadigital.com/contenido/uploads/2018/09/Michelle-N%C3%BA%C3%B1ez-Ponce-candidata-de-Morena-a-Valle-de-Bravo.jpg?fit=600%2C600"
+                                                                        class="imgRedonda" /></a><br><a href="#">Michelle
+                                                                    Nuñez</a></td>
+                                                            <td>33</td>
+                                                            <td>0605 - San Isidro, El Corpus, Choluteca</td>
+                                                            <td>87878787</td>
+                                                            <td>04 Oct 2019</td>
+                                                            <td>$260.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT010</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://www.richardwilliamsassociates.com/uploads/2/4/7/4/24747175/ginamoore3_2_orig.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Gina
+                                                                    Moore</a></td>
+                                                            <td>29</td>
+                                                            <td>0703 - El Arenal, Danlí, El Paraíso</td>
+                                                            <td>76767676</td>
+                                                            <td>06 Sep 2019</td>
+                                                            <td>$290.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT011</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://img.europapress.es/fotoweb/fotonoticia_20190306153854_640.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Elisa
+                                                                    Galileo</a></td>
+                                                            <td>60</td>
+                                                            <td>0801 - El Alamo, Tegucigalpa, Francisco Morazán</td>
+                                                            <td>65656565</td>
+                                                            <td>23 Oct 2019</td>
+                                                            <td>$300.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT012</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://pbs.twimg.com/profile_images/914719766652248064/IUBGBIVG_400x400.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">Reyna
+                                                                    Castellanos</a></td>
+                                                            <td>35</td>
+                                                            <td>0801 - La Estancia, Tegucigalpa, Francisco Morazán</td>
+                                                            <td>54545454</td>
+                                                            <td>09 Nov 2019</td>
+                                                            <td>$320.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT013</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz7z3fTI6sA2Wtb5k6YD8cRQL8HcOdY10R5jOGuHa4fIfb-bn8Vw&s"
+                                                                        class="imgRedonda" /></a><br><a href="#">Daniel
+                                                                    Castillo</a></td>
+                                                            <td>34</td>
+                                                            <td>1501 - Pueblo Nuevo, Juticalpa, Olancho</td>
+                                                            <td>43434343</td>
+                                                            <td>14 Oct 2019</td>
+                                                            <td>$330.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT014</td>
+                                                            <td><a href="#">
+                                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1FkfepR_mjE-um3ViFLFv_-z-iMAsztjFuSEklAKWzSgR-wo&s"
+                                                                        class="imgRedonda" /></a><br><a href="#">Jessica
+                                                                    Garza</a></td>
+                                                            <td>39</td>
+                                                            <td>1805 - La Ceibita, Jocón, Yoro</td>
+                                                            <td>32323232</td>
+                                                            <td>14 Nov 2019</td>
+                                                            <td>$160.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PT015</td>
+                                                            <td><a href="#">
+                                                                    <img src="http://5-207-10727-6.b.cdn12.com/44208810.jpg"
+                                                                        class="imgRedonda" /></a><br><a href="#">James
+                                                                    Coello</a></td>
+                                                            <td>55</td>
+                                                            <td>0303 - Ignorado, Lepaera, Lempira</td>
+                                                            <td>21212121</td>
+                                                            <td>31 Oct 2019</td>
+                                                            <td>$190.00</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+            $('.sidenav-trigger').sidenav();
+            $('.dropdown-trigger').dropdown({
+                coverTrigger: false,
+                belowOrigin: true
+            });
+            $('#example').DataTable({
+      "language": {
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Último",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+    });
+  $("select").val('10');
+  $('select').addClass("browser-default");
+  $('select').material_select();
+        });
+    </script>
+</body>
+
+</html>
