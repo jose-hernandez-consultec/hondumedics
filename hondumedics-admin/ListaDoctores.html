@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Pacientes / Administrador</title>
+    <title>Doctores / Administrador</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- JQuery JavaScript -->
@@ -292,7 +292,7 @@
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons black-text">format_align_justify</i>Enfermedades
+            <a href="ListaEnfermedades.html"><i class="material-icons black-text">format_align_justify</i>Enfermedades
             </a>
         </li>
         <div class="divider"></div>
@@ -311,8 +311,8 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col s12">
-                        <h3 class="black-text">Lista de Pacientes</h3>
-                        <h6 class="blue-text"><b>Dashboard / Usuarios /</b> Pacientes</h6>
+                        <h3 class="black-text">Lista de Doctores</h3>
+                        <h6 class="blue-text"><b>Dashboard / Usuarios /</b> Doctores</h6>
                     </div>
                     <!--Lista de Pacientes-->
                     <div class="row">
@@ -325,206 +325,212 @@
                                     <table id="example" class="display highlight" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Id Paciente</th>
-                                                <th>Nombre del Paciente</th>
-                                                <th>Edad</th>
-                                                <th>Dirección</th>
-                                                <th>Teléfono</th>
-                                                <th>Última Visita</th>
-                                                <th>Pagado</th>
+                                                <th>Nombre del Doctor</th>
+                                                <th>Especialidad</th>
+                                                <th>Miembro Desde</th>
+                                                <th>Ganado</th>
+                                                <th>Estado de la Cuenta</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Id Paciente</th>
-                                                <th>Nombre del Paciente</th>
-                                                <th>Edad</th>
-                                                <th>Dirección</th>
-                                                <th>Teléfono</th>
-                                                <th>Última Visita</th>
-                                                <th>Pagado</th>
+                                                <th>Nombre del Doctor</th>
+                                                <th>Especialidad</th>
+                                                <th>Miembro Desde</th>
+                                                <th>Ganado</th>
+                                                <th>Estado de la Cuenta</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <tr>
-                                                <td>PT001</td>
                                                 <td><a href="#">
-                                                        <img src="http://cdn2.upsocl.com/wp-content/uploads/2045/06/mujer-372x248.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Gina
-                                                        Padilla</a></td>
-                                                <td>35</td>
-                                                <td>0101 - La ensenada, La Ceiba, Atántida</td>
-                                                <td>99999999</td>
-                                                <td>21 Sep 2919</td>
-                                                <td>$150.00</td>
+                                                        <img src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg"
+                                                            class="imgRedonda" /></a><br><a href="#">Dra. Ruby
+                                                        Taylor</a></td>
+                                                <td>Dentista</td>
+                                                <td>23 Abr 2019</td>
+                                                <td>$3500.00</td>
+                                                <td>
+                                                    <div class="switch">
+                                                        <label>
+                                                            Off
+                                                            <input type="checkbox" name="" id="switchEstado">
+                                                            <span class="lever"></span>
+                                                            On
+                                                        </label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>PT002</td>
                                                 <td><a href="#">
-                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcz1sSva7aFhG4cnwa6JkdFz5sIU4hw7cEX1m3pSOyUMZNnMUX&s"
-                                                            class="imgRedonda" /></a><br><a href="#">Erick Bu</a></td>
-                                                <td>29</td>
-                                                <td>1916 – Caseríos de Chenales, San José del Boquerón, La Esperanza,
-                                                    Intibucá</td>
-                                                <td>88888888</td>
-                                                <td>10 Oct 2019</td>
-                                                <td>$350.00</td>
+                                                        <img src="https://www.odontologos.mx/noticias/noticias/nota-odonto-independ-interna-01.jpg"
+                                                            class="imgRedonda" /></a><br><a href="#">Dr. Darren
+                                                        Elder</a></td>
+                                                <td>Dentista</td>
+                                                <td>31 May 2019</td>
+                                                <td>$3000.00</td>
+                                                <td>
+                                                    <div class="switch">
+                                                        <label>
+                                                            Off
+                                                            <input type="checkbox" name="" id="switchEstado">
+                                                            <span class="lever"></span>
+                                                            On
+                                                        </label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>PT003</td>
                                                 <td><a href="#">
-                                                        <img src="https://image.shutterstock.com/image-photo/closeup-portrait-beautiful-woman-smiling-260nw-693028582.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Marleen
-                                                        Vargas</a></td>
-                                                <td>31</td>
-                                                <td>1925 – Barrio Paz Barahona, SPS, Cortés</td>
-                                                <td>77777777</td>
-                                                <td>05 OCt 2019</td>
-                                                <td>$300.00</td>
+                                                        <img src="https://previews.123rf.com/images/dolgachov/dolgachov1405/dolgachov140501318/28136642-atenci%C3%B3n-sanitaria-m%C3%A9dico-y-el-concepto-de-cardiolog%C3%ADa-doctora-africano-con-el-coraz%C3%B3n.jpg"
+                                                            class="imgRedonda" /></a><br><a href="#">Dra. Deborah
+                                                        Angel</a></td>
+                                                <td>Cardióloga</td>
+                                                <td>10 Jun 2019</td>
+                                                <td>$5000.00</td>
+                                                <td>
+                                                    <div class="switch">
+                                                        <label>
+                                                            Off
+                                                            <input type="checkbox" name="" id="switchEstado">
+                                                            <span class="lever"></span>
+                                                            On
+                                                        </label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>PT004</td>
                                                 <td><a href="#">
-                                                        <img src="https://image.shutterstock.com/image-photo/smiling-man-crossed-arms-over-260nw-371570986.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Víctor
-                                                        Guzmán</a></td>
-                                                <td>27</td>
-                                                <td>1976 – Barrio Suyapa y Colonia Suyapa Anach, SPS, Cortés</td>
-                                                <td>55555555</td>
-                                                <td>02 Nov 2019</td>
-                                                <td>$250.00</td>
+                                                        <img src="http://urosassociats.com/wp-content/uploads/2014/10/dra_Ochoa_urologo_barcelona.jpg"
+                                                            class="imgRedonda" /></a><br><a href="#">Dra. Sofia
+                                                        Brient</a></td>
+                                                <td>Uróloga</td>
+                                                <td>09 Ene 2019</td>
+                                                <td>$4500.00</td>
+                                                <td>
+                                                    <div class="switch">
+                                                        <label>
+                                                            Off
+                                                            <input type="checkbox" name="" id="switchEstado">
+                                                            <span class="lever"></span>
+                                                            On
+                                                        </label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>PT005</td>
                                                 <td><a href="#">
-                                                        <img src="https://static4.depositphotos.com/1005592/337/i/950/depositphotos_3371246-stock-photo-attractive-latino-women.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Ericka
-                                                        Bueso</a></td>
-                                                <td>26</td>
-                                                <td>1982 – Colonia El Carmen, Santa Rosa, Copán</td>
-                                                <td>44444444</td>
-                                                <td>12 Nov 2019</td>
-                                                <td>$150.00</td>
+                                                        <img src="https://i.pinimg.com/564x/74/b7/f0/74b7f007fee8c5e2ed1da05c75a496ad.jpg"
+                                                            class="imgRedonda" /></a><br><a href="#">Dr. Marvin
+                                                        Campbell</a></td>
+                                                <td>Ortopédico</td>
+                                                <td>04 Feb 2019</td>
+                                                <td>$5000.00</td>
+                                                <td>
+                                                    <div class="switch">
+                                                        <label>
+                                                            Off
+                                                            <input type="checkbox" name="" id="switchEstado">
+                                                            <span class="lever"></span>
+                                                            On
+                                                        </label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>PT006</td>
                                                 <td><a href="#">
-                                                        <img src="https://www.ohioattorneygeneral.gov/getattachment/ce053fd0-1177-4d98-af51-e379958224a5/Reed-(16).aspx"
-                                                            class="imgRedonda" /></a><br><a href="#">Charleene
-                                                        Reed</a></td>
-                                                <td>40</td>
-                                                <td>1990 – Colonia Brisas del Canadá, Zacapa, Santa Bárbara</td>
-                                                <td>33333333</td>
-                                                <td>25 Oct 2019</td>
-                                                <td>$100.00</td>
+                                                        <img src="https://c8.alamy.com/compes/r3d8f7/dentista-en-el-lugar-de-trabajo-alegre-doctor-barbudo-sentado-en-amplias-y-modernas-oficinas-y-mirando-a-la-camara-con-sonrisa-amable-corazon-y-manteniendo-su-mano-r3d8f7.jpg"
+                                                            class="imgRedonda" /></a><br><a href="#">Dr. Jhonattan
+                                                        Matamoros</a></td>
+                                                <td>Dentista</td>
+                                                <td>08 Sep 2019</td>
+                                                <td>$3500.00</td>
+                                                <td>
+                                                    <div class="switch">
+                                                        <label>
+                                                            Off
+                                                            <input type="checkbox" name="" id="switchEstado">
+                                                            <span class="lever"></span>
+                                                            On
+                                                        </label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>PT007</td>
                                                 <td><a href="#">
-                                                        <img src="https://www.diariohispaniola.com/fotos/1/F84F6F54-9C16-439D-8AE3-9BA9D98C6C9E_cx0_cy4_cw0_w1023_r1_s.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Travis
-                                                        Fernández</a></td>
-                                                <td>42</td>
-                                                <td>0201 - Colo. Los Maestros, Trujillo, Colón</td>
-                                                <td>2222222</td>
-                                                <td>17 Sep 2019</td>
-                                                <td>$120.00</td>
+                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrGKGDVIIGz1j0ifMoGXykXz9JSt3T8M2yt4-QDjl3fU59naom&s"
+                                                            class="imgRedonda" /></a><br><a href="#">Dra. Gabriela
+                                                        Duarte</a></td>
+                                                <td>Neuróloga</td>
+                                                <td>28 Mar 2019</td>
+                                                <td>$4600.00</td>
+                                                <td>
+                                                    <div class="switch">
+                                                        <label>
+                                                            Off
+                                                            <input type="checkbox" name="" id="switchEstado">
+                                                            <span class="lever"></span>
+                                                            On
+                                                        </label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>PT008</td>
                                                 <td><a href="#">
-                                                        <img src="https://media.bizj.us/view/img/10384378/carlos-kelly-6070667*220xx456-608-97-0.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Carlos
-                                                        Kelly</a></td>
-                                                <td>56</td>
-                                                <td>0301, Rancho Gloria, Comayagua, Comayagua</td>
-                                                <td>98989898</td>
-                                                <td>11 Nov 2019</td>
-                                                <td>$130.00</td>
+                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH5KW07N5n46s2FQ0U9iwVaoWOcPDzoSZHegFKhX0zjNDilL-Ofw&s"
+                                                            class="imgRedonda" /></a><br><a href="#">Dr. Santos
+                                                        Laínez</a></td>
+                                                <td>Dermatólogo</td>
+                                                <td>12 Jul 2019</td>
+                                                <td>$4900.00</td>
+                                                <td>
+                                                    <div class="switch">
+                                                        <label>
+                                                            Off
+                                                            <input type="checkbox" name="" id="switchEstado">
+                                                            <span class="lever"></span>
+                                                            On
+                                                        </label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>PT009</td>
                                                 <td><a href="#">
-                                                        <img src="https://i2.wp.com/metricadigital.com/contenido/uploads/2018/09/Michelle-N%C3%BA%C3%B1ez-Ponce-candidata-de-Morena-a-Valle-de-Bravo.jpg?fit=600%2C600"
-                                                            class="imgRedonda" /></a><br><a href="#">Michelle
-                                                        Nuñez</a></td>
-                                                <td>33</td>
-                                                <td>0605 - San Isidro, El Corpus, Choluteca</td>
-                                                <td>87878787</td>
-                                                <td>04 Oct 2019</td>
-                                                <td>$260.00</td>
+                                                        <img src="https://images.hulilabs.com/huli/doctor/images/08092016/21910/23078496.jpg"
+                                                            class="imgRedonda" /></a><br><a href="#">Dra. Alejandra
+                                                        Fuentes</a></td>
+                                                <td>Uróloga</td>
+                                                <td>15 Ago 2019</td>
+                                                <td>$4500.00</td>
+                                                <td>
+                                                    <div class="switch">
+                                                        <label>
+                                                            Off
+                                                            <input type="checkbox" name="" id="switchEstado">
+                                                            <span class="lever"></span>
+                                                            On
+                                                        </label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <tr>
-                                                <td>PT010</td>
                                                 <td><a href="#">
-                                                        <img src="https://www.richardwilliamsassociates.com/uploads/2/4/7/4/24747175/ginamoore3_2_orig.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Gina
-                                                        Moore</a></td>
-                                                <td>29</td>
-                                                <td>0703 - El Arenal, Danlí, El Paraíso</td>
-                                                <td>76767676</td>
-                                                <td>06 Sep 2019</td>
-                                                <td>$290.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT011</td>
-                                                <td><a href="#">
-                                                        <img src="https://img.europapress.es/fotoweb/fotonoticia_20190306153854_640.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Elisa
-                                                        Galileo</a></td>
-                                                <td>60</td>
-                                                <td>0801 - El Alamo, Tegucigalpa, Francisco Morazán</td>
-                                                <td>65656565</td>
-                                                <td>23 Oct 2019</td>
-                                                <td>$300.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT012</td>
-                                                <td><a href="#">
-                                                        <img src="https://pbs.twimg.com/profile_images/914719766652248064/IUBGBIVG_400x400.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Reyna
-                                                        Castellanos</a></td>
-                                                <td>35</td>
-                                                <td>0801 - La Estancia, Tegucigalpa, Francisco Morazán</td>
-                                                <td>54545454</td>
-                                                <td>09 Nov 2019</td>
-                                                <td>$320.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT013</td>
-                                                <td><a href="#">
-                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz7z3fTI6sA2Wtb5k6YD8cRQL8HcOdY10R5jOGuHa4fIfb-bn8Vw&s"
-                                                            class="imgRedonda" /></a><br><a href="#">Daniel
-                                                        Castillo</a></td>
-                                                <td>34</td>
-                                                <td>1501 - Pueblo Nuevo, Juticalpa, Olancho</td>
-                                                <td>43434343</td>
-                                                <td>14 Oct 2019</td>
-                                                <td>$330.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT014</td>
-                                                <td><a href="#">
-                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1FkfepR_mjE-um3ViFLFv_-z-iMAsztjFuSEklAKWzSgR-wo&s"
-                                                            class="imgRedonda" /></a><br><a href="#">Jessica
-                                                        Garza</a></td>
-                                                <td>39</td>
-                                                <td>1805 - La Ceibita, Jocón, Yoro</td>
-                                                <td>32323232</td>
-                                                <td>14 Nov 2019</td>
-                                                <td>$160.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT015</td>
-                                                <td><a href="#">
-                                                        <img src="http://5-207-10727-6.b.cdn12.com/44208810.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">James
-                                                        Coello</a></td>
-                                                <td>55</td>
-                                                <td>0303 - Ignorado, Lepaera, Lempira</td>
-                                                <td>21212121</td>
-                                                <td>31 Oct 2019</td>
-                                                <td>$190.00</td>
+                                                        <img src="https://www.medicosdeelsalvador.com/uploads/curriculum/9/29549-001.jpg"
+                                                            class="imgRedonda" /></a><br><a href="#">Dra. Andrea
+                                                        Galvez</a></td>
+                                                <td>Medicina General</td>
+                                                <td>29 Oct 2019</td>
+                                                <td>$5500.00</td>
+                                                <td>
+                                                    <div class="switch">
+                                                        <label>
+                                                            Off
+                                                            <input type="checkbox" name="" id="switchEstado">
+                                                            <span class="lever"></span>
+                                                            On
+                                                        </label>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

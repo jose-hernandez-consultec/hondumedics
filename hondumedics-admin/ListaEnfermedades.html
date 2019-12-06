@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Enfermedades / Administrador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- JQuery JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--DataTable-->
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <style>
+        .nav-wrapper {
+            background-color: #464646;
+        }
+
+        .waves-effect.waves-pink .waves-ripple {
+            background-color: #464646;
+        }
+
+        .btn-pink {
+            background-color: #464646;
+        }
+
+        .btn-bordes {
+            border: white 2px solid;
+        }
+
+        .page-footer {
+            background: #464646;
+        }
+
+        #topbarsearch .input-field .prefix {
+            width: 0rem !important;
+        }
+
+        #topbarsearch nav ul li:hover,
+        nav ul li.active {
+            background-color: none !important;
+        }
+
+        .input-field .prefix~input,
+        .input-field .prefix~textarea,
+        .input-field .prefix~label,
+        .input-field .prefix~.validate~label,
+        .input-field .prefix~.autocomplete-content {
+            margin-left: 1rem !important;
+        }
+
+        .brand-logo {
+            font-weight: 900;
+        }
+
+        .dropdown-content {
+            background-color: #FFFFFF;
+            margin: 0;
+            display: none;
+            min-width: 300px;
+            /* Changed this to accomodate content width */
+            max-height: auto;
+            margin-left: -1px;
+            /* Add this to keep dropdown in line with edge of navbar */
+            overflow: hidden;
+            /* Changed this from overflow-y:auto; to overflow:hidden; */
+            opacity: 0;
+            position: absolute;
+            white-space: nowrap;
+            z-index: 1;
+            will-change: width, height;
+        }
+
+        #back1 {
+            z-index: 10;
+            position: relative;
+        }
+
+        #back2 {
+            z-index: 10;
+            position: relative;
+        }
+
+        #back3 {
+            z-index: 0;
+            position: relative;
+        }
+
+        #back4 {
+            z-index: 0;
+            position: relative;
+        }
+
+        #back5 {
+            z-index: 0;
+            position: relative;
+        }
+
+        .content {
+            padding-left: 300px;
+            height: 100%;
+        }
+
+        .card-bg {
+            background: white;
+        }
+
+        .table-responsive {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        .imgRedonda {
+            width: 60px;
+            height: 60px;
+            border-radius: 150px;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav-wrapper">
+        <div class="nav-wrapper">
+            <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
+                <i class="material-icons">menu</i></a>
+            <div class="container">
+                <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <div class="center row">
+                            <div class="col s12">
+                                <div class="row" id="topbarsearch">
+                                    <div class="input-field col s6 s12 white-text">
+                                        <i class="white-text material-icons prefix">search</i>
+                                        <input type="text" placeholder="search" id="autocomplete-input"
+                                            class="autocomplete white-text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--Notifications-->
+                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                            <span style="color: #464646;">Notificación</span>
+                            <span class="new badge red">3</span><i class="material-icons right">notifications_none
+                                <small class="notification-badge">3</small>
+                            </i></a>
+                    </li>
+
+                    <!-- Dropdown Trigger -->
+                    <li>
+                        <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                            Administrador
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="Perfil.html">
+                <span style="color: #464646;">
+                    <center>Mi perfil</center>
+                </span>
+            </a></li>
+        <li class="divider"></li>
+        <li><a href="Configuracion.html">
+                <span style="color: #464646;">
+                    <center>Configuración</center>
+                </span>
+            </a></li>
+        <li class="divider"></li>
+        <li><a href="CerrarSesion.html">
+                <span style="color: #464646;">
+                    <center>Cerrar Sesión</center>
+                </span>
+            </a></li>
+    </ul>
+
+    <ul id="dropdown2" class="dropdown-content collection with-header">
+        <li class="collection-header"><a href="" style="color: red;">Borrar Todo</a></li>
+
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Dr. Ruby Perrin</span> Schedule <span
+                            class="noti-title">her appointment</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 4 minutos</span></p>
+                </font>
+            </center>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Charlene Reed</span> has booked her appointment to
+                        <span class="noti-title">Dr. Ruby Perrin</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 10 minutos</span></p>
+                </font>
+            </center>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Travis Trimble</span> sent a amount of $210 for his
+                        <span class="noti-title">appointment</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 30 minutos</span></p>
+                </font>
+            </center>
+        </li>
+    </ul>
+
+    <!-- Dropdown Structure -->
+    <ul id="dropdown" class="dropdown-content collection" style="position: absolute; left: 100%;">
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+    </ul>
+
+    <ul class="sidenav fixed" id="menu-responsive">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfI-Br-mSWIntUtgd1zmsl9L552Zeslarlror_mMKvgkIzL3Lng&s"
+                        alt="" class="responsive-img">
+                </div>
+                <a href="">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjf_mMlWmPrhB7-ifZVsjOgsJHDLe_QvLbLhW5bwtSW8fVNYfI&s"
+                        alt="" class="circle">
+                </a>
+                <span class="white-text name">Admin</span>
+                <span class="white-text email">admin@admin.com</span>
+            </div>
+        </li>
+        <li>
+            <a href="dashboard.html"><i class="material-icons black-text">dashboard</i>Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="ListaPacientes.html"><i class="material-icons black-text">person</i>Pacientes
+            </a>
+        </li>
+
+        <li>
+            <a href="ListaDoctores.html"><i class="material-icons black-text">people</i>Doctores
+            </a>
+        </li>
+        <li>
+            <a href="ListaCitas.html"><i class="material-icons black-text">date_range</i>Citas
+            </a>
+        </li>
+        <li>
+            <a href=""><i class="material-icons black-text">local_hospital</i>Hospitales
+            </a>
+        </li>
+        <li>
+            <a href="ListaEspecialidades.html"><i
+                    class="material-icons black-text">format_align_justify</i>Especialidades
+            </a>
+        </li>
+        <li>
+            <a href="ListaEnfermedades.html"><i class="material-icons black-text">format_align_justify</i>Enfermedades
+            </a>
+        </li>
+        <div class="divider"></div>
+
+        <li>
+            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            </a>
+        </li>
+    </ul>
+    <!--SideNav Finished-->
+
+    <!--Dashboard-->
+    <div class="" style="min-height: 657px;">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="black-text">Lista de Enfermedades</h3>
+                        <h6 class="blue-text"><b>Dashboard /</b> Enfermedades</h6>
+                        <!-- Modal Trigger -->
+                        <a id="back5" class="waves-effect waves-light btn blue modal-trigger right" href="#modal1">
+                            <i class="material-icons left">add</i>Añadir</a>
+
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal modal-fixed-footer">
+                            <div class="modal-content">
+                                <h4 style="text-align: center;">Añadir Enfermedad</h4>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <form class="col s12">
+                                        <div class="row modal-form-row">
+                                            <div class="input-field col s12">
+                                                <input id="enfermedad" type="text" class="validate">
+                                                <label for="enfermedad">Enfermedad</label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat blue">Guardar
+                                    Cambios</a>
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat red">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Lista de Pacientes-->
+                    <div class="row">
+                        <div class="col s12 m6 l12">
+                            <br>
+                            <br>
+                            <br>
+                            <div class="card">
+                                <div class="card-content">
+                                    <table id="example" class="display highlight" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center;">Id Enfermedad</th>
+                                                <th style="text-align: center;">Enfermedades</th>
+                                                <th style="text-align: center;">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th style="text-align: center;">Id Enfermedad</th>
+                                                <th style="text-align: center;">Enfermedades</th>
+                                                <th style="text-align: center;">Acciones</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <tr>
+                                                <td>ES001</td>
+                                                <td>
+                                                    <a href="#">Cáncer</a>
+                                                </td>
+                                                <td>
+                                                    <!-- Modal Trigger -->
+                                                    <a class="waves-effect waves-light btn green modal-trigger center"
+                                                        href="#modal2"><i
+                                                            class="material-icons left">create</i>Editar</a>
+                                                    <a class="waves-effect waves-light btn red modal-trigger center"
+                                                        href="#modal3"><i
+                                                            class="material-icons left">delete_forever</i>Eliminar</a>
+
+                                                    <!-- Modal Structure -->
+                                                    <div id="modal2" class="modal modal-fixed-footer">
+                                                        <div class="modal-content">
+                                                            <h4 style="text-align: center;">Editar Enfermedad</h4>
+                                                            <br>
+                                                            <div class="row">
+                                                                <form class="col s12">
+                                                                    <div class="row modal-form-row">
+                                                                        <div class="input-field col s12">
+                                                                            <input id="enfermedad2" type="text"
+                                                                                class="validate">
+                                                                            <label
+                                                                                for="enfermedad2">Enfermedad</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="#!"
+                                                                class="modal-close waves-effect waves-green btn-flat blue">Guardar
+                                                                Cambios</a>
+                                                            <a href="#!"
+                                                                class="modal-close waves-effect waves-green btn-flat red">Cancelar</a>
+                                                        </div>
+                                                    </div>
+                                                    <div id="modal3" class="modal">
+                                                        <div class="modal-content">
+                                                            <h4 style="text-align: center;">Eliminar Registro</h4>
+                                                            <p>¿Estás seguro de eliminar esta fila?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="#!"
+                                                                class="modal-action modal-close waves-effect waves-green btn-flat blue">Sí</a>
+                                                                <a href="#!"
+                                                                class="modal-action modal-close waves-effect waves-red btn-flat red">Cancelar</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>ES002</td>
+                                                <td>
+                                                    <a href="#">Alzheimer</a>
+                                                </td>
+                                                <td>
+                                                        <!-- Modal Trigger -->
+                                                        <a class="waves-effect waves-light btn green modal-trigger center"
+                                                            href="#modal2"><i
+                                                                class="material-icons left">create</i>Editar</a>
+                                                        <a class="waves-effect waves-light btn red modal-trigger center"
+                                                            href="#modal3"><i
+                                                                class="material-icons left">delete_forever</i>Eliminar</a>
+    
+                                                        <!-- Modal Structure -->
+                                                        <div id="modal2" class="modal modal-fixed-footer">
+                                                            <div class="modal-content">
+                                                                <h4 style="text-align: center;">Editar Enfermedad</h4>
+                                                                <br>
+                                                                <div class="row">
+                                                                    <form class="col s12">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <input id="enfermedad2" type="text"
+                                                                                    class="validate">
+                                                                                <label
+                                                                                    for="enfermedad2">Enfermedad</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <a href="#!"
+                                                                    class="modal-close waves-effect waves-green btn-flat blue">Guardar
+                                                                    Cambios</a>
+                                                                <a href="#!"
+                                                                    class="modal-close waves-effect waves-green btn-flat red">Cancelar</a>
+                                                            </div>
+                                                        </div>
+                                                        <div id="modal3" class="modal">
+                                                            <div class="modal-content">
+                                                                <h4 style="text-align: center;">Eliminar Registro</h4>
+                                                                <p>¿Estás seguro de eliminar esta fila?</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <a href="#!"
+                                                                    class="modal-action modal-close waves-effect waves-green btn-flat blue">Sí</a>
+                                                                    <a href="#!"
+                                                                    class="modal-action modal-close waves-effect waves-red btn-flat red">Cancelar</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <td>ES003</td>
+                                                <td>
+                                                        <a href="#">Sida</a>
+                                                    </td>
+                                                    <td>
+                                                            <!-- Modal Trigger -->
+                                                            <a class="waves-effect waves-light btn green modal-trigger center"
+                                                                href="#modal2"><i
+                                                                    class="material-icons left">create</i>Editar</a>
+                                                            <a class="waves-effect waves-light btn red modal-trigger center"
+                                                                href="#modal3"><i
+                                                                    class="material-icons left">delete_forever</i>Eliminar</a>
+        
+                                                            <!-- Modal Structure -->
+                                                            <div id="modal2" class="modal modal-fixed-footer">
+                                                                <div class="modal-content">
+                                                                    <h4 style="text-align: center;">Editar Enfermedad</h4>
+                                                                    <br>
+                                                                    <div class="row">
+                                                                        <form class="col s12">
+                                                                            <div class="row modal-form-row">
+                                                                                <div class="input-field col s12">
+                                                                                    <input id="enfermedad2" type="text"
+                                                                                        class="validate">
+                                                                                    <label
+                                                                                        for="enfermedad2">Enfermedad</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="#!"
+                                                                        class="modal-close waves-effect waves-green btn-flat blue">Guardar
+                                                                        Cambios</a>
+                                                                    <a href="#!"
+                                                                        class="modal-close waves-effect waves-green btn-flat red">Cancelar</a>
+                                                                </div>
+                                                            </div>
+                                                            <div id="modal3" class="modal">
+                                                                <div class="modal-content">
+                                                                    <h4 style="text-align: center;">Eliminar Registro</h4>
+                                                                    <p>¿Estás seguro de eliminar esta fila?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="#!"
+                                                                        class="modal-action modal-close waves-effect waves-green btn-flat blue">Sí</a>
+                                                                        <a href="#!"
+                                                                        class="modal-action modal-close waves-effect waves-red btn-flat red">Cancelar</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                            </tr>
+                                            <tr>
+                                                <td>ES004</td>
+                                                <td>
+                                                        <a href="#">Lupus</a>
+                                                    </td>
+                                                    <td>
+                                                            <!-- Modal Trigger -->
+                                                            <a class="waves-effect waves-light btn green modal-trigger center"
+                                                                href="#modal2"><i
+                                                                    class="material-icons left">create</i>Editar</a>
+                                                            <a class="waves-effect waves-light btn red modal-trigger center"
+                                                                href="#modal3"><i
+                                                                    class="material-icons left">delete_forever</i>Eliminar</a>
+        
+                                                            <!-- Modal Structure -->
+                                                            <div id="modal2" class="modal modal-fixed-footer">
+                                                                <div class="modal-content">
+                                                                    <h4 style="text-align: center;">Editar Enfermedad</h4>
+                                                                    <br>
+                                                                    <div class="row">
+                                                                        <form class="col s12">
+                                                                            <div class="row modal-form-row">
+                                                                                <div class="input-field col s12">
+                                                                                    <input id="enfermedad2" type="text"
+                                                                                        class="validate">
+                                                                                    <label
+                                                                                        for="enfermedad2">Enfermedad</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="#!"
+                                                                        class="modal-close waves-effect waves-green btn-flat blue">Guardar
+                                                                        Cambios</a>
+                                                                    <a href="#!"
+                                                                        class="modal-close waves-effect waves-green btn-flat red">Cancelar</a>
+                                                                </div>
+                                                            </div>
+                                                            <div id="modal3" class="modal">
+                                                                <div class="modal-content">
+                                                                    <h4 style="text-align: center;">Eliminar Registro</h4>
+                                                                    <p>¿Estás seguro de eliminar esta fila?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="#!"
+                                                                        class="modal-action modal-close waves-effect waves-green btn-flat blue">Sí</a>
+                                                                        <a href="#!"
+                                                                        class="modal-action modal-close waves-effect waves-red btn-flat red">Cancelar</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                            </tr>
+                                            <tr>
+                                                <td>ES005</td>
+                                                <td>
+                                                        <a href="#">Diabetes</a>
+                                                    </td>
+                                                    <td>
+                                                            <!-- Modal Trigger -->
+                                                            <a class="waves-effect waves-light btn green modal-trigger center"
+                                                                href="#modal2"><i
+                                                                    class="material-icons left">create</i>Editar</a>
+                                                            <a class="waves-effect waves-light btn red modal-trigger center"
+                                                                href="#modal3"><i
+                                                                    class="material-icons left">delete_forever</i>Eliminar</a>
+        
+                                                            <!-- Modal Structure -->
+                                                            <div id="modal2" class="modal modal-fixed-footer">
+                                                                <div class="modal-content">
+                                                                    <h4 style="text-align: center;">Editar Enfermedad</h4>
+                                                                    <br>
+                                                                    <div class="row">
+                                                                        <form class="col s12">
+                                                                            <div class="row modal-form-row">
+                                                                                <div class="input-field col s12">
+                                                                                    <input id="enfermedad2" type="text"
+                                                                                        class="validate">
+                                                                                    <label
+                                                                                        for="enfermedad2">Enfermedad</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="#!"
+                                                                        class="modal-close waves-effect waves-green btn-flat blue">Guardar
+                                                                        Cambios</a>
+                                                                    <a href="#!"
+                                                                        class="modal-close waves-effect waves-green btn-flat red">Cancelar</a>
+                                                                </div>
+                                                            </div>
+                                                            <div id="modal3" class="modal">
+                                                                <div class="modal-content">
+                                                                    <h4 style="text-align: center;">Eliminar Registro</h4>
+                                                                    <p>¿Estás seguro de eliminar esta fila?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="#!"
+                                                                        class="modal-action modal-close waves-effect waves-green btn-flat blue">Sí</a>
+                                                                        <a href="#!"
+                                                                        class="modal-action modal-close waves-effect waves-red btn-flat red">Cancelar</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+            $('.sidenav-trigger').sidenav();
+            $('.modal').modal();
+            $('.dropdown-trigger').dropdown({
+                coverTrigger: false,
+                belowOrigin: true
+            });
+            $('#example').DataTable({
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            });
+            $("select").val('10');
+            $('select').addClass("browser-default");
+            $('select').material_select();
+        });
+    </script>
+</body>
+
+</html>
