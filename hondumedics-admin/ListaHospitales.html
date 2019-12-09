@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hospitales / Administrador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- JQuery JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--DataTable-->
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <style>
+        .nav-wrapper {
+            background-color: #464646;
+        }
+
+        .waves-effect.waves-pink .waves-ripple {
+            background-color: #464646;
+        }
+
+        .btn-pink {
+            background-color: #464646;
+        }
+
+        .btn-bordes {
+            border: white 2px solid;
+        }
+
+        .page-footer {
+            background: #464646;
+        }
+
+        #topbarsearch .input-field .prefix {
+            width: 0rem !important;
+        }
+
+        #topbarsearch nav ul li:hover,
+        nav ul li.active {
+            background-color: none !important;
+        }
+
+        .input-field .prefix~input,
+        .input-field .prefix~textarea,
+        .input-field .prefix~label,
+        .input-field .prefix~.validate~label,
+        .input-field .prefix~.autocomplete-content {
+            margin-left: 1rem !important;
+        }
+
+        .brand-logo {
+            font-weight: 900;
+        }
+
+        .dropdown-content {
+            background-color: #FFFFFF;
+            margin: 0;
+            display: none;
+            min-width: 300px;
+            /* Changed this to accomodate content width */
+            max-height: auto;
+            margin-left: -1px;
+            /* Add this to keep dropdown in line with edge of navbar */
+            overflow: hidden;
+            /* Changed this from overflow-y:auto; to overflow:hidden; */
+            opacity: 0;
+            position: absolute;
+            white-space: nowrap;
+            z-index: 1;
+            will-change: width, height;
+        }
+
+        #back1 {
+            z-index: 10;
+            position: relative;
+        }
+
+        #back2 {
+            z-index: 10;
+            position: relative;
+        }
+
+        #back3 {
+            z-index: 0;
+            position: relative;
+        }
+
+        #back4 {
+            z-index: 0;
+            position: relative;
+        }
+
+        .content {
+            padding-left: 300px;
+            height: 100%;
+        }
+
+        .card-bg {
+            background: white;
+        }
+
+        .table-responsive {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        .imgRedonda {
+            width: 60px;
+            height: 60px;
+            border-radius: 150px;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        .container-1 {
+            width: 100%;
+            max-width: initial;
+        }
+
+        .container-1>.row {
+            margin: 0;
+        }
+
+        .container-1>.row>.col {
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav-wrapper">
+        <div class="nav-wrapper">
+            <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
+                <i class="material-icons">menu</i></a>
+            <div class="container">
+                <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <div class="center row">
+                            <div class="col s12">
+                                <div class="row" id="topbarsearch">
+                                    <div class="input-field col s6 s12 white-text">
+                                        <i class="white-text material-icons prefix">search</i>
+                                        <input type="text" placeholder="search" id="autocomplete-input"
+                                            class="autocomplete white-text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--Notifications-->
+                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                            <span style="color: #464646;">Notificación</span>
+                            <span class="new badge red">3</span><i class="material-icons right">notifications_none
+                                <small class="notification-badge">3</small>
+                            </i></a>
+                    </li>
+
+                    <!-- Dropdown Trigger -->
+                    <li>
+                        <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                            Administrador
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="Perfil.html">
+                <span style="color: #464646;">
+                    <center>Mi perfil</center>
+                </span>
+            </a></li>
+        <li class="divider"></li>
+        <li><a href="Configuracion.html">
+                <span style="color: #464646;">
+                    <center>Configuración</center>
+                </span>
+            </a></li>
+        <li class="divider"></li>
+        <li><a href="CerrarSesion.html">
+                <span style="color: #464646;">
+                    <center>Cerrar Sesión</center>
+                </span>
+            </a></li>
+    </ul>
+
+    <ul id="dropdown2" class="dropdown-content collection with-header">
+        <li class="collection-header"><a href="" style="color: red;">Borrar Todo</a></li>
+
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Dr. Ruby Perrin</span> Schedule <span
+                            class="noti-title">her appointment</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 4 minutos</span></p>
+                </font>
+            </center>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Charlene Reed</span> has booked her appointment to
+                        <span class="noti-title">Dr. Ruby Perrin</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 10 minutos</span></p>
+                </font>
+            </center>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Travis Trimble</span> sent a amount of $210 for his
+                        <span class="noti-title">appointment</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 30 minutos</span></p>
+                </font>
+            </center>
+        </li>
+    </ul>
+
+    <!-- Dropdown Structure -->
+    <ul id="dropdown" class="dropdown-content collection" style="position: absolute; left: 100%;">
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+    </ul>
+
+    <ul class="sidenav fixed" id="menu-responsive">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfI-Br-mSWIntUtgd1zmsl9L552Zeslarlror_mMKvgkIzL3Lng&s"
+                        alt="" class="responsive-img">
+                </div>
+                <a href="">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjf_mMlWmPrhB7-ifZVsjOgsJHDLe_QvLbLhW5bwtSW8fVNYfI&s"
+                        alt="" class="circle">
+                </a>
+                <span class="white-text name">Admin</span>
+                <span class="white-text email">admin@admin.com</span>
+            </div>
+        </li>
+        <li>
+            <a href="dashboard.html"><i class="material-icons black-text">dashboard</i>Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="ListaPacientes.html"><i class="material-icons black-text">person</i>Pacientes
+            </a>
+        </li>
+
+        <li>
+            <a href="ListaDoctores.html"><i class="material-icons black-text">people</i>Doctores
+            </a>
+        </li>
+        <li>
+            <a href="ListaCitas.html"><i class="material-icons black-text">date_range</i>Citas
+            </a>
+        </li>
+        <li>
+            <a href="ListaHospitales.html"><i class="material-icons black-text">local_hospital</i>Hospitales
+            </a>
+        </li>
+        <li>
+            <a href="ListaEspecialidades.html"><i
+                    class="material-icons black-text">format_align_justify</i>Especialidades
+            </a>
+        </li>
+        <li>
+            <a href="ListaEnfermedades.html"><i class="material-icons black-text">format_align_justify</i>Enfermedades
+            </a>
+        </li>
+        <div class="divider"></div>
+
+        <li>
+            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            </a>
+        </li>
+    </ul>
+    <!--SideNav Finished-->
+
+    <!--Dashboard-->
+    <div class="" style="min-height: 657px;">
+        <div class="container-1">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="black-text center">Lista de Hospitales</h3>
+                        <h6 class="blue-text center"><b>Dashboard / </b> Hospitales</h6>
+                    </div>
+                    <!--Lista de Pacientes-->
+                    <div class="row">
+                        <div class="col s12 l12">
+                            <br>
+                            <br>
+                            <br>
+                            <div class="card">
+                                <div class="card-content">
+                                    <table id="example" class="display highlight" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Id Hospitales</th>
+                                                <th>Nombre del Hospital</th>
+                                                <th>Ciudad</th>
+                                                <th>Departamento</th>
+                                                <th>Dirección</th>
+                                                <th>País</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Id Hospitales</th>
+                                                <th>Nombre del Hospital</th>
+                                                <th>Ciudad</th>
+                                                <th>Departamento</th>
+                                                <th>Dirección</th>
+                                                <th>País</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <tr>
+                                                <td>HT001</td>
+                                                <td><a href="#">
+                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2HXHv6piIXUlcbBXhVOc02RW7e5xeRWjzc1MM6RzRcH2-lFBy5A&s"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Doctor_Roberto_Suazo_C%C3%B3rdova_(Honduras)">Hospital
+                                                        Dr. Roberto Suazo Córdova</a></td>
+                                                <td>La Paz</td>
+                                                <td>La Paz</td>
+                                                <td>Barrio La Trinidad</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT002</td>
+                                                <td><a href="#">
+                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAzNf0Zg8BUVwrjB7j3ibLkeEkxkpTFNpneg6e7jpDdfK8jjyCtg&s"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Salvador_Paredes_(Honduras)">Hospital
+                                                        Salvador Paredes</a></td>
+                                                <td>Puerto de Trujillo</td>
+                                                <td>Colón</td>
+                                                <td>Barrio El Centro, Contiguo al Centro Penal</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT003</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.laprensa.hn/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=jv$HxmXMhT3W4rcFBg8DWs$daE2N3K4ZzOUsqbU5sYsiZ1Q9Cmlet$wE2XuCxLTeWCsjLu883Ygn4B49Lvm9bPe2QeMKQdVeZmXF$9l$4uCZ8QDXhaHEp3rvzXRJFdy0KqPHLoMevcTLo3h8xh70Y6N_U_CryOsw6FTOdKL_jpQ-&CONTENTTYPE=image/jpeg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_San_Marcos_(Honduras)">Hospital
+                                                        San Marcos</a></td>
+                                                <td>San Marcos</td>
+                                                <td>Ocotepeque</td>
+                                                <td>Barrio San Juan</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT004</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.proceso.hn/media/k2/items/cache/9f2d6c00d173f32af5ec0f1321ab3cdc_XL.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Manuel_de_Jes%C3%BAs_Subirana_(Honduras)">Hospital
+                                                        Manuel de Jesús Subirana</a></td>
+                                                <td>Yoro</td>
+                                                <td>Yoro</td>
+                                                <td>Barrio Subirana</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT005</td>
+                                                <td><a href="#">
+                                                        <img src="http://lanoticia.hn/wp-content/uploads/2014/08/hospital-de-san-lorenzo.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="http://www.ecured.cu/Hospital_San_Lorenzo_(Honduras)">Hospital
+                                                        San Lorenzo</a></td>
+                                                <td>San Lorenzo</td>
+                                                <td>Valle</td>
+                                                <td>Cien metros al fondo del Hotel Morazán</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT006</td>
+                                                <td><a href="#">
+                                                        <img src="https://diarioroatan.com/wp-content/uploads/2019/10/grgdg.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_P%C3%BAblico_Roat%C3%A1n_(Honduras)">Hospital
+                                                        Roatán</a>
+                                                </td>
+                                                <td>Roatán</td>
+                                                <td>Isla de la Bahía</td>
+                                                <td>Calle Principal, Barrio El Ticket</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT007</td>
+                                                <td><a href="#">
+                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1s4fwQXs68MhSZzlZmimnmELmCxLUW5xw3A-Xn0yFmIpgip1Y&s"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Puerto_Lempira_(Honduras)">Hospital
+                                                        Puerto Lempira</a>
+                                                </td>
+                                                <td>Puerto Lempira</td>
+                                                <td>Gracias a Dios</td>
+                                                <td>Barrio El Hospital</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT008</td>
+                                                <td><a href="#">
+                                                        <img src="https://lh3.googleusercontent.com/p/AF1QipNWpfjkSg6brrNfsPyEIpBzOhyNcskzNoPq27bQ=s1600-w400"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Doctor_Juan_Manuel_G%C3%A1lvez_Dur%C3%B3n_(Honduras)">Hospital
+                                                        Dr. Juan Manuel Galvez</a>
+                                                </td>
+                                                <td>Gracias</td>
+                                                <td>Lempira</td>
+                                                <td>Barrio Villas del Rosario frente a Gasolinera Texaco</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT009</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.ecured.cu/images/b/b7/HGA.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Gabriela_Alvarado_(Honduras)">Hospital
+                                                        Gabriela Alvarado</a>
+                                                </td>
+                                                <td>Danlí</td>
+                                                <td>El Paraíso</td>
+                                                <td>Carretera al municipio del Paraíso, a 300 metros del Centro
+                                                    Universitario Regional de Oriente (CURO)</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT010</td>
+                                                <td><a href="#">
+                                                        <img src="http://fundages-heac.com/onewebmedia/20170407_081943.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Dr._Enrique_Aguilar_Cerrato">Hospital
+                                                        Dr. Enrique Aguilar Cerrato</a>
+                                                </td>
+                                                <td>La Esperanza</td>
+                                                <td>Intibucá</td>
+                                                <td>Col. Venecia, calle salida a Siguatepeque</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT011</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.proceso.hn/media/k2/items/cache/89b310a69bd70c5cf0ffbbf6572357d0_XL.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Puerto_Cort%C3%A9s_(Honduras)">Hospital
+                                                        Puerto Cortés</a>
+                                                </td>
+                                                <td>Puerto Cortés</td>
+                                                <td>Cortés</td>
+                                                <td>Carretera a Omoa, barrio Cienaguita</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT012</td>
+                                                <td><a href="#">
+                                                        <img src="http://asjhonduras.com/webhn/wp-content/uploads/2017/08/hospitalsantabarbara.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Santa_B%C3%A1rbara_(Honduras)">Hospital
+                                                        Santa Bárbara</a>
+                                                </td>
+                                                <td>Santa Bárbara</td>
+                                                <td>Santa Bárbara</td>
+                                                <td>Entrada principal de Santa Barbara, frente a Gasolinera Santa Lucia
+                                                </td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT013</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.paho.org/hon/images/WhatsApp_Image_2018-09-28_at_12.06.23_PM.jpeg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Tela_Integrado_(Honduras)">Hospital
+                                                        Tela Integrado</a>
+                                                </td>
+                                                <td>Tela</td>
+                                                <td>Atlántida</td>
+                                                <td>Carretera de Tela a Ceiba, barrio Hillangrick</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT014</td>
+                                                <td><a href="#">
+                                                        <img src="https://hondudiario.com/wp-content/uploads/2016/12/0001-Hospital-del-sur.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Regional_del_Sur_(Honduras)">Hospital
+                                                        del Sur</a>
+                                                </td>
+                                                <td>Choluteca</td>
+                                                <td>Choluteca</td>
+                                                <td>Barrio el Hospital, una cuadra al norte de ferreteria HERCO</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT015</td>
+                                                <td><a href="#">
+                                                        <img src="http://www.elpais.hn/wp-content/uploads/2018/06/hospital-regional-de-occidente.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Regional_de_Occidente_(Honduras)">Hospital
+                                                        del Occidente</a>
+                                                </td>
+                                                <td>Santa Rosa de Copán</td>
+                                                <td>Copán</td>
+                                                <td>Santa Rosa de Copán, Calle Centerio 1 cuadra arriba campo Copa Gale,
+                                                    esquina opuesta de asilo de ancianos</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT016</td>
+                                                <td><a href="#">
+                                                        <img src="https://hondudiario.com/wp-content/uploads/2019/03/IMG_6525.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Atl%C3%A1ntida_(Honduras)">Hospital
+                                                        Atlántida</a>
+                                                </td>
+                                                <td>La Ceiba</td>
+                                                <td>Atlántida</td>
+                                                <td>Barrio Protreritos</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT017</td>
+                                                <td><a href="#">
+                                                        <img src="https://criterio.hn/wp-content/uploads/2019/01/francisco-san-francisco.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_San_Francisco_(Honduras)">Hospital
+                                                        San Francisco</a>
+                                                </td>
+                                                <td>Juticalpa</td>
+                                                <td>Olancho</td>
+                                                <td>Barrio El Campo</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT018</td>
+                                                <td><a href="#">
+                                                        <img src="http://www.salud.gob.hn/site/media/k2/items/cache/a955a3de9afa2794fbaf8cc2473586cb_XL.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://es-la.facebook.com/hospitalregionalsantateresa0ficial">Hospital
+                                                        Santa Teresa</a>
+                                                </td>
+                                                <td>Comayagua</td>
+                                                <td>Comayagua</td>
+                                                <td>Barrio Torondón</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT019</td>
+                                                <td><a href="#">
+                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR297OJ3YIeWOwvEwEo08Z4n0kU0UXdSwdKWsQEgGTGtHhcROlj&s"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_El_Progreso_(Honduras)">Hospital
+                                                        El Progreso</a>
+                                                </td>
+                                                <td>El Progreso</td>
+                                                <td>Yoro</td>
+                                                <td>Residencial Catan</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT020</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.laprensa.hn/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=13CpWnM3CftktoXyEo9z8c$daE2N3K4ZzOUsqbU5sYsmSd2GzJzreRmFiX_ileUF6FB40xiOfUoExWL3M40tfzssyZqpeG_J0TFo7ZhRaDiHC9oxmioMlYVJD0A$3RbIiibgT65kY_CSDiCiUzvHvODrHApbd6ry6YGl5GGOZrs-&CONTENTTYPE=image/jpeg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_San_Isidro_(Honduras)">Hospital
+                                                        San Isidro</a>
+                                                </td>
+                                                <td>Tocoa</td>
+                                                <td>Colón</td>
+                                                <td>Barrio el Edén calle el hospital</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT021</td>
+                                                <td><a href="#">
+                                                        <img src="https://proceso.hn/media/k2/items/cache/96db4a725a3c148ca0e8bad012506b06_XL.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_General_San_Felipe_(Honduras)">Hospital
+                                                        San Felipe</a>
+                                                </td>
+                                                <td>Tegucigalpa</td>
+                                                <td>Francisco Morazán</td>
+                                                <td>Ave. Los Próceres</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT022</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.xplorhonduras.com/wp-content/uploads/hospital-leonardo-martinez-valenzuela-400x300.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.xplorhonduras.com/hospital-leonardo-martinez-valenzuela/">Hospital
+                                                        Leonardo Martínez</a>
+                                                </td>
+                                                <td>San Pedro Sula</td>
+                                                <td>Cortés</td>
+                                                <td>Barrio El Benque 7 calle 9 y 10 avenida Norroeste</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT023</td>
+                                                <td><a href="#">
+                                                        <img src="https://diarioroatan.com/wp-content/uploads/2017/03/Hospital-Maria-1-770x470.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://hospitalmaria.org/">Hospital
+                                                        María de Especialidades Pediátricas</a>
+                                                </td>
+                                                <td>Tegucigalpa</td>
+                                                <td>Francisco Morazán</td>
+                                                <td>Col. Altos Trpiche</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT024</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.xplorhonduras.com/wp-content/uploads/hospital-mario-catarino-rivas.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Doctor_Mario_Catarino_Rivas_(Honduras)">Hospital
+                                                        Dr. Mario Catarino Rivas</a>
+                                                </td>
+                                                <td>San Pedro Sula</td>
+                                                <td>Cortés</td>
+                                                <td>Frente a Colonia Lomas del Pedregal</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT025</td>
+                                                <td><a href="#">
+                                                        <img src="http://www.revistazo.biz/web2/media/k2/items/cache/55bd777287987cb3888bd81f33e8a7ad_XL.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Psiqui%C3%A1trico_Mario_Amado_Mendoza_(Honduras)">Hospital
+                                                        Psiquiátrico Mario Amado Mendoza</a>
+                                                </td>
+                                                <td>Tegucigalpa</td>
+                                                <td>Francisco Morazán</td>
+                                                <td>Colonia Miramontes, esquina opuesta a Larach y Cia. No 2</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT026</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.ecured.cu/images/0/07/Nuevo_edificio.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Psiqui%C3%A1trico_Santa_Rosita_(Honduras)">Hospital
+                                                        Psiquiátrico Santa Rosita</a>
+                                                </td>
+                                                <td>Tegucigalpa</td>
+                                                <td>Francisco Morazán</td>
+                                                <td>Carretera al Norte frente a la cancha de Café El Indio, a mano
+                                                    izquierda</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT027</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.elheraldo.hn/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=d5ryj96JH11DKBTraRmGPM$daE2N3K4ZzOUsqbU5sYu2vMM4OtVGjFZFqRfD1iucWCsjLu883Ygn4B49Lvm9bPe2QeMKQdVeZmXF$9l$4uCZ8QDXhaHEp3rvzXRJFdy0KqPHLoMevcTLo3h8xh70Y6N_U_CryOsw6FTOdKL_jpQ-&CONTENTTYPE=image/jpeg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Hospital_Materno_Infantil_(Honduras)">Hospital
+                                                        Materno Infantil</a>
+                                                </td>
+                                                <td>Tegucigalpa</td>
+                                                <td>Francisco Morazán</td>
+                                                <td>Blvd. Suyapa, Frente a banco Davivienda</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT028</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.elheraldo.hn/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=Hno$MpM7dtfu7mDQS1xJds$daE2N3K4ZzOUsqbU5sYt7WXpKU0usvLFKq62fUIqzWCsjLu883Ygn4B49Lvm9bPe2QeMKQdVeZmXF$9l$4uCZ8QDXhaHEp3rvzXRJFdy0KqPHLoMevcTLo3h8xh70Y6N_U_CryOsw6FTOdKL_jpQ-&CONTENTTYPE=image/jpeg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://www.ecured.cu/Instituto_Nacional_de_Torax_(Honduras)">Instituto
+                                                        Nacional Cardiopulmonar (Tórax)</a>
+                                                </td>
+                                                <td>Tegucigalpa</td>
+                                                <td>Francisco Morazán</td>
+                                                <td>Col. Lara atrás del PANI Ave. Los Próceres</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT029</td>
+                                                <td><a href="#">
+                                                        <img src="https://hondudiario.com/wp-content/uploads/2019/06/nuestro_hospital.jpg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://hmc.com.hn/">Hospital
+                                                        Honduras Medical Center</a>
+                                                </td>
+                                                <td>Tegucigalpa</td>
+                                                <td>Francisco Morazán</td>
+                                                <td>Col. Las Minitas</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT030</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.elheraldo.hn/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=Gxh7E$7UMDkItUYEku6Mg8$daE2N3K4ZzOUsqbU5sYu0L3RrmlBTHZTXceaKnHhN6FB40xiOfUoExWL3M40tfzssyZqpeG_J0TFo7ZhRaDiHC9oxmioMlYVJD0A$3RbIiibgT65kY_CSDiCiUzvHvODrHApbd6ry6YGl5GGOZrs-&CONTENTTYPE=image/jpeg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://ihss.hn/">Instituto
+                                                        Hondureño de Seguridad Social La Granja</a>
+                                                </td>
+                                                <td>Tegucigalpa</td>
+                                                <td>Francisco Morazán</td>
+                                                <td>Barrio La Granja</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT031</td>
+                                                <td><a href="#">
+                                                        <img src="https://www.elheraldo.hn/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=XMNLCp5pNSqZZMshQz4HuM$daE2N3K4ZzOUsqbU5sYs8oxK6Kvv2c1rVcR5JLeEEWCsjLu883Ygn4B49Lvm9bPe2QeMKQdVeZmXF$9l$4uCZ8QDXhaHEp3rvzXRJFdy0KqPHLoMevcTLo3h8xh70Y6N_U_CryOsw6FTOdKL_jpQ-&CONTENTTYPE=image/jpeg"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://ihss.hn/">Instituto
+                                                        Hondureño de Seguridad Social Barrio Abajo</a>
+                                                </td>
+                                                <td>Tegucigalpa</td>
+                                                <td>Francisco Morazán</td>
+                                                <td>Barrio Abajo</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                            <tr>
+                                                <td>HT032</td>
+                                                <td><a href="#">
+                                                        <img src="https://lh3.googleusercontent.com/p/AF1QipPtxozVRycU0Ke_iivLw2SzC1c7zXe_SBb7b1zV=s1600-w400"
+                                                            class="imgRedonda" /></a><br><a
+                                                        href="https://ihss.hn/">Instituto
+                                                        Hondureño de Seguridad Social Choluteca</a>
+                                                </td>
+                                                <td>Choluteca</td>
+                                                <td>Choluteca</td>
+                                                <td>Choluteca</td>
+                                                <td>Honduras</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+            $('.sidenav-trigger').sidenav();
+            $('.dropdown-trigger').dropdown({
+                coverTrigger: false,
+                belowOrigin: true
+            });
+            $('#example').DataTable({
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            });
+            $("select").val('10');
+            $('select').addClass("browser-default");
+            $('select').material_select();
+        });
+    </script>
+</body>
+
+</html>
