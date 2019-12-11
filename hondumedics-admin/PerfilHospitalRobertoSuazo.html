@@ -167,6 +167,32 @@
             /* round the edges to a circle with border radius 1/2 container size */
             border-radius: 50%;
         }
+
+        .tabs .tab a {
+            color: #000;
+        }
+
+        /*Black color to the text*/
+
+        .tabs .tab a:hover {
+            background-color: #eee;
+            color: #000;
+        }
+
+        /*Text color on hover*/
+
+        .tabs .tab a.active {
+            background-color: #888;
+            color: #000;
+        }
+
+        /*Background and text color when a tab is active*/
+
+        .tabs .indicator {
+            background-color: #000;
+        }
+
+        /*Color of underline*/
     </style>
 </head>
 
@@ -369,14 +395,20 @@
                                             <h6>hrobertosuazocor@honduras.hn</h6>
                                             <i class="material-icons black-text">place</i><span>Barrio La
                                                 Trinidad, La Paz</span><br><br>
-                                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore
-                                                consequuntur iusto dolore tempora, ex provident hic libero officiis
-                                                atque recusandae maxime sequi voluptatum doloremque, laborum totam,
-                                                quibusdam magni nihil dicta.</p>
+                                            <p>Fue inaugurado el 20 de diciembre de 1984 en la ciudad de La Paz,
+                                                cabecera de su homónimo departamento de Honduras. Su primer director fue
+                                                el Doctor Oscar Mauricio Borjas.
+
+                                                Cuenta con servicio de urgencias, consulta externa de medicina general,
+                                                servicio de gineco-obstetricia, pediatría con cuidados de neonatos,
+                                                cirugía general con quirofano y especialidades de medicina general de
+                                                hospitalización. El nombre lo lleva en honor al Presidente
+                                                constitucional Doctor Roberto Suazo Cordova.</p>
                                         </div>
                                         <div class="card-action">
                                             <!-- Modal Trigger -->
-                                            <a class="waves-effect waves-light btn green modal-trigger" href="#modal2"><i
+                                            <a class="waves-effect waves-light btn green modal-trigger"
+                                                href="#modal2"><i
                                                     class="material-icons left black-text">add_a_photo</i>CAMBIAR
                                                 FOTO</a>
                                             <!-- Modal Structure -->
@@ -418,60 +450,231 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="col s12 l12">
+                                    <br>
+                                    <br>
+                                    <ul class="tabs">
+                                        <li class="tab col s6"><a class="active" href="#test1"><b>Acerca de</b></a></li>
+                                        <li class="tab col s6"><a href="#test2"><b>Contraseña</b></a></li>
+                                    </ul>
+                                </div>
+                                <div id="test1" class="col s12">
+                                    <br>
+                                    <center>
+                                        <h5><b>Detalles</b></h5>
+                                    </center>
+                                    <br>
+                                    <table class="centred">
+                                        <thead>
+                                            <tr>
+                                                <th>Hospital</th>
+                                                <th>Fecha de Fundación</th>
+                                                <th>Correo Electrónico</th>
+                                                <th>Teléfono</th>
+                                                <th>Dirección</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>Doctor Roberto Suazo Córdova</td>
+                                                <td>20 de diciembre de 1984</td>
+                                                <td>hrobertosuazocor@honduras.hn</td>
+                                                <td>34234-6798</td>
+                                                <td>Barrio La Trinidad, La Paz</td>
+                                                <td>
+                                                    <!-- Modal Trigger -->
+                                                    <a class="waves-effect waves-light btn green modal-trigger btn tooltipped"
+                                                        data-position="bottom" data-tooltip="Editar" href="#modal3"><i
+                                                            class="material-icons center">create</i></a>
+                                                    <!-- Modal Structure -->
+                                                    <div id="modal3" class="modal modal-fixed-footer">
+                                                        <div class="modal-content">
+                                                            <h4 style="text-align: center;">Editar Detalles</h4>
+                                                            <br>
+                                                            <div class="row">
+                                                                <form class="col s12">
+                                                                    <div class="row modal-form-row">
+                                                                        <div class="input-field col s12">
+                                                                            <input id="correo" type="email"
+                                                                                class="validate">
+                                                                            <label for="correo">Correo
+                                                                                Electrónico</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="input-field col s12">
+                                                                            <input id="telefono" type="text"
+                                                                                class="validate">
+                                                                            <label for="telefono">Teléfono</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="input-field col s12">
+                                                                            <textarea id="direccion" type="text"
+                                                                                class="materialize-textarea validate"></textarea>
+                                                                            <label for="direccion">Dirección</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="#!"
+                                                                class="modal-close waves-effect waves-green btn-flat blue">Guardar
+                                                                Cambios</a>
+                                                            <a href="#!"
+                                                                class="modal-close waves-effect waves-green btn-flat red">Cancelar</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <center>
+                                    <div id="test2" class="col s12">
+                                        <h5><b>Cambiar Contraseña</b></h5>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col s3"></div>
+                                            <div class="input-field col s6">
+                                                <input id="nuevaContraseña" type="password" class="validate">
+                                                <label for="nuevaContraseña">Nueva Contraseña</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s3"></div>
+                                            <div class="input-field col s6">
+                                                <input id="confirmarContraseña" type="password" class="validate">
+                                                <label for="confirmarContraseña">Confirmar Contraseña</label>
+                                            </div>
+                                        </div>
+                                        <a href="#!"
+                                            class="modal-close waves-effect waves-green btn-flat blue white-text"><i
+                                                class="material-icons left">save</i>Guardar
+                                            Cambios</a>
+                                    </div>
+                                </center>
+                            </div>
                         </div>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="container">
-                            <div class="card">
-                                
+                    <!--Lista de doctores-->
+                    <div class="container">
+                        <!-- Modal Trigger -->
+                        <a id="back5" class="waves-effect waves-light btn blue modal-trigger right" href="#modal1">
+                            <i class="material-icons left">add</i>Añadir</a>
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal modal-fixed-footer">
+                            <div class="modal-content">
+                                <h4 style="text-align: center;">Añadir Doctor y Especialidad</h4>
+                                <br>
+                                <div class="row">
+                                    <form class="col s12">
+                                        <div class="row modal-form-row">
+                                            <div class="input-field col s12">
+                                                <input id="doctor" type="text" class="validate">
+                                                <label for="doctor">Nombre de Doctor</label>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <label>Imagen de Doctor</label>
+                                            <div class="file-field input-field">
+                                                <div class="btn green">
+                                                    <i class="material-icons left">cloud_upload</i>
+                                                    <span>Seleccionar Archivo</span>
+                                                    <input type="file" />
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path validate" type="text"
+                                                        placeholder="Subir Archivo" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row modal-form-row">
+                                            <div class="input-field col s12">
+                                                <input id="especialidad" type="text" class="validate">
+                                                <label for="especialidad">Especialidad</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label>Imagen de Especialidad</label>
+                                            <div class="file-field input-field">
+                                                <div class="btn green">
+                                                    <i class="material-icons left">cloud_upload</i>
+                                                    <span>Seleccionar Archivo</span>
+                                                    <input type="file" />
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path validate" type="text"
+                                                        placeholder="Subir Archivo" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat blue">Guardar
+                                    Cambios</a>
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat red">Cancelar</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-            $(document).ready(function () {
-                M.AutoInit();
-                $('.sidenav').sidenav();
-                $('.sidenav-trigger').sidenav();
-                $('.dropdown-trigger').dropdown({
-                    coverTrigger: false,
-                    belowOrigin: true
-                });
-                $('#example').DataTable({
-                    "language": {
-                        "sProcessing": "Procesando...",
-                        "sLengthMenu": "Mostrar _MENU_ registros",
-                        "sZeroRecords": "No se encontraron resultados",
-                        "sEmptyTable": "Ningún dato disponible en esta tabla",
-                        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                        "sInfoPostFix": "",
-                        "sSearch": "Buscar:",
-                        "sUrl": "",
-                        "sInfoThousands": ",",
-                        "sLoadingRecords": "Cargando...",
-                        "oPaginate": {
-                            "sFirst": "Primero",
-                            "sLast": "Último",
-                            "sNext": "Siguiente",
-                            "sPrevious": "Anterior"
-                        },
-                        "oAria": {
-                            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                        }
-                    }
-                });
-                $("select").val('10');
-                $('select').addClass("browser-default");
-                $('select').material_select();
+    </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            M.AutoInit();
+            $('.sidenav').sidenav();
+            $('.sidenav-trigger').sidenav();
+            $('.modal').modal();
+            $('.modal-trigger').leanModal();
+            $('.tooltipped').tooltip();
+            $('.dropdown-trigger').dropdown({
+                coverTrigger: false,
+                belowOrigin: true
             });
+            $('#example').DataTable({
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            });
+            $("select").val('10');
+            $('select').addClass("browser-default");
+            $('select').material_select();
+        });
 
-        </script>
+    </script>
 </body>
 
 </html>
