@@ -259,12 +259,12 @@
 
         .ec-stars-wrapper {
             /* Espacio entre los inline-block (los hijos, los `a`) 
-	   http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
+       http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
             font-size: 0;
             /* Podríamos quitarlo, 
-		pero de esta manera (siempre que no le demos padding), 
-		sólo aplicará la regla .ec-stars-wrapper:hover a cuando
-		también se esté haciendo hover a alguna estrella */
+        pero de esta manera (siempre que no le demos padding), 
+        sólo aplicará la regla .ec-stars-wrapper:hover a cuando
+        también se esté haciendo hover a alguna estrella */
             display: inline-block;
         }
 
@@ -312,7 +312,16 @@
         .tabs .indicator {
             background-color: #000;
         }
+
+        .modal {
+            max-height: 90%;
+        }
+
+        .modal-form-row {
+            margin-bottom: 0px;
+        }
     </style>
+
 </head>
 
 <body>
@@ -554,7 +563,7 @@
                                             src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg"
                                             alt="">
                                         <br>
-                                        <a class="waves-effect waves-light red btn tooltipped modal-trigger"
+                                        <a class="btn-floating waves-effect waves-light red btn tooltipped modal-trigger"
                                             data-position="bottom" data-tooltip="Cambiar Foto de Perfil"
                                             href="#modal2"><i class="material-icons center">add_a_photo</i></a>
                                         <!-- Modal Structure -->
@@ -596,7 +605,8 @@
                                         </div>
                                         <br>
                                         <br>
-                                        <a class="waves-effect waves-light btn mt-5 border-radius-4">SEGUIR</a>
+                                        <a
+                                            class="waves-effect waves-light btn mt-5 border-radius-4 cyan accent-4">SEGUIR</a>
                                     </div>
                                 </div>
                                 <center>
@@ -647,6 +657,87 @@
                                                     <center>
                                                         <h5 style="color: blue;">PERFIL PROFESIONAL</h5>
                                                     </center>
+                                                    <!-- Modal Trigger -->
+                                                    <a class="btn-floating waves-effect waves-light right btn tooltipped modal-trigger cyan accent-4"
+                                                        data-position="bottom" data-tooltip="Editar Perfil Profesional"
+                                                        href="#modal3"
+                                                        style="position:relative; float:right; bottom:35px; right:-180px"><i
+                                                            class="material-icons">mode_edit</i></a>
+                                                    <!-- Modal Structure -->
+                                                    <div id="modal3" class="modal">
+                                                        <div class="modal-content">
+                                                            <center>
+                                                                <h4>Editar Perfil Profesional</h4>
+                                                            </center>
+                                                            <div class="row">
+                                                                <form class="col s12">
+                                                                    <div class="row modal-form-row">
+                                                                        <div class="row">
+                                                                            <div class="input-field col s6">
+                                                                                <input id="nombre" type="text"
+                                                                                    class="validate" value="Ruby">
+                                                                                <label for="nombre">Nombre</label>
+                                                                            </div>
+                                                                            <div class="row modal-form-row">
+                                                                                <div class="input-field col s6">
+                                                                                    <input id="apellido" type="text"
+                                                                                        class="validate" value="Taylor">
+                                                                                    <label
+                                                                                        for="apellido">Apellido</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <input id="FechaNac2" type="text"
+                                                                                    class="validate"
+                                                                                    value="23 de Febrero de 1980">
+                                                                                <label for="FechaNac2">Fecha de
+                                                                                    Nacimiento</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <input id="email" type="email"
+                                                                                    class="validate"
+                                                                                    value="rubytaylor.80@gmail.com">
+                                                                                <label for="email">Email</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row modal-form-row">
+                                                                        <div class="row">
+                                                                            <div class="input-field col s6">
+                                                                                <input id="telefono" type="text"
+                                                                                    class="validate" value="1234-5678">
+                                                                                <label for="telefono">Teléfono</label>
+                                                                            </div>
+                                                                            <div class="row modal-form-row">
+                                                                                <div class="input-field col s6">
+                                                                                    <input id="profesion" type="text"
+                                                                                        class="validate"
+                                                                                        value="Odontología">
+                                                                                    <label
+                                                                                        for="profesion">Profesión</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a
+                                                                class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">Guardar
+                                                                Cambios</a>
+                                                            <a
+                                                                class=" modal-action modal-close waves-effect waves-green btn-flat red white-text">Cancelar</a>
+                                                        </div>
+                                                    </div>
                                                     <div class="row">
                                                         <div class="col-md-2">
                                                             <label>NOMBRE</label>
@@ -663,7 +754,6 @@
                                                             <p>23 de Febrero de 1980</p>
                                                         </div>
                                                     </div>
-
                                                     <div class="row">
                                                         <div class="col-md-2">
                                                             <label>CORREO ELECTRÓNICO</label>
@@ -692,7 +782,169 @@
                                                 <div id="test2" class="col s12">
                                                     <center>
                                                         <h5 style="color: blue;">INFORMACIÓN DETALLADA</h5>
-                                                    </center>
+                                                    </center><br>
+
+                                                    <!-- Modal Trigger -->
+                                                    <!-- Modal Trigger Editar -->
+                                                    <a class="btn-floating waves-effect waves-light right btn tooltipped modal-trigger cyan accent-4"
+                                                        data-position="bottom"
+                                                        data-tooltip="Editar Información Detallada" href="#modal6"
+                                                        style="position:relative; float:right; bottom:35px; right:-180px"><i
+                                                            class="material-icons center">mode_edit</i></a>
+                                                    <!-- Modal Trigger Agregar -->
+                                                    <a class="btn-floating waves-effect waves-light right btn tooltipped modal-trigger green"
+                                                        data-position="bottom"
+                                                        data-tooltip="Agregar Información Detallada" href="#modal5"
+                                                        style="position:relative; float:right; bottom:35px; right:-180px"><i
+                                                            class="material-icons center">add</i></a>
+                                                    <!-- Modal Structure Agregar-->
+                                                    <div id="modal5" class="modal">
+                                                        <div class="modal-content">
+                                                            <center>
+                                                                <h4>Agregar Información Detallada</h4>
+                                                            </center>
+                                                            <div class="row">
+                                                                <form class="col s12">
+                                                                    <div class="row modal-form-row">
+                                                                        <div class="row">
+                                                                            <div class="input-field col s12">
+                                                                                <textarea id="especialidades"
+                                                                                    type="text"
+                                                                                    class="materialize-textarea validate"></textarea>
+                                                                                <label
+                                                                                    for="especialidades">Especialidades</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <textarea id="experienciaDes"
+                                                                                    type="text"
+                                                                                    class="materialize-textarea validate"></textarea>
+                                                                                <label for="experienciaDes">Experiencia
+                                                                                    Destacada</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <textarea id="academia" type="text"
+                                                                                    class="materialize-textarea validate"></textarea>
+                                                                                <label for="academia">Academia,
+                                                                                    Sociedades, Colegios</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <textarea id="certificados" type="text"
+                                                                                    class="materialize-textarea validate"></textarea>
+                                                                                <label
+                                                                                    for="certificados">Certificados</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <textarea id="aseguradoras" type="text"
+                                                                                    class="materialize-textarea validate"></textarea>
+                                                                                <label
+                                                                                    for="aseguradoras">Aseguradoras</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a
+                                                                class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">Guardar
+                                                                Cambios</a>
+                                                            <a
+                                                                class=" modal-action modal-close waves-effect waves-green btn-flat red white-text">Cancelar</a>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Modal Structure Editar-->
+                                                    <div id="modal6" class="modal">
+                                                        <div class="modal-content">
+                                                            <center>
+                                                                <h4>Editar Información Detallada</h4>
+                                                            </center>
+                                                            <div class="row">
+                                                                <form class="col s12">
+                                                                    <div class="row modal-form-row">
+                                                                        <div class="row">
+                                                                            <div class="input-field col s12">
+                                                                                <textarea id="especialidades"
+                                                                                    type="text"
+                                                                                    class="materialize-textarea validate">Odontología Universidad Nacional Autónoma de Honduras, 2007, cédula 5376983.
+Maxilofacial Universidad Nacional Autónoma de Honduras, 2012, cédula 7734569.</textarea>
+                                                                                <label
+                                                                                    for="especialidades">Especialidades</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <textarea id="experienciaDes"
+                                                                                    type="text"
+                                                                                    class="materialize-textarea validate">Cirugía Maxilofacial. 
+Cirugía Ortognática.
+Cirugía Bucal.</textarea>
+                                                                                <label for="experienciaDes">Experiencia
+                                                                                    Destacada</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <textarea id="academia" type="text"
+                                                                                    class="materialize-textarea validate">Miembro del Colegio de Cirujanos Maxilofacial del Instituto Hondureños de Seguridad Social.</textarea>
+                                                                                <label for="academia">Academia,
+                                                                                    Sociedades, Colegios</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <textarea id="certificados" type="text"
+                                                                                    class="materialize-textarea validate">Certificación por el Consejo Hondureño de Cirugía Oral y Maxilofacial, 2012-2017.</textarea>
+                                                                                <label
+                                                                                    for="certificados">Certificados</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="row modal-form-row">
+                                                                            <div class="input-field col s12">
+                                                                                <textarea id="aseguradoras" type="text"
+                                                                                    class="materialize-textarea validate">Seguros - Atlántida.
+Seguros Médicos Hospitalario - Ficohsa.
+Coberturas seguro gastos médicos amigo - MAPFRE Honduras.
+Seguros - Colegio de Cirujanos Dentistas de Honduras.</textarea>
+                                                                                <label
+                                                                                    for="aseguradoras">Aseguradoras</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a
+                                                                class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">Guardar
+                                                                Cambios</a>
+                                                            <a
+                                                                class=" modal-action modal-close waves-effect waves-green btn-flat red white-text">Cancelar</a>
+                                                        </div>
+                                                    </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label>Especialidades</label>
@@ -700,10 +952,9 @@
                                                         <div class="col-md-6">
                                                             <br>
                                                             <p>Odontología Universidad Nacional Autónoma de Honduras,
-                                                                2007, cédula 5376983</p>
-                                                            <br>
+                                                                2007, cédula 5376983.</p>
                                                             <p>Maxilofacial Universidad Nacional Autónoma de Honduras,
-                                                                2012, cédula 7734569</p>
+                                                                2012, cédula 7734569.</p>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -712,9 +963,9 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <br>
-                                                            <p>Cirugía Maxilofacial</p>
-                                                            <p>Cirugía Ortognática</p>
-                                                            <p>Cirugía Bucal</p>
+                                                            <p>Cirugía Maxilofacial.</p>
+                                                            <p>Cirugía Ortognática.</p>
+                                                            <p>Cirugía Bucal.</p>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -723,7 +974,8 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <br>
-                                                            <p>Miembro del Colegio de Cirujanos Maxilofacial del Instituto Hondureños de Seguridad Social</p>
+                                                            <p>Miembro del Colegio de Cirujanos Maxilofacial del
+                                                                Instituto Hondureños de Seguridad Social.</p>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -732,7 +984,8 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <br>
-                                                            <p>Certificación por el Consejo Hondureño de Cirugía Oral y Maxilofacial, 2012-2017</p>
+                                                            <p>Certificación por el Consejo Hondureño de Cirugía Oral y
+                                                                Maxilofacial, 2012-2017.</p>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -741,10 +994,11 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <br>
-                                                            <p>Seguros - Atlántida</p>
-                                                            <p>Seguros Médicos Hospitalario - Ficohsa</p>
-                                                            <p>Coberturas seguro gastos médicos amigo - MAPFRE Honduras</p>
-                                                            <p>Seguros - Colegio de Cirujanos Dentistas de Honduras</p>
+                                                            <p>Seguros - Atlántida.</p>
+                                                            <p>Seguros Médicos Hospitalario - Ficohsa.</p>
+                                                            <p>Coberturas seguro gastos médicos amigo - MAPFRE Honduras.
+                                                            </p>
+                                                            <p>Seguros - Colegio de Cirujanos Dentistas de Honduras.</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -768,6 +1022,7 @@
             $('.tooltipped').tooltip();
             $('.modal').modal();
             $('.tabs').tabs();
+            $('.datepicker').datepicker();
             $('.dropdown-trigger').dropdown({
                 coverTrigger: false,
                 belowOrigin: true
