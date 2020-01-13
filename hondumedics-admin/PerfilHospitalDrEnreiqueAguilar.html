@@ -515,7 +515,8 @@
                                                                         <div class="row modal-form-row">
                                                                             <div class="input-field col s12">
                                                                                 <input id="correo" type="email"
-                                                                                    class="validate">
+                                                                                    class="validate"
+                                                                                    value="hdrkikeagular92@honduras.hn">
                                                                                 <label for="correo">Correo
                                                                                     Electrónico</label>
                                                                             </div>
@@ -523,14 +524,14 @@
                                                                         <div class="row">
                                                                             <div class="input-field col s12">
                                                                                 <input id="telefono" type="text"
-                                                                                    class="validate">
+                                                                                    class="validate" value="2783-014">
                                                                                 <label for="telefono">Teléfono</label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="input-field col s12">
                                                                                 <textarea id="direccion" type="text"
-                                                                                    class="materialize-textarea validate"></textarea>
+                                                                                    class="materialize-textarea validate">Barrio El Way, Salida a Siguatepeque, La Esperanza, Intibucá</textarea>
                                                                                 <label for="direccion">Dirección</label>
                                                                             </div>
                                                                         </div>
@@ -591,45 +592,62 @@
                                 <div class="row">
                                     <form class="col s12">
                                         <div class="row modal-form-row">
-                                            <div class="input-field col s12">
-                                                <input id="doctor_name" type="text" class="validate">
-                                                <label for="doctor_name">Nombre de Doctor</label>
+                                            <div class="row">
+                                                <div class="input-field col s6">
+                                                    <input id="nombre" type="text"
+                                                        class="validate">
+                                                    <label for="nombre">Nombre</label>
+                                                </div>
+                                                <div class="row modal-form-row">
+                                                    <div class="input-field col s6">
+                                                        <input id="apellido" type="text"
+                                                            class="validate">
+                                                        <label
+                                                            for="apellido">Apellido</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <br>
                                         <div class="row">
                                             <label>Imagen de Doctor</label>
                                             <div class="file-field input-field">
                                                 <div class="btn green">
-                                                    <i class="material-icons left">cloud_upload</i>
-                                                    <span>Seleccionar Foto</span>
+                                                    <i
+                                                        class="material-icons left">cloud_upload</i>
+                                                    <span>Seleccionar
+                                                        Foto</span>
                                                     <input type="file" />
                                                 </div>
                                                 <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text"
-                                                        placeholder="Subir Foto" />
+                                                    <input class="file-path validate"
+                                                        type="text"placeholder="Subir Foto" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <br>
-                                        <div class="row modal-form-row">
-                                            <div class="input-field col s12">
-                                                <input id="speciality_name" type="text" class="validate">
-                                                <label for="speciality_name">Especialidad</label>
+                                        <div class="row">
+                                            <div class="row modal-form-row">
+                                                <div class="input-field col s12">
+                                                    <input id="especialidad" type="text"
+                                                        class="validate">
+                                                    <label
+                                                        for="especialidad">Especialidad</label>
+                                                </div>
                                             </div>
                                         </div>
-                                        <br>
                                         <div class="row">
-                                            <label>Imagen de Especialidad</label>
+                                            <label>Imagen de
+                                                Especialidad</label>
                                             <div class="file-field input-field">
                                                 <div class="btn green">
-                                                    <i class="material-icons left">cloud_upload</i>
-                                                    <span>Seleccionar Foto</span>
+                                                    <i
+                                                        class="material-icons left">cloud_upload</i>
+                                                    <span>Seleccionar
+                                                        Foto</span>
                                                     <input type="file" />
                                                 </div>
                                                 <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text"
-                                                        placeholder="Subir Foto" />
+                                                    <input class="file-path validate"
+                                                        type="text"placeholder="Subir Foto" />
                                                 </div>
                                             </div>
                                         </div>
@@ -669,7 +687,8 @@
                                                 <tr>
                                                     <td><a href="#">
                                                             <img src="https://www.laprensa.hn/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=IUJiZJww87dNiRjJ__hIXc$daE2N3K4ZzOUsqbU5sYu7chCxXugHDTSB6a91uUVf6FB40xiOfUoExWL3M40tfzssyZqpeG_J0TFo7ZhRaDiHC9oxmioMlYVJD0A$3RbIiibgT65kY_CSDiCiUzvHvODrHApbd6ry6YGl5GGOZrs-&CONTENTTYPE=image/jpeg"
-                                                                class="imgRedonda" /></a><br><a href="#">Dra. Chistina Romero</a></td>
+                                                                class="imgRedonda" /></a><br><a href="#">Dra. Christina
+                                                            Romero</a></td>
                                                     <td><a href="#">
                                                             <img src="https://www.mibluemedical.com/cr/wp-content/uploads/2016/04/Dermatogris.png"
                                                                 class="imgRedonda" /></a><br><a
@@ -686,24 +705,33 @@
                                                             href="#modal6"><i
                                                                 class="material-icons center">delete_forever</i></a>
 
-                                                        <div id="modal5" class="modal modal-fixed-footer">
+                                                        <!-- Modal Structure -->
+                                                        <div id="modal5" class="modal">
                                                             <div class="modal-content">
-                                                                <h4 style="text-align: center;">Editar
-                                                                    Doctor/Especialidad
-                                                                </h4>
-                                                                <br>
+                                                                <center>
+                                                                    <h4>Editar Doctor/Especialidad</h4>
+                                                                </center>
                                                                 <div class="row">
                                                                     <form class="col s12">
                                                                         <div class="row modal-form-row">
-                                                                            <div class="input-field col s12">
-                                                                                <input id="doctor_name2" type="text"
-                                                                                    class="validate">
-                                                                                <label for="doctor_name2">Nombre
-                                                                                    de
-                                                                                    Doctor</label>
+                                                                            <div class="row">
+                                                                                <div class="input-field col s6">
+                                                                                    <input id="nombre" type="text"
+                                                                                        class="validate"
+                                                                                        value="Dra. Christina">
+                                                                                    <label for="nombre">Nombre</label>
+                                                                                </div>
+                                                                                <div class="row modal-form-row">
+                                                                                    <div class="input-field col s6">
+                                                                                        <input id="apellido" type="text"
+                                                                                            class="validate"
+                                                                                            value="Romero">
+                                                                                        <label
+                                                                                            for="apellido">Apellido</label>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <br>
                                                                         <div class="row">
                                                                             <label>Imagen de Doctor</label>
                                                                             <div class="file-field input-field">
@@ -717,20 +745,22 @@
                                                                                 <div class="file-path-wrapper">
                                                                                     <input class="file-path validate"
                                                                                         type="text"
+                                                                                        value="https://www.laprensa.hn/csp/mediapool/sites/dt.common.streams.StreamServer.cls?STREAMOID=IUJiZJww87dNiRjJ__hIXc$daE2N3K4ZzOUsqbU5sYu7chCxXugHDTSB6a91uUVf6FB40xiOfUoExWL3M40tfzssyZqpeG_J0TFo7ZhRaDiHC9oxmioMlYVJD0A$3RbIiibgT65kY_CSDiCiUzvHvODrHApbd6ry6YGl5GGOZrs-&CONTENTTYPE=image/jpeg"
                                                                                         placeholder="Subir Foto" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <br>
-                                                                        <div class="row modal-form-row">
-                                                                            <div class="input-field col s12">
-                                                                                <input id="speciality_name" type="text"
-                                                                                    class="validate">
-                                                                                <label
-                                                                                    for="speciality_name">Especialidad</label>
+                                                                        <div class="row">
+                                                                            <div class="row modal-form-row">
+                                                                                <div class="input-field col s12">
+                                                                                    <input id="especialidad" type="text"
+                                                                                        class="validate"
+                                                                                        value="Dermatología">
+                                                                                    <label
+                                                                                        for="especialidad">Especialidad</label>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <br>
                                                                         <div class="row">
                                                                             <label>Imagen de
                                                                                 Especialidad</label>
@@ -745,6 +775,7 @@
                                                                                 <div class="file-path-wrapper">
                                                                                     <input class="file-path validate"
                                                                                         type="text"
+                                                                                        value="https://www.mibluemedical.com/cr/wp-content/uploads/2016/04/Dermatogris.png"
                                                                                         placeholder="Subir Foto" />
                                                                                 </div>
                                                                             </div>
@@ -753,11 +784,11 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="#!"
-                                                                    class="modal-close waves-effect waves-green btn-flat blue white-text">Guardar
+                                                                <a
+                                                                    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">Guardar
                                                                     Cambios</a>
-                                                                <a href="#!"
-                                                                    class="modal-close waves-effect waves-green btn-flat red white-text">Cancelar</a>
+                                                                <a
+                                                                    class=" modal-action modal-close waves-effect waves-green btn-flat red white-text">Cancelar</a>
                                                             </div>
                                                         </div>
                                                         <div id="modal6" class="modal">
@@ -767,10 +798,10 @@
                                                                 <p>¿Estás seguro de eliminar esta fila?</p>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="#!"
-                                                                    class="modal-action modal-close waves-effect waves-green btn-flat blue white-text">Sí</a>
-                                                                <a href="#!"
-                                                                    class="modal-action modal-close waves-effect waves-red btn-flat red white-text">Cancelar</a>
+                                                                <a
+                                                                    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">Sí</a>
+                                                                <a
+                                                                    class=" modal-action modal-close waves-effect waves-green btn-flat red white-text">Cancelar</a>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -778,7 +809,8 @@
                                                 <tr>
                                                     <td><a href="#">
                                                             <img src="http://www.drceballo.com/s/cc_images/teaserbox_2105645.jpg?t=1466374891"
-                                                                class="imgRedonda" /></a><br><a href="#">Dr. Rubén Fernández</a></td>
+                                                                class="imgRedonda" /></a><br><a href="#">Dr. Rubén
+                                                            Fernández</a></td>
                                                     <td><a href="#">
                                                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkCePN8S54yWiZX0ssZPU8MEarOgeouhTsnOIPQute6iVMPCva&s"
                                                                 class="imgRedonda" /></a><br><a
@@ -788,31 +820,39 @@
                                                         <!-- Modal Trigger -->
                                                         <a class="btn-floating btn-medium waves-effect waves-light btn green modal-trigger btn tooltipped"
                                                             data-position="bottom" data-tooltip="Editar"
-                                                            href="#modal5"><i
+                                                            href="#modal7"><i
                                                                 class="material-icons center">create</i></a>
                                                         <a class="btn-floating btn-medium waves-effect waves-light btn red modal-trigger center tooltipped"
                                                             data-position="bottom" data-tooltip="Eliminar"
-                                                            href="#modal6"><i
+                                                            href="#modal8"><i
                                                                 class="material-icons center">delete_forever</i></a>
-
-                                                        <div id="modal5" class="modal modal-fixed-footer">
+                                                        <!-- Modal Structure -->
+                                                        <div id="modal7" class="modal">
                                                             <div class="modal-content">
-                                                                <h4 style="text-align: center;">Editar
-                                                                    Doctor/Especialidad
-                                                                </h4>
-                                                                <br>
+                                                                <center>
+                                                                    <h4>Editar Doctor/Especialidad</h4>
+                                                                </center>
                                                                 <div class="row">
                                                                     <form class="col s12">
                                                                         <div class="row modal-form-row">
-                                                                            <div class="input-field col s12">
-                                                                                <input id="doctor_name2" type="text"
-                                                                                    class="validate">
-                                                                                <label for="doctor_name2">Nombre
-                                                                                    de
-                                                                                    Doctor</label>
+                                                                            <div class="row">
+                                                                                <div class="input-field col s6">
+                                                                                    <input id="nombre" type="text"
+                                                                                        class="validate"
+                                                                                        value="Dr. Rubén">
+                                                                                    <label for="nombre">Nombre</label>
+                                                                                </div>
+                                                                                <div class="row modal-form-row">
+                                                                                    <div class="input-field col s6">
+                                                                                        <input id="apellido" type="text"
+                                                                                            class="validate"
+                                                                                            value="Fernández">
+                                                                                        <label
+                                                                                            for="apellido">Apellido</label>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <br>
                                                                         <div class="row">
                                                                             <label>Imagen de Doctor</label>
                                                                             <div class="file-field input-field">
@@ -826,20 +866,22 @@
                                                                                 <div class="file-path-wrapper">
                                                                                     <input class="file-path validate"
                                                                                         type="text"
+                                                                                        value="http://www.drceballo.com/s/cc_images/teaserbox_2105645.jpg?t=1466374891"
                                                                                         placeholder="Subir Foto" />
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <br>
-                                                                        <div class="row modal-form-row">
-                                                                            <div class="input-field col s12">
-                                                                                <input id="speciality_name" type="text"
-                                                                                    class="validate">
-                                                                                <label
-                                                                                    for="speciality_name">Especialidad</label>
+                                                                        <div class="row">
+                                                                            <div class="row modal-form-row">
+                                                                                <div class="input-field col s12">
+                                                                                    <input id="especialidad" type="text"
+                                                                                        class="validate"
+                                                                                        value="Otorrinolaringología">
+                                                                                    <label
+                                                                                        for="especialidad">Especialidad</label>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                        <br>
                                                                         <div class="row">
                                                                             <label>Imagen de
                                                                                 Especialidad</label>
@@ -854,6 +896,7 @@
                                                                                 <div class="file-path-wrapper">
                                                                                     <input class="file-path validate"
                                                                                         type="text"
+                                                                                        value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkCePN8S54yWiZX0ssZPU8MEarOgeouhTsnOIPQute6iVMPCva&s"
                                                                                         placeholder="Subir Foto" />
                                                                                 </div>
                                                                             </div>
@@ -862,14 +905,14 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <a href="#!"
-                                                                    class="modal-close waves-effect waves-green btn-flat blue white-text">Guardar
+                                                                <a
+                                                                    class=" modal-action modal-close waves-effect waves-green btn-flat blue white-text">Guardar
                                                                     Cambios</a>
-                                                                <a href="#!"
-                                                                    class="modal-close waves-effect waves-green btn-flat red white-text">Cancelar</a>
+                                                                <a
+                                                                    class=" modal-action modal-close waves-effect waves-green btn-flat red white-text">Cancelar</a>
                                                             </div>
                                                         </div>
-                                                        <div id="modal6" class="modal">
+                                                        <div id="modal8" class="modal">
                                                             <div class="modal-content">
                                                                 <h4 style="text-align: center;">Eliminar
                                                                     Registro</h4>
@@ -893,48 +936,50 @@
                     </div>
                 </div>
             </div>
-            <script>
-                $(document).ready(function () {
-                    M.AutoInit();
-                    $('.tabs').tabs();
-                    $('.sidenav').sidenav();
-                    $('.sidenav-trigger').sidenav();
-                    $('.modal').modal();
-                    $('.dropdown-trigger').dropdown({
-                        coverTrigger: false,
-                        belowOrigin: true
-                    });
-                    $('#example').DataTable({
-                        "language": {
-                            "sProcessing": "Procesando...",
-                            "sLengthMenu": "Mostrar _MENU_ registros",
-                            "sZeroRecords": "No se encontraron resultados",
-                            "sEmptyTable": "Ningún dato disponible en esta tabla",
-                            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                            "sInfoPostFix": "",
-                            "sSearch": "Buscar:",
-                            "sUrl": "",
-                            "sInfoThousands": ",",
-                            "sLoadingRecords": "Cargando...",
-                            "oPaginate": {
-                                "sFirst": "Primero",
-                                "sLast": "Último",
-                                "sNext": "Siguiente",
-                                "sPrevious": "Anterior"
-                            },
-                            "oAria": {
-                                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                            }
-                        }
-                    });
-                    $("select").val('10');
-                    $('select').addClass("browser-default");
-                    $('select').material_select();
-                });
-            </script>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            M.AutoInit();
+            $('.tabs').tabs();
+            $('.sidenav').sidenav();
+            $('.sidenav-trigger').sidenav();
+            $('.modal').modal();
+            $('.dropdown-trigger').dropdown({
+                coverTrigger: false,
+                belowOrigin: true
+            });
+            $('#example').DataTable({
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            });
+            $("select").val('10');
+            $('select').addClass("browser-default");
+            $('select').material_select();
+        });
+    </script>
 </body>
 
 </html>
