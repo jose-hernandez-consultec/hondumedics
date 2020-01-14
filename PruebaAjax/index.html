@@ -14,8 +14,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
-        $(document).ready(function(){
-            $("#btnIniciarSesion").click(function(e) {
+        $(document).ready(function () {
+            var form = $("#formulario");
+            $("#btnIniciarSesion").click(function (e) {
                 e.preventDefault();
                 var email_usuario = $('#email').val();
                 var pass_usuario = $('#password').val();
@@ -25,20 +26,55 @@
                     type: 'POST',
                     contentType: 'application/json',
                     //data: $("#formulario").serialize(),
-                    data: JSON.stringify({ "username": email_usuario, "password": pass_usuario }),         
+                    data: JSON.stringify({ "username": email_usuario, "password": pass_usuario }),
                     processData: false,
                     success: function (data) {
+                        console.log(data);
                         alert("Agregue nuevo usuario");
+                        form[0].reset();
                     }
                 });
+                var validarusuario = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+                if (validarusuario.test($(email_usuario.trim()))){
+                    alert('Correo validado');
+                }else{
+                    alert('El correo electrónico no es válido');
+                }
             });
         });
+
+        function ValidarUsuarios() {
+            var email_usuario = $('#email').val();
+            var pass_usuario = $('#password').val();
+            var valpass_usuario = $('#validarpassword').val();
+
+            if (email_usuario == "") {
+                alert("El campo Usuario está vacío");
+                return false;
+            }
+            else if (pass_usuario == "") {
+                alert("El campo Contraseña está vacío");
+                return false;
+            }
+            else if (valpass_usuario == "") {
+                alert("El campo Validar Contraseña está vacío");
+                return false;
+            }
+            if (pass_usuario != valpass_usuario) {
+                alert("Ambas contraseñas no son iguales, intente de nuevo");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        
     </script>
 </head>
 
 <body>
     <center>
-        <form method="POST" id="formulario">
+        <form method="POST" id="formulario" onsubmit="this.reset()">
             <div class="container">
                 <div class="row">
                     <br>
@@ -68,9 +104,18 @@
                         <div class="col s12 m4 l4">
                             <p></p>
                         </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="validarpassword" type="password" class="validate">
+                            <label for="password">Validar Contraseña</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
                         <div class="col s12 m4 l4"><a href="#"
-                                class="btn btn-pink white-text waves-effect waves-pink btn-large"
-                                id="btnIniciarSesion">Iniciar Sesión</a>
+                                class="btn btn-pink white-text waves-effect waves-pink btn-large" id="btnIniciarSesion"
+                                type="submit" onclick="ValidarUsuarios()">Iniciar Sesión</a>
                         </div>
                     </div>
                 </div>
