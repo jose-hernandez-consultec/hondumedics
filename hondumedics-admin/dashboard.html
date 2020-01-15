@@ -191,6 +191,7 @@
             <div class="container">
                 <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
                 <ul class="right hide-on-med-and-down">
+                    <!--Buscar-->
                     <li>
                         <div class="center row">
                             <div class="col s12">
@@ -313,7 +314,7 @@
         <li>
             <div class="user-view">
                 <div class="background">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfI-Br-mSWIntUtgd1zmsl9L552Zeslarlror_mMKvgkIzL3Lng&s"
+                    <img src="https://hdblackwallpaper.com/wallpaper/2015/04/1200-x-900-solid-black-wallpaper-22-wide-wallpaper.jpg"
                         alt="" class="responsive-img">
                 </div>
                 <a href="">
@@ -357,6 +358,10 @@
         </li>
         <div class="divider"></div>
 
+        <li>
+            <a href="AgregarNuevoUsuario.html"><i class="material-icons black-text">add</i>Agregar Nuevo Usuario
+            </a>
+        </li>
         <li>
             <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
@@ -836,8 +841,11 @@
 
         <script>
             $(document).ready(function () {
+                M.AutoInit();
                 $('.sidenav').sidenav();
                 $('.sidenav-trigger').sidenav();
+                $('.modal').modal();
+                $('select').formSelect();
                 $('.dropdown-trigger').dropdown({
                     coverTrigger: false,
                     belowOrigin: true
