@@ -29,8 +29,10 @@
         .btn-bordes {
             border: white 2px solid;
         }
+
         .page-footer {
-            background:#464646;}
+            background: #464646;
+        }
     </style>
 </head>
 
@@ -45,59 +47,123 @@
         <br>
         <br>
         <center>
-            <form name="loginAdminForm" id="loginAdminForm" action="" method="POST">
-            <div class="row">
+            <form name="loginAdminForm" id="loginAdminForm" method="POST">
                 <div class="row">
+                    <div class="row">
                         <div class="col s12">
-                                <p style="text-align: center;">
-                                    <h6><b>Administrador</b></h6>
-                                </p>
-                            </div>
-                    <div class="col s12 m4 l4">
-                        <p></p>
+                            <p style="text-align: center;">
+                                <h6><b>Administrador</b></h6>
+                            </p>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="emailAdmin" type="email" class="validate">
+                            <label for="emailAdmin">Correo Electrónico</label>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
                     </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="emailAdmin" type="email" class="validate">
-                        <label for="emailAdmin">Correo Electrónico</label>
+                    <div class="row">
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="passwordAdmin" type="password" class="validate">
+                            <label for="passwordAdmin">Contraseña</label>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
                     </div>
-                    <div class="col s12 m4 l4">
-                        <p></p>
+                    <div class="row">
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
+                        <div class="col s12 m4 l4"><a href="#"
+                                class="btn btn-pink white-text waves-effect waves-pink btn-large"
+                                id="btnIniciarSesionAdmin">Iniciar Sesión</a>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12 m4 l4">
-                        <p></p>
-                    </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="passwordAdmin" type="password" class="validate">
-                        <label for="passwordAdmin">Contraseña</label>
-                    </div>
-                    <div class="col s12 m4 l4">
-                        <p></p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m4 l4">
-                        <p></p>
-                    </div>
-                    <div class="col s12 m4 l4"><a href="#"
-                            class="btn btn-pink white-text waves-effect waves-pink btn-large"
-                            id="btnIniciarSesionAdmin">Iniciar Sesión</a>
-                    </div>
-                    <div class="col s12 m4 l4">
-                        <p></p>
-                    </div>
-                </div>
-    </div>
-</form>
-    </center>
+            </form>
+        </center>
 
-    <script>
-        $(document).ready(function () {
-            $('.sidenav').sidenav();
-            $('.tooltipped').tooltip();
-        }); 
-    </script>
+        <script>
+            $(document).ready(function () {
+                M.AutoInit();
+                $('.sidenav').sidenav();
+                $('.tooltipped').tooltip();
+
+                var form = $("#loginAdminForm");
+                $("#btnIniciarSesionAdmin").click(function (e) {
+                    e.preventDefault();
+                    var emailAdmin = $('#emailAdmin').val();
+                    var passAdmin = $('#passwordAdmin').val();
+
+                    //Validar que nada esté vacío
+                    var valido = true;
+                    if (emailAdmin === "" || emailAdmin.length === 0) {
+                        alert('El Correo Electrónico Está Vacío');
+                        valido = false;
+                    }
+                    if (passAdmin === "" || passAdmin.length === 0) {
+                        alert('La Contraseña Está Vacía');
+                        valido = false;
+                    }
+
+                    function getQueryVariable(variable) {
+                        // Estoy asumiendo que query es window.location.search.substring(1);
+                        var query = "emailAdmin=&passwordAdmin=";
+                        var vars = query.split("&");
+                        alert(vars);
+                        for (var i = 0; i < vars.length; i++) {
+                            var pair = vars[i].split("=");
+                            if (pair[0] == variable) {
+                                return pair[1];
+                            }
+                        }
+                        return false;
+                    }
+                    
+                    if (valido) {
+                        $.ajax({
+                            url: 'https://hondumedics-server.herokuapp.com/admins/adminLogin',
+                            dataType: 'json',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({ "email": emailAdmin, "password": passAdmin }),
+                            processData: false,
+                            success: function (data) {
+                                console.log(data);
+                                if (data.login) {
+                                    var admin = data.admin;
+                                    alert(data.message);
+
+                                    //Redireccionando a dashboard.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
+                                    window.location.href = "./dashboard.html?first_name="+admin.first_name+"&last_name="+admin.last_name;
+
+                                    //form[0].reset();
+                                }
+                            },
+                            error: function (error) {
+                                console.log(error);
+                                if (error.status === 403) {
+                                    alert(error.responseJSON.message);
+                                }
+                            }
+                        });
+                    } else {
+                        alert("Hay errores en el formulario");
+                    }
+                });
+            }); 
+        </script>
 </body>
 
 </html>

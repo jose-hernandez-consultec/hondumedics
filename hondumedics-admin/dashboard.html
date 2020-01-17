@@ -376,7 +376,13 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col s12">
-                        <h1 class="black-text center">DashBoard</h1>
+                        <h2 class="black-text left">Bienvenido <span id="UserName"></span></h2>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
                         <h4 class="blue-text center">Administrador</h4>
                     </div>
                     <div class="row">
@@ -850,7 +856,29 @@
                     coverTrigger: false,
                     belowOrigin: true
                 });
+
+                //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+                var first_name = getQueryVariable("first_name");
+                var last_name = getQueryVariable("last_name");
+
+                $("#UserName").text(first_name+" "+last_name);
+                
+
+                //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
+                function getQueryVariable(variable) {
+                   var query = window.location.search.substring(1);
+                   var vars = query.split("&");
+                   for (var i=0; i < vars.length; i++) {
+                       var pair = vars[i].split("=");
+                       if(pair[0] == variable) {
+                           return pair[1];
+                       }
+                   }
+                   return false;
+                }
             });
+
+
             var chr = document.getElementById("myChart").getContext("2d");
             var chr2 = document.getElementById("myChart2").getContext("2d");
             var myChart = new Chart(chr, {
