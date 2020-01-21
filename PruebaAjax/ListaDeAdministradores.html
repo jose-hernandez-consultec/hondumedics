@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lista de Administradores</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- JQuery JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <style>
+        h1 {
+            color: #448aff;
+        }
+
+        thead {
+            color: black;
+            background-color: #80deea;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+
+        <div class="container">
+            <div class="row">
+                <br>
+                <br>
+                <h1>Lista de Administradores</h1>
+                <br>
+                <table id="tabla1" class="striped white centered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE DE USUARIO</th>
+                            <th>NOMBRES</th>
+                            <th>APELLIDOS</th>
+                            <th>CORREO</th>
+                            <th>ACCESO</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!--<td>
+                                <a id="btnVer"
+                                    class="btn-floating btn-small waves-effect waves-light blue btn tooltipped left"
+                                    data-position="bottom" data-tooltip="Ver"><i
+                                        class="material-icons">visibility</i></a>
+                                <a id="btnEditar"
+                                    class="btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                    data-position="bottom" data-tooltip="Editar"><i class="material-icons">edit</i></a>
+                                <a id="btnEliminar"
+                                    class="btn-floating btn-small waves-effect waves-light red btn tooltipped right"
+                                    data-position="bottom" data-tooltip="Eliminar"><i
+                                        class="material-icons">delete</i></a>
+                            </td>-->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </center>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'https://hondumedics-server.herokuapp.com/admins',
+                type: 'GET',
+                dataType: 'json', //added data
+                success: function (data) {
+                    console.log(data);
+                    var datos = data;
+                    for (var i = 0; i <= datos.length; i++) {
+                        $('.tooltipped').tooltip();
+                        $("#tabla1").append('<tr>' + '<td>' + datos[i].admin_id + '</td>' + '<td>' + datos[i].username + '</td>' + '<td>' + datos[i].first_name + '</td>' + '<td>' + datos[i].last_name + '</td>' + '<td>' + datos[i].email + '</td>' + '<td>' + datos[i].access + '</td>' + '<td><a id="btnVer" class="btn-floating btn-small waves-effect waves-light blue btn tooltipped left" data-position="bottom" data-tooltip="Ver"><i class="material-icons">visibility</i></a><a id="btnEditar" class="btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar"><i class="material-icons">edit</i></a><a id ="btnEliminar" class="btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Eliminar" ><i class="material-icons">delete</i></a></td>' + '</tr>');
+                    }
+                }
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
