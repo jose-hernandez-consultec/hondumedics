@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>HonduMedics / Unirse</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- JQuery JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
+    <style>
+        .nav-wrapper {
+            background-color: #FC5A5A;
+        }
+
+        .waves-effect.waves-pink .waves-ripple {
+            background-color: #FC5A5A;
+        }
+
+        .btn-pink {
+            background-color: #FC5A5A;
+        }
+
+        .btn-bordes {
+            border: white 2px solid;
+        }
+
+        .page-footer {
+            background: #FC5A5A;
+        }
+
+        h2 {
+            color: #455a64;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav-wrapper">
+        <div class="container">
+        <a href="#" class="brand-logo">HonduMedics</a>
+        <!--<ul class="right hide-on-med-and-down">
+            <li><a href="#" class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
+                        data-position="left" data-tooltip="Ingresa aquí." id="btnHM">Incluya su
+                        práctica en
+                        HonduMedics</a></li>
+            <li>
+                <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                    Pacientes
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a> </li>
+            
+                <a href="#" class="dropdown-trigger" data-target="dropdown2">
+                    Doctores
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a> </li>
+            <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="hondumedics/Login.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Iniciar Sesión</center>
+                        </span>
+                    </a></li>
+                <li><a href="hondumedics/Registro.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Registrar</center>
+                        </span>
+                    </a></li>
+            </ul>-
+            <ul id='dropdown2' class='dropdown-content'>
+                <li><a href="hondumedics/LoginDoctor.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Iniciar Sesión</center>
+                        </span>
+                    </a></li>
+                <li><a href="Unirse.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Unirse</center>
+                        </span>
+                    </a></li>
+            </ul>
+        </ul>-->
+    </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="row">
+                    <form id="formulario" class="col s12">
+                        <h2 style="text-align: center;">Únete HonduMedics Ahora</h2>
+                        <br>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="first_name" type="text" name="first_name" class="validate">
+                                <label for="first_name">Nombre *</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="last_name" type="text" name="last_name" class="validate">
+                                <label for="last_name">Apellido *</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <label>Su Especialidad Principal *</label>
+                                <br>
+                                <br>
+                                <select class="browser-default" id="especialidad_principal">
+                                    <option value="" disabled selected>Favor Seleccionar</option>
+                                    <option id="opcion0" value="0">Anatomía Patológica</option>
+                                    <option id="opcion1" value="1">Alergología</option>
+                                    <option id="opcion2" value="2">Cardiología</option>
+                                    <option id="opcion3" value="3">Cirugía Cardiaca</option>
+                                    <option id="opcion4" value="4">Cirugía General</option>
+                                    <option id="opcion5" value="5">Cirugía Plástica</option>
+                                    <option id="opcion6" value="6">Cirugía de Mama</option>
+                                    <option id="opcion7" value="7">Cirugía Maxilofacial</option>
+                                    <option id="opcion8" value="8">Cirugía Vascular</option>
+                                    <option id="opcion9" value="9">Dermatología</option>
+                                    <option id="opcion10" value="10">Endocrinología y Nutrición</option>
+                                    <option id="opcion11" value="11">Gastroenterología - Digestivo</option>
+                                    <option id="opcion12" value="12">Genética</option>
+                                    <option id="opcion13" value="13">Geriatría</option>
+                                    <option id="opcion14" value="14">Ginecología</option>
+                                    <option id="opcion15" value="15">Hematología</option>
+                                    <option id="opcion16" value="16">Enfermedades Del Hígado (Hepatología)</option>
+                                    <option id="opcion17" value="17">Enfermedades Infecciosas</option>
+                                    <option id="opcion18" value="18">Medicina General</option>
+                                    <option id="opcion19" value="19">Medicina Interna</option>
+                                    <option id="opcion20" value="20">Nefrología</option>
+                                    <option id="opcion21" value="21">Neumología</option>
+                                    <option id="opcion22" value="22">Neurología</option>
+                                    <option id="opcion23" value="23">Neurocirugía</option>
+                                    <option id="opcion24" value="24">Oftalmología</option>
+                                    <option id="opcion25" value="25">Otorrinolaringología</option>
+                                    <option id="opcion26" value="26">Oncología</option>
+                                    <option id="opcion27" value="27">Pediatría</option>
+                                    <option id="opcion28" value="28">Proctología</option>
+                                    <option id="opcion29" value="29">Psiquiatría</option>
+                                    <option id="opcion30" value="30">Rehabilitación y M. Deportiva</option>
+                                    <option id="opcion31" value="31">Reumatología</option>
+                                    <option id="opcion32" value="32">Traumatología</option>
+                                    <option id="opcion33" value="33">Urología</option>
+                                </select>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="phonenumber" name="phonenumber" type="text" placeholder="####-####" class="validate">
+                                <label for="phonenumber">Su Número De Teléfono *</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="zip_code" type="text" name="zip_code" placeholder="Escribe 5 caracteres" class="validate">
+                                <label for="zip_code">Código Postal *</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="email" type="email" name="email" class="validate">
+                                <label for="email">Correo Electrónico *</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <center><a id="btnUnirse" class="waves-effect waves-light btn btn-pink"><i
+                                        class="material-icons left">group</i>Unirse</a></center>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                M.AutoInit();
+                $('.sidenav').sidenav();
+                $('select').formSelect();
+                $('.dropdown-trigger').dropdown({
+                    coverTrigger: false,
+                    belowOrigin: true
+                });
+                var form = $("#formulario");
+                $("#btnUnirse").click(function (e) {
+                    e.preventDefault();
+                    var nombre_doctor = $('#first_name').val();
+                    var apellido_doctor = $('#last_name').val();
+                    var seleccionar_especialidad = $('#especialidad_principal').val();
+                    var phonenumber_doctor = $('#phonenumber').val();
+                    var zipcode_doctor = $('#zip_code').val();
+                    var email_doctor = $('#email').val();
+
+                    /** $('#first_name').data("midato", nombre_doctor);
+                    console.log(nombre_doctor);
+                    $('#last_name').data("midato", apellido_doctor);
+                    console.log(apellido_doctor);
+                    $('#especialidad_principal').data("midato", seleccionar_especialidad);
+                    console.log(seleccionar_especialidad);
+                    $('#phonenumber').data("midato", phonenumber_doctor);
+                    console.log(phonenumber_doctor);
+                    $('#zip_code').data("midato", zipcode_doctor);
+                    console.log(zipcode_doctor);
+                    $('#email').data("midato", email_doctor);
+                    console.log(email_doctor); */
+
+                    //Validar que nada este vacio
+                    var valido = true;
+                    if (nombre_doctor === "" || nombre_doctor.length === 0) {
+                        alert("El nombre esta vacío");
+                        valido = false;
+                    }
+
+                    if (apellido_doctor == "" || apellido_doctor.length === 0) {
+                        alert("El apellido esta vacío");
+                        valido = false;
+                    }
+
+                    console.log(parseInt(seleccionar_especialidad));
+
+                    if (parseInt(seleccionar_especialidad) != 0 && parseInt(seleccionar_especialidad) != 1 
+                        && parseInt(seleccionar_especialidad) != 2 && parseInt(seleccionar_especialidad) != 3 
+                        && parseInt(seleccionar_especialidad) != 4 && parseInt(seleccionar_especialidad) != 5 
+                        && parseInt(seleccionar_especialidad) != 6 && parseInt(seleccionar_especialidad) != 7 
+                        && parseInt(seleccionar_especialidad) != 8 && parseInt(seleccionar_especialidad) != 9 
+                        && parseInt(seleccionar_especialidad) != 10 && parseInt(seleccionar_especialidad) != 11 
+                        && parseInt(seleccionar_especialidad) != 12 && parseInt(seleccionar_especialidad) != 13 
+                        && parseInt(seleccionar_especialidad) != 14 && parseInt(seleccionar_especialidad) != 15 
+                        && parseInt(seleccionar_especialidad) != 16 && parseInt(seleccionar_especialidad) != 17 
+                        && parseInt(seleccionar_especialidad) != 18 && parseInt(seleccionar_especialidad) != 19 
+                        && parseInt(seleccionar_especialidad) != 20 && parseInt(seleccionar_especialidad) != 21 
+                        && parseInt(seleccionar_especialidad) != 22 && parseInt(seleccionar_especialidad) != 23 
+                        && parseInt(seleccionar_especialidad) != 24 && parseInt(seleccionar_especialidad) != 25 
+                        && parseInt(seleccionar_especialidad) != 26 && parseInt(seleccionar_especialidad) != 27 
+                        && parseInt(seleccionar_especialidad) != 28 && parseInt(seleccionar_especialidad) != 29 
+                        && parseInt(seleccionar_especialidad) != 30 && parseInt(seleccionar_especialidad) != 31 
+                        && parseInt(seleccionar_especialidad) != 32 && parseInt(seleccionar_especialidad) != 33) {
+                        alert("Seleccione La Opción De Especialidad Principal");
+                        valido = false;
+                    }
+
+                    if (phonenumber_doctor == "" || phonenumber_doctor.length === 0) {
+                        alert("El Número De Teléfono Está Vacío");
+                        valido = false;
+                    }
+
+                    if (zipcode_doctor == "" || zipcode_doctor.length === 0) {
+                        alert("El Código Postal Está Vacío");
+                        valido = false;
+                    }
+
+                    if (email_doctor == "" || email_doctor.length === 0) {
+                        alert("El Correo Está Vacío");
+                        valido = false;
+                    }
+
+                    if (valido) {
+                        $.ajax({
+                            url: '',
+                            dataType: 'json',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({ "first_name": nombre_doctor, "last_name": apellido_doctor, "speciality": seleccionar_especialidad, "phonenumber": phonenumber_doctor, "zipcode": zipcode_doctor, "email": email_doctor }),
+                            processData: false,
+                            success: function (data) {
+                                console.log(data);
+                                if (data.added) {
+                                    alert("Agregue nuevo usuario");
+                                    form[0].reset();
+                                }
+                            },
+                            error: function (error) {
+                                console.log(error);
+                                if (error.status === 403) {
+                                    alert("Ya existe un usuario con ese correo electrónico!");
+                                }
+                            }
+                        });
+                    } else {
+                        alert("Hay errores en el formulario");
+                    }
+                });
+            });
+        </script>
+</body>
+
+</html>
