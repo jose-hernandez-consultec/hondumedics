@@ -335,11 +335,38 @@
                     console.log(data);
                     var datos = data;
                     for (var i = 0; i <= datos.length; i++) {
-                        $('.tooltipped').tooltip();
-                        $("#tabla1").append('<tr>' + '<td>' + datos[i].admin_id + '</td>' + '<td>' + datos[i].username + '</td>' + '<td>' + datos[i].first_name + '</td>' + '<td>' + datos[i].last_name + '</td>' + '<td>' + datos[i].email + '</td>' + '<td>' + datos[i].access + '</td>' + '<td><a id="btnVer" style="position:relative;z-index:0;" class="btn-floating btn-small waves-effect waves-light blue btn tooltipped left" data-position="bottom" data-tooltip="Ver"><i class="material-icons">visibility</i></a><a id="btnEditar" style="position:relative;z-index:0;" class="btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar"><i class="material-icons">edit</i></a><a id ="btnEliminar" style="position:relative;z-index:0;" class="btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Eliminar" ><i class="material-icons">delete_forever</i></a></td>' + '</tr>');
+                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
+                            $('.tooltipped').tooltip();
+
+                            //Se eliminó el atributo ID y el id se agregó como una clase
+                            //Se le agregó el atributo data-adminid a cada uno de los 3 botones
+                            $("#tabla1").append('<tr>' + '<td>' + datos[i].admin_id + '</td>' + '<td>' + datos[i].username + '</td>' + '<td>' + datos[i].first_name + '</td>' + '<td>' + datos[i].last_name + '</td>' + '<td>' + datos[i].email + '</td>' + '<td>' + datos[i].access + '</td>' + '<td><a href="editarAdministrador.html" style="position:relative;z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-adminid=' + datos[i].admin_id + '><i class="material-icons">edit</i></a><a style="position:relative;z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Eliminar" data-adminid=' + datos[i].admin_id + '><i class="material-icons">delete_forever</i></a></td>' + '</tr>');
+                        }
+
                     }
+
+                    //Función Click del boton Editar
+                    $(".btnEditar").click(function () {
+                        var admin_id = parseInt($(this).attr("data-adminid"));
+                        console.log(admin_id);
+                        console.log("Editar");
+                        //Redireccionando a dashboard.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
+                        window.location.href = "./editarAdministrador.html?first_name="+admin.first_name+"&last_name="+admin.last_name;
+                    });
+
+                    //Función Click del boton Eliminar
+                    $(".btnEliminar").click(function () {
+                        var admin_id = parseInt($(this).attr("data-adminid"));
+                        console.log(admin_id);
+                        console.log("Eliminar")
+
+                    });
                 }
             });
+
+
+
+
         });
 
     </script>
