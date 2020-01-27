@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Iniciar Sesion</title>
+    <title>Iniciar Sesión</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- JQuery JavaScript -->
@@ -13,6 +13,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <!-- Estilos CSS-->
     <style>
         .nav-wrapper {
             background-color: #FC5A5A;
@@ -33,6 +34,7 @@
 </head>
 
 <body>
+    <!-- Formulario de Inicio de Sesión de Doctor-->
     <nav class="nav-wrapper">
         <div class="container">
             <a href="#" class="brand-logo">HonduMedics</a>
@@ -112,6 +114,7 @@
             </div>
     </div>
     </center>
+    <!-- Pie de Página-->
     <footer class="page-footer">
         <div class="container">
             <div class="row">
@@ -188,7 +191,7 @@
                             <div class="col s4">
                                 <ul>
                                     <li>
-                                        <p>© 2019 HonduMedics</p>
+                                        <p>© 2020 HonduMedics</p>
                                     </li>
                                 </ul>
                             </div>
@@ -199,7 +202,9 @@
 
 
     <script>
+        //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
+            //Inicialización de las propiedades de Materialize css.
             $('.sidenav').sidenav();
             $('.tooltipped').tooltip();
         }); 

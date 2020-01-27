@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Agregar Nuevo Usuario / Administrador</title>
+    <title>Editar Usuario / Administrador</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- JQuery JavaScript -->
@@ -17,6 +17,7 @@
     <!--Charts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
+    <!--Estilos CSS-->
     <style>
         .nav-wrapper {
             background-color: #464646;
@@ -370,7 +371,7 @@
     </ul>
     <!--SideNav Finished-->
 
-    <!--Dashboard-->
+    <!--Formulario de Editar Usuario-->
     <div class="" style="min-height: 657px;">
         <div class="container">
             <!-- Page Header -->
@@ -422,7 +423,8 @@
                                     <br>
                                     <div class="col s5"></div>
                                     <div class="input-field col s2 m6">
-                                        <a id="btnEditar" class="waves-effect waves-light btn blue"><i
+                                        <a class="btnEditar waves-effect waves-light btn blue"
+                                            data-adminid=' + datos[i].admin_id '><i
                                                 class="material-icons left">edit</i>Editar</a>
                                     </div>
                                     <div class="col s5"></div>
@@ -433,8 +435,11 @@
                 </div>
             </div>
 
+
             <script>
+                //Este método se utiliza para hacer que una función esté disponible después de cargar el documento
                 $(document).ready(function () {
+                    //Inicialización de las propiedades de Materialize css
                     M.AutoInit();
                     $('.sidenav').sidenav();
                     $('.sidenav-trigger').sidenav();
@@ -444,16 +449,16 @@
                         belowOrigin: true
                     });
 
-                    //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+                    //Obteniendo los parámetros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de ListaDeAdministradores.html
+
                     var first_name = getQueryVariable("first_name");
                     var last_name = getQueryVariable("last_name");
                     var email = getQueryVariable("email");
-                    var password = getQueryVariable("password");
+                    //var password = getQueryVariable("password");
                     var username = getQueryVariable("username");
                     var access = getQueryVariable("access");
 
                     $("#UserNameEdit").text(first_name + " " + last_name);
-
                     $("#first_name").text(first_name);
                     $("#last_name").text(last_name);
                     $("#email").text(email);
@@ -462,7 +467,7 @@
                     $("#access").select(access);
 
 
-                    //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
+                    //Función que hace consultas al URL, recibe el nombre del parámetro que querés obtener y te devuelve el valor del parémetro
                     function getQueryVariable(variable) {
                         var query = window.location.search.substring(1);
                         var vars = query.split("&");
@@ -475,8 +480,9 @@
                         return false;
                     }
 
+                    // Declarando las variables y Obtener parámetros dentro del botón Editar
                     var form = $("#formulario");
-                    $("#btnEditar").click(function (e) {
+                    $(".btnEditar").click(function (e) {
                         e.preventDefault();
                         var nombre_usuario = $('#first_name').val();
                         var apellido_usuario = $('#last_name').val();
@@ -484,7 +490,6 @@
                         var pass_usuario = $('#password').val();
                         var username_usuario = $('#username').val();
                         var seleccionar_usuario = $('#access').val();
-
 
                         //Validar que nada este vacio
                         var valido = true;
@@ -519,28 +524,36 @@
                             valido = false;
                         }
 
+                        //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background)
                         if (valido) {
                             $.ajax({
-                                url: 'https://hondumedics-server.herokuapp.com/admins/addNewAdmin',
+                                url: 'https://hondumedics-server.herokuapp.com/editAdmin',
                                 dataType: 'json',
                                 type: 'POST',
                                 contentType: 'application/json',
-                                data: JSON.stringify({ "first_name": nombre_usuario, "last_name": apellido_usuario, "email": email_usuario, "password": pass_usuario, "username": username_usuario, "access": seleccionar_usuario }),
+                                data: JSON.stringify({ "first_name": first_name, "last_name": last_name, "email": email, "username": username, "access": access }),
                                 processData: false,
                                 success: function (data) {
                                     console.log(data);
-                                    if (data.added) {
-                                        alert("Agregue nuevo usuario");
-                                        form[0].reset();
+                                    var datos = data;
+                                    for (var i = 0; i <= datos.length; i++) {
+                                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
+                                        
+                                        }
                                     }
-                                },
-                                error: function (error) {
-                                    console.log(error);
-                                    if (error.status === 403) {
-                                        alert("Ya existe un usuario con ese correo electronico!");
-                                    }
-                                }
-                            });
+                                            /**console.log(data);
+                                            if (data) {
+                                                alert("Datos Actualizado");
+                                                //form[0].reset();
+                                            }*/
+                                        },
+                                        error: function (error) {
+                                            console.log(error);
+                                            if (error.status === 403) {
+                                                alert("Ya existe un usuario con ese correo electrónico!");
+                                            }
+                                        }
+                                    });
                         } else {
                             alert("Hay errores en el formulario");
                         }

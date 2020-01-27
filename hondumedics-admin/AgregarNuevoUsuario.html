@@ -16,7 +16,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Charts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-
+    
+    <!--Estilos CSS-->
     <style>
         .nav-wrapper {
             background-color: #464646;
@@ -192,7 +193,7 @@
             <div class="container">
                 <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
                 <ul class="right hide-on-med-and-down">
-                    <!--Buscar-->
+                    <!-- Buscar -->
                     <li>
                         <div class="center row">
                             <div class="col s12">
@@ -206,7 +207,7 @@
                             </div>
                         </div>
                     </li>
-                    <!--Notifications-->
+                    <!-- Notifications -->
                     <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
                             <span style="color: #464646;">Notificación</span>
                             <span class="new badge red">3</span><i class="material-icons right">notifications_none
@@ -214,7 +215,7 @@
                             </i></a>
                     </li>
 
-                    <!-- Dropdown Trigger -->
+                    <!-- Dropdown Trigger Menú Administrador-->
                     <li>
                         <a href="#" class="dropdown-trigger" data-target="dropdown1">
                             Administrador
@@ -224,7 +225,7 @@
             </div>
         </div>
     </nav>
-    <!-- Dropdown Structure -->
+    <!-- Dropdown Structure Lista de menú de Administrador-->
     <ul id='dropdown1' class='dropdown-content'>
         <li><a href="Perfil.html">
                 <span style="color: #464646;">
@@ -244,6 +245,7 @@
                 </span>
             </a></li>
     </ul>
+    <!-- Lista de menú de notificaciones-->
 
     <ul id="dropdown2" class="dropdown-content collection with-header">
         <li class="collection-header"><a href="" style="color: red;">Borrar Todo</a></li>
@@ -286,10 +288,7 @@
         </li>
     </ul>
 
-
-
-
-    <!-- Dropdown Structure -->
+    <!-- Dropdown Structure Lista de Imagen en forma redonda-->
     <ul id="dropdown" class="dropdown-content collection" style="position: absolute; left: 100%;">
         <li class="collection-item avatar">
             <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
@@ -311,6 +310,7 @@
         </li>
     </ul>
 
+    <!-- Menú oculto-->
     <ul class="sidenav fixed" id="menu-responsive">
         <li>
             <div class="user-view">
@@ -370,7 +370,7 @@
     </ul>
     <!--SideNav Finished-->
 
-    <!--Dashboard-->
+    <!-- Formulario de Agregar Nuevo Usuario-->
     <div class="" style="min-height: 657px;">
         <div class="container">
             <!-- Page Header -->
@@ -436,7 +436,9 @@
             </div>
 
             <script>
+                //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
                 $(document).ready(function () {
+                    //Inicialización de las propiedades de Materialize css.
                     M.AutoInit();
                     $('.sidenav').sidenav();
                     $('.sidenav-trigger').sidenav();
@@ -446,6 +448,7 @@
                         belowOrigin: true
                     });
 
+                    // Declarando las variables y enviar parámetros dentro del botón Agregar.
                     var form = $("#formulario");
                     $("#btnAgregar").click(function (e) {
                         e.preventDefault();
@@ -489,6 +492,7 @@
                             valido = false;
                         }
 
+                        //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                         if (valido){
                             $.ajax({
                                 url: 'https://hondumedics-server.herokuapp.com/admins/addNewAdmin',
@@ -507,7 +511,7 @@
                                 error: function (error){
                                     console.log(error);
                                     if (error.status === 403){
-                                        alert("Ya existe un usuario con ese correo electronico!");
+                                        alert("Ya existe un usuario con ese correo electrónico!");
                                     }
                                 }
                             });

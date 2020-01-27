@@ -340,7 +340,7 @@
 
                             //Se eliminó el atributo ID y el id se agregó como una clase
                             //Se le agregó el atributo data-adminid a cada uno de los 3 botones
-                            $("#tabla1").append('<tr>' + '<td>' + datos[i].admin_id + '</td>' + '<td>' + datos[i].username + '</td>' + '<td>' + datos[i].first_name + '</td>' + '<td>' + datos[i].last_name + '</td>' + '<td>' + datos[i].email + '</td>' + '<td>' + datos[i].access + '</td>' + '<td><a href="editarAdministrador.html" style="position:relative;z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-adminid=' + datos[i].admin_id + '><i class="material-icons">edit</i></a><a style="position:relative;z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Eliminar" data-adminid=' + datos[i].admin_id + '><i class="material-icons">delete_forever</i></a></td>' + '</tr>');
+                            $("#tabla1").append('<tr>' + '<td>' + datos[i].admin_id + '</td>' + '<td>' + datos[i].username + '</td>' + '<td>' + datos[i].first_name + '</td>' + '<td>' + datos[i].last_name + '</td>' + '<td>' + datos[i].email + '</td>' + '<td>' + datos[i].access + '</td>' + '<td><a href="editarAdministrador.html" style="position:relative;z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-adminid=' + datos[i].admin_id + ' data-adminfirstname=' + datos[i].admin_first_name + ' data-adminlastname=' + datos[i].admin_last_name + ' data-adminusername=' + datos[i].admin_username + ' data-adminaccess=' + datos[i].admin_access + '><i class="material-icons">edit</i></a><a style="position:relative;z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Eliminar" data-adminid=' + datos[i].admin_id + '><i class="material-icons">delete_forever</i></a></td>' + '</tr>');
                         }
 
                     }
@@ -348,27 +348,44 @@
                     //Función Click del boton Editar
                     $(".btnEditar").click(function () {
                         var admin_id = parseInt($(this).attr("data-adminid"));
+                        var admin_first_name = String($(this).attr("data-adminfirstname"));
+                        var admin_last_name = String($(this).attr("data-adminlastname"));
+                        var admin_username = String($(this).attr("data-adminusername"));
+                        var admin_access = String($(this).attr("data-adminaccess"));
                         console.log(admin_id);
                         console.log("Editar");
-                        //Redireccionando a dashboard.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
-                        window.location.href = "./editarAdministrador.html?first_name="+admin.first_name+"&last_name="+admin.last_name;
+
+                        //Redireccionando a editarAdministrador.html y enviando dos parámetros hacia esa página: first_name y last_name
+                        //window.location.href = "./editarAdministrador.html?first_name=" + admin_first_name + "&last_name=" + admin_last_name;
+                        //window.location.href = "./editarAdministrador.html?admin_id=" + admin_id;
                     });
 
                     //Función Click del boton Eliminar
                     $(".btnEliminar").click(function () {
                         var admin_id = parseInt($(this).attr("data-adminid"));
                         console.log(admin_id);
-                        console.log("Eliminar")
+                        console.log("Eliminar");
 
+                        if (confirm("¿Estás seguro de que deseas eliminar esta fila?")) {
+                            var adminid = $(this).attr("admin_id");
+                            var dataString = 'admin_id=' + adminid;
+                            var parent = $(this).parent();
+                            $.ajax({
+                                url: 'https://hondumedics-server.herokuapp.com/deleteAdmin',
+                                type: 'POST',
+                                data: dataString,
+                                cache: false,
+                                success: function () {
+                                    parent.fadeOut('slow', function () {
+                                        $(this).remove();
+                                    });
+                                }
+                            });
+                        }
                     });
                 }
             });
-
-
-
-
         });
-
     </script>
 
 </body>
