@@ -447,6 +447,11 @@
                         coverTrigger: false,
                         belowOrigin: true
                     });
+ 
+                    $("#btnCancelar").click(function () {
+                        $("#formulario")[0].reset();
+
+                    });
 
                     // Declarando las variables y enviar parámetros dentro del botón Agregar.
                     var form = $("#formulario");
