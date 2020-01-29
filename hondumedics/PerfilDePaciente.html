@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Perfil | Paciente</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- JQuery JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Estilos CSS -->
+    <style>
+        .nav-wrapper {
+            background-color: #FC5A5A;
+        }
+
+        .waves-effect.waves-pink .waves-ripple {
+            background-color: #FC5A5A;
+        }
+
+        .btn-pink {
+            background-color: #FC5A5A;
+        }
+
+        .btn-bordes {
+            border: white 2px solid;
+        }
+
+        .card-image {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+        }
+
+        /*.circular--portrait {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+        }*/
+
+        .circular--portrait img {
+            width: 100%;
+            height: auto;
+            margin-left: -50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Formulario de Dashboard -->
+    <nav class="nav-wrapper">
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="dashboard.html" class="brand-logo">HoduMedics</a>
+                <ul class="right hide-on-med-and-down">
+                    <!-- Notifications -->
+                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                            <span style="color: #FC5A5A;">Notificaciones</span>
+                            <span class="new badge red">3</span><i class="material-icons right">notifications_none
+                                <small class="notification-badge">3</small>
+                            </i></a>
+                    </li>
+
+                    <!-- Dropdown Trigger Menú Administrador-->
+                    <li>
+                        <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                            Paciente
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Dropdown Structure Menú Administrador-->
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="Perfil.html">
+                <span style="color: #464646;">
+                    <center>Mi perfil</center>
+                </span>
+            </a></li>
+        <li class="divider"></li>
+        <li><a href="Configuracion.html">
+                <span style="color: #464646;">
+                    <center>Configuración</center>
+                </span>
+            </a></li>
+        <li class="divider"></li>
+        <li><a href="CerrarSesion.html">
+                <span style="color: #464646;">
+                    <center>Cerrar Sesión</center>
+                </span>
+            </a></li>
+    </ul>
+
+    <!-- Lista de Menú de Notificaciones -->
+    <ul id="dropdown2" class="dropdown-content collection with-header">
+        <li class="collection-header"><a href="" style="color: red;">Borrar Todo</a></li>
+
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Dr. Ruby Perrin</span> Schedule <span
+                            class="noti-title">her appointment</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 4 minutos</span></p>
+                </font>
+            </center>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Charlene Reed</span> has booked her appointment to
+                        <span class="noti-title">Dr. Ruby Perrin</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 10 minutos</span></p>
+                </font>
+            </center>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <center>
+                <font face="times new roman" size=1>
+                    <p class="noti-details"><span class="noti-title">Travis Trimble</span> sent a amount of $210 for his
+                        <span class="noti-title">appointment</span></p><span class="new badge red">1</span>
+                </font>
+                <font face="times new roman">
+                    <p class="noti-time"><span class="notification-time">Hace 30 minutos</span></p>
+                </font>
+            </center>
+        </li>
+    </ul>
+
+    <!-- Dropdown Structure Imágenes de forma redonda en las notificaciones -->
+    <ul id="dropdown" class="dropdown-content collection" style="position: absolute; left: 100%;">
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+        <li class="collection-item avatar">
+            <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
+            <span class="title">Name</span>
+            <p>First Line</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">contact_mail</i></a>
+        </li>
+    </ul>
+    <!--SideNav Finished-->
+
+    <!--Página de Perfil-->
+    <nav>
+        <div style="background-color: #1de9b6;" class="nav-wrapper">
+            <div class="container">
+                <a class="brand-logo center black-text">Perfil</a>
+            </div>
+        </div>
+    </nav>
+    <!--Finished Navbar-->
+
+    <!--Page Profile-->
+    <br>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <div class="card">
+                <div class="card-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
+                </div>
+                <center>
+                    <div class="file-field input-field">
+                        <div class="btn btn-small blue right">
+                            <span><i class="material-icons left">photo_camera</i>Cambiar Foto</span>
+                            <input type="file">
+                            <div class="file-path-wrapper">
+                            </div>
+                        </div>
+                    </div>
+                </center>
+
+                <br>
+                <br>
+                <br>
+                <span class="card-title center-align truncate"><b>Gina Padilla</b></span>
+                <center>
+                    <h6><i class="material-icons">cake</i>23 Julio 1989, 31 años</h6>
+                </center>
+                <center>
+                    <h6><i class="material-icons">location_on</i>Tegucigalpa, Honduras</h6>
+                </center>
+                <div class="card-content">
+
+                </div>
+                </center>
+            </div>
+            <div class="col s12 m4 l9">
+                <div class="card">
+                    <div class="card-image">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
+            $(document).ready(function () {
+                //Inicialización de las propiedades de Materialize css.
+                M.AutoInit();
+                $('.sidenav').sidenav();
+                $('.dropdown-trigger').dropdown({
+                    coverTrigger: false,
+                    belowOrigin: true
+                });
+            }); 
+        </script>
+</body>
+
+</html>
