@@ -49,46 +49,6 @@
     <nav class="nav-wrapper">
         <div class="container">
         <a href="#" class="brand-logo">HonduMedics</a>
-        <!--<ul class="right hide-on-med-and-down">
-            <li><a href="#" class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
-                        data-position="left" data-tooltip="Ingresa aquí." id="btnHM">Incluya su
-                        práctica en
-                        HonduMedics</a></li>
-            <li>
-                <a href="#" class="dropdown-trigger" data-target="dropdown1">
-                    Pacientes
-                    <i class="material-icons right">arrow_drop_down</i>
-                </a> </li>
-            
-                <a href="#" class="dropdown-trigger" data-target="dropdown2">
-                    Doctores
-                    <i class="material-icons right">arrow_drop_down</i>
-                </a> </li>
-            <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="hondumedics/Login.html">
-                        <span style="color: #FC5A5A;">
-                            <center>Iniciar Sesión</center>
-                        </span>
-                    </a></li>
-                <li><a href="hondumedics/Registro.html">
-                        <span style="color: #FC5A5A;">
-                            <center>Registrar</center>
-                        </span>
-                    </a></li>
-            </ul>-
-            <ul id='dropdown2' class='dropdown-content'>
-                <li><a href="hondumedics/LoginDoctor.html">
-                        <span style="color: #FC5A5A;">
-                            <center>Iniciar Sesión</center>
-                        </span>
-                    </a></li>
-                <li><a href="Unirse.html">
-                        <span style="color: #FC5A5A;">
-                            <center>Unirse</center>
-                        </span>
-                    </a></li>
-            </ul>
-        </ul>-->
     </div>
     </nav>
     <br>
@@ -180,12 +140,8 @@
         <script>
             $(document).ready(function () {
                 M.AutoInit();
-                $('.sidenav').sidenav();
                 $('select').formSelect();
-                $('.dropdown-trigger').dropdown({
-                    coverTrigger: false,
-                    belowOrigin: true
-                });
+                
                 var form = $("#formulario");
                 $("#btnUnirse").click(function (e) {
                     e.preventDefault();
@@ -195,19 +151,6 @@
                     var phonenumber_doctor = $('#phonenumber').val();
                     var zipcode_doctor = $('#zip_code').val();
                     var email_doctor = $('#email').val();
-
-                    /** $('#first_name').data("midato", nombre_doctor);
-                    console.log(nombre_doctor);
-                    $('#last_name').data("midato", apellido_doctor);
-                    console.log(apellido_doctor);
-                    $('#especialidad_principal').data("midato", seleccionar_especialidad);
-                    console.log(seleccionar_especialidad);
-                    $('#phonenumber').data("midato", phonenumber_doctor);
-                    console.log(phonenumber_doctor);
-                    $('#zip_code').data("midato", zipcode_doctor);
-                    console.log(zipcode_doctor);
-                    $('#email').data("midato", email_doctor);
-                    console.log(email_doctor); */
 
                     //Validar que nada este vacio
                     var valido = true;

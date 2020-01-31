@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Solicitud en HonduMedics | Doctor</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- JQuery JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../js/amazon-cognito-identity.min.js"></script>
+    <script src="../js/cognitoFunctions.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Estilos CSS -->
+    <style>
+        .nav-wrapper {
+            background-color: #FC5A5A;
+        }
+
+        .waves-effect.waves-pink .waves-ripple {
+            background-color: #FC5A5A;
+        }
+
+        .btn-pink {
+            background-color: #FC5A5A;
+        }
+
+        .btn-bordes {
+            border: white 2px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Formulario de Registro -->
+    <nav class="nav-wrapper">
+        <div class="container">
+            <a href="#" class="brand-logo">HonduMedics</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                <br>
+                <br>
+                <br>
+                <div class="col s12">
+                    <p style="text-align: center;">
+                        <h5><b>Solicitud</b></h5>
+                    </p>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <br>
+                    <br>
+                    <div class="input-field col s6">
+                        <input placeholder="Escribe su nombre" id="nombre" type="text" class="validate">
+                        <label for="nombre">Nombre</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Escribe su apellido" id="apellido" type="text" class="validate">
+                        <label for="apellido">Apellido</label>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Introduce tu correo electrónico" id="email" type="email" class="validate">
+                        <label for="email">Correo Electrónico</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Introduce tu número de celular" id="phone_number" type="text"
+                            class="validate">
+                        <label for="phone_number">Teléfono</label>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Introdice tu número de colegiación" id="membership_number" type="text"
+                            class="validate">
+                        <label for="membership_number">Número de Colegiación</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <label>Su Especialidad Principal</label>
+                        <br>
+                        <br>
+                        <select class="browser-default" id="especialidad_principal">
+                            <option value="" disabled selected>Favor Seleccionar</option>
+                            <option id="opcion0" value="0">Anatomía Patológica</option>
+                            <option id="opcion1" value="1">Alergología</option>
+                            <option id="opcion2" value="2">Cardiología</option>
+                            <option id="opcion3" value="3">Cirugía Cardiaca</option>
+                            <option id="opcion4" value="4">Cirugía General</option>
+                            <option id="opcion5" value="5">Cirugía Plástica</option>
+                            <option id="opcion6" value="6">Cirugía de Mama</option>
+                            <option id="opcion7" value="7">Cirugía Maxilofacial</option>
+                            <option id="opcion8" value="8">Cirugía Vascular</option>
+                            <option id="opcion9" value="9">Dermatología</option>
+                            <option id="opcion10" value="10">Endocrinología y Nutrición</option>
+                            <option id="opcion11" value="11">Gastroenterología - Digestivo</option>
+                            <option id="opcion12" value="12">Genética</option>
+                            <option id="opcion13" value="13">Geriatría</option>
+                            <option id="opcion14" value="14">Ginecología</option>
+                            <option id="opcion15" value="15">Hematología</option>
+                            <option id="opcion16" value="16">Enfermedades Del Hígado (Hepatología)</option>
+                            <option id="opcion17" value="17">Enfermedades Infecciosas</option>
+                            <option id="opcion18" value="18">Medicina General</option>
+                            <option id="opcion19" value="19">Medicina Interna</option>
+                            <option id="opcion20" value="20">Nefrología</option>
+                            <option id="opcion21" value="21">Neumología</option>
+                            <option id="opcion22" value="22">Neurología</option>
+                            <option id="opcion23" value="23">Neurocirugía</option>
+                            <option id="opcion24" value="24">Oftalmología</option>
+                            <option id="opcion25" value="25">Otorrinolaringología</option>
+                            <option id="opcion26" value="26">Oncología</option>
+                            <option id="opcion27" value="27">Pediatría</option>
+                            <option id="opcion28" value="28">Proctología</option>
+                            <option id="opcion29" value="29">Psiquiatría</option>
+                            <option id="opcion30" value="30">Rehabilitación y M. Deportiva</option>
+                            <option id="opcion31" value="31">Reumatología</option>
+                            <option id="opcion32" value="32">Traumatología</option>
+                            <option id="opcion33" value="33">Urología</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m4 l4"></div>
+                    <center><div class="col s12 m4 l4"><a href="#"
+                            class="btn btn-pink white-text waves-effect waves-pink btn-large"
+                            id="btnSolicitar">Solicitar<i class="material-icons left">save</i></a></div></center>
+                    <div class="col s12 m4 l4"></div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
+            $(document).ready(function () {
+                //Inicialización de las propiedades de Materialize css.
+                M.AutoInit();
+                $('select').formSelect();
+
+                var form = $("#formulario");
+                $("#btnSolicitar").click(function (e) {
+                    e.preventDefault();
+                    var nombre_doctor = $('#nombre').val();
+                    var apellido_doctor = $('#apellido').val();
+                    var email_doctor = $('#email').val();
+                    var phonenumber_doctor = $('#phone_number').val();
+                    var numero_colegiacion_doctor = $('#membership_number').val();
+                    var seleccionar_especialidad = $('#especialidad_principal').val();
+
+                    //Validar que nada este vacio
+                    var valido = true;
+                    if (nombre_doctor === "" || nombre_doctor.length === 0) {
+                        alert("El nombre esta vacío");
+                        valido = false;
+                    }
+
+                    if (apellido_doctor == "" || apellido_doctor.length === 0) {
+                        alert("El apellido esta vacío");
+                        valido = false;
+                    }
+
+                    if (email_doctor == "" || email_doctor.length === 0) {
+                        alert("El Correo Está Vacío");
+                        valido = false;
+                    }
+
+                    if (phonenumber_doctor == "" || phonenumber_doctor.length === 0) {
+                        alert("El Número De Teléfono Está Vacío");
+                        valido = false;
+                    }
+
+                    if (numero_colegiacion_doctor == "" || numero_colegiacion_doctor.length === 0) {
+                        alert("El Número De Colegiación Está Vacío");
+                        valido = false;
+                    }
+
+                    console.log(parseInt(seleccionar_especialidad));
+
+                    if (parseInt(seleccionar_especialidad) != 0 && parseInt(seleccionar_especialidad) != 1
+                        && parseInt(seleccionar_especialidad) != 2 && parseInt(seleccionar_especialidad) != 3
+                        && parseInt(seleccionar_especialidad) != 4 && parseInt(seleccionar_especialidad) != 5
+                        && parseInt(seleccionar_especialidad) != 6 && parseInt(seleccionar_especialidad) != 7
+                        && parseInt(seleccionar_especialidad) != 8 && parseInt(seleccionar_especialidad) != 9
+                        && parseInt(seleccionar_especialidad) != 10 && parseInt(seleccionar_especialidad) != 11
+                        && parseInt(seleccionar_especialidad) != 12 && parseInt(seleccionar_especialidad) != 13
+                        && parseInt(seleccionar_especialidad) != 14 && parseInt(seleccionar_especialidad) != 15
+                        && parseInt(seleccionar_especialidad) != 16 && parseInt(seleccionar_especialidad) != 17
+                        && parseInt(seleccionar_especialidad) != 18 && parseInt(seleccionar_especialidad) != 19
+                        && parseInt(seleccionar_especialidad) != 20 && parseInt(seleccionar_especialidad) != 21
+                        && parseInt(seleccionar_especialidad) != 22 && parseInt(seleccionar_especialidad) != 23
+                        && parseInt(seleccionar_especialidad) != 24 && parseInt(seleccionar_especialidad) != 25
+                        && parseInt(seleccionar_especialidad) != 26 && parseInt(seleccionar_especialidad) != 27
+                        && parseInt(seleccionar_especialidad) != 28 && parseInt(seleccionar_especialidad) != 29
+                        && parseInt(seleccionar_especialidad) != 30 && parseInt(seleccionar_especialidad) != 31
+                        && parseInt(seleccionar_especialidad) != 32 && parseInt(seleccionar_especialidad) != 33) {
+                        alert("Seleccione La Opción De Especialidad Principal");
+                        valido = false;
+                    }
+                });
+            }); 
+        </script>
+</body>
+
+</html>
