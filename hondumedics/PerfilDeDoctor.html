@@ -285,12 +285,18 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="gender" type="text" class="validate" value="Mujer">
-                                    <label class="active" for="gender">GÉNERO</label>
+                                    <label>Género</label>
+                                    <br>
+                                    <br>
+                                    <select class="browser-default" id="gender" >
+                                        <option value="" disabled selected>Favor Seleccionar Género</option>
+                                        <option id="opcion0" value="0">Femenino</option>
+                                        <option id="opcion1" value="1">Masculino</option>
+                                    </select>
                                 </div>
+                                <br>
                                 <div class="input-field col s6">
-                                    <i class="material-icons prefix">email</i>
+                                    <i class="material-icons prefix">school</i>
                                     <input id="profession" type="text" class="validate" value="Odontología">
                                     <label class="active" for="profession">PROFESIÓN</label>
                                 </div>
@@ -442,7 +448,7 @@ Louisiana State University y Emory University, Residencia en Cirugía Oral y Max
 
         <div class="col s12 m4 l4"></div>
         <div class="col s12 m4 l4">
-            <a href="#!" class="btn waves-effect waves-green btn-flat blue white-text"><i
+            <a id="btnGuardarCambiosDoctor" href="#!" class="btn waves-effect waves-green btn-flat blue white-text"><i
                     class="material-icons left">save</i>Guardar
                 Cambios</a>
         </div>
@@ -463,6 +469,99 @@ Louisiana State University y Emory University, Residencia en Cirugía Oral y Max
             });
             $('.modal').modal();
             $('.datepicker').datepicker();
+            
+            //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
+            $('#btnGuardarCambiosDoctor').click(function(e){
+                e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                var nombre_doctor = $('#first_name').val();
+                var apellido_doctor = $('#last_name').val();
+                var fecnac_doctor = $('#date_of_birth').val();
+                var telefono_doctor = $('#phone_number').val();
+                var email_doctor = $('#email').val();
+                var seleccionar_genero_doctor = $('#gender').val();
+                var profession_doctor = $('#profession').val();
+                var nombre_clinica = $('#clinic_name').val();
+                var dirrecion_clinica = $('#clinic_address').val();
+                var especialidades = $('#specialities').val();
+                var experiencia_destacada = $('#outstanding_experience').val();
+                var educacion = $('#education').val();
+                var academias_sociedades_colegios = $('#academies_societies_schools').val();
+                var certificaciones = $('#certifications').val();
+                
+                //Validar que nada esté vacío
+                var valido = true;
+                if(nombre_doctor == " " || nombre_doctor.length === 0){
+                    alert('El Nombre Está Vacío');
+                    valido = false;
+                }
+
+                if(apellido_doctor == " " || apellido_doctor.length === 0){
+                    alert('El Apellido Está Vacío');
+                    valido = false;
+                }
+
+                if(fecnac_doctor == "" || fecnac_doctor.length === 0){
+                    alert('La Fecha Está Vacía');
+                    valido = false;
+                }
+
+                if(telefono_doctor == " " || telefono_doctor.length === 0){
+                    alert('El Teléfono Está Vacío');
+                    valido = false;
+                }
+
+                if(email_doctor == " " || email_doctor.length === 0){
+                    alert('El Correo Electrónico Está Vacío');
+                    valido = false;
+                }
+                
+                console.log(parseInt(seleccionar_genero_doctor));
+
+                if(parseInt(seleccionar_genero_doctor) != 0 && parseInt(seleccionar_genero_doctor) != 1){
+                    alert("Seleccione La Opción De Género");
+                        valido = false;
+                }
+
+                if(profession_doctor == " " || profession_doctor.length === 0){
+                    alert('La profesión Está Vacía');
+                    valido = false;
+                }
+
+                if(nombre_clinica == " " || nombre_clinica.length === 0){
+                    alert('El Nombre De La Clínica Está Vacío');
+                    valido = false;
+                }
+
+                if(dirrecion_clinica == " " || dirrecion_clinica.length === 0){
+                    alert('La Dirección De La Clínica Está Vacía');
+                    valido = false;
+                }
+
+                if(especialidades == " " || especialidades.length === 0){
+                    alert('La Especialidad Está Vacía');
+                    valido = false;
+                }
+
+                if(experiencia_destacada == " " || experiencia_destacada.length === 0){
+                    alert('La Experiencia Destacada Está Vacía');
+                    valido = false;
+                }
+
+                if(educacion == " " || educacion.length === 0){
+                    alert('La Educación Está Vacía');
+                    valido = false;
+                }
+
+                if(academias_sociedades_colegios == " " || academias_sociedades_colegios.length === 0){
+                    alert('Academias, Sociedades, Colegios Están Vacíos');
+                    valido = false;
+                }
+
+                if(certificaciones == " " || certificaciones.length === 0){
+                    alert('Las Certificaciones Están Vacías');
+                    valido = false;
+                }
+            });
         }); 
     </script>
 </body>

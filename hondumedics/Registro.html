@@ -162,8 +162,7 @@
                         <form action="#" id="form3">
                             <p>
                                 <label>
-                                    <input id="aceptar" class="filled-in" name="aceptar" type="checkbox"  
-                                        value="aceptar" />
+                                    <input id="aceptar" class="filled-in" name="aceptar" type="checkbox" />
                                     <span>He leído y acepto los
                                         <a href="">Términos de uso </a> y <a href="">la Política de privacidad de</a>
                                         HonduMedics</span>
@@ -172,8 +171,7 @@
                             <!--<div class="row">
                                 <p>
                                     <label>
-                                        <input type="checkbox" class="filled-in" checked="checked" name="aceptar"
-                                            id="mantener_conectado" value="mantener_conectado " />
+                                        <input id="mantener" type="checkbox" class="filled-in" checked="checked" name="valor1" />
                                         <span>Mantenme conectado</span>
                                     </label>
                                 </p>
@@ -184,10 +182,10 @@
                         <div class="col s12 m4 l4">
                             <p></p>
                         </div>
-                        <div class="col s12 m4 l4"><a href="#"
+                        <center><div class="col s12 m4 l4"><a href="#"
                                 class="btn tooltipped btn-pink white-text waves-effect waves-pink btn-large"
                                 id="btnGuardar" data-position="left" data-tooltip="Guardar registro.">Guardar<i
-                                    class="material-icons left">save</i></a></div>
+                                    class="material-icons left">save</i></a></div></center>
                         <div class="col s12 m4 l4">
                             <p></p>
                         </div>
@@ -242,7 +240,7 @@
                 var nombre_registro = $('#nombre').val();
                 var apellido_registro = $('#apellido').val();
                 var fecha_registro = $('#fechaNac').val();
-                var select_gender = $('#gender').is(':checked');
+                var select_gender = $('input[name="gender"]').is(':checked');
                 var aceptar_condiciones = $('#aceptar').is(':checked');
 
                 //Validar que nada este vacio
@@ -277,7 +275,7 @@
                     valido = false;
                 }
 
-                var genderValue = false;
+                /*var genderValue = false;
                 for (var i = 0; i < select_gender.length; i++) {
                     if (select_gender[i].checked == true) {
                         genderValue = true;
@@ -286,11 +284,27 @@
                 if (genderValue == false) {
                     alert("Favor Seleccionar Género");
                     return false;
+                }*/
+
+                // si la cantidad de radiobuttons "chequeados" es cero,
+                // entonces se evita que se envíe el formulario y se
+                // muestra una alerta al usuario
+                if (select_gender) {
+                    alert('Campo Correcto');
+                }
+                else{
+                    alert('Debe Seleccionar El Género');
+                    valido = false;
                 }
 
-                if (aceptar_condiciones == false) {
-                    alert("Debe Aceptar Las Condiciones");
-                    return false;
+                // si la cantidad de checkboxes "chequeados" es cero,
+                // entonces se evita que se envíe el formulario y se
+                // muestra una alerta al usuario
+                if (aceptar_condiciones) {
+                    alert('Campo Correcto');
+                }else{
+                    alert('Debe Aceptar Las Condiciones');
+                    valido = false;
                 }
             });
         }); 

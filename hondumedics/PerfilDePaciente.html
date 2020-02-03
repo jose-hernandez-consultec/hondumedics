@@ -295,20 +295,37 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="gender" type="text" class="validate" value="Mujer">
-                                    <label class="active" for="gender">GÉNERO</label>
+                                    <label>Género</label>
+                                    <br>
+                                    <br>
+                                    <select class="browser-default" id="gender">
+                                        <option value="" disabled selected>Favor Seleccionar Género</option>
+                                        <option id="opcion0" value="0">Femenino</option>
+                                        <option id="opcion1" value="1">Masculino</option>
+                                    </select>
                                 </div>
                                 <div class="input-field col s6">
-                                    <i class="material-icons prefix">local_hospital</i>
-                                    <input id="blood_type" type="text" class="validate" value="O+">
-                                    <label class="active" for="blood_type">TIPO DE SANGRE</label>
+                                    <label>Género</label>
+                                    <br>
+                                    <br>
+                                    <select class="browser-default" id="blood_type">
+                                        <option value="" disabled selected>Favor Seleccionar Tipo De Sangre</option>
+                                        <option id="opcion0" value="0">A-</option>
+                                        <option id="opcion1" value="1">A+</option>
+                                        <option id="opcion2" value="2">B-</option>
+                                        <option id="opcion3" value="3">B+</option>
+                                        <option id="opcion4" value="4">O-</option>
+                                        <option id="opcion5" value="5">O+</option>
+                                        <option id="opcion6" value="6">AB-</option>
+                                        <option id="opcion7" value="7">AB+</option>
+                                    </select>
                                 </div>
                             </div>
                             <center>
                                 <div class="col s12 m4 l4"></div>
                                 <div class="col s12 m4 l4">
-                                    <a href="#!" class="btn waves-effect waves-green btn-flat blue white-text"><i
+                                    <a id="btnGuardarCambiosPaciente" href="#!"
+                                        class="btn waves-effect waves-green btn-flat blue white-text"><i
                                             class="material-icons left">save</i>Guardar
                                         Cambios</a>
                                 </div>
@@ -323,7 +340,7 @@
 
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
-        $(document).ready(function () {
+        $(document).ready(function (e) {
             //Inicialización de las propiedades de Materialize css.
             M.AutoInit();
             $('.sidenav').sidenav();
@@ -333,6 +350,75 @@
             });
             $('.modal').modal();
             $('.datepicker').datepicker();
+
+            //Este método se utiliza para hacer (que una función esté disponible después de cargar el documento.
+            $('#btnGuardarCambiosPaciente').click(function (e) {
+                e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                var nombre_paciente = $('#first_name').val();
+                var apellido_paciente = $('#last_name').val();
+                var fecnac_paciente = $('#date_of_birth').val();
+                var telefono_paciente = $('#phone_number').val();
+                var correo_paciente = $('#email').val();
+                var direccion_casa_paciente = $('#address_house').val();
+                var direccion_trabajo_paciente = $('#address_work').val();
+                var seleccionar_genero_paciente = $('#gender').val();
+                var seleccionar_tipo_sangre_paciente = $('#blood_type').val();
+
+                //Validar que nada esté vacío
+                var valido = true;
+                if (nombre_paciente == " " || nombre_paciente.length === 0) {
+                    alert('El Nombre Está Vacío');
+                    valido = false;
+                }
+
+                if (apellido_paciente == " " || apellido_paciente.length === 0) {
+                    alert('El Apellido Está Vacío');
+                    valido = false;
+                }
+
+                if (fecnac_paciente == " " || fecnac_paciente.length === 0) {
+                    alert('La Fecha de Nacimiento Está Vacía');
+                    valido = false;
+                }
+
+                if (telefono_paciente == " " || telefono_paciente === 0) {
+                    alert('El Teléfono Está Vacío');
+                    valido = false;
+                }
+
+                if (correo_paciente == " " || correo_paciente.length === 0) {
+                    alert('El Correo Electrónico Está Vacío');
+                    valido = false;
+                }
+
+                if (direccion_casa_paciente == " " || direccion_casa_paciente.length === 0) {
+                    alert('La Dirección De Casa Está Vacío');
+                    valido = false;
+                }
+
+                if (direccion_trabajo_paciente == " " || direccion_trabajo_paciente.length === 0) {
+                    alert('La Dirección De Trabajo Está Vacío');
+                    valido = false;
+                }
+
+                console.log(parseInt(seleccionar_genero_paciente));
+
+                if (parseInt(seleccionar_genero_paciente) != 0 && parseInt(seleccionar_genero_paciente) != 1) {
+                    alert("Seleccione La Opción De Género");
+                    valido = false;
+                }
+
+                console.log(parseInt(seleccionar_tipo_sangre_paciente));
+
+                if (parseInt(seleccionar_tipo_sangre_paciente) != 0 && parseInt(seleccionar_tipo_sangre_paciente) != 1
+                    && parseInt(seleccionar_tipo_sangre_paciente) != 2 && parseInt(seleccionar_tipo_sangre_paciente) != 3
+                    && parseInt(seleccionar_tipo_sangre_paciente) != 4 && parseInt(seleccionar_tipo_sangre_paciente) != 5
+                    && parseInt(seleccionar_tipo_sangre_paciente) != 6 && parseInt(seleccionar_tipo_sangre_paciente) != 7) {
+                    alert("Seleccione La Opción De Tipo De Sangre");
+                    valido = false;
+                }
+            });
+
         }); 
     </script>
 </body>
