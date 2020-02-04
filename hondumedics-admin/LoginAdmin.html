@@ -13,6 +13,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <!-- Estilos CSS -->
     <style>
         .nav-wrapper {
             background-color: #464646;
@@ -37,6 +38,7 @@
 </head>
 
 <body>
+    <!--Navbar-->
     <nav class="nav-wrapper">
         <div class="container">
             <a href="#" class="brand-logo">HonduMedics Admin Panel</a>
@@ -95,14 +97,20 @@
         </center>
 
         <script>
+            //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
             $(document).ready(function () {
+                //Inicialización de las propiedades de Materialize css.
                 M.AutoInit();
                 $('.sidenav').sidenav();
                 $('.tooltipped').tooltip();
 
                 var form = $("#loginAdminForm");
+
+                //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
                 $("#btnIniciarSesionAdmin").click(function (e) {
-                    e.preventDefault();
+                    e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                    //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
                     var emailAdmin = $('#emailAdmin').val();
                     var passAdmin = $('#passwordAdmin').val();
 
@@ -117,6 +125,7 @@
                         valido = false;
                     }
 
+                    //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro.
                     function getQueryVariable(variable) {
                         // Estoy asumiendo que query es window.location.search.substring(1);
                         var query = "emailAdmin=&passwordAdmin=";
@@ -130,7 +139,8 @@
                         }
                         return false;
                     }
-                    
+
+                    //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                     if (valido) {
                         $.ajax({
                             url: 'https://hondumedics-server.herokuapp.com/admins/adminLogin',
@@ -146,7 +156,7 @@
                                     alert(data.message);
 
                                     //Redireccionando a dashboard.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
-                                    window.location.href = "./dashboard.html?first_name="+admin.first_name+"&last_name="+admin.last_name;
+                                    window.location.href = "./dashboard.html?first_name=" + admin.first_name + "&last_name=" + admin.last_name;
 
                                     //form[0].reset();
                                 }

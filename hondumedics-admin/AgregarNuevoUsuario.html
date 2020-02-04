@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Charts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-    
+
     <!--Estilos CSS-->
     <style>
         .nav-wrapper {
@@ -186,6 +186,7 @@
 </head>
 
 <body>
+    <!--Navbar-->
     <nav class="nav-wrapper">
         <div class="nav-wrapper">
             <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
@@ -421,7 +422,8 @@
                                 <div class="row">
                                     <br>
                                     <div class="input-field col s6 m6">
-                                        <a id="btnAgregar" class="waves-effect waves-light btn blue right"><i class="material-icons left">save</i>Agregar
+                                        <a id="btnAgregar" class="waves-effect waves-light btn blue right"><i
+                                                class="material-icons left">save</i>Agregar
                                             Usuario</a>
                                     </div>
                                     <div class="input-field col s6 m6">
@@ -447,16 +449,20 @@
                         coverTrigger: false,
                         belowOrigin: true
                     });
- 
+
+                    //Cancelar o limpiar el formulario.
                     $("#btnCancelar").click(function () {
                         $("#formulario")[0].reset();
 
                     });
 
-                    // Declarando las variables y enviar parámetros dentro del botón Agregar.
                     var form = $("#formulario");
+
+                    //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                    //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
                     $("#btnAgregar").click(function (e) {
-                        e.preventDefault();
+                        e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                        //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
                         var nombre_usuario = $('#first_name').val();
                         var apellido_usuario = $('#last_name').val();
                         var email_usuario = $('#email').val();
@@ -466,7 +472,7 @@
 
                         //Validar que nada este vacio
                         var valido = true;
-                        if (nombre_usuario === "" || nombre_usuario.length === 0){
+                        if (nombre_usuario === "" || nombre_usuario.length === 0) {
                             alert("El nombre esta vacio");
                             valido = false;
                         }
@@ -478,7 +484,7 @@
                         if (email_usuario == "" || email_usuario.length === 0) {
                             alert("El Correo Está Vacío");
                             valido = false;
-                        } 
+                        }
 
                         if (pass_usuario == "" || pass_usuario.length === 0) {
                             alert("La Contraseña Está Vacía");
@@ -490,6 +496,7 @@
                             valido = false;
                         }
 
+                        //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
                         console.log(parseInt(seleccionar_usuario));
 
                         if (parseInt(seleccionar_usuario) != 0 && parseInt(seleccionar_usuario) != 1) {
@@ -498,7 +505,7 @@
                         }
 
                         //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
-                        if (valido){
+                        if (valido) {
                             $.ajax({
                                 url: 'https://hondumedics-server.herokuapp.com/admins/addNewAdmin',
                                 dataType: 'json',
@@ -508,25 +515,25 @@
                                 processData: false,
                                 success: function (data) {
                                     console.log(data);
-                                    if (data.added){
+                                    if (data.added) {
                                         alert("Agregue nuevo usuario");
                                         form[0].reset();
                                     }
                                 },
-                                error: function (error){
+                                error: function (error) {
                                     console.log(error);
-                                    if (error.status === 403){
+                                    if (error.status === 403) {
                                         alert("Ya existe un usuario con ese correo electrónico!");
                                     }
                                 }
                             });
-                        }else{
+                        } else {
                             alert("Hay errores en el formulario");
-                        } 
+                        }
                     });
                 });
 
-                
+
                 //Expresiones Regulares
                 /*function validarCorreo(email_usuario) {
                     var validarCorreo = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;

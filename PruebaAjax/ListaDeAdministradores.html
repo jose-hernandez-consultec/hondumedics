@@ -13,6 +13,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <!--Estilos CSS-->
     <style>
         .nav-wrapper {
             background-color: #464646;
@@ -94,6 +95,7 @@
 </head>
 
 <body>
+    <!--Navbar-->
     <nav class="nav-wrapper">
         <div class="nav-wrapper">
             <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
@@ -220,6 +222,7 @@
         </li>
     </ul>
 
+    <!--Menú Oculto-->
     <ul class="sidenav fixed" id="menu-responsive">
         <li>
             <div class="user-view">
@@ -281,8 +284,9 @@
         </li>
     </ul>
     <!--SideNav Finished-->
-    <center>
 
+    <!--Lista de Administradores-->
+    <center>
         <div class="container">
             <div class="row">
                 <br>
@@ -319,7 +323,9 @@
         </div>
     </center>
     <script>
+        //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
+            //Inicialización de las propiedades de Materialize css.
             M.AutoInit();
             $('.sidenav').sidenav();
             $('.sidenav-trigger').sidenav();
@@ -327,6 +333,8 @@
                 coverTrigger: false,
                 belowOrigin: true
             });
+
+            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
             $.ajax({
                 url: 'https://hondumedics-server.herokuapp.com/admins',
                 type: 'GET',
@@ -344,7 +352,9 @@
                         }
 
                     }
-
+                    
+                    //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                    //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
                     //Función Click del boton Editar
                     $(".btnEditar").click(function () {
                         var admin_id = parseInt($(this).attr("data-adminid"));
@@ -364,7 +374,7 @@
                     $(".btnEliminar").click(function () {
                         //Declarar variable eliminar
                         var eliminar = this;
-                        
+
                         //Eliminar ID con atributo data
                         var admin_id = $(this).data("adminid");
                         console.log(admin_id);
@@ -372,6 +382,7 @@
 
                         if (confirm("¿Estás seguro de que deseas eliminar esta fila?")) {
 
+                            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                             $.ajax({
                                 url: 'https://hondumedics-server.herokuapp.com/admins/deleteAdmin',
                                 type: 'POST',
@@ -380,16 +391,16 @@
                                 data: JSON.stringify({ "admin_id": admin_id }),
                                 success: function () {
                                     //Eliminando la fila de la tabla HTML
-                                        $(eliminar).closest('tr').fadeOut(1000, function () {
-                                            $(this).remove();
-                                        });
+                                    $(eliminar).closest('tr').fadeOut(1000, function () {
+                                        $(this).remove();
+                                    });
                                 }
                             });
                         }
-                        });
-                    }
-                });
+                    });
+                }
             });
+        });
     </script>
 
 </body>

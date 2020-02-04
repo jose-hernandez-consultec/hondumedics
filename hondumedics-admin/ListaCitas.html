@@ -140,6 +140,7 @@
 </head>
 
 <body>
+    <!--Navbar-->
     <nav class="nav-wrapper">
         <div class="nav-wrapper">
             <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
@@ -262,6 +263,7 @@
         </li>
     </ul>
 
+    <!-- Menú oculto-->
     <ul class="sidenav fixed" id="menu-responsive">
         <li>
             <div class="user-view">
@@ -620,13 +622,18 @@
         </div>
     </div>
     <script>
+        //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
+            //Inicialización de las propiedades de Materialize css.
+            M.AutoInit();
             $('.sidenav').sidenav();
             $('.sidenav-trigger').sidenav();
             $('.dropdown-trigger').dropdown({
                 coverTrigger: false,
                 belowOrigin: true
             });
+            
+            //Inicializar la tabla dinámica.
             $('#example').DataTable({
                 "language": {
                     "sProcessing": "Procesando...",

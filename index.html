@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
-
+    <!-- Estilos CSS -->
     <style>
         .nav-wrapper {
             background-color: #FC5A5A;
@@ -42,6 +42,7 @@
 </head>
 
 <body>
+    <!--Navbar-->
     <nav class="nav-wrapper">
             <a href="#" class="brand-logo">HonduMedics</a>
             <ul class="right hide-on-med-and-down">
@@ -118,7 +119,10 @@
         </div>
     </div>
     <script>
+        //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
+            //Inicialización de las propiedades de Materialize css.
+            M.AutoInit();
             $('.sidenav').sidenav();
             $('.tooltipped').tooltip();
             $('.datepicker').datepicker();

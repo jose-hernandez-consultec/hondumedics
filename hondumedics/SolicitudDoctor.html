@@ -147,8 +147,11 @@
                 $('select').formSelect();
 
                 var form = $("#formulario");
+                //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
                 $("#btnSolicitar").click(function (e) {
-                    e.preventDefault();
+                    e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                    //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
                     var nombre_doctor = $('#nombre').val();
                     var apellido_doctor = $('#apellido').val();
                     var email_doctor = $('#email').val();
@@ -183,6 +186,7 @@
                         valido = false;
                     }
 
+                    //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
                     console.log(parseInt(seleccionar_especialidad));
 
                     if (parseInt(seleccionar_especialidad) != 0 && parseInt(seleccionar_especialidad) != 1

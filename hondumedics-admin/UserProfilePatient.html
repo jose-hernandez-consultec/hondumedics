@@ -18,6 +18,7 @@
     <!--<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>-->
 
+    <!-- Estilos CSS -->
     <style>
         .nav-wrapper {
             background-color: #464646;
@@ -300,6 +301,7 @@
 </head>
 
 <body>
+    <!--Navbar-->
     <nav class="nav-wrapper">
         <div class="nav-wrapper">
             <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
@@ -422,6 +424,7 @@
         </li>
     </ul>
 
+    <!--Menú Oculto-->
     <ul class="sidenav fixed" id="menu-responsive">
         <li>
             <div class="user-view">
@@ -550,6 +553,7 @@
                         </table>
                     </div>
                 </div>
+                <!--Cards-->
                 <div class="col s9">
                     <div class="row">
                         <div class="card user-card-negative-margin z-depth-0" id="feed">
@@ -558,6 +562,7 @@
                                     <div class="col s12">
                                     </div>
                                 </div>
+                                <!--Tabs-->
                                 <div class="row">
                                     <div class="col s12">
                                         <ul class="tabs">
@@ -956,8 +961,10 @@ Registro de entrada de los pacientes y recogida de la información.</textarea>
     </div>
     </div>
     <script>
-
+        //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
+            //Inicialización de las propiedades de Materialize css.
+            M.AutoInit();
             $('.sidenav').sidenav();
             $('.sidenav-trigger').sidenav();
             $('.tooltipped').tooltip();

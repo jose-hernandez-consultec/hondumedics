@@ -186,6 +186,7 @@
 
 <body>
     <!-- Formulario de Dashboard -->
+    <!--Navbar-->
     <nav class="nav-wrapper">
         <div class="nav-wrapper">
             <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
@@ -847,7 +848,9 @@
         </div>
 
         <script>
+            //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
             $(document).ready(function () {
+                //Inicialización de las propiedades de Materialize css.
                 M.AutoInit();
                 $('.sidenav').sidenav();
                 $('.sidenav-trigger').sidenav();
@@ -879,7 +882,7 @@
                 }
             });
 
-
+            //Obtener las gráficas de barras
             var chr = document.getElementById("myChart").getContext("2d");
             var chr2 = document.getElementById("myChart2").getContext("2d");
             var myChart = new Chart(chr, {
@@ -903,6 +906,7 @@
                     }
                 }
             });
+            //Obtener las gráficas lineales
             var myChart2 = new Chart(chr2, {
                 type: 'line',
                 data: {

@@ -14,12 +14,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
+        //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
             var form = $("#formulario");
+            
+            //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+            //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
             $("#btnIniciarSesion").click(function (e) {
-                e.preventDefault();
+                e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
                 var email_usuario = $('#email').val();
                 var pass_usuario = $('#password').val();
+
+                //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background)
                 $.ajax({
                     url: 'https://hondumedics-server.herokuapp.com/users/addNewUser',
                     dataType: 'json',
@@ -34,6 +41,7 @@
                         form[0].reset();
                     }
                 });
+                //Validar Correo Electrónico
                 var validarusuario = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
                 if (validarusuario.test($(email_usuario.trim()))){
                     alert('Correo validado');
@@ -43,6 +51,7 @@
             });
         });
 
+        //Función para validar Usuarios (Formulario).
         function ValidarUsuarios() {
             var email_usuario = $('#email').val();
             var pass_usuario = $('#password').val();
@@ -73,6 +82,7 @@
 </head>
 
 <body>
+    <!--Formulario Validar Usuario-->
     <center>
         <form method="POST" id="formulario" onsubmit="this.reset()">
             <div class="container">

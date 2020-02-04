@@ -231,12 +231,12 @@
                     <span class="card-title center-align truncate"><b>Dra. Ruby Taylor</b></span>
                     <center>
                         <h6>MCD, Cirugía oral y maxilofacial.</h6>
-                            <br>
-                            <h6>7 años de experiencia en general.</h6>
-                            <br>
-                            <h6>Odontología</h6>
-                            <br>
-                            <h6><b>No. de Colegiación: </b><span>1111-1111</span></h6>
+                        <br>
+                        <h6>7 años de experiencia en general.</h6>
+                        <br>
+                        <h6>Odontología</h6>
+                        <br>
+                        <h6><b>No. de Colegiación: </b><span>1111-1111</span></h6>
                     </center>
                 </div>
                 </center>
@@ -288,7 +288,7 @@
                                     <label>Género</label>
                                     <br>
                                     <br>
-                                    <select class="browser-default" id="gender" >
+                                    <select class="browser-default" id="gender">
                                         <option value="" disabled selected>Favor Seleccionar Género</option>
                                         <option id="opcion0" value="0">Femenino</option>
                                         <option id="opcion1" value="1">Masculino</option>
@@ -469,10 +469,12 @@ Louisiana State University y Emory University, Residencia en Cirugía Oral y Max
             });
             $('.modal').modal();
             $('.datepicker').datepicker();
-            
-            //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
-            $('#btnGuardarCambiosDoctor').click(function(e){
+
+            //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+            //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
+            $('#btnGuardarCambiosDoctor').click(function (e) {
                 e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
                 var nombre_doctor = $('#first_name').val();
                 var apellido_doctor = $('#last_name').val();
                 var fecnac_doctor = $('#date_of_birth').val();
@@ -487,77 +489,77 @@ Louisiana State University y Emory University, Residencia en Cirugía Oral y Max
                 var educacion = $('#education').val();
                 var academias_sociedades_colegios = $('#academies_societies_schools').val();
                 var certificaciones = $('#certifications').val();
-                
+
                 //Validar que nada esté vacío
                 var valido = true;
-                if(nombre_doctor == " " || nombre_doctor.length === 0){
+                if (nombre_doctor == " " || nombre_doctor.length === 0) {
                     alert('El Nombre Está Vacío');
                     valido = false;
                 }
 
-                if(apellido_doctor == " " || apellido_doctor.length === 0){
+                if (apellido_doctor == " " || apellido_doctor.length === 0) {
                     alert('El Apellido Está Vacío');
                     valido = false;
                 }
 
-                if(fecnac_doctor == "" || fecnac_doctor.length === 0){
+                if (fecnac_doctor == "" || fecnac_doctor.length === 0) {
                     alert('La Fecha Está Vacía');
                     valido = false;
                 }
 
-                if(telefono_doctor == " " || telefono_doctor.length === 0){
+                if (telefono_doctor == " " || telefono_doctor.length === 0) {
                     alert('El Teléfono Está Vacío');
                     valido = false;
                 }
 
-                if(email_doctor == " " || email_doctor.length === 0){
+                if (email_doctor == " " || email_doctor.length === 0) {
                     alert('El Correo Electrónico Está Vacío');
                     valido = false;
                 }
-                
+
                 console.log(parseInt(seleccionar_genero_doctor));
 
-                if(parseInt(seleccionar_genero_doctor) != 0 && parseInt(seleccionar_genero_doctor) != 1){
+                if (parseInt(seleccionar_genero_doctor) != 0 && parseInt(seleccionar_genero_doctor) != 1) {
                     alert("Seleccione La Opción De Género");
-                        valido = false;
+                    valido = false;
                 }
 
-                if(profession_doctor == " " || profession_doctor.length === 0){
+                if (profession_doctor == " " || profession_doctor.length === 0) {
                     alert('La profesión Está Vacía');
                     valido = false;
                 }
 
-                if(nombre_clinica == " " || nombre_clinica.length === 0){
+                if (nombre_clinica == " " || nombre_clinica.length === 0) {
                     alert('El Nombre De La Clínica Está Vacío');
                     valido = false;
                 }
 
-                if(dirrecion_clinica == " " || dirrecion_clinica.length === 0){
+                if (dirrecion_clinica == " " || dirrecion_clinica.length === 0) {
                     alert('La Dirección De La Clínica Está Vacía');
                     valido = false;
                 }
 
-                if(especialidades == " " || especialidades.length === 0){
+                if (especialidades == " " || especialidades.length === 0) {
                     alert('La Especialidad Está Vacía');
                     valido = false;
                 }
 
-                if(experiencia_destacada == " " || experiencia_destacada.length === 0){
+                if (experiencia_destacada == " " || experiencia_destacada.length === 0) {
                     alert('La Experiencia Destacada Está Vacía');
                     valido = false;
                 }
 
-                if(educacion == " " || educacion.length === 0){
+                if (educacion == " " || educacion.length === 0) {
                     alert('La Educación Está Vacía');
                     valido = false;
                 }
 
-                if(academias_sociedades_colegios == " " || academias_sociedades_colegios.length === 0){
+                if (academias_sociedades_colegios == " " || academias_sociedades_colegios.length === 0) {
                     alert('Academias, Sociedades, Colegios Están Vacíos');
                     valido = false;
                 }
 
-                if(certificaciones == " " || certificaciones.length === 0){
+                if (certificaciones == " " || certificaciones.length === 0) {
                     alert('Las Certificaciones Están Vacías');
                     valido = false;
                 }

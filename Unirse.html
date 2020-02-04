@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
-
+    <!-- Estilos CSS -->
     <style>
         .nav-wrapper {
             background-color: #FC5A5A;
@@ -46,10 +46,11 @@
 </head>
 
 <body>
+    <!--Navbar-->
     <nav class="nav-wrapper">
         <div class="container">
-        <a href="#" class="brand-logo">HonduMedics</a>
-    </div>
+            <a href="#" class="brand-logo">HonduMedics</a>
+        </div>
     </nav>
     <br>
     <br>
@@ -115,13 +116,15 @@
                                 </select>
                             </div>
                             <div class="input-field col s6">
-                                <input id="phonenumber" name="phonenumber" type="text" placeholder="####-####" class="validate">
+                                <input id="phonenumber" name="phonenumber" type="text" placeholder="####-####"
+                                    class="validate">
                                 <label for="phonenumber">Su Número De Teléfono *</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="zip_code" type="text" name="zip_code" placeholder="Escribe 5 caracteres" class="validate">
+                                <input id="zip_code" type="text" name="zip_code" placeholder="Escribe 5 caracteres"
+                                    class="validate">
                                 <label for="zip_code">Código Postal *</label>
                             </div>
                             <div class="input-field col s6">
@@ -138,13 +141,20 @@
             </div>
         </div>
         <script>
+            //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
             $(document).ready(function () {
+                //Inicialización de las propiedades de Materialize css.
                 M.AutoInit();
                 $('select').formSelect();
-                
+
                 var form = $("#formulario");
+
+                //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
+                //Función Click del boton Unirse
                 $("#btnUnirse").click(function (e) {
-                    e.preventDefault();
+                    e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
                     var nombre_doctor = $('#first_name').val();
                     var apellido_doctor = $('#last_name').val();
                     var seleccionar_especialidad = $('#especialidad_principal').val();
@@ -164,24 +174,25 @@
                         valido = false;
                     }
 
+                    //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
                     console.log(parseInt(seleccionar_especialidad));
 
-                    if (parseInt(seleccionar_especialidad) != 0 && parseInt(seleccionar_especialidad) != 1 
-                        && parseInt(seleccionar_especialidad) != 2 && parseInt(seleccionar_especialidad) != 3 
-                        && parseInt(seleccionar_especialidad) != 4 && parseInt(seleccionar_especialidad) != 5 
-                        && parseInt(seleccionar_especialidad) != 6 && parseInt(seleccionar_especialidad) != 7 
-                        && parseInt(seleccionar_especialidad) != 8 && parseInt(seleccionar_especialidad) != 9 
-                        && parseInt(seleccionar_especialidad) != 10 && parseInt(seleccionar_especialidad) != 11 
-                        && parseInt(seleccionar_especialidad) != 12 && parseInt(seleccionar_especialidad) != 13 
-                        && parseInt(seleccionar_especialidad) != 14 && parseInt(seleccionar_especialidad) != 15 
-                        && parseInt(seleccionar_especialidad) != 16 && parseInt(seleccionar_especialidad) != 17 
-                        && parseInt(seleccionar_especialidad) != 18 && parseInt(seleccionar_especialidad) != 19 
-                        && parseInt(seleccionar_especialidad) != 20 && parseInt(seleccionar_especialidad) != 21 
-                        && parseInt(seleccionar_especialidad) != 22 && parseInt(seleccionar_especialidad) != 23 
-                        && parseInt(seleccionar_especialidad) != 24 && parseInt(seleccionar_especialidad) != 25 
-                        && parseInt(seleccionar_especialidad) != 26 && parseInt(seleccionar_especialidad) != 27 
-                        && parseInt(seleccionar_especialidad) != 28 && parseInt(seleccionar_especialidad) != 29 
-                        && parseInt(seleccionar_especialidad) != 30 && parseInt(seleccionar_especialidad) != 31 
+                    if (parseInt(seleccionar_especialidad) != 0 && parseInt(seleccionar_especialidad) != 1
+                        && parseInt(seleccionar_especialidad) != 2 && parseInt(seleccionar_especialidad) != 3
+                        && parseInt(seleccionar_especialidad) != 4 && parseInt(seleccionar_especialidad) != 5
+                        && parseInt(seleccionar_especialidad) != 6 && parseInt(seleccionar_especialidad) != 7
+                        && parseInt(seleccionar_especialidad) != 8 && parseInt(seleccionar_especialidad) != 9
+                        && parseInt(seleccionar_especialidad) != 10 && parseInt(seleccionar_especialidad) != 11
+                        && parseInt(seleccionar_especialidad) != 12 && parseInt(seleccionar_especialidad) != 13
+                        && parseInt(seleccionar_especialidad) != 14 && parseInt(seleccionar_especialidad) != 15
+                        && parseInt(seleccionar_especialidad) != 16 && parseInt(seleccionar_especialidad) != 17
+                        && parseInt(seleccionar_especialidad) != 18 && parseInt(seleccionar_especialidad) != 19
+                        && parseInt(seleccionar_especialidad) != 20 && parseInt(seleccionar_especialidad) != 21
+                        && parseInt(seleccionar_especialidad) != 22 && parseInt(seleccionar_especialidad) != 23
+                        && parseInt(seleccionar_especialidad) != 24 && parseInt(seleccionar_especialidad) != 25
+                        && parseInt(seleccionar_especialidad) != 26 && parseInt(seleccionar_especialidad) != 27
+                        && parseInt(seleccionar_especialidad) != 28 && parseInt(seleccionar_especialidad) != 29
+                        && parseInt(seleccionar_especialidad) != 30 && parseInt(seleccionar_especialidad) != 31
                         && parseInt(seleccionar_especialidad) != 32 && parseInt(seleccionar_especialidad) != 33) {
                         alert("Seleccione La Opción De Especialidad Principal");
                         valido = false;
@@ -202,6 +213,7 @@
                         valido = false;
                     }
 
+                    //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                     /*if (valido) {
                         $.ajax({
                             url: '',
