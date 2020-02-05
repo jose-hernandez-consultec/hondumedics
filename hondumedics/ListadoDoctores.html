@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>HonduMedics / Búsqueda</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- JQuery JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+    <!-- Estilos CSS -->
+    <style>
+        .nav-wrapper {
+            background-color: #FC5A5A;
+        }
+
+        .waves-effect.waves-pink .waves-ripple {
+            background-color: #FC5A5A;
+        }
+
+        .btn-pink {
+            background-color: #FC5A5A;
+        }
+
+        .btn-bordes {
+            border: white 2px solid;
+        }
+
+        .page-footer {
+            background: #FC5A5A;
+        }
+
+        .select-black-border {
+            border: black 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="nav-wrapper">
+        <a href="#" class="brand-logo">HonduMedics</a>
+        <ul class="right hide-on-med-and-down">
+            <!--<li><a href="#" class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
+                        data-position="left" data-tooltip="Ingresa aquí." id="btnHM">Incluya su
+                        práctica en
+                        HonduMedics</a></li>-->
+            <li>
+                <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                    Pacientes
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a> </li>
+            <li>
+                <a href="#" class="dropdown-trigger" data-target="dropdown2">
+                    Doctores
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a> </li>
+            <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="hondumedics/Login.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Iniciar Sesión</center>
+                        </span>
+                    </a></li>
+                <li><a href="hondumedics/Registro.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Registrar</center>
+                        </span>
+                    </a></li>
+            </ul>
+            <ul id='dropdown2' class='dropdown-content'>
+                <li><a href="hondumedics/LoginDoctor.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Iniciar Sesión</center>
+                        </span>
+                    </a></li>
+                <li><a href="Unirse.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Unirse</center>
+                        </span>
+                    </a></li>
+            </ul>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <!--Varios Componentes-->
+    <!--<div class="container">-->
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <div class="input-field col s12 m4 l4">
+                    <i class="material-icons prefix">search</i>
+                    <select>
+                        <option value="" disabled selected>Favor Seleccionar</option>
+                        <optgroup label="Todas Las Especialidades">
+                            <option id="opcion1" value="1">Anatomía Patológica</option>
+                            <option id="opcion2" value="2">Alergología</option>
+                            <option id="opcion3" value="3">Cardiología</option>
+                            <option id="opcion4" value="4">Cirugía Cardiaca</option>
+                            <option id="opcion5" value="5">Cirugía General</option>
+                            <option id="opcion6" value="6">Cirugía Plástica</option>
+                            <option id="opcion7" value="7">Cirugía de Mama</option>
+                            <option id="opcion8" value="8">Cirugía Maxilofacial</option>
+                            <option id="opcion9" value="9">Cirugía Vascular</option>
+                            <option id="opcion10" value="10">Dermatología</option>
+                            <option id="opcion11" value="11">Endocrinología y Nutrición</option>
+                            <option id="opcion12" value="12">Gastroenterología - Digestivo</option>
+                            <option id="opcion13" value="13">Genética</option>
+                            <option id="opcion14" value="14">Geriatría</option>
+                            <option id="opcion15" value="15">Ginecología</option>
+                            <option id="opcion16" value="16">Hematología</option>
+                            <option id="opcion17" value="17">Enfermedades Del Hígado (Hepatología)</option>
+                            <option id="opcion18" value="18">Enfermedades Infecciosas</option>
+                            <option id="opcion19" value="19">Medicina General</option>
+                            <option id="opcion20" value="20">Medicina Interna</option>
+                            <option id="opcion21" value="21">Nefrología</option>
+                            <option id="opcion22" value="22">Neumología</option>
+                            <option id="opcion23" value="23">Neurología</option>
+                            <option id="opcion24" value="24">Neurocirugía</option>
+                            <option id="opcion25" value="25">Odontología</option>
+                            <option id="opcion26" value="26">Oftalmología</option>
+                            <option id="opcion27" value="27">Otorrinolaringología</option>
+                            <option id="opcion28" value="28">Oncología</option>
+                            <option id="opcion29" value="29">Pediatría</option>
+                            <option id="opcion30" value="30">Proctología</option>
+                            <option id="opcion31" value="31">Psiquiatría</option>
+                            <option id="opcion32" value="32">Rehabilitación y M. Deportiva</option>
+                            <option id="opcion33" value="33">Reumatología</option>
+                            <option id="opcion34" value="34">Traumatología</option>
+                            <option id="opcion35" value="35">Urología</option>
+                        </optgroup>
+                    </select>
+                    <label>Condición, Nombre del doctor, Procedimiento...</label>
+                </div>
+                <div class="input-field col s12 m3 l3">
+                    <i class="material-icons prefix">place</i>
+                    <input type="text" id="place-input" class="autocomplete" value="Tegucigalpa, FM 11101">
+                    <label>Ciudad o código postal</label>
+                </div>
+                <div class="input-field col s12 m2 l3">
+                    <i class="material-icons prefix">date_range</i>
+                    <input type="text" id="datepicker" class="datepicker">
+                </div>
+                <div class="input-field col s12 m4 l1 center">
+                    <a class="waves-effect waves-light btn btn-pink tooltipped" data-position="bottom"
+                        data-tooltip="Buscar Doctores"><i class="material-icons center">search</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--</div>-->
+
+    <!--Botones Desplegables Enfermedades-->
+    <div class="container">
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12 m6 l1 center">
+                        <span><b>10 Doctores</b></span>
+                    </div>
+                    <div class="input-field col s12 m6 l4">
+                        <select class="browser-default select-black-border">
+                          <center><option value="" disabled selected>Enfermedades</option></center>
+                          <option id="option1" value="1">Abrasión corneal</option>
+                          <option id="option2" value="2">Accidentes de tráfico</option>
+                          <option id="option3" value="3">Accidentes eléctricos</option>
+                          <option id="option4" value="4">Accidentes en el agua</option>
+                          <option id="option5" value="5">Accidentes químicos</option>
+                          <option id="option6" value="6">Acné</option>
+                          <option id="option7" value="7">Aftas bucales</option>
+                          <option id="option8" value="8">Albinismo</option>
+                          <option id="option9" value="9">Alcoholismo</option>
+                          <option id="option10" value="10">Alergia</option>
+                          <option id="option11" value="11">Alergia al níquel</option>
+                          <option id="option12" value="12">Alergia al sol</option>
+                          <option id="option13" value="13">Alud</option>
+                          <option id="option14" value="14">Alzhéimer</option>
+                          <option id="option15" value="15">Amenorrea</option>
+                          <option id="option16" value="16">Ampollas</option>
+                          <option id="option17" value="17">Anemia</option>
+                          <option id="option18" value="18">Aneurisma</option>
+                          <option id="option19" value="19">Angina de pecho</option>
+                          <option id="option20" value="20">Anisakiasis</option>
+                          <option id="option21" value="21">Anorexia</option>
+                          <option id="option22" value="22">Ansiedad</option>
+                          <option id="option23" value="23">Apendicitis</option>
+                          <option id="option24" value="24">Apnea del sueño</option>
+                          <option id="option25" value="25">Arritmia</option>
+                          <option id="option26" value="26">Arteriosclerosis</option>
+                          <option id="option27" value="27">Artritis reumatoide</option>
+                          <option id="option28" value="28">Artrosis</option>
+                          <option id="option29" value="29">Ascitis</option>
+                          <option id="option30" value="30">Asma</option>
+                          <option id="option31" value="31">Astigmatismo</option>
+                          <option id="option32" value="32">Ataxia</option>
+                          <option id="option33" value="33">Atragantamiento</option>
+                          <option id="option34" value="34">Atrofia vaginal</option>
+                          <option id="option35" value="35">Autismo</option>
+                          <option id="option36" value="36">Balanitis</option>
+                          <option id="option37" value="37">Bartolinitis</option>
+                          <option id="option38" value="38">Bocio</option>
+                          <option id="option39" value="39">Botulismo</option>
+                          <option id="option40" value="40">Bronquiectasias</option>
+                          <option id="option41" value="41">Bronquiolitis obliterante</option>
+                          <option id="option42" value="42">Bronquitis</option>
+                          <option id="option43" value="43">Brucelosis</option>
+                          <option id="option44" value="44">Bruxismo</option>
+                          <option id="option45" value="45">Bulimia</option>
+                          <option id="option46" value="46">Campylobacter</option>
+                          <option id="option47" value="47">Cáncer</option>
+                          <option id="option48" value="48">Cáncer de cabeza y cuello</option>
+                          <option id="option49" value="49">Cáncer de colon</option>
+                          <option id="option50" value="50">Cáncer de cuello de útero</option>
+                        </select>
+                                  
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
+        $(document).ready(function () {
+            //Inicialización de las propiedades de Materialize css.
+            M.AutoInit();
+            $('.sidenav').sidenav();
+            $('.tooltipped').tooltip();
+            $('.datepicker').datepicker();
+            $('#datepicker').datepicker().datepicker('setDate', new Date());
+            $('select').formSelect();
+            $('.dropdown-trigger').dropdown({
+                coverTrigger: false,
+                belowOrigin: true
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>

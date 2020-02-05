@@ -58,22 +58,22 @@
                 <div class="row">
                     <br>
                     <br>
-                    <div class="input-field col s6">
+                    <div class="input-field col s6 m6">
                         <input placeholder="Escribe su nombre" id="nombre" type="text" class="validate">
                         <label for="nombre">Nombre</label>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s6 m6">
                         <input placeholder="Escribe su apellido" id="apellido" type="text" class="validate">
                         <label for="apellido">Apellido</label>
                     </div>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s6 m6">
                         <input placeholder="Introduce tu correo electrónico" id="email" type="email" class="validate">
                         <label for="email">Correo Electrónico</label>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s6 m6">
                         <input placeholder="Introduce tu número de celular" id="phone_number" type="text"
                             class="validate">
                         <label for="phone_number">Teléfono</label>
@@ -81,12 +81,12 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s6 m6">
                         <input placeholder="Introdice tu número de colegiación" id="membership_number" type="text"
                             class="validate">
                         <label for="membership_number">Número de Colegiación</label>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s6 m6">
                         <label>Su Especialidad Principal</label>
                         <br>
                         <br>
@@ -116,28 +116,30 @@
                             <option id="opcion21" value="21">Neumología</option>
                             <option id="opcion22" value="22">Neurología</option>
                             <option id="opcion23" value="23">Neurocirugía</option>
-                            <option id="opcion24" value="24">Oftalmología</option>
-                            <option id="opcion25" value="25">Otorrinolaringología</option>
-                            <option id="opcion26" value="26">Oncología</option>
-                            <option id="opcion27" value="27">Pediatría</option>
-                            <option id="opcion28" value="28">Proctología</option>
-                            <option id="opcion29" value="29">Psiquiatría</option>
-                            <option id="opcion30" value="30">Rehabilitación y M. Deportiva</option>
-                            <option id="opcion31" value="31">Reumatología</option>
-                            <option id="opcion32" value="32">Traumatología</option>
-                            <option id="opcion33" value="33">Urología</option>
+                            <option id="opcion24" value="24">Odontología</option>
+                            <option id="opcion25" value="25">Oftalmología</option>
+                            <option id="opcion26" value="26">Otorrinolaringología</option>
+                            <option id="opcion27" value="27">Oncología</option>
+                            <option id="opcion28" value="28">Pediatría</option>
+                            <option id="opcion29" value="29">Proctología</option>
+                            <option id="opcion30" value="30">Psiquiatría</option>
+                            <option id="opcion31" value="31">Rehabilitación y M. Deportiva</option>
+                            <option id="opcion32" value="32">Reumatología</option>
+                            <option id="opcion33" value="33">Traumatología</option>
+                            <option id="opcion34" value="34">Urología</option>
                         </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12 m4 l4"></div>
-                    <center><div class="col s12 m4 l4"><a href="#"
+                    <center><div class="col s12 m6 l6"><a href="#"
                             class="btn btn-pink white-text waves-effect waves-pink btn-large"
                             id="btnSolicitar">Solicitar<i class="material-icons left">save</i></a></div></center>
                     <div class="col s12 m4 l4"></div>
                 </div>
             </div>
         </div>
+    </div>
 
         <script>
             //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
@@ -205,7 +207,8 @@
                         && parseInt(seleccionar_especialidad) != 26 && parseInt(seleccionar_especialidad) != 27
                         && parseInt(seleccionar_especialidad) != 28 && parseInt(seleccionar_especialidad) != 29
                         && parseInt(seleccionar_especialidad) != 30 && parseInt(seleccionar_especialidad) != 31
-                        && parseInt(seleccionar_especialidad) != 32 && parseInt(seleccionar_especialidad) != 33) {
+                        && parseInt(seleccionar_especialidad) != 32 && parseInt(seleccionar_especialidad) != 33
+                        && parseInt(seleccionar_especialidad) != 34) {
                         alert("Seleccione La Opción De Especialidad Principal");
                         valido = false;
                     }
