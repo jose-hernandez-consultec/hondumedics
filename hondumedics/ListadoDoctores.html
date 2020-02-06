@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+    <!--DataTable-->
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
     <!-- Estilos CSS -->
     <style>
@@ -35,12 +37,53 @@
             border: white 2px solid;
         }
 
-        .page-footer {
-            background: #FC5A5A;
-        }
-
         .select-black-border {
             border: black 1px solid;
+        }
+
+        .card-image {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            overflow: hidden;
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+        }
+
+        .circular--portrait img {
+            width: 100%;
+            height: auto;
+            margin-left: -50px;
+        }
+
+        .circular--landscape img {
+            width: auto;
+            height: 100%;
+            margin-left: 0%;
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        .btn-ver-perfiles {
+            width: 50%;
+            color: #FC5A5A;
+            background-color: white;
+            border: #FC5A5A 2px solid;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+        .btn-reservar-cita {
+            width: 50%;
+            color: #FC5A5A;
+            background-color: white;
+            border: #FC5A5A 2px solid;
+            align-items: center;
+            justify-content: center;
+            display: flex;
         }
     </style>
 </head>
@@ -160,74 +203,549 @@
     </div>
     <!--</div>-->
 
-    <!--Botones Desplegables Enfermedades-->
+    <!--Select-->
     <div class="container">
         <div class="row">
             <form class="col s12">
                 <div class="row">
-                    <div class="input-field col s12 m6 l1 center">
-                        <span><b>10 Doctores</b></span>
+                    <div class="input-field col s12 m6 l3 center">
+                        <span><b>5 Doctores</b></span>
                     </div>
-                    <div class="input-field col s12 m6 l4">
+                    <div class="input-field col s12 m6 l3">
                         <select class="browser-default select-black-border">
-                          <center><option value="" disabled selected>Enfermedades</option></center>
-                          <option id="option1" value="1">Abrasión corneal</option>
-                          <option id="option2" value="2">Accidentes de tráfico</option>
-                          <option id="option3" value="3">Accidentes eléctricos</option>
-                          <option id="option4" value="4">Accidentes en el agua</option>
-                          <option id="option5" value="5">Accidentes químicos</option>
-                          <option id="option6" value="6">Acné</option>
-                          <option id="option7" value="7">Aftas bucales</option>
-                          <option id="option8" value="8">Albinismo</option>
-                          <option id="option9" value="9">Alcoholismo</option>
-                          <option id="option10" value="10">Alergia</option>
-                          <option id="option11" value="11">Alergia al níquel</option>
-                          <option id="option12" value="12">Alergia al sol</option>
-                          <option id="option13" value="13">Alud</option>
-                          <option id="option14" value="14">Alzhéimer</option>
-                          <option id="option15" value="15">Amenorrea</option>
-                          <option id="option16" value="16">Ampollas</option>
-                          <option id="option17" value="17">Anemia</option>
-                          <option id="option18" value="18">Aneurisma</option>
-                          <option id="option19" value="19">Angina de pecho</option>
-                          <option id="option20" value="20">Anisakiasis</option>
-                          <option id="option21" value="21">Anorexia</option>
-                          <option id="option22" value="22">Ansiedad</option>
-                          <option id="option23" value="23">Apendicitis</option>
-                          <option id="option24" value="24">Apnea del sueño</option>
-                          <option id="option25" value="25">Arritmia</option>
-                          <option id="option26" value="26">Arteriosclerosis</option>
-                          <option id="option27" value="27">Artritis reumatoide</option>
-                          <option id="option28" value="28">Artrosis</option>
-                          <option id="option29" value="29">Ascitis</option>
-                          <option id="option30" value="30">Asma</option>
-                          <option id="option31" value="31">Astigmatismo</option>
-                          <option id="option32" value="32">Ataxia</option>
-                          <option id="option33" value="33">Atragantamiento</option>
-                          <option id="option34" value="34">Atrofia vaginal</option>
-                          <option id="option35" value="35">Autismo</option>
-                          <option id="option36" value="36">Balanitis</option>
-                          <option id="option37" value="37">Bartolinitis</option>
-                          <option id="option38" value="38">Bocio</option>
-                          <option id="option39" value="39">Botulismo</option>
-                          <option id="option40" value="40">Bronquiectasias</option>
-                          <option id="option41" value="41">Bronquiolitis obliterante</option>
-                          <option id="option42" value="42">Bronquitis</option>
-                          <option id="option43" value="43">Brucelosis</option>
-                          <option id="option44" value="44">Bruxismo</option>
-                          <option id="option45" value="45">Bulimia</option>
-                          <option id="option46" value="46">Campylobacter</option>
-                          <option id="option47" value="47">Cáncer</option>
-                          <option id="option48" value="48">Cáncer de cabeza y cuello</option>
-                          <option id="option49" value="49">Cáncer de colon</option>
-                          <option id="option50" value="50">Cáncer de cuello de útero</option>
+                            <center>
+                                <option value="" disabled selected>Enfermedades</option>
+                            </center>
+                            <optgroup label="A">
+                                <option id="option1" value="1">Abrasión corneal</option>
+                                <option id="option2" value="2">Accidentes de tráfico</option>
+                                <option id="option3" value="3">Accidentes eléctricos</option>
+                                <option id="option4" value="4">Accidentes en el agua</option>
+                                <option id="option5" value="5">Accidentes químicos</option>
+                                <option id="option6" value="6">Acné</option>
+                                <option id="option7" value="7">Aftas bucales</option>
+                                <option id="option8" value="8">Albinismo</option>
+                                <option id="option9" value="9">Alcoholismo</option>
+                                <option id="option10" value="10">Alergia</option>
+                                <option id="option11" value="11">Alergia al níquel</option>
+                                <option id="option12" value="12">Alergia al sol</option>
+                                <option id="option13" value="13">Alud</option>
+                                <option id="option14" value="14">Alzhéimer</option>
+                                <option id="option15" value="15">Amenorrea</option>
+                                <option id="option16" value="16">Ampollas</option>
+                                <option id="option17" value="17">Anemia</option>
+                                <option id="option18" value="18">Aneurisma</option>
+                                <option id="option19" value="19">Angina de pecho</option>
+                                <option id="option20" value="20">Anisakiasis</option>
+                                <option id="option21" value="21">Anorexia</option>
+                                <option id="option22" value="22">Ansiedad</option>
+                                <option id="option23" value="23">Apendicitis</option>
+                                <option id="option24" value="24">Apnea del sueño</option>
+                                <option id="option25" value="25">Arritmia</option>
+                                <option id="option26" value="26">Arteriosclerosis</option>
+                                <option id="option27" value="27">Artritis reumatoide</option>
+                                <option id="option28" value="28">Artrosis</option>
+                                <option id="option29" value="29">Ascitis</option>
+                                <option id="option30" value="30">Asma</option>
+                                <option id="option31" value="31">Astigmatismo</option>
+                                <option id="option32" value="32">Ataxia</option>
+                                <option id="option33" value="33">Atragantamiento</option>
+                                <option id="option34" value="34">Atrofia vaginal</option>
+                                <option id="option35" value="35">Autismo</option>
+                            </optgroup>
+                            <optgroup label="B">
+                                <option id="option36" value="36">Balanitis</option>
+                                <option id="option37" value="37">Bartolinitis</option>
+                                <option id="option38" value="38">Bocio</option>
+                                <option id="option39" value="39">Botulismo</option>
+                                <option id="option40" value="40">Bronquiectasias</option>
+                                <option id="option41" value="41">Bronquiolitis obliterante</option>
+                                <option id="option42" value="42">Bronquitis</option>
+                                <option id="option43" value="43">Brucelosis</option>
+                                <option id="option44" value="44">Bruxismo</option>
+                                <option id="option45" value="45">Bulimia</option>
+                            </optgroup>
+                            <optgroup label="C">
+                                <option id="option46" value="46">Campylobacter</option>
+                                <option id="option47" value="47">Cáncer</option>
+                                <option id="option48" value="48">Cáncer de cabeza y cuello</option>
+                                <option id="option49" value="49">Cáncer de colon</option>
+                                <option id="option50" value="50">Cáncer de cuello de útero</option>
+                                <option id="option51" value="51">Cáncer de esófago</option>
+                                <option id="option52" value="52">Cáncer de estómago</option>
+                                <option id="option53" value="53">Cáncer de hígado</option>
+                                <option id="option54" value="54">Cáncer de laringe</option>
+                                <option id="option55" value="55">Cáncer de mama</option>
+                                <option id="option56" value="56">Cáncer de ovario</option>
+                                <option id="option57" value="57">Cáncer de páncreas</option>
+                                <option id="option58" value="58">Cáncer de pene</option>
+                                <option id="option59" value="59">Cáncer de piel</option>
+                                <option id="option60" value="60">Cáncer de próstata</option>
+                                <option id="option61" value="61">Cáncer de pulmón</option>
+                                <option id="option62" value="62">Cáncer de riñón</option>
+                                <option id="option63" value="63">Cáncer de testículo</option>
+                                <option id="option64" value="64">Cáncer de tiroides</option>
+                                <option id="option65" value="65">Cáncer de vejiga</option>
+                                <option id="option66" value="66">Cáncer oral</option>
+                                <option id="option67" value="67">Cáncer óseo</option>
+                                <option id="option68" value="68">Candidiasis</option>
+                                <option id="option69" value="69">Carbunco</option>
+                                <option id="option70" value="70">Cataratas</option>
+                                <option id="option71" value="71">Catarro</option>
+                                <option id="option72" value="72">Celiaguía</option>
+                                <option id="option73" value="73">Chancroide</option>
+                                <option id="option74" value="74">Chikungunya</option>
+                                <option id="option75" value="75">Ciática</option>
+                                <option id="option76" value="76">Cirrosis</option>
+                                <option id="option77" value="77">Cistitis</option>
+                                <option id="option78" value="78">Citomegalovirus</option>
+                                <option id="option79" value="79">Clamidia</option>
+                                <option id="option80" value="80">Cólera</option>
+                                <option id="option81" value="81">Colesteatoma</option>
+                                <option id="option82" value="82">Cólico nefrítico</option>
+                                <option id="option83" value="83">Colitis ulcerosa</option>
+                                <option id="option84" value="84">Colon irritable</option>
+                                <option id="option85" value="85">Congelamiento</option>
+                                <option id="option86" value="86">Congestión nasal</option>
+                                <option id="option87" value="87">Conjuntivitis</option>
+                                <option id="option88" value="88">Contusiones</option>
+                                <option id="option89" value="89">Coronavirus</option>
+                                <option id="option90" value="90">Corte de digestión</option>
+                                <option id="option91" value="91">Crisis de pánico</option>
+                                <option id="option92" value="92">Cuerpos extraños</option>
+                            </optgroup>
+                            <optgroup label="D">
+                                <option id="option93" value="93">Daltonismo</option>
+                                <option id="option94" value="94">Déficit de la hormona del crecimiento</option>
+                                <option id="option95" value="95">Degeneración macular</option>
+                                <option id="option96" value="96">Demencia</option>
+                                <option id="option97" value="97">Demencia con cuerpos de Lewy</option>
+                                <option id="option98" value="98">Demencia vascular</option>
+                                <option id="option99" value="99">Dengue</option>
+                                <option id="option100" value="100">Depresión</option>
+                                <option id="option101" value="101">Dermatitis atópica</option>
+                                <option id="option102" value="102">Derrame ocular</option>
+                                <option id="option103" value="103">Deterioro cognitivo leve</option>
+                                <option id="option104" value="104">Diabetes</option>
+                                <option id="option105" value="105">Diabetes gestacional</option>
+                                <option id="option106" value="106">Diabetes insípida</option>
+                                <option id="option107" value="107">Difteria</option>
+                                <option id="option108" value="108">Disfunción eréctil</option>
+                                <option id="option109" value="109">Dislexia</option>
+                                <option id="option110" value="110">Dismenorrea</option>
+                                <option id="option111" value="111">Dispepsia</option>
+                                <option id="option112" value="112">Distonía</option>
+                                <option id="option113" value="113">Distrofia muscular de Duchenne</option>
+                                <option id="option114" value="114">Diverticulosis</option>
+                            </optgroup>
+                            <optgroup label="E">
+                                <option id="option115" value="115">Ébola</option>
+                                <option id="option116" value="116">Edema pulmonar</option>
+                                <option id="option117" value="117">Elefantiasis</option>
+                                <option id="option118" value="118">Encefalitis</option>
+                                <option id="option119" value="119">Endocarditis</option>
+                                <option id="option120" value="120">Endometriosis</option>
+                                <option id="option121" value="121">Enfermedad de Addison</option>
+                                <option id="option122" value="122">Enfermedad de Behçet</option>
+                                <option id="option123" value="123">Enfermedad de Chagas</option>
+                                <option id="option124" value="124">Enfermedad de Crohn</option>
+                                <option id="option125" value="125">Enfermedad de Huntington</option>
+                                <option id="option126" value="126">Enfermedad de Kawasaki</option>
+                                <option id="option127" value="127">Enfermedad de La Peyronie</option>
+                                <option id="option128" value="128">Enfermedad de Lyme</option>
+                                <option id="option129" value="129">Enfermedad de Paget</option>
+                                <option id="option130" value="130">Enfermedad de Wilson</option>
+                                <option id="option131" value="131">Enfermedad inflamatoria pélvica</option>
+                                <option id="option132" value="132">Enfermedades de transmisión sexual</option>
+                                <option id="option133" value="133">Enfermedadades raras</option>
+                                <option id="option134" value="134">Epilepsia</option>
+                                <option id="option135" value="135">EPOC (Enfermedad pulmonar obstructiva crónica)
+                                </option>
+                                <option id="option136" value="136">Escleritis</option>
+                                <option id="option137" value="137">Esclerodermia</option>
+                                <option id="option138" value="138">Esclerosis lateral amiotrófica</option>
+                                <option id="option139" value="139">Esclerosis múltiple</option>
+                                <option id="option140" value="140">Escoliosis</option>
+                                <option id="option141" value="141">Esófago de Barrett</option>
+                                <option id="option142" value="142">Espondilitis anquilosante</option>
+                                <option id="option143" value="143">Esquizofrenia</option>
+                                <option id="option144" value="144">Esteatosis hepática</option>
+                                <option id="option145" value="145">Estrabismo</option>
+                                <option id="option146" value="146">Estreñimiento</option>
+                                <option id="option147" value="147">Eyaculación precoz</option>
+                            </optgroup>
+                            <optgroup label="F">
+                                <option id="option148" value="148">Faringitis</option>
+                                <option id="option149" value="149">Fascitis plantar</option>
+                                <option id="option150" value="150">Fenilcetonuria</option>
+                                <option id="option151" value="151">Fibrilación auricular</option>
+                                <option id="option152" value="152">Fibromialgia</option>
+                                <option id="option153" value="153">Fibrosis quística</option>
+                                <option id="option154" value="154">Fiebre amarilla</option>
+                                <option id="option155" value="155">Fiebre de Lassa</option>
+                                <option id="option156" value="156">Fiebre de Oropouche</option>
+                                <option id="option157" value="157">Fiebre del valle del Rift</option>
+                                <option id="option158" value="158">Fiebre hemorrágica de Crimea-Congo</option>
+                                <option id="option159" value="159">Fiebre tifoidea</option>
+                                <option id="option160" value="160">Fístula anal</option>
+                                <option id="option161" value="161">Fractura carpiana</option>
+                                <option id="option162" value="162">Fractura clavicular</option>
+                                <option id="option163" value="163">Fractura costal</option>
+                                <option id="option164" value="164">Feactura coxígea</option>
+                                <option id="option165" value="165">Fractura craneal</option>
+                                <option id="option166" value="166">Fractura cubital</option>
+                                <option id="option167" value="167">Fractura de cadera</option>
+                                <option id="option168" value="168">Fractura de dedo</option>
+                                <option id="option169" value="169">Fractura de esternón</option>
+                                <option id="option170" value="170">Fractura de peroné</option>
+                                <option id="option171" value="171">Fractura de rótula</option>
+                                <option id="option172" value="172">Fractura del tarso</option>
+                                <option id="option173" value="173">Fractura escapular</option>
+                                <option id="option174" value="174">Fractura falanges</option>
+                                <option id="option175" value="175">Fractura femoral</option>
+                                <option id="option176" value="176">Fractura humeral</option>
+                                <option id="option177" value="177">Fractura metacarpiana</option>
+                                <option id="option178" value="178">Fractura metatarsiana</option>
+                                <option id="option179" value="179">Fractura nasal</option>
+                                <option id="option180" value="180">Fractura radial</option>
+                                <option id="option181" value="181">Fractura sacra</option>
+                                <option id="option182" value="182">Fractura tibial</option>
+                                <option id="option183" value="183">Fractura vertebral</option>
+                            </optgroup>
+                            <optgroup label="G">
+                                <option id="option184" value="184">Galactorrea</option>
+                                <option id="option185" value="185">Galactosemia</option>
+                                <option id="option186" value="186">Gastritis</option>
+                                <option id="option187" value="187">Gastroenteritis</option>
+                                <option id="option188" value="188">Giardiasis</option>
+                                <option id="option189" value="189">Glaucoma</option>
+                                <option id="option190" value="190">Golpe de calor</option>
+                                <option id="option191" value="191">Gonorrea</option>
+                                <option id="option192" value="192">Gota</option>
+                                <option id="option193" value="193">Gripe</option>
+                            </optgroup>
+                            <optgroup label="H">
+                                <option id="option194" value="194">Hantavirus</option>
+                                <option id="option195" value="195">Hemocromatosis</option>
+                                <option id="option196" value="196">Hemofilia</option>
+                                <option id="option197" value="197">Hemorragia nasal</option>
+                                <option id="option198" value="198">Hemorroides</option>
+                                <option id="option199" value="199">Hepatitis</option>
+                                <option id="option200" value="200">Herida por arma de fuego</option>
+                                <option id="option201" value="201">Heridas</option>
+                                <option id="option202" value="202">Hernia de hiato</option>
+                                <option id="option203" value="203">Hernia discal</option>
+                                <option id="option204" value="204">Hernia inguinal</option>
+                                <option id="option205" value="205">Herpes</option>
+                                <option id="option206" value="206">Herpes zóster</option>
+                                <option id="option207" value="207">Hidatidosis</option>
+                                <option id="option208" value="208">Hiperactividad (TDAH)</option>
+                                <option id="option209" value="209">Hipercolesterolemia</option>
+                                <option id="option210" value="210">Hipermetropía</option>
+                                <option id="option211" value="211">Hiperplasia benigna de próstata</option>
+                                <option id="option212" value="212">Hipertensióno arterial</option>
+                                <option id="option213" value="213">Hipertiroidismo</option>
+                                <option id="option214" value="214">Hipoacusia</option>
+                                <option id="option215" value="215">Hipocalcemia</option>
+                                <option id="option216" value="216">Hipoglucemia</option>
+                                <option id="option217" value="217">Hipogonadismo</option>
+                                <option id="option218" value="218">Hipotensión arterial</option>
+                                <option id="option219" value="219">Hipotermia</option>
+                                <option id="option220" value="220">Hipotiroidismo</option>
+                                <option id="option221" value="221">Hirsutismo</option>
+                            </optgroup>
+                            <optgroup label="I">
+                                <option id="option222" value="222">Ictus</option>
+                                <option id="option223" value="223">Impétigo</option>
+                                <option id="option224" value="224">Incendios</option>
+                                <option id="option225" value="225">Incontinencia urinaria</option>
+                                <option id="option226" value="226">Infarto de miocardio</option>
+                                <option id="option227" value="227">Infecciones urinarias</option>
+                                <option id="option228" value="228">Insomnio</option>
+                                <option id="option229" value="229">Insomnio familiar fatal</option>
+                                <option id="option230" value="230">Insuficiencia cardíaca</option>
+                                <option id="option231" value="231">Insuficiencia hepática</option>
+                                <option id="option232" value="232">Insuficiencia mitral</option>
+                                <option id="option233" value="233">Insuficiencia renal crónica</option>
+                                <option id="option234" value="234">Intolerancia a la histamina</option>
+                                <option id="option235" value="235">Intoxicación etílica</option>
+                                <option id="option236" value="236">Intoxicación por monóxido de carbono</option>
+                                <option id="option237" value="237">Intoxicaciones</option>
+                            </optgroup>
+                            <outgroup label="J">
+                                <option id="option238" value="238">Juanetes</option>
+                            </outgroup>
+                            <optgroup label="L">
+                                <option id="option239" value="239">Ladillas</option>
+                                <option id="option240" value="240">Laringitis</option>
+                                <option id="option241" value="241">Legionella</option>
+                                <option id="option242" value="242">Leishmaniasis</option>
+                                <option id="option243" value="243">Lepra</option>
+                                <option id="option244" value="244">Leptospirosis</option>
+                                <option id="option245" value="245">Lesiones maxilares</option>
+                                <option id="option246" value="246">Leucemia</option>
+                                <option id="option247" value="247">Lipodistrofia</option>
+                                <option id="option248" value="248">Lipotimia</option>
+                                <option id="option249" value="249">Listeriosis</option>
+                                <option id="option250" value="250">Litiasis biliar</option>
+                                <option id="option251" value="251">Lumbalgia</option>
+                                <option id="option252" value="252">Lupus</option>
+                                <option id="option253" value="253">Luxaciones</option>
+                            </optgroup>
+                            <optgroup label="M">
+                                <option id="option254" value="254">Mal agudo de montaña</option>
+                                <option id="option255" value="255">Malaria</option>
+                                <option id="option256" value="256">Melanoma</option>
+                                <option id="option257" value="257">Melasma</option>
+                                <option id="option258" value="258">Melioidosis</option>
+                                <option id="option259" value="259">Meningitis</option>
+                                <option id="option260" value="260">Menopausia</option>
+                                <option id="option261" value="261">MERS (Síndrome respiratorio de oriente medio)
+                                </option>
+                                <option id="option262" value="262">Mesotelioma</option>
+                                <option id="option263" value="263">Miastenia gravis</option>
+                                <option id="option264" value="264">Micoplasma genital</option>
+                                <option id="option265" value="265">Microcefalia</option>
+                                <option id="option266" value="266">Mieloma múltiple</option>
+                                <option id="option267" value="267">Migraña</option>
+                                <option id="option268" value="268">Miomatosis uterina</option>
+                                <option id="option269" value="269">Miopía</option>
+                                <option id="option270" value="270">Moluso contagioso</option>
+                                <option id="option271" value="271">Mononucleosis</option>
+                                <option id="option272" value="272">Mordeduras de animales</option>
+                            </optgroup>
+                            <optgroup label="N">
+                                <option id="option273" value="273">Narcolepsia</option>
+                                <option id="option274" value="274">Neumonía</option>
+                                <option id="option275" value="275">Neumotórax</option>
+                                <option id="option276" value="276">Neuralgia del trigémino</option>
+                                <option id="option277" value="277">Neurofibromatosis</option>
+                                <option id="option278" value="278">Nistagmo</option>
+                                <option id="option279" value="279">Norovirus</option>
+                            </optgroup>
+                            <optgroup label="O">
+                                <option id="option280" value="280">Obesidad</option>
+                                <option id="option281" value="281">Obesidad infantil</option>
+                                <option id="option282" value="282">Ojo seco</option>
+                                <option id="option283" value="283">Oncocercosis</option>
+                                <option id="option284" value="284">Onicomicosis</option>
+                                <option id="option285" value="285">Orquitis</option>
+                                <option id="option286" value="286">Osteomalacia</option>
+                                <option id="option287" value="287">Osteomielitis</option>
+                                <option id="option288" value="288">Osteonecrosis</option>
+                                <option id="option289" value="289">Osteoporosis</option>
+                                <option id="option290" value="290">Otitis</option>
+                            </optgroup>
+                            <optgroup label="P">
+                                <option id="option291" value="291">Palpitaciones cardíacas</option>
+                                <option id="option292" value="292">Pancratitis</option>
+                                <option id="option293" value="293">Paperas</option>
+                                <option id="option294" value="294">Parálisis cerebral</option>
+                                <option id="option295" value="295">Párkinson</option>
+                                <option id="option296" value="296">Patologías benignas de mama</option>
+                                <option id="option297" value="297">Pericarditis</option>
+                                <option id="option298" value="298">Peritonitis</option>
+                                <option id="option299" value="299">Peste</option>
+                                <option id="option300" value="300">Pian</option>
+                                <option id="option301" value="301">Picaduras de insectos</option>
+                                <option id="option302" value="302">Pie de atleta</option>
+                                <option id="option303" value="303">Pielonefritis</option>
+                                <option id="option304" value="304">Pitiriasis versicolor</option>
+                                <option id="option305" value="305">Policitemia vera</option>
+                                <option id="option306" value="306">Poliomelitis</option>
+                                <option id="option307" value="307">Pólipos uterinos</option>
+                                <option id="option308" value="308">Prediabetes</option>
+                                <option id="option309" value="309">Presbiacusia</option>
+                                <option id="option310" value="310">Presbicia</option>
+                                <option id="option311" value="311">Priapismo</option>
+                                <option id="option312" value="312">Prostatitis</option>
+                                <option id="option313" value="313">Psoriasis</option>
+                                <option id="option314" value="314">PTI (Trombocitopenia inmune primaria)</option>
+                            </optgroup>
+                            <optgroup label="Q">
+                                <option id="option315" value="315">Quemaduras</option>
+                            </optgroup>
+                            <optgroup label="R">
+                                <option id="option316" value="316">Rabia</option>
+                                <option id="option317" value="317">Raspaduras y laceraciones</option>
+                                <option id="option318" value="318">Reacciones alérgicas a medicamentos</option>
+                                <option id="option319" value="319">Reanimación cardiopulmonar</option>
+                                <option id="option320" value="320">Reflujo gastroesofágico</option>
+                                <option id="option321" value="321">Rescate en montaña</option>
+                                <option id="option322" value="322">Resistencia a la insulina</option>
+                                <option id="option323" value="323">Retinosis pigmentaria</option>
+                                <option id="option324" value="324">Rinitis</option>
+                                <option id="option325" value="325">Rizartrosis</option>
+                                <option id="option326" value="326">Rosácea</option>
+                                <option id="option327" value="327">Rubéola</option>
+                            </optgroup>
+                            <optgroup label="S">
+                                <option id="option328" value="328">Salmonelosis</option>
+                                <option id="option329" value="329">Sarampión</option>
+                                <option id="option330" value="330">Sarcoidosis</option>
+                                <option id="option331" value="331">Sarcoma de tejidos blandos</option>
+                                <option id="option332" value="332">Sarna</option>
+                                <option id="option333" value="333">Sensibilidad química múltiple</option>
+                                <option id="option334" value="334">Sepsis</option>
+                                <option id="option335" value="335">Shigelosis</option>
+                                <option id="option336" value="336">Shock</option>
+                                <option id="option337" value="337">SIBO (Sobrecrecimiento bacteriano en el intestino
+                                    delgado)</option>
+                                <option id="option338" value="338">SIDA (Síndrome inmuno deficiencia adquirida)</option>
+                                <option id="option339" value="339">Sífilis</option>
+                                <option id="option340" value="340">Síndrome de Angelman</option>
+                                <option id="option341" value="341">Síndrome de Cushing</option>
+                                <option id="option342" value="342">Síndrome de Down</option>
+                                <option id="option343" value="343">Síndrome de fatiga crónica</option>
+                                <option id="option344" value="344">Síndrome de Guillain-Barré</option>
+                                <option id="option345" value="345">Síndrome de Klinefelter</option>
+                                <option id="option346" value="346">Síndrome de Lynch</option>
+                                <option id="option347" value="347">Síndrome de Marfan</option>
+                                <option id="option348" value="348">Síndrome de Noonan</option>
+                                <option id="option349" value="349">Síndrome de ovario poliquístico (SOP)</option>
+                                <option id="option350" value="350">Síndrome de Patau</option>
+                                <option id="option351" value="351">Síndrome de piernas inquietas</option>
+                                <option id="option352" value="352">Síndrome de Rett</option>
+                                <option id="option353" value="353">Síndrome de Reye</option>
+                                <option id="option354" value="354">Síndrome de Sanfilippo</option>
+                                <option id="option355" value="355">Síndrome de Sjögren</option>
+                                <option id="option356" value="356">Síndrome de Tourette</option>
+                                <option id="option357" value="357">Síndrome de Williams</option>
+                                <option id="option358" value="358">Síndrome de X Frágil</option>
+                                <option id="option359" value="359">Síndrome del túnel carpiano</option>
+                                <option id="option360" value="360">Síndrome metabólico</option>
+                                <option id="option361" value="361">Sinusitis</option>
+                                <option id="option362" value="362">Siringomielia</option>
+                                <option id="option363" value="363">Sobredosis</option>
+                            </optgroup>
+                            <optgroup label="T">
+                                <option id="option364" value="364">Talasemia</option>
+                                <option id="option365" value="365">Telangiectasias</option>
+                                <option id="option366" value="366">Tendinitis</option>
+                                <option id="option367" value="367">Teniasis</option>
+                                <option id="option368" value="368">Terremotos</option>
+                                <option id="option369" value="369">Tétanos</option>
+                                <option id="option370" value="370">Tinnitus</option>
+                                <option id="option371" value="371">Tortícolis</option>
+                                <option id="option372" value="372">Tos ferina</option>
+                                <option id="option373" value="373">Toxicodermias</option>
+                                <option id="option374" value="374">Toxoplasmosis</option>
+                                <option id="option375" value="375">Tracoma</option>
+                                <option id="option376" value="376">Traquetis</option>
+                                <option id="option377" value="377">Trastorno bipolar</option>
+                                <option id="option378" value="378">Trastorno obsesivo compulsivo</option>
+                                <option id="option379" value="379">Traumatismo craneal</option>
+                                <option id="option380" value="380">Tricomaniasis</option>
+                                <option id="option381" value="381">Tripanosomiasis africana</option>
+                                <option id="option382" value="382">Tromboembolismo pulmonar</option>
+                                <option id="option383" value="383">Trombosis venosa</option>
+                                <option id="option384" value="384">Tuberculosis</option>
+                                <option id="option385" value="385">Tularemia</option>
+                                <option id="option386" value="386">Tumores cerebrales</option>
+                            </optgroup>
+                            <optgroup label="U">
+                                <option id="option387" value="387">Úlcera</option>
+                                <option id="option388" value="388">Uretritis</option>
+                                <option id="option389" value="389">Urticaria</option>
+                                <option id="option390" value="390">Uveítis</option>
+                            </optgroup>
+                            <optgroup label="V">
+                                <option id="option391" value="391">Vaginitis</option>
+                                <option id="option392" value="392">Vaginosis bacteriana</option>
+                                <option id="option393" value="393">Varicela</option>
+                                <option id="option394" value="394">Varices</option>
+                                <option id="option395" value="395">Varicocele</option>
+                                <option id="option396" value="396">Vértigo</option>
+                                <option id="option397" value="397">Virus del Nilo Occidental</option>
+                                <option id="option398" value="398">Virus Mayaro</option>
+                                <option id="option399" value="399">Virus Nipah</option>
+                                <option id="option400" value="400">Virus Usutu</option>
+                                <option id="option401" value="401">Virus Zika</option>
+                                <option id="option402" value="402">Vitíligo</option>
+                                <option id="option403" value="403">VPH (Virus de papiloma humano)</option>
+                            </optgroup>
                         </select>
-                                  
+                    </div>
+                    <div class="input-field col s12 m6 l3">
+                        <select class="browser-default select-black-border">
+                            <center>
+                                <option value="" disabled selected>Especialidades</option>
+                            </center>
+                            <optgroup label="Todas las especialidades para la enfermedad">
+                                <option id="options1" value="1">Cardiólogo</option>
+                                <option id="options2" value="2">Doctor de atención médica</option>
+                                <option id="options3" value="3">Endocrinólogo</option>
+                                <option id="options4" value="4">Enfermera practicante adulta</option>
+                                <option id="options5" value="5">Especialista en enfermedades infecciosas</option>
+                                <option id="options6" value="6">Especialista en medicina deportiva</option>
+                                <option id="options7" value="7">Especialista en cuidados críticos</option>
+                                <option id="options8" value="8">Geriatra</option>
+                                <option id="options9" value="9">Ginecólogo</option>
+                                <option id="options10" value="10">Gineco-Obstetra</option>
+                                <option id="options11" value="11">Internista</option>
+                                <option id="options12" value="12">Médico bariático</option>
+                                <option id="options13" value="13">Médico familiar</option>
+                                <option id="options14" value="14">Nefrólogo</option>
+                                <option id="options15" value="15">Neumólogo</option>
+                                <option id="options16" value="16">Partera</option>
+                                <option id="options17" value="17">Pediatría</option>
+                                <option id="options18" value="18">Practicante de enfermería</option>
+                                <option id="options19" value="19">Practicante de enfermería familiar</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="input-field col s12 m6 l3">
+                        <select class="browser-default select-black-border">
+                            <center>
+                                <option value="" disabled selected>Género</option>
+                            </center>
+                            <option id="male" value="1">Masculino</option>
+                            <option id="female" value="2">Femenino</option>
+                        </select>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+
+    <!--Listado de doctores-->
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="card horizontal">
+                    <div class="card-image circular--landscape">
+                        <img
+                            src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <a href="PerfilDeDoctor.html" class="card-title"><b>Dra. Ruby Taylor</b></a>
+                            <p>Odontología</p>
+                            <p>Hospital Medical Center</p>
+                            <p>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa, FM 11101</p>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons ">star</span>
+                        </div>
+                    </div>
+                    <div class="card-stacked">
+                        <br>
+                        <br>
+                        <center>
+                            <a href="PerfilDeDoctor.html" class="waves-effect waves-light btn btn-ver-perfiles">Ver Perfil</a>
+                        </center>
+                        <br>
+                        <center>
+                            <a href="" class="waves-effect waves-light btn btn-ver-perfiles">Reservar Cita</a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
