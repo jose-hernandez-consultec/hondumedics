@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>HonduMedics / Pago</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- JQuery JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--DataTable-->
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <!-- Estilos CSS -->
+    <style>
+        .nav-wrapper {
+            background-color: #FC5A5A;
+        }
+
+        .waves-effect.waves-pink .waves-ripple {
+            background-color: #FC5A5A;
+        }
+
+        .btn-pink {
+            background-color: #FC5A5A;
+        }
+
+        .btn-bordes {
+            border: white 2px solid;
+        }
+
+        .card-image {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+        }
+
+        .circular--portrait img {
+            width: 100%;
+            height: auto;
+            margin-left: -50px;
+        }
+
+        .circular--landscape img {
+            width: auto;
+            height: 100%;
+            margin-left: 0%;
+        }
+
+        .checked {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="nav-wrapper">
+        <a href="#" class="brand-logo">HonduMedics</a>
+        <ul class="right hide-on-med-and-down">
+    </nav>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <!--Card Foto de Perfil-->
+        <div class="row">
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image circular--landscape">
+                        <img
+                            src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content center">
+                            <a href="PerfilDeDoctor.html" class="card-title">
+                                <h6><b>Dra. Ruby Taylor</b></h6>
+                            </a>
+                            <p>Hospital Medical Center</p>
+                            <p>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa, FM 11101</p>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons ">star</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <center>
+                            <h6><b>Fecha: </b><span>10 Feb 2020</span></h6>
+                            <h6><b>Hora: </b><span>10:00 AM</span></h6>
+                            <h6><b>Costo de la consulta: </b><span>Lps. 200</span></h6>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l8">
+                <div class="card-panel">
+                    <div class="row">
+                        <fieldset>
+                            <legend>
+                                <h4>Pagos de Consultas</h4>
+                            </legend>
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class="row">
+                                        <div class="input-field col s12 m12 l12">
+                                            <i class="material-icons prefix">credit_card</i>
+                                            <input id="credit_card" type="text" class="validate">
+                                            <label for="credit_card">Número de Tarjeta</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s4 m4 l4">
+                                            <br>
+                                            <span><b>Fecha de Expiración:</b></span>
+                                        </div>
+                                        <div class="input-field col s4 m4 l4">
+                                            <select class="browser-default">
+                                                <option value="" disabled selected>Seleccione el mes</option>
+                                                <option value="1">Enero</option>
+                                                <option value="2">Febrero</option>
+                                                <option value="3">Marzo</option>
+                                                <option value="4">Abril</option>
+                                                <option value="5">Mayo</option>
+                                                <option value="6">Junio</option>
+                                                <option value="7">Julio</option>
+                                                <option value="8">Agosto</option>
+                                                <option value="9">Septiembre</option>
+                                                <option value="10">Octubre</option>
+                                                <option value="11">Noviembre</option>
+                                                <option value="12">Diciembre</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-field col s4 m4 l4">
+                                            <select class="browser-default">
+                                                <option value="" disabled selected>Seleccione el año</option>
+                                                <option value="20">2020</option>
+                                                <option value="21">2021</option>
+                                                <option value="22">2022</option>
+                                                <option value="23">2023</option>
+                                                <option value="24">2024</option>
+                                                <option value="25">2025</option>
+                                                <option value="26">2026</option>
+                                                <option value="27">2027</option>
+                                                <option value="28">2028</option>
+                                                <option value="29">2029</option>
+                                                <option value="30">2030</option>
+                                                <option value="31">2031</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
+            $(document).ready(function () {
+                //Inicialización de las propiedades de Materialize css.
+                M.AutoInit();
+            });
+        </script>
+</body>
+
+</html>

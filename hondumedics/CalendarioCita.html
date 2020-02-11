@@ -159,32 +159,6 @@
     </nav>
     <br>
 
-    <!--Perfil de Doctor
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="card horizontal">
-                    <div class="card-image circular--landscape">
-                        <img
-                            src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <a href="PerfilDeDoctor.html" class="card-title"><b>Dra. Ruby Taylor</b></a>
-                            <p>Odontología</p>
-                            <p>Hospital Medical Center</p>
-                            <p>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa, FM 11101</p>
-                            <span class="material-icons checked">star</span>
-                            <span class="material-icons checked">star</span>
-                            <span class="material-icons checked">star</span>
-                            <span class="material-icons checked">star</span>
-                            <span class="material-icons ">star</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
     <div class="row">
         <div id='external-events'>
             <p>
@@ -221,7 +195,7 @@
     </div>
     <div class="row">
         <div class="container">
-            <a class="waves-effect waves-light btn right green">Procede a pagar</a>
+            <a href="Pagos.html" class="waves-effect waves-light btn green right">Procede a pagar</a>
         </div>
     </div>
     <script>
@@ -237,7 +211,7 @@
             var calendarEl = document.getElementById('calendar');
             var checkbox = document.getElementById('drop-remove');
 
-            // initialize the external events
+            // Inicializar los eventos externos
             // -----------------------------------------------------------------
 
             new Draggable(containerEl, {
@@ -249,7 +223,7 @@
                 }
             });
 
-            // initialize the calendar
+            // Inicializar el calendario
             // -----------------------------------------------------------------
 
             var calendar = new Calendar(calendarEl, {
@@ -260,16 +234,15 @@
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
                 editable: true,
-                droppable: true, // this allows things to be dropped onto the calendar
+                droppable: true, // Esto permite que las cosas se dejen caer en el calendario
                 drop: function (info) {
-                    // is the "remove after drop" checkbox checked?
+                    // ¿Está marcada la casilla de verificación "eliminar después de soltar"?
                     if (checkbox.checked) {
-                        // if so, remove the element from the "Draggable Events" list
+                        // si es así, elimine el elemento de la lista "Eventos arrastrables"
                         info.draggedEl.parentNode.removeChild(info.draggedEl);
                     }
                 }
             });
-
             calendar.render();
         });
     </script>
