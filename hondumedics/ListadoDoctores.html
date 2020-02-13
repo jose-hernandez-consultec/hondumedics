@@ -15,9 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!--DataTable-->
-    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
     <!-- Estilos CSS -->
     <style>
@@ -47,8 +44,8 @@
 
         .card-image {
             position: relative;
-            width: 170px;
-            height: 170px;
+            width: 120px;
+            height: 120px;
             overflow: hidden;
             border-radius: 50%;
             display: block;
@@ -76,41 +73,22 @@
             font-size: 18px;
         }
 
-        .btn-ver-perfiles {
-            width: 50%;
-            color: #FC5A5A;
-            background-color: white;
-            border: #FC5A5A 2px solid;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-        }
-
-        .btn-reservar-cita {
-            width: 50%;
-            color: white;
-            background-color: #FC5A5A;
-            border: black 2px solid;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-        }
-
         .card-stacked {
-            max-height: 600px;
+            max-height: 700px;
             display: inline-block;
         }
 
         .card .card-content {
-            padding: 15px 30px !important;
+            padding: 15px 25px !important;
+            text-align: justify;
         }
 
         .card-action {
-            padding: 15px 30px !important;
+            padding: 5px 25px !important;
         }
 
         p {
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .table-responsive {
@@ -119,6 +97,28 @@
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        /*.table-wrapper {
+            overflow-x: scroll;
+            width: 100%;
+        }*/
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        td {
+            width: 30px;
+            padding: 10px 0 10px;
+            background-color: #cccccc;
+            text-align: center;
+        }
+        th {
+            width: 30px;
+            padding: 10px 0 10px;
+            text-align: center;
         }
     </style>
 </head>
@@ -744,112 +744,140 @@
     </div>
 
     <!--Listado de doctores-->
-    <!--<div class="container">-->
-    <div class="col s12 m7">
-        <div class="card horizontal">
-            <div class="card-image circular--landscape">
-                <img
-                    src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg">
-            </div>
-            <div class="card-stacked">
-                <div class="card-content">
-                    <a href="PerfilDeDoctor.html" class="card-title"><b>Dra. Ruby Taylor</b></a>
-                    <p>Odontología</p>
-                    <p>Hospital Medical Center</p>
-                    <p>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa, FM 11101</p>
-                    <span class="material-icons checked">star</span>
-                    <span class="material-icons checked">star</span>
-                    <span class="material-icons checked">star</span>
-                    <span class="material-icons checked">star</span>
-                    <span class="material-icons unchecked">star</span>
-                    <span style="font-size: 16px;">(5)</span>
-                    <p style="font-size: 14px;">"Muy acertada en su escrutino médico y sus recomendaciones a seguir
-                        en posible tratamiento"</p>
+    <div class="row">
+        <!--<div class="container">-->
+        <div class="col s12 m12 l12">
+            <div class="card horizontal">
+                <!--Imagen de doctor-->
+                <div class="card-image circular--landscape">
+                    <img
+                        src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg">
                 </div>
-                <div class="card-action">
-                    <a style="color: #FC5A5A;" href="PerfilDeDoctor.html"
-                        class="waves-effect waves-light btn white btn-bordes-pink"><i
-                            class="material-icons left">account_circle</i>Ver Perfil</a>
-                    <a style="color: #FC5A5A;" href="CalendarioCita.html"
-                        class="waves-effect waves-light btn white btn-bordes-pink"><i
-                            class="material-icons left">date_range</i>Reservar Cita</a>
-                </div>
-            </div>
-            <div class="card-stacked">
-                <div class="card-content">
-                    <div class="table-responsive">
-                        <table class="centered">
-                            <thead>
-                                <tr>
-                                    <th><i class="material-icons">keyboard_arrow_left
-                                        </i></th>
-                                    <th>Lun 10 Feb</th>
-                                    <th>Mar 11 Feb</th>
-                                    <th>Mie 12 Feb</th>
-                                    <th>Jue 13 Feb</th>
-                                    <th>Vie 14 Feb</th>
-                                    <th>Sab 15 Feb</th>
-                                    <th>Dom 16 Feb</th>
-                                    <th><i class="material-icons">keyboard_arrow_right
-                                        </i></th>
-                                </tr>
-                            </thead>
+                <!--Información de doctor-->
+                <div class="card-stacked">
+                    <div class="row">
+                        <div class="card-content col s6">
+                            <a href="PerfilDeDoctor.html" class="card-title"><b>Dra. Ruby Taylor</b></a>
+                            <p>Odontología</p>
+                            <p>Hospital Medical Center</p>
+                            <p>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa, FM 11101</p>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons unchecked">star</span>
+                            <span style="font-size: 16px;">(5)</span>
+                            <p style="font-size: 14px;">"Muy acertada en su escrutino médico y sus recomendaciones a
+                                seguir
+                                en posible tratamiento"</p>
+                        </div>
+                        <div class="card-content col s6">
+                            <!--Horarios de citas semanales-->
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <div class="table-responsive">
+                                        <table class="centered">
+                                            <thead>
+                                                <tr>
+                                                    <th><i class="material-icons">keyboard_arrow_left
+                                                        </i></th>
+                                                    <th>Lun 10 Feb</th>
+                                                    <th>Mar 11 Feb</th>
+                                                    <th>Mie 12 Feb</th>
+                                                    <th>Jue 13 Feb</th>
+                                                    <th>Vie 14 Feb</th>
+                                                    <th>Sab 15 Feb</th>
+                                                    <th>Dom 16 Feb</th>
+                                                    <th><i class="material-icons">keyboard_arrow_right
+                                                        </i></th>
+                                                </tr>
+                                            </thead>
 
-                            <tbody>
-                                <tr>
-                                    <th></th>
-                                    <td>-</td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">9:00</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">9:00</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">9:00</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">9:00</a></td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <td>-</td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">9:30</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">9:30</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">9:30</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">9:30</a></td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <td>-</td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">10:00</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">10:00</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">10:00</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">10:00</a></td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <td>-</td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">10:30</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">10:30</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">10:30</a></td>
-                                    <td><a class="waves-effect waves-light btn-small yellow">10:30</a></td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <th></th>
-                                </tr>
-                            </tbody>
-                        </table>
+                                            <tbody>
+                                                <tr>
+                                                    <th></th>
+                                                    <td>-</td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">9:00</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">9:00</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">9:00</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">9:00</a>
+                                                    </td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <th></th>
+                                                </tr>
+                                                <tr>
+                                                    <th></th>
+                                                    <td>-</td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">9:30</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">9:30</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">9:30</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">9:30</a>
+                                                    </td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <th></th>
+                                                </tr>
+                                                <tr>
+                                                    <th></th>
+                                                    <td>-</td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">10:00</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">10:00</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">10:00</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">10:00</a>
+                                                    </td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <th></th>
+                                                </tr>
+                                                <tr>
+                                                    <th></th>
+                                                    <td>-</td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">10:30</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">10:30</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">10:30</a>
+                                                    </td>
+                                                    <td><a class="waves-effect waves-light btn-small yellow">10:30</a>
+                                                    </td>
+                                                    <td>-</td>
+                                                    <td>-</td>
+                                                    <th></th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--Botones de Ver Perfil y Reservar Cita-->
+                    <div class="card-action">
+                        <a style="color: #FC5A5A;" href="PerfilDeDoctor.html"
+                            class="waves-effect waves-light btn white btn-bordes-pink col s12 m6 l2"><i
+                                class="material-icons left">account_circle</i>Ver Perfil</a>
+                        <a style="color: #FC5A5A;" href="CalendarioCita.html"
+                            class="waves-effect waves-light btn white btn-bordes-pink col s12 m6 l2"><i
+                                class="material-icons left">date_range</i>Reservar Cita</a>
                     </div>
                 </div>
+
             </div>
-
         </div>
-    </div>
-    <!--</div>-->
+        <!--</div>-->
 
+    </div>
 
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
