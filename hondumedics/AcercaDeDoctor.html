@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>HonduMedics / Búsqueda</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- JQuery JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+    <!-- Estilos CSS -->
+    <style>
+        /* Navbar */
+        .nav-wrapper {
+            background-color: #FC5A5A;
+        }
+
+        .waves-effect.waves-pink .waves-ripple {
+            background-color: #FC5A5A;
+        }
+
+        .btn-pink {
+            background-color: #FC5A5A;
+        }
+
+        .btn-bordes {
+            border: white 2px solid;
+        }
+
+        .btn-bordes-pink {
+            border: #FC5A5A 2px solid;
+        }
+
+        .select-black-border {
+            border: black 1px solid;
+        }
+
+        /* Estrellas */
+        .checked {
+            color: orange;
+            font-size: 18px;
+        }
+
+        .unchecked {
+            font-size: 18px;
+        }
+
+        h6 {
+            font-size: 20px;
+        }
+
+        span {
+            color: #01579b;
+        }
+
+        .table-responsive {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        /*.table-wrapper {
+            overflow-x: scroll;
+            width: 100%;
+        }*/
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        td {
+            width: 30px;
+            padding: 5px 0 5px;
+            text-align: center;
+        }
+
+        th {
+            width: 75px;
+            padding: 5px 0 5px;
+            text-align: center;
+        }
+
+        body {
+            text-align: justify;
+        }
+
+        .btn-orange {
+            background-color: #fdd835;
+        }
+
+        .card-image {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+        }
+
+        /*.circular--portrait {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 50%;
+        }*/
+
+        .circular--portrait img {
+            width: 100%;
+            height: auto;
+            margin-left: -50px;
+        }
+
+        .circular--landscape img {
+            width: auto;
+            height: 100%;
+            margin-left: 0%;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <!--Navbar-->
+    <nav class="nav-wrapper">
+        <a href="#" class="brand-logo">HonduMedics</a>
+        <ul class="right hide-on-med-and-down">
+            <!--<li><a href="#" class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
+                        data-position="left" data-tooltip="Ingresa aquí." id="btnHM">Incluya su
+                        práctica en
+                        HonduMedics</a></li>-->
+            <li>
+                <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                    Pacientes
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a> </li>
+            <li>
+                <a href="#" class="dropdown-trigger" data-target="dropdown2">
+                    Doctores
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a> </li>
+            <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="hondumedics/Login.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Iniciar Sesión</center>
+                        </span>
+                    </a></li>
+                <li><a href="hondumedics/Registro.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Registrar</center>
+                        </span>
+                    </a></li>
+            </ul>
+            <ul id='dropdown2' class='dropdown-content'>
+                <li><a href="hondumedics/LoginDoctor.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Iniciar Sesión</center>
+                        </span>
+                    </a></li>
+                <li><a href="Unirse.html">
+                        <span style="color: #FC5A5A;">
+                            <center>Unirse</center>
+                        </span>
+                    </a></li>
+            </ul>
+        </ul>
+    </nav>
+
+    <!--Foto de Doctor -->
+    <div class="row">
+        <div class="col s12 m12 l7">
+            <div class="card">
+                <div class="card-image circular--landscape">
+                    <img
+                        src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg">
+                </div>
+                <br>
+                <center>
+                    <!-- Modal Trigger -->
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">5 Fotos</a>
+
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                        <div class="modal-content">
+                            <h4>Modal Header</h4>
+                            <p>A bunch of text</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                        </div>
+                    </div>
+                </center>
+
+                <center>
+                    <div class="card-content">
+                        <span class="card-title center-align truncate">
+                            <h3><b>Dra. Ruby Taylor</b></h3>
+                        </span>
+                        <center>
+                            <h6>Odontología</h6>
+                            <h6>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa.</h6>
+                        </center>
+                    </div>
+                </center>
+            </div>
+        </div>        
+    </div>
+
+
+    <script>
+        //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
+        $(document).ready(function () {
+            //Inicialización de las propiedades de Materialize css.
+            M.AutoInit();
+            $('.sidenav').sidenav();
+            $('.dropdown-trigger').dropdown({
+                coverTrigger: false,
+                belowOrigin: true
+            });
+
+        });
+    </script>
+</body>
+
+</html>
