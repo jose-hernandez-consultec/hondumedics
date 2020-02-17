@@ -58,8 +58,9 @@
             font-size: 20px;
         }
 
-        span {
-            color: #01579b;
+
+        p {
+            font-size: 18px;
         }
 
         .table-responsive {
@@ -129,7 +130,29 @@
             height: 100%;
             margin-left: 0%;
         }
-        
+
+        /*Modal Carousel Slider*/
+        .modal {
+            max-height: 85%;
+        }
+
+        /*Show More Less*/
+        a {
+            color: black;
+        }
+
+        a:visited {
+            color: black
+        }
+
+        a.morelink {
+            text-decoration: none;
+            outline: none;
+        }
+
+        .morecontent span {
+            display: none;
+        }
     </style>
 </head>
 
@@ -137,19 +160,19 @@
 
     <!--Navbar-->
     <nav class="nav-wrapper">
-        <a href="#" class="brand-logo">HonduMedics</a>
+        <a href="#" class="brand-logo" style="color: white;">HonduMedics</a>
         <ul class="right hide-on-med-and-down">
             <!--<li><a href="#" class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
                         data-position="left" data-tooltip="Ingresa aquí." id="btnHM">Incluya su
                         práctica en
                         HonduMedics</a></li>-->
             <li>
-                <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                <a href="#" class="dropdown-trigger" style="color: white;" data-target="dropdown1">
                     Pacientes
                     <i class="material-icons right">arrow_drop_down</i>
                 </a> </li>
             <li>
-                <a href="#" class="dropdown-trigger" data-target="dropdown2">
+                <a href="#" class="dropdown-trigger" style="color: white;" data-target="dropdown2">
                     Doctores
                     <i class="material-icons right">arrow_drop_down</i>
                 </a> </li>
@@ -184,30 +207,35 @@
     <div class="row">
         <div class="col s12 m12 l7">
             <div class="card">
-                <div class="card-image circular--landscape">
+                <div class="card-image circular--landscape materialboxed">
                     <img
                         src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg">
                 </div>
                 <br>
                 <center>
                     <!-- Modal Trigger -->
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">5 Fotos</a>
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">4 Fotos</a>
 
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal">
                         <div class="modal-content">
-                            <h4>Modal Header</h4>
-                            <p>A bunch of text</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                            <div class="carousel carousel-slider center">
+                                <a class="carousel-item" href=""><img
+                                        src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg"></a>
+                                <a class="carousel-item" href=""><img
+                                        src="https://i.pinimg.com/originals/3f/94/84/3f9484271e7e69e9c6fd0ea57b0384fa.jpg"></a>
+                                <a class="carousel-item" href=""><img
+                                        src="https://thumbs.dreamstime.com/b/oficina-moderna-de-la-odontolog%C3%ADa-15564406.jpg"></a>
+                                <a class="carousel-item" href=""><img
+                                        src="https://i.ytimg.com/vi/B5dbiGDFmsk/hqdefault.jpg"></a>
+                            </div>
                         </div>
                     </div>
                 </center>
 
                 <center>
                     <div class="card-content">
-                        <span class="card-title center-align truncate">
+                        <span class="card-title center-align truncate" style="color: #01579b;">
                             <h3><b>Dra. Ruby Taylor</b></h3>
                         </span>
                         <center>
@@ -217,8 +245,387 @@
                     </div>
                 </center>
             </div>
-        </div>        
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l5">
+                <div class="card">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card-content center">
+                                <nav style="background-color: #01579b !important;">
+                                    <a href="#" class="brand-logo center" style="font-size: 20px; color: white;">Reserva
+                                        su cita gratis</a>
+                                </nav>
+                                <br>
+                                <p style="text-align: justify; color: #01579b;"><b>¿Cuál es el motivo de su visita?</b>
+                                </p>
+                                <!--Select-->
+                                <div class="row">
+                                    <form class="col s12">
+                                        <div class="row">
+                                            <div class="input-field col s12 m12 l12">
+                                                <select class="browser-default select-black-border">
+                                                    <center>
+                                                        <option value="" disabled selected>Todas las razones de
+                                                            visitas</option>
+                                                    </center>
+                                                    <optgroup label="Todas las razones de visitas">
+                                                        <option id="option1" value="1">Alta Hospitalaria /
+                                                            Seguimiento</option>
+                                                        <option id="option2" value="2">Ansiedad</option>
+                                                        <option id="option3" value="3">Chequeo Anual</option>
+                                                        <option id="option4" value="4">Chequeo Previo al Viaje
+                                                        </option>
+                                                        <option id="option5" value="5">Concusión</option>
+                                                        <option id="option6" value="6">Consulta de Medicina
+                                                            Deportiva</option>
+                                                        <option id="option7" value="7">Consulta Nutricional</option>
+                                                        <option id="option8" value="8">Contractura Muscular</option>
+                                                        <option id="option9" value="9">Contusión</option>
+                                                        <option id="option10" value="10">Disco Herniado</option>
+                                                        <option id="option11" value="11">Dolor de Espalda</option>
+                                                        <option id="option12" value="12">Dolor en las Articulaciones
+                                                        </option>
+                                                        <option id="option13" value="13">Enfermedad de Transmisión
+                                                            Sexual (ETS)</option>
+                                                        <option id="option14" value="14">Erupción</option>
+                                                        <option id="option15" value="15">Esguince de Ligamentos
+                                                        </option>
+                                                        <option id="option16" value="16">Evaluación Pre-deportiva
+                                                        </option>
+                                                        <option id="option17" value="17">Falta de Aliento /
+                                                            Dificultad Para Respirar</option>
+                                                        <option id="option18" value="18">Fiebre</option>
+                                                        <option id="option19" value="19">Frío</option>
+                                                        <option id="option20" value="20">Gripe</option>
+                                                        <option id="option21" value="21">Intolerancia a la Lactosa
+                                                        </option>
+                                                        <option id="option22" value="22">Lesión deportiva</option>
+                                                        <option id="option23" value="23">Menopausia</option>
+                                                        <option id="option24" value="24">Náuseas y Vómitos</option>
+                                                        <option id="option25" value="25">Pre-deporte Físico</option>
+                                                        <option id="option26" value="26">Problema Conjunto</option>
+                                                        <option id="option27" value="27">Problema de Hombro</option>
+                                                        <option id="option28" value="28">Problema de la Piel
+                                                        </option>
+                                                        <option id="option29" value="29">Problema de Muñeca</option>
+                                                        <option id="option30" value="30">Problemas de Cadera
+                                                        </option>
+                                                        <option id="option31" value="31">Problemas de Codo</option>
+                                                        <option id="option32" value="32">Problemas de Cuello
+                                                        </option>
+                                                        <option id="option33" value="33">Problemas de Espalda
+                                                        </option>
+                                                        <option id="option34" value="34">Problemas de Mano</option>
+                                                        <option id="option35" value="35">Problemas de Rodilla
+                                                        </option>
+                                                        <option id="option36" value="36">Problemas de Tobillo
+                                                        </option>
+                                                        <option id="option37" value="37">Problemas Respiratorios
+                                                        </option>
+                                                        <option id="option38" value="38">Sangrado de Nariz /
+                                                            Epitaxis</option>
+                                                        <option id="option39" value="39">Sarampión / Rubeola
+                                                        </option>
+                                                        <option id="option40" value="40">Seguimiento de Medicina
+                                                            Deportiva</option>
+                                                        <option id="option41" value="41">Sensibilidad al Gluten
+                                                        </option>
+                                                        <option id="option42" value="42">Tos</option>
+                                                        <option id="option43" value="43">Vacuna Contra la Gripe
+                                                        </option>
+                                                        <option id="option44" value="44">Varicela</option>
+                                                        <option id="option45" value="45">Visita de Detección
+                                                            Cardiovascular</option>
+                                                        <option id="option46" value="46">Visita de Nuevo Paciente
+                                                        </option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <p style="text-align: justify; color: #01579b;"><b>¿El paciente ha visto a este médico
+                                        antes?</b>
+                                </p>
+                                <div class="row">
+                                    <fieldset>
+                                        <div class="row">
+                                            <form class="col s12">
+                                                <div class="row">
+                                                    <div class="col s6 m6 l5">
+                                                        <p style="font-size: 30px;">
+                                                            <label>
+                                                                <input class="with-gap" name="group3" type="radio" />
+                                                                <span>No</span>
+                                                            </label>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col s6 m6 l5">
+                                                        <p style="font-size: 30px;">
+                                                            <label>
+                                                                <input class="with-gap" name="group3" type="radio" />
+                                                                <span>Sí</span>
+                                                            </label>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="row">
+                                    <p style="text-align: justify; color: #01579b;"><b>Seleccione un horario en una
+                                            oficina</b>
+                                    </p>
+                                    <br>
+                                    <p style="text-align: center; color: #01579b;"><b>Honduras Medical Center</b>
+                                    </p>
+                                    <p style="text-align: center; color: #01579b;"><b>Col. Las Minitas, Avenida Juan
+                                            Lindo, Suite 108, Tegucigalpa, FM 11101</b>
+                                    </p>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col s12 m12 l12">
+                                            <div class="table-responsive">
+                                                <table class="centered striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <ul class="pagination">
+                                                                <th>
+                                                                    <li class="disabled"><a href="#"><i
+                                                                                class="material-icons black-text">chevron_left</i></a>
+                                                                    </li>
+                                                                </th>
+                                                                <th>
+                                                                    <li class="waves-effect"><a href="#"
+                                                                            class="black-text">Lun 17 Feb</a>
+                                                                    </li>
+                                                                </th>
+                                                                <th>
+                                                                    <li class="waves-effect"><a href="#"
+                                                                            class="black-text">Mar 18 Feb</a>
+                                                                    </li>
+                                                                </th>
+                                                                <th>
+                                                                    <li class="waves-effect"><a href="#"
+                                                                            class="black-text">Mié 19 Feb</a>
+                                                                    </li>
+                                                                </th>
+                                                                <th>
+                                                                    <li class="waves-effect"><a href="#"
+                                                                            class="black-text">Jue 20 Feb</a>
+                                                                    </li>
+                                                                </th>
+                                                                <th>
+                                                                    <li class="waves-effect"><a href="#"
+                                                                            class="black-text">Vie 21 Feb</a>
+                                                                    </li>
+                                                                </th>
+                                                                <th>
+                                                                    <li class="waves-effect"><a href="#"
+                                                                            class="black-text">Sáb 22 Feb</a>
+                                                                    </li>
+                                                                </th>
+                                                                <th>
+                                                                    <li class="waves-effect"><a href="#"
+                                                                            class="black-text">Dom 23 Feb</a>
+                                                                    </li>
+                                                                </th>
+                                                                <th>
+                                                                    <li class="waves-effect"><a href="#!"><i
+                                                                                class="material-icons black-text">chevron_right</i></a>
+                                                                    </li>
+                                                                </th>
+                                                            </ul>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        <tr>
+                                                            <th></th>
+                                                            <td>-</td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
+                                                            </td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <th></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th></th>
+                                                            <td>-</td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
+                                                            </td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <th></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th></th>
+                                                            <td>-</td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
+                                                            </td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <th></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th></th>
+                                                            <td>-</td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
+                                                            </td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <th></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th></th>
+                                                            <td>-</td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
+                                                            </td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <th></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th></th>
+                                                            <td>-</td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
+                                                            </td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <th></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th></th>
+                                                            <td>-</td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
+                                                            </td>
+                                                            <td><a
+                                                                    class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
+                                                            </td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <th></th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col s12 m12 l7">
+            <div class="card">
+                <div class="row">
+                    <div class="col s12 m12 l5">
+                        <div class="card-content center">
+                            <span class="card-title center-align truncate" style="color: gray;">
+                                <h6><b>Clasificación general</b></h6>
+                            </span>
+                            <h3>4.2</h3>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons checked">star</span>
+                            <span class="material-icons unchecked">star</span>
+                            <br>
+                            <p><a href="#">5 Opiniones</a></p>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l7">
+                        <div class="card-content justify-align">
+                            <p style="color: gray;">Revisiones recientes</p>
+                            <p>Servicio amable y bueno, pero largas horas de espera. No se basa en la cita/hora, es por
+                                orden de llegada. Tomar nota</p>
+                            <p style="color: gray; font-size: 13px">Carlos P. 4 de octubre de 2018</p>
+                            <br>
+                            <div class="comment more" style="font-size: 18px; color: black;">En primer lugar, solo había
+                                3 pacientes antes que yo, pero de alguna manera
+                                terminé esperando 2 1/2 horas para que me vieran cuando tenía una cita. Creo que eso es
+                                indignante..</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <script>
@@ -231,8 +638,60 @@
                 coverTrigger: false,
                 belowOrigin: true
             });
+            $('.carousel').carousel();
 
-        });
+            //Inicialización Carousel
+            $('.carousel.carousel-slider').carousel({
+                fullWidth: true
+            });
+
+            //Inicialización de modal slider carousel
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems, {
+                'onOpenEnd': initCarouselModal
+            });
+
+            function initCarouselModal() {
+                var elems = document.querySelectorAll('.carousel');
+                var instances = M.Carousel.init(elems, { 'fullWidth': true });
+                instances[0].set(0);
+            }
+
+            //Mostrar Más Menos
+            $(document).ready(function () {
+                var showChar = 130;
+                var ellipsestext = "…";
+                var moretext = "Mostrar Más";
+                var lesstext = "Mostrar Menos";
+                $('.more').each(function () {
+                    var content = $(this).html();
+
+                    if (content.length > showChar) {
+
+                        var c = content.substr(0, showChar);
+                        var h = content.substr(showChar - 1, content.length - showChar);
+
+                        var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+                        $(this).html(html);
+                    }
+
+                });
+
+                $(".morelink").click(function () {
+                    if ($(this).hasClass("less")) {
+                        $(this).removeClass("less");
+                        $(this).html(moretext);
+                    } else {
+                        $(this).addClass("less");
+                        $(this).html(lesstext);
+                    }
+                    $(this).parent().prev().toggle();
+                    $(this).prev().toggle();
+                    return false;
+                });
+            });
+        }); 
     </script>
 </body>
 
