@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>HonduMedics / Búsqueda</title>
+    <title>Dra. Ruby Taylor / HonduMedics</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Google Map-->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
 
 
     <!-- Estilos CSS -->
@@ -138,11 +140,11 @@
 
         /*Show More Less*/
         a {
-            color: black;
+            color: #01579b;
         }
 
         a:visited {
-            color: black
+            color: #01579b
         }
 
         a.morelink {
@@ -152,6 +154,39 @@
 
         .morecontent span {
             display: none;
+        }
+
+        /*Collapsible-Header*/
+        .collapsible-header i {
+            position: absolute;
+            right: 35px;
+        }
+
+        li.active .collapsible-header {
+            background-color: #01579b !important;
+            color: white;
+        }
+
+        .collapsible-header {
+            border-bottom: 1px solid #01579b;
+        }
+
+        .collapsible {
+            color: black;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
         }
     </style>
 </head>
@@ -206,422 +241,1051 @@
     <!--Foto de Doctor -->
     <div class="row">
         <div class="col s12 m12 l7">
-            <div class="card">
-                <div class="card-image circular--landscape materialboxed">
-                    <img
-                        src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg">
-                </div>
-                <br>
-                <center>
-                    <!-- Modal Trigger -->
-                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">4 Fotos</a>
+            <ul class="collection">
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="card-image circular--landscape materialboxed">
+                            <img
+                                src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg">
+                        </div>
+                        <br>
+                        <center>
+                            <!-- Modal Trigger -->
+                            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">4 Fotos</a>
 
-                    <!-- Modal Structure -->
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                            <div class="carousel carousel-slider center">
-                                <a class="carousel-item" href=""><img
-                                        src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg"></a>
-                                <a class="carousel-item" href=""><img
-                                        src="https://i.pinimg.com/originals/3f/94/84/3f9484271e7e69e9c6fd0ea57b0384fa.jpg"></a>
-                                <a class="carousel-item" href=""><img
-                                        src="https://thumbs.dreamstime.com/b/oficina-moderna-de-la-odontolog%C3%ADa-15564406.jpg"></a>
-                                <a class="carousel-item" href=""><img
-                                        src="https://i.ytimg.com/vi/B5dbiGDFmsk/hqdefault.jpg"></a>
+                            <!-- Modal Structure -->
+                            <div id="modal1" class="modal">
+                                <div class="modal-content">
+                                    <div class="carousel carousel-slider center">
+                                        <a class="carousel-item" href=""><img
+                                                src="https://www.aristizabalmulett.com/wp-content/uploads/2019/06/Odontologa-en-Manizales-Maria-Camila-Aristizabal-Mulett.jpg"></a>
+                                        <a class="carousel-item" href=""><img
+                                                src="https://i.pinimg.com/originals/3f/94/84/3f9484271e7e69e9c6fd0ea57b0384fa.jpg"></a>
+                                        <a class="carousel-item" href=""><img
+                                                src="https://thumbs.dreamstime.com/b/oficina-moderna-de-la-odontolog%C3%ADa-15564406.jpg"></a>
+                                        <a class="carousel-item" href=""><img
+                                                src="https://i.ytimg.com/vi/B5dbiGDFmsk/hqdefault.jpg"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </center>
+                        <center>
+                            <div class="card-content">
+                                <span class="card-title center-align truncate" style="color: #01579b;">
+                                    <h3><b>Dra. Ruby Taylor</b></h3>
+                                </span>
+                                <center>
+                                    <h6>Odontología</h6>
+                                    <h6>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa.</h6>
+                                </center>
+                            </div>
+                        </center>
+                    </div>
+                </li>
+                <!--Clasificación general del doctor-->
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="col s12 m12 l5">
+                            <div class="card-content center">
+                                <span class="card-title center-align truncate" style="color: gray;">
+                                    <h6><b>Clasificación general</b></h6>
+                                </span>
+                                <h3>4.2</h3>
+                                <span class="material-icons checked">star</span>
+                                <span class="material-icons checked">star</span>
+                                <span class="material-icons checked">star</span>
+                                <span class="material-icons checked">star</span>
+                                <span class="material-icons unchecked">star</span>
+                                <br>
+                                <p><a href="#">5 Opiniones</a></p>
+                            </div>
+                        </div>
+                        <!--Comentarios-->
+                        <div class="col s12 m12 l7">
+                            <div class="card-content justify-align">
+                                <p style="color: gray;">Revisiones recientes</p>
+                                <p>Servicio amable y bueno, pero largas horas de espera. No se basa en la cita/hora, es
+                                    por orden de llegada. Tomar nota.</p>
+                                <p style="color: gray; font-size: 13px">Carlos P. 4 de octubre de 2018</p>
+                                <br>
+                                <div class="comment more" style="font-size: 18px; color: black;">En primer lugar, solo
+                                    había 3 pacientes antes que yo, pero de alguna manera terminé esperando 2 1/2 horas
+                                    para que me vieran cuando tenía una cita. Creo que eso es indignante..</div><br>
                             </div>
                         </div>
                     </div>
-                </center>
-
-                <center>
-                    <div class="card-content">
-                        <span class="card-title center-align truncate" style="color: #01579b;">
-                            <h3><b>Dra. Ruby Taylor</b></h3>
-                        </span>
-                        <center>
-                            <h6>Odontología</h6>
-                            <h6>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa.</h6>
-                        </center>
-                    </div>
-                </center>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12 m12 l5">
-                <div class="card">
+                </li>
+                <!--Acerca de Doctor-->
+                <li class="collection-item">
                     <div class="row">
                         <div class="col s12 m12 l12">
-                            <div class="card-content center">
-                                <nav style="background-color: #01579b !important;">
-                                    <a href="#" class="brand-logo center" style="font-size: 20px; color: white;">Reserva
-                                        su cita gratis</a>
-                                </nav>
-                                <br>
-                                <p style="text-align: justify; color: #01579b;"><b>¿Cuál es el motivo de su visita?</b>
-                                </p>
-                                <!--Select-->
+                            <div class="card-content">
+                                <span class="card-title justify-align truncate" style="color: #01579b;">
+                                    <h6><b>Acerca de Dra. Ruby Taylor</b></h6>
+                                </span>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam sit dolorem quis,
+                                    perspiciatis provident praesentium fugit rerum quaerat, saepe et explicabo cum dolor
+                                    quibusdam neque ratione optio temporibus id voluptatibus.</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi possimus ducimus dolore
+                                    iste cupiditate aperiam quod mollitia ipsa, recusandae reprehenderit praesentium
+                                    provident accusamus officia unde atque quas obcaecati, maiores doloribus.</p>
+                                <div class="comment more" style="font-size: 18px; color: black;">Lorem ipsum, dolor sit
+                                    amet consectetur adipisicing elit. Fuga nemo quibusdam beatae
+                                    adipisci quod repellendus illo consequuntur, mollitia at neque non, doloremque
+                                    provident architecto placeat quae earum velit dolores consectetur..</div><br>
+                                <!--Seguros médicos-->
+                                <span class="card-title justify-align truncate" style="color: #01579b;">
+                                    <h6><b>Seguros dentro de la red</b></h6>
+                                </span>
+                                <!--Collapsible Seguros médicos-->
                                 <div class="row">
-                                    <form class="col s12">
-                                        <div class="row">
-                                            <div class="input-field col s12 m12 l12">
-                                                <select class="browser-default select-black-border">
-                                                    <center>
-                                                        <option value="" disabled selected>Todas las razones de
-                                                            visitas</option>
-                                                    </center>
-                                                    <optgroup label="Todas las razones de visitas">
-                                                        <option id="option1" value="1">Alta Hospitalaria /
-                                                            Seguimiento</option>
-                                                        <option id="option2" value="2">Ansiedad</option>
-                                                        <option id="option3" value="3">Chequeo Anual</option>
-                                                        <option id="option4" value="4">Chequeo Previo al Viaje
-                                                        </option>
-                                                        <option id="option5" value="5">Concusión</option>
-                                                        <option id="option6" value="6">Consulta de Medicina
-                                                            Deportiva</option>
-                                                        <option id="option7" value="7">Consulta Nutricional</option>
-                                                        <option id="option8" value="8">Contractura Muscular</option>
-                                                        <option id="option9" value="9">Contusión</option>
-                                                        <option id="option10" value="10">Disco Herniado</option>
-                                                        <option id="option11" value="11">Dolor de Espalda</option>
-                                                        <option id="option12" value="12">Dolor en las Articulaciones
-                                                        </option>
-                                                        <option id="option13" value="13">Enfermedad de Transmisión
-                                                            Sexual (ETS)</option>
-                                                        <option id="option14" value="14">Erupción</option>
-                                                        <option id="option15" value="15">Esguince de Ligamentos
-                                                        </option>
-                                                        <option id="option16" value="16">Evaluación Pre-deportiva
-                                                        </option>
-                                                        <option id="option17" value="17">Falta de Aliento /
-                                                            Dificultad Para Respirar</option>
-                                                        <option id="option18" value="18">Fiebre</option>
-                                                        <option id="option19" value="19">Frío</option>
-                                                        <option id="option20" value="20">Gripe</option>
-                                                        <option id="option21" value="21">Intolerancia a la Lactosa
-                                                        </option>
-                                                        <option id="option22" value="22">Lesión deportiva</option>
-                                                        <option id="option23" value="23">Menopausia</option>
-                                                        <option id="option24" value="24">Náuseas y Vómitos</option>
-                                                        <option id="option25" value="25">Pre-deporte Físico</option>
-                                                        <option id="option26" value="26">Problema Conjunto</option>
-                                                        <option id="option27" value="27">Problema de Hombro</option>
-                                                        <option id="option28" value="28">Problema de la Piel
-                                                        </option>
-                                                        <option id="option29" value="29">Problema de Muñeca</option>
-                                                        <option id="option30" value="30">Problemas de Cadera
-                                                        </option>
-                                                        <option id="option31" value="31">Problemas de Codo</option>
-                                                        <option id="option32" value="32">Problemas de Cuello
-                                                        </option>
-                                                        <option id="option33" value="33">Problemas de Espalda
-                                                        </option>
-                                                        <option id="option34" value="34">Problemas de Mano</option>
-                                                        <option id="option35" value="35">Problemas de Rodilla
-                                                        </option>
-                                                        <option id="option36" value="36">Problemas de Tobillo
-                                                        </option>
-                                                        <option id="option37" value="37">Problemas Respiratorios
-                                                        </option>
-                                                        <option id="option38" value="38">Sangrado de Nariz /
-                                                            Epitaxis</option>
-                                                        <option id="option39" value="39">Sarampión / Rubeola
-                                                        </option>
-                                                        <option id="option40" value="40">Seguimiento de Medicina
-                                                            Deportiva</option>
-                                                        <option id="option41" value="41">Sensibilidad al Gluten
-                                                        </option>
-                                                        <option id="option42" value="42">Tos</option>
-                                                        <option id="option43" value="43">Vacuna Contra la Gripe
-                                                        </option>
-                                                        <option id="option44" value="44">Varicela</option>
-                                                        <option id="option45" value="45">Visita de Detección
-                                                            Cardiovascular</option>
-                                                        <option id="option46" value="46">Visita de Nuevo Paciente
-                                                        </option>
-                                                    </optgroup>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <p style="text-align: justify; color: #01579b;"><b>¿El paciente ha visto a este médico
-                                        antes?</b>
-                                </p>
-                                <div class="row">
-                                    <fieldset>
-                                        <div class="row">
-                                            <form class="col s12">
-                                                <div class="row">
-                                                    <div class="col s6 m6 l5">
-                                                        <p style="font-size: 30px;">
-                                                            <label>
-                                                                <input class="with-gap" name="group3" type="radio" />
-                                                                <span>No</span>
-                                                            </label>
-                                                        </p>
-                                                    </div>
-                                                    <div class="col s6 m6 l5">
-                                                        <p style="font-size: 30px;">
-                                                            <label>
-                                                                <input class="with-gap" name="group3" type="radio" />
-                                                                <span>Sí</span>
-                                                            </label>
-                                                        </p>
-                                                    </div>
+                                    <div class="col s12">
+                                        <ul class="collapsible expandable" data-collapsible="accordion">
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Catacamas, Olancho
                                                 </div>
-                                            </form>
-                                        </div>
-                                    </fieldset>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Catacamas</p>
+                                                    <p><b>Dirección: </b> Primera Planta Edificio Plaza Génesis,
+                                                        Boulevard La
+                                                        Mora</p>
+
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Choloma, Cortés
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Choloma</p>
+                                                    <p><b>Dirección: </b> Bo. El Centro, Frente a la Pelotera</p>
+
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Choluteca
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Choluteca</p>
+                                                    <p><b>Dirección: </b> Choluteca</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Clínica San Francisco De Asís</p>
+                                                    <p><b>Dirección: </b> Bo. La Ceiba contiguo a incatec</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Comayagua
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Comayagua</p>
+                                                    <p><b>Dirección: </b> Bo. Abajo, contiguo a Edificio Araque Madrid
+                                                    </p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Centro Médico Comayagua Colonial</p>
+                                                    <p><b>Dirección: </b> Bo. San Francisco, Calle que va para Bo.
+                                                        Suyapa, 1 Cuadar al este de la Armería</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Comayagüela, Francisco Morazán
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Barrio Belen</p>
+                                                    <p><b>Dirección: </b> Bo. Belen, Segundo Nivel Centro Comercial
+                                                        Mamanila</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> La Policlínica</p>
+                                                    <p><b>Dirección: </b> Tercera Avenida, entre 7 y 8 calle No. 711</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Centro Médico Hondureño</p>
+                                                    <p><b>Dirección: </b> Bo. La Granja media cuadra antes del Club del
+                                                        Banco Central</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Infantil Privado</p>
+                                                    <p><b>Dirección: </b> Barrio La Granja frente al Centro Médico
+                                                        Hondureño a la par de la Farmacia La Granja</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Traumacentro</p>
+                                                    <p><b>Dirección: </b> Barrio La Granja frente al Centro Médico
+                                                        Hondureño por el lado del Laboratorio a la par de la Farmacia
+                                                        Michell</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital y Clínica San Jorge</p>
+                                                    <p><b>Dirección: </b> Barrio la Bolsa, Contiguo a Cafè el Indio,
+                                                        Frente a Soptravi</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Diagnósticos Médicos DIME</p>
+                                                    <p><b>Dirección: </b> Col. Humuya, Ave. Ucrania, 1/2 cuadra debajo
+                                                        de la Universidad Jose Cecilio del Valle</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Danlí, El Paraíso
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Danli</p>
+                                                    <p><b>Dirección: </b> Bo. Pueblo Nuevo, a una cuadra del Hospital
+                                                        Gabriela Alvarado</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Gracias, Lempira
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Gracias, Lempira</p>
+                                                    <p><b>Dirección: </b> Barrio El Rosario, Edificio Alessandra, frene
+                                                        a Bodega La Economía, Callea Hotel Guancasco</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Juticalpa, Olancho
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Clínicas La Merced</p>
+                                                    <p><b>Dirección: </b> Juticalpa, Olancho</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Juticalpa</p>
+                                                    <p><b>Dirección: </b> Bo. Las Flores, Juticalpa</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    La Ceiba, Atlántida
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Ceiba</p>
+                                                    <p><b>Dirección: </b> Prolongación Ave. San Isidro, a una cuadra del
+                                                        Inst. Manuel Bonilla</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital D'Antoni</p>
+                                                    <p><b>Dirección: </b> Solares nuevos Avenida Morazan</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital Euro-Honduras</p>
+                                                    <p><b>Dirección: </b> Barrio El Centro primera calle, Avenida
+                                                        Atlántida, entrada por la Playa</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Clínicas Medicentro</p>
+                                                    <p><b>Dirección: </b> Barrio El Imán, 13 calle, Avenida Victor Hugo,
+                                                        entrada Colonia El Naranjal</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    La Entrada, Copán
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa La Entrada</p>
+                                                    <p><b>Dirección: </b> Media cuadra Arriba de la Curacao</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    La Esperanza, Intibucá
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Centro Médico Carrasco Espinoza</p>
+                                                    <p><b>Dirección: </b> Col. Mi Esperanza, blv. Rodolfo Z. Velásquez,
+                                                        Salida a Marcala</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    La Lima, Cortés
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital La Lima Medical Center</p>
+                                                    <p><b>Dirección: </b> La Lima Nueva, Frente a 2do. Portón de la Zona
+                                                        Americana</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Marcala, La Paz
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Marcala</p>
+                                                    <p><b>Dirección: </b> Primera Planta Edificio Guzmán</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Progreso, Yoro
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Progreso</p>
+                                                    <p><b>Dirección: </b> 2da. Ave., 2 Calle Sur Oeste, Edificio Chon
+                                                        Polio, Frente a Distribuidora Barahona</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Clínicas Médicas Cristianas</p>
+                                                    <p><b>Dirección: </b> Col. Patty, 4ta. Y 5ta ave. 2da. Y 3era calle
+                                                        Noroeste 2 cuadras al sur del Estadio Micheletti</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Puerto Cortés, Cortés
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Puerto Cortes</p>
+                                                    <p><b>Dirección: </b> Barrio Copem, 12 Calle, 2 Ave. Centro
+                                                        Comercial San Carlos</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Centro Médico Cortes</p>
+                                                    <p><b>Dirección: </b> Barrio Copem 8 calle, 5 Avenida</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital Del Caribe</p>
+                                                    <p><b>Dirección: </b> Blvd. Principal carretera hacia Omoa, frente a
+                                                        Gasolinera UNO, ant. COPENA</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Policlínica Porteña</p>
+                                                    <p><b>Dirección: </b> Barrio Copen 4ta. Y 5ta. Avenida, 8 calle</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    San Lorenzo, Valle
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa San Lorenzo</p>
+                                                    <p><b>Dirección: </b> Bo. La Cruz</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    San Pedro Sula, Cortés
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Barandillas</p>
+                                                    <p><b>Dirección: </b> Bo. Barandillas, Segunda Ave. Nor Oeste,
+                                                        Séptima Calle</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Plaza Del Sol</p>
+                                                    <p><b>Dirección: </b> Bo. El Centro, 1 y 2 Ave. 7 y 8 Calle,
+                                                        Edificio Plaza del Sol, Local No. 15 B2, Segunda Planta</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Satelite</p>
+                                                    <p><b>Dirección: </b> Col. Satélite, 1era. Etapa, Casa No. 1, Bloque
+                                                        No. 85, frente a escuela 1ero. De Febrero</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Cemesa</p>
+                                                    <p><b>Dirección: </b> Colonia Altamira, 22 y 23 calle, Boulevard del
+                                                        Sur Contiguo a la Mazda</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Centro De Emergencias Suyapa</p>
+                                                    <p><b>Dirección: </b> 11 Avenida, 6 calle Sur Oeste, Barrio El
+                                                        Benque 4 cuadras adelante sobre la avenida</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Centro Médico De La Mujer Monte De Sion</p>
+                                                    <p><b>Dirección: </b> Bo. Los Andes, 12 Ave. 3 Calle, Atrás del
+                                                        Maria Auxiliadora</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Clínicas Bendaña</p>
+                                                    <p><b>Dirección: </b> 17 Avenida Circunvalación No. 46</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital Betesda</p>
+                                                    <p><b>Dirección: </b> 11 Avenida, 12 calle B, Bo. Los Andes, Antiguo
+                                                        Local de Tránsito una cuadra abajo de la Universidad Privada</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital Del Valle</p>
+                                                    <p><b>Dirección: </b> Boulevard del Norte frente a Texaco Palenque
+                                                        por el IHSS</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital Vista Del Valle</p>
+                                                    <p><b>Dirección: </b> Primera Calle, 21 avenida, Boulevard Los
+                                                        Prôceres, 5 cuadras arriba de Fryday, Colonia Moderno</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Firenze</p>
+                                                    <p><b>Dirección: </b> Centro Comercial Plaza Firenze, Barrio Los
+                                                        Andes, 2 calle, 15 avenida NO</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Santa Bárbara
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Santa Bárbara</p>
+                                                    <p><b>Dirección: </b> Bo. Abajo, Avenida Principal, a media cuadra
+                                                        de Gasolinera Esso</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Santa Rosa de Copán, Copán
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Santa Rosa De Copan</p>
+                                                    <p><b>Dirección: </b> Bo. Los Dolores, frente a Carretera
+                                                        Internacional, Final Boulevard Suazo Córdova, Bo. Los Dolores
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Siguatepeque, Comayagua
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Siguatepeque</p>
+                                                    <p><b>Dirección: </b> Bo. El Centro, Segundo nivel de Edificio Sari
+                                                    </p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital Evangelico</p>
+                                                    <p><b>Dirección: </b> Ave. Mariano Maquini, Barrio Calanterique</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Tegucigalpa, Francisco Morazán
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Alameda</p>
+                                                    <p><b>Dirección: </b> Entre Col. Ruben Darío y Alameda, Avenida
+                                                        Principal</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Kennedy</p>
+                                                    <p><b>Dirección: </b> Col. Kennedy, Calle del Comercio, Segunda
+                                                        Planta Centro Comercial Elvir</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Guanacaste</p>
+                                                    <p><b>Dirección: </b> Bo. El Guanacaste, Edificio Milla, Esquina
+                                                        opuesta a Escuela José Cecilio del Valle</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Plaza la Granja</p>
+                                                    <p><b>Dirección: </b> Centro Comercial Plaza La Granja, Nivel B,
+                                                        Local No.8</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Centro Comercial Midence Soto</p>
+                                                    <p><b>Dirección: </b> Centro Comercial Midence Soto, Nivel B</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Centro Oncológico Hondureño</p>
+                                                    <p><b>Dirección: </b> Anillo perifico contiguo al ministerio TSEBAOT
+                                                    </p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital Y Clínicas Viera</p>
+                                                    <p><b>Dirección: </b> o. La Ronda, una cuadra arriba del Parque
+                                                        Valle frente a la Alcaldia Municipal</p>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Honduras Medical Center</p>
+                                                    <p><b>Dirección: </b> Col. Las minitas, Ave. Juan Lindo, contiguo a
+                                                        Espresso Americano y Cafemania.</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Tela, Atlántida
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Hospital Quirúrgico Familiar</p>
+                                                    <p><b>Dirección: </b> Bo Morazán, Salida a la Ceiba, Frente a
+                                                        Lubricantes Somil, Tela, Atlántida</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Tocoa, Colón
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Tocoa</p>
+                                                    <p><b>Dirección: </b> Bo. El Centro, Frente a TexGas y Lubricantes
+                                                        Texaco</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Valle de Ángeles, Francisco Morazán
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Adventista del Septimo Día</p>
+                                                    <p><b>Dirección: </b> Calle frente a gasolinera ECCO, Valle de
+                                                        Angeles</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header">
+                                                    <i class="material-icons right more">expand_more</i>
+                                                    <i class="material-icons right less"
+                                                        style="display: none">expand_less</i>
+                                                    Villa Nueva, Cortés
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <p><b>Hospital: </b> Ashonplafa Villa Nueva</p>
+                                                    <p><b>Dirección: </b> Edificio Cooperativa Usula, 1era. Calle, 1era.
+                                                        Ave.</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
+                                <!--Especialidades-->
                                 <div class="row">
-                                    <p style="text-align: justify; color: #01579b;"><b>Seleccione un horario en una
-                                            oficina</b>
-                                    </p>
-                                    <br>
-                                    <p style="text-align: center; color: #01579b;"><b>Honduras Medical Center</b>
-                                    </p>
-                                    <p style="text-align: center; color: #01579b;"><b>Col. Las Minitas, Avenida Juan
-                                            Lindo, Suite 108, Tegucigalpa, FM 11101</b>
-                                    </p>
-                                    <br>
+                                    <span class="card-title justify-align truncate" style="color: #01579b;">
+                                        <h6><b>Especialidades</b></h6>
+                                        <p class="black-text">Odontología</p>
+                                    </span>
+                                </div>
+                                <!--Nombres de práctica-->
+                                <div class="row">
+                                    <span class="card-title justify-align truncate" style="color: #01579b;">
+                                        <h6><b>Nombres de práctica</b></h6>
+                                        <p><a href="#">Hospital Medical Center</a></p>
+                                    </span>
+                                </div>
+                                <!--Educación y Entrenamiento-->
+                                <div class="row">
+                                    <span class="card-title justify-align truncate" style="color: #01579b;">
+                                        <h6><b>Educación y Entrenamiento</b></h6>
+                                    </span>
                                     <div class="row">
                                         <div class="col s12 m12 l12">
-                                            <div class="table-responsive">
-                                                <table class="centered striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <ul class="pagination">
-                                                                <th>
-                                                                    <li class="disabled"><a href="#"><i
-                                                                                class="material-icons black-text">chevron_left</i></a>
-                                                                    </li>
-                                                                </th>
-                                                                <th>
-                                                                    <li class="waves-effect"><a href="#"
-                                                                            class="black-text">Lun 17 Feb</a>
-                                                                    </li>
-                                                                </th>
-                                                                <th>
-                                                                    <li class="waves-effect"><a href="#"
-                                                                            class="black-text">Mar 18 Feb</a>
-                                                                    </li>
-                                                                </th>
-                                                                <th>
-                                                                    <li class="waves-effect"><a href="#"
-                                                                            class="black-text">Mié 19 Feb</a>
-                                                                    </li>
-                                                                </th>
-                                                                <th>
-                                                                    <li class="waves-effect"><a href="#"
-                                                                            class="black-text">Jue 20 Feb</a>
-                                                                    </li>
-                                                                </th>
-                                                                <th>
-                                                                    <li class="waves-effect"><a href="#"
-                                                                            class="black-text">Vie 21 Feb</a>
-                                                                    </li>
-                                                                </th>
-                                                                <th>
-                                                                    <li class="waves-effect"><a href="#"
-                                                                            class="black-text">Sáb 22 Feb</a>
-                                                                    </li>
-                                                                </th>
-                                                                <th>
-                                                                    <li class="waves-effect"><a href="#"
-                                                                            class="black-text">Dom 23 Feb</a>
-                                                                    </li>
-                                                                </th>
-                                                                <th>
-                                                                    <li class="waves-effect"><a href="#!"><i
-                                                                                class="material-icons black-text">chevron_right</i></a>
-                                                                    </li>
-                                                                </th>
-                                                            </ul>
-                                                        </tr>
-                                                    </thead>
+                                            <div class="card-content">
+                                                <p style="color: black;">Licenciada en Ciencias Odontológicas, Honduras
+                                                </p>
+                                                <p style="color: black;">Máster en Ciencias Odontológicas en Cirugía
+                                                    Oral y Maxilofacial, Honduras </p>
+                                                <p style="color: black;">Louisiana State University y Emory University,
+                                                    Residencia en Cirugía Oral y Maxilofacial, 2010</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Idiomas hablados-->
+                                <div class="row">
+                                    <span class="card-title justify-align truncate" style="color: #01579b;">
+                                        <h6><b>Idiomas hablados</b></h6>
+                                        <p class="black-text">Español</p>
+                                        <p class="black-text">Inglés</p>
+                                    </span>
+                                </div>
+                                <!--Género del proveedor-->
+                                <div class="row">
+                                    <span class="card-title justify-align truncate" style="color: #01579b;">
+                                        <h6><b>Género del Proveedor</b></h6>
+                                        <p class="black-text">Femenino</p>
+                                    </span>
+                                </div>
+                                <!--Número de Colegiación-->
+                                <div class="row">
+                                    <span class="card-title justify-align truncate" style="color: #01579b;">
+                                        <h6><b>Número de Colegiación</b></h6>
+                                        <p class="black-text">1111-1111</p>
+                                    </span>
+                                </div>
+                                <!--Google Map-->
+                                <div class="row">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12 m12 l12">
+                                                <span class="card-title justify-align" style="color: #01579b;">
+                                                    <h6><b>Ubicación de la oficina de la Dra. Ruby Taylor</b></h6>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12 m12 l4 center">
+                                                <a href="#mapmodel" class="modal-trigger blue z-depth-1 waves-effect
+                                                waves-light btn-floating"><i
+                                                        class="red material-icons">location_on</i></a>
 
-                                                    <tbody>
-                                                        <tr>
-                                                            <th></th>
-                                                            <td>-</td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
-                                                            </td>
-                                                            <td>-</td>
-                                                            <td>-</td>
-                                                            <th></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th></th>
-                                                            <td>-</td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
-                                                            </td>
-                                                            <td>-</td>
-                                                            <td>-</td>
-                                                            <th></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th></th>
-                                                            <td>-</td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
-                                                            </td>
-                                                            <td>-</td>
-                                                            <td>-</td>
-                                                            <th></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th></th>
-                                                            <td>-</td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
-                                                            </td>
-                                                            <td>-</td>
-                                                            <td>-</td>
-                                                            <th></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th></th>
-                                                            <td>-</td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
-                                                            </td>
-                                                            <td>-</td>
-                                                            <td>-</td>
-                                                            <th></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th></th>
-                                                            <td>-</td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
-                                                            </td>
-                                                            <td>-</td>
-                                                            <td>-</td>
-                                                            <th></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th></th>
-                                                            <td>-</td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
-                                                            </td>
-                                                            <td><a
-                                                                    class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
-                                                            </td>
-                                                            <td>-</td>
-                                                            <td>-</td>
-                                                            <th></th>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                <div id="mapmodel" class="modal modal-fixed-footer">
+                                                    <div class="modal-content">
+                                                        <div id="googleMap" style="width:1000px;height:520px;"></div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#"
+                                                            class="red modal-action modal-close waves-effect waves-green btn-flat white-text">Cerrar</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m12 l2 center">
+                                                <p>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col s12 m12 l12">
+                                                <span class="card-title justify-align" style="color: #01579b">
+                                                    <h6><b>Comentarios de pacientes para Dra. Ruby Taylor</b></h6>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <p>Todas las revisiones han sido enviadas por pacientes después de ver al
+                                            proveedor.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--Cuadro de Reservar su cita gratis-->
+        <div class="row">
+            <div class="col s12 m12 l5">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <div class="card-content center">
+                                    <nav style="background-color: #01579b !important;">
+                                        <a href="#" class="brand-logo center"
+                                            style="font-size: 20px; color: white;">Reserva
+                                            su cita gratis</a>
+                                    </nav>
+                                    <br>
+                                    <p style="text-align: justify; color: #01579b;"><b>¿Cuál es el motivo de su
+                                            visita?</b>
+                                    </p>
+                                    <!--Select de todas las razones de visitas-->
+                                    <div class="row">
+                                        <form class="col s12">
+                                            <div class="row">
+                                                <div class="input-field col s12 m12 l12">
+                                                    <select class="browser-default select-black-border">
+                                                        <center>
+                                                            <option value="" disabled selected>Todas las razones de
+                                                                visitas</option>
+                                                        </center>
+                                                        <optgroup label="Todas las razones de visitas">
+                                                            <option id="option1" value="1">Alta Hospitalaria /
+                                                                Seguimiento</option>
+                                                            <option id="option2" value="2">Ansiedad</option>
+                                                            <option id="option3" value="3">Chequeo Anual</option>
+                                                            <option id="option4" value="4">Chequeo Previo al Viaje
+                                                            </option>
+                                                            <option id="option5" value="5">Concusión</option>
+                                                            <option id="option6" value="6">Consulta de Medicina
+                                                                Deportiva</option>
+                                                            <option id="option7" value="7">Consulta Nutricional</option>
+                                                            <option id="option8" value="8">Contractura Muscular</option>
+                                                            <option id="option9" value="9">Contusión</option>
+                                                            <option id="option10" value="10">Disco Herniado</option>
+                                                            <option id="option11" value="11">Dolor de Espalda</option>
+                                                            <option id="option12" value="12">Dolor en las Articulaciones
+                                                            </option>
+                                                            <option id="option13" value="13">Enfermedad de Transmisión
+                                                                Sexual (ETS)</option>
+                                                            <option id="option14" value="14">Erupción</option>
+                                                            <option id="option15" value="15">Esguince de Ligamentos
+                                                            </option>
+                                                            <option id="option16" value="16">Evaluación Pre-deportiva
+                                                            </option>
+                                                            <option id="option17" value="17">Falta de Aliento /
+                                                                Dificultad Para Respirar</option>
+                                                            <option id="option18" value="18">Fiebre</option>
+                                                            <option id="option19" value="19">Frío</option>
+                                                            <option id="option20" value="20">Gripe</option>
+                                                            <option id="option21" value="21">Intolerancia a la Lactosa
+                                                            </option>
+                                                            <option id="option22" value="22">Lesión deportiva</option>
+                                                            <option id="option23" value="23">Menopausia</option>
+                                                            <option id="option24" value="24">Náuseas y Vómitos</option>
+                                                            <option id="option25" value="25">Pre-deporte Físico</option>
+                                                            <option id="option26" value="26">Problema Conjunto</option>
+                                                            <option id="option27" value="27">Problema de Hombro</option>
+                                                            <option id="option28" value="28">Problema de la Piel
+                                                            </option>
+                                                            <option id="option29" value="29">Problema de Muñeca</option>
+                                                            <option id="option30" value="30">Problemas de Cadera
+                                                            </option>
+                                                            <option id="option31" value="31">Problemas de Codo</option>
+                                                            <option id="option32" value="32">Problemas de Cuello
+                                                            </option>
+                                                            <option id="option33" value="33">Problemas de Espalda
+                                                            </option>
+                                                            <option id="option34" value="34">Problemas de Mano</option>
+                                                            <option id="option35" value="35">Problemas de Rodilla
+                                                            </option>
+                                                            <option id="option36" value="36">Problemas de Tobillo
+                                                            </option>
+                                                            <option id="option37" value="37">Problemas Respiratorios
+                                                            </option>
+                                                            <option id="option38" value="38">Sangrado de Nariz /
+                                                                Epitaxis</option>
+                                                            <option id="option39" value="39">Sarampión / Rubeola
+                                                            </option>
+                                                            <option id="option40" value="40">Seguimiento de Medicina
+                                                                Deportiva</option>
+                                                            <option id="option41" value="41">Sensibilidad al Gluten
+                                                            </option>
+                                                            <option id="option42" value="42">Tos</option>
+                                                            <option id="option43" value="43">Vacuna Contra la Gripe
+                                                            </option>
+                                                            <option id="option44" value="44">Varicela</option>
+                                                            <option id="option45" value="45">Visita de Detección
+                                                                Cardiovascular</option>
+                                                            <option id="option46" value="46">Visita de Nuevo Paciente
+                                                            </option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!--Encuesta-->
+                                    <p style="text-align: justify; color: #01579b;"><b>¿El paciente ha visto a este
+                                            médico antes?</b>
+                                    </p>
+                                    <div class="row">
+                                        <fieldset>
+                                            <div class="row">
+                                                <form class="col s12">
+                                                    <div class="row">
+                                                        <div class="col s6 m6 l5">
+                                                            <p style="font-size: 30px;">
+                                                                <label>
+                                                                    <input class="with-gap" name="group3"
+                                                                        type="radio" />
+                                                                    <span>No</span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col s6 m6 l5">
+                                                            <p style="font-size: 30px;">
+                                                                <label>
+                                                                    <input class="with-gap" name="group3"
+                                                                        type="radio" />
+                                                                    <span>Sí</span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <!--Ver horarios disponibles-->
+                                    <div class="row">
+                                        <p style="text-align: justify; color: #01579b;"><b>Seleccione un horario en una
+                                                oficina</b>
+                                        </p>
+                                        <br>
+                                        <p style="text-align: center; color: #01579b;"><b>Honduras Medical Center</b>
+                                        </p>
+                                        <p style="text-align: center; color: #01579b;"><b>Col. Las Minitas, Avenida Juan
+                                                Lindo, Suite 108, Tegucigalpa, FM 11101</b>
+                                        </p>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col s12 m12 l12">
+                                                <div class="table-responsive">
+                                                    <table class="centered striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <ul class="pagination">
+                                                                    <th>
+                                                                        <li class="disabled"><a href="#"><i
+                                                                                    class="material-icons black-text">chevron_left</i></a>
+                                                                        </li>
+                                                                    </th>
+                                                                    <th>
+                                                                        <li class="waves-effect"><a href="#"
+                                                                                class="black-text">Lun 17 Feb</a>
+                                                                        </li>
+                                                                    </th>
+                                                                    <th>
+                                                                        <li class="waves-effect"><a href="#"
+                                                                                class="black-text">Mar 18 Feb</a>
+                                                                        </li>
+                                                                    </th>
+                                                                    <th>
+                                                                        <li class="waves-effect"><a href="#"
+                                                                                class="black-text">Mié 19 Feb</a>
+                                                                        </li>
+                                                                    </th>
+                                                                    <th>
+                                                                        <li class="waves-effect"><a href="#"
+                                                                                class="black-text">Jue 20 Feb</a>
+                                                                        </li>
+                                                                    </th>
+                                                                    <th>
+                                                                        <li class="waves-effect"><a href="#"
+                                                                                class="black-text">Vie 21 Feb</a>
+                                                                        </li>
+                                                                    </th>
+                                                                    <th>
+                                                                        <li class="waves-effect"><a href="#"
+                                                                                class="black-text">Sáb 22 Feb</a>
+                                                                        </li>
+                                                                    </th>
+                                                                    <th>
+                                                                        <li class="waves-effect"><a href="#"
+                                                                                class="black-text">Dom 23 Feb</a>
+                                                                        </li>
+                                                                    </th>
+                                                                    <th>
+                                                                        <li class="waves-effect"><a href="#!"><i
+                                                                                    class="material-icons black-text">chevron_right</i></a>
+                                                                        </li>
+                                                                    </th>
+                                                                </ul>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>-</td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">9:00</a>
+                                                                </td>
+                                                                <td>-</td>
+                                                                <td>-</td>
+                                                                <th></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>-</td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">9:30</a>
+                                                                </td>
+                                                                <td>-</td>
+                                                                <td>-</td>
+                                                                <th></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>-</td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">10:00</a>
+                                                                </td>
+                                                                <td>-</td>
+                                                                <td>-</td>
+                                                                <th></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>-</td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">10:30</a>
+                                                                </td>
+                                                                <td>-</td>
+                                                                <td>-</td>
+                                                                <th></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>-</td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">11:00</a>
+                                                                </td>
+                                                                <td>-</td>
+                                                                <td>-</td>
+                                                                <th></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>-</td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">11:30</a>
+                                                                </td>
+                                                                <td>-</td>
+                                                                <td>-</td>
+                                                                <th></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th></th>
+                                                                <td>-</td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
+                                                                </td>
+                                                                <td><a
+                                                                        class="waves-effect waves-light btn-small btn-orange black-text">13:00</a>
+                                                                </td>
+                                                                <td>-</td>
+                                                                <td>-</td>
+                                                                <th></th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col s12 m12 l7">
-            <div class="card">
-                <div class="row">
-                    <div class="col s12 m12 l5">
-                        <div class="card-content center">
-                            <span class="card-title center-align truncate" style="color: gray;">
-                                <h6><b>Clasificación general</b></h6>
-                            </span>
-                            <h3>4.2</h3>
-                            <span class="material-icons checked">star</span>
-                            <span class="material-icons checked">star</span>
-                            <span class="material-icons checked">star</span>
-                            <span class="material-icons checked">star</span>
-                            <span class="material-icons unchecked">star</span>
-                            <br>
-                            <p><a href="#">5 Opiniones</a></p>
-                        </div>
-                    </div>
-                    <div class="col s12 m12 l7">
-                        <div class="card-content justify-align">
-                            <p style="color: gray;">Revisiones recientes</p>
-                            <p>Servicio amable y bueno, pero largas horas de espera. No se basa en la cita/hora, es por
-                                orden de llegada. Tomar nota</p>
-                            <p style="color: gray; font-size: 13px">Carlos P. 4 de octubre de 2018</p>
-                            <br>
-                            <div class="comment more" style="font-size: 18px; color: black;">En primer lugar, solo había
-                                3 pacientes antes que yo, pero de alguna manera
-                                terminé esperando 2 1/2 horas para que me vieran cuando tenía una cita. Creo que eso es
-                                indignante..</div>
-                        </div>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -691,6 +1355,23 @@
                     return false;
                 });
             });
+
+            //Inicialización de collapsible
+            $(".collapsible-header").click(function () {
+                $(".more", this).toggle()
+                $(".less", this).toggle()
+            });
+
+            //Función Google Map
+            function initialize() {
+                var mapProp = {
+                    center: new google.maps.LatLng(14.09549, -87.190209),
+                    zoom: 18,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
         }); 
     </script>
 </body>
