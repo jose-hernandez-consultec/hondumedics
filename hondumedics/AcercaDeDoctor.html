@@ -188,6 +188,11 @@
             overflow: hidden;
             background-color: #f1f1f1;
         }
+
+        /*Botón con borde azul Servcial*/
+        .btn-bordes-azul {
+            border: #00b0ff 2px solid;
+        }
     </style>
 </head>
 
@@ -297,7 +302,7 @@
                                 <span class="material-icons checked">star</span>
                                 <span class="material-icons unchecked">star</span>
                                 <br>
-                                <p><a href="#">5 Opiniones</a></p>
+                                <p><a href="#">3 Opiniones</a></p>
                             </div>
                         </div>
                         <!--Comentarios-->
@@ -310,7 +315,9 @@
                                 <br>
                                 <div class="comment more" style="font-size: 18px; color: black;">En primer lugar, solo
                                     había 3 pacientes antes que yo, pero de alguna manera terminé esperando 2 1/2 horas
-                                    para que me vieran cuando tenía una cita. Creo que eso es indignante..</div><br>
+                                    para que me vieran cuando tenía una cita. Creo que eso es indignante..</div>
+                                <p style="color: gray; font-size: 13px">Iniciales ocultas Hace más de un año</p><br>
+
                             </div>
                         </div>
                     </div>
@@ -912,16 +919,17 @@
                                                 </div>
                                             </div>
                                             <div class="col s12 m12 l2 center">
-                                                <p>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa.</p>
+                                                <p>Col. Las Minitas, Avenida Juan Lindo, Tegucigalpa, FM 11101.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--Comentarios de pacientes-->
                                 <div class="row">
                                     <div class="card-content">
                                         <div class="row">
                                             <div class="col s12 m12 l12">
-                                                <span class="card-title justify-align" style="color: #01579b">
+                                                <span class="card-title justify-align" style="color: #01579b;">
                                                     <h6><b>Comentarios de pacientes para Dra. Ruby Taylor</b></h6>
                                                 </span>
                                             </div>
@@ -931,6 +939,353 @@
                                         <p>Todas las revisiones han sido enviadas por pacientes después de ver al
                                             proveedor.</p>
                                     </div>
+                                </div>
+                                <!--Comentarios en general-->
+                                <div class="row">
+                                    <div class="card-content">
+                                        <div class="col s6 m3">
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons unchecked" style="font-size: 25px;">star</span>
+                                        </div>
+                                        <div class="col s6 m6"><span class="card-title justify-align"
+                                                style="color: #01579b;">
+                                                <h6><b>En general</b></h6>
+                                            </span></div>
+                                    </div>
+                                </div>
+                                <!--Comentarios sobre tiempo de espera-->
+                                <div class="row">
+                                    <div class="card-content">
+                                        <div class="col s6 m3">
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons unchecked" style="font-size: 25px;">star</span>
+                                        </div>
+                                        <div class="col s6 m6"><span class="card-title justify-align"
+                                                style="color: #01579b;">
+                                                <h6><b>Tiempo de espera</b></h6>
+                                            </span></div>
+                                    </div>
+                                </div>
+                                <!--Comentarios sobre comportamiento con un enfermo-->
+                                <div class="row">
+                                    <div class="card-content">
+                                        <div class="col s6 m3">
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons checked" style="font-size: 25px;">star</span>
+                                            <span class="material-icons unchecked" style="font-size: 25px;">star</span>
+                                        </div>
+                                        <div class="col s6 m6"><span class="card-title justify-align"
+                                                style="color: #01579b;">
+                                                <h6><b>Comportamiento con un enfermo</b></h6>
+                                            </span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!--Búsqueda de opiniones-->
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="col s12 m12 l5">
+                                        <div class="input-field">
+                                            <i class="material-icons prefix">search</i>
+                                            <input type="text" id="buscar_comentarios" class="autocomplete"
+                                                placeholder="Buscar opiniones">
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m12 l7">
+                                        <br>
+                                        <select class="browser-default">
+                                            <option value="" disabled selected>Ordenar por:</option>
+                                            <option id="option47" value="47">Lo más relevante</option>
+                                            <option id="option48" value="48">El mejor valorado</option>
+                                            <option id="option49" value="49">calificación más baja</option>
+                                            <option id="option50" value="50">El más nuevo</option>
+                                            <option id="option51" value="51">Más antiguo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!--Ver Opiniones-->
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card-content">
+                                <span><b>3 Opiniones</b></span>
+                            </div>
+                            <div class="row">
+                                <table class="centered striped">
+                                    <thead>
+                                        <tr>
+                                            <th>En general</th>
+                                            <th>Tiempo de espera</th>
+                                            <th>Comportamiento con un enfermo</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons unchecked">star</span></td>
+
+                                            <td><span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span></td>
+
+                                            <td><span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <div class="card-content justify-align">
+                                        <p>Servicio amable y bueno, pero largas horas de espera. No se basa en la
+                                            cita/hora, es por orden de llegada. Tomar nota.</p>
+                                        <div class="col s4 center">
+                                            <p style="color: gray; font-size: 13px">4 de octubre de 2018</p>
+                                        </div>
+                                        <div class="col s4 center">
+                                            <p style="color: gray; font-size: 13px">Carlos P. Paciente verificado</p>
+                                        </div>
+                                        <div class="col s4 center">
+                                            <p style="color: gray; font-size: 13px">Fuente: HonduMedics</p>
+                                        </div>
+                                        <!--Botones Me gusta-->
+                                        <div class="row"></div>
+                                        <div class="row">
+                                            <div class="example">
+                                                <div class="rating" id="rating2">
+                                                    <button
+                                                        class="btn btn-default like transparent blue-text btn-bordes-azul"><i
+                                                            class="material-icons left">thumb_up</i>Servicial <span
+                                                            class="likes">0</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!--Ver Opiniones-->
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="row">
+                                <table class="centered striped">
+                                    <thead>
+                                        <tr>
+                                            <th>En general</th>
+                                            <th>Tiempo de espera</th>
+                                            <th>Comportamiento con un enfermo</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span></td>
+
+                                            <td><span class="material-icons checked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span></td>
+
+                                            <td><span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <div class="card-content justify-align">
+                                        <p>En primer lugar, solo había 3 pacientes antes que yo, pero de alguna manera
+                                            terminé esperando 2 1/2 horas para que me vieran cuando tenía una cita. Creo
+                                            que eso es indignante.</p>
+                                        <div class="col s4 center">
+                                            <p style="color: gray; font-size: 13px">Hace más de 1 año</p>
+                                        </div>
+                                        <div class="col s4 center">
+                                            <p style="color: gray; font-size: 13px">Iniciales ocultas</p>
+                                        </div>
+                                        <div class="col s4 center">
+                                            <p style="color: gray; font-size: 13px">Fuente: HonduMedics</p>
+                                        </div>
+                                        <!--Botones Me gusta-->
+                                        <div class="row"></div>
+                                        <div class="row">
+                                            <div class="example">
+                                                <div class="rating" id="rating3">
+                                                    <button
+                                                        class="btn btn-default like transparent blue-text btn-bordes-azul"><i
+                                                            class="material-icons left">thumb_up</i>Servicial <span
+                                                            class="likes">0</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!--Ver Opiniones-->
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="row">
+                                <table class="centered striped">
+                                    <thead>
+                                        <tr>
+                                            <th>En general</th>
+                                            <th>Tiempo de espera</th>
+                                            <th>Comportamiento con un enfermo</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span></td>
+
+                                            <td><span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span></td>
+
+                                            <td><span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons checked">star</span>
+                                                <span class="material-icons unchecked">star</span>
+                                                <span class="material-icons unchecked">star</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <div class="card-content justify-align">
+                                        <p></p>
+                                        <div class="col s4 center">
+                                            <p style="color: gray; font-size: 13px">Hace más de 1 año</p>
+                                        </div>
+                                        <div class="col s4 center">
+                                            <p style="color: gray; font-size: 13px">Iniciales ocultas</p>
+                                        </div>
+                                        <div class="col s4 center">
+                                            <p style="color: gray; font-size: 13px">Fuente: HonduMedics</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!--Preguntas Frecuentes-->
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card-content">
+                                <div class="row">
+                                    <span class="card-title justify-align truncate" style="color: #01579b;">
+                                        <h6><b>Preguntas frecuentes</b></h6>
+                                    </span>
+                                    <p><b>¿Qué tan pronto puedo hacer una cita con la Dra. Ruby Taylor?</b></p>
+                                    <p>En general, la Dra. Ruby Taylor tiene citas disponibles en HonduMedics
+                                        dentro
+                                        de 1 semana. Puede ver la disponibilidad más temprana de la Dra. Ruby
+                                        Taylor
+                                        en HonduMedics.</p>
+
+                                    <p><b>¿La Dra. Ruby Taylor acepta nuevos pacientes?</b></p>
+                                    <p>La Dra. Ruby Taylor generalmente acepta nuevos pacientes en HonduMedics.
+                                        Puede ver la disponibilidad más temprana de la Dra. Ruby Taylor en
+                                        HonduMedics y programar una cita en línea.</p>
+
+                                    <p><b>¿Puedo hacer una cita con la Dra. Ruby Taylor en línea?</b></p>
+                                    <p>Sí, puede hacer una cita en línea con la Dra. Ruby Taylor usando
+                                        HonduMedics.
+                                        Es simple, seguro y gratis.</p>
+
+                                    <p><b>¿Con qué práctica trabaja la Dra. Ruby Taylor?</b></p>
+                                    <p>La Dra. Ruby Taylor trabaja con el Hospital Medical Center.</p>
+
+                                    <p><b>¿Dónde está ubicada la oficina de la Dra. Ruby Taylor?</b></p>
+                                    <p>La ofifina de la Dra. Ruby Taylor está ubicada en Col. Las Minitas,
+                                        Avenida
+                                        Juan Lindo, Tegucigalpa, FM 11101.</p>
+
+                                    <p><b>¿Cuáles son las razones comunes para que los pacientes vean a la Dra. Ruby
+                                            Taylor?</b></p>
+                                    <p>La Dra. Ruby Taylor frecuentemente atiende pacientes para consultas física
+                                        anuales, consultas generales, seguimiento general, enfermedades y recetas.
+                                    </p>
+
+                                    <p><b>¿Qué idiomas habla la Dra. Ruby Taylor?</b></p>
+                                    <p>La Dra. Ruby Taylor habla inglés y español.</p>
+
+                                    <p><b>¿Cómo valoran los pacientes a la Dra. Ruby Taylor en las revisiones?</b>
+                                    </p>
+                                    <p>3 pacientes han revisado a la Dra. Ruby Taylor. La calificación general de
+                                        esta doctora es 4.21 / 5. Tienen una calificación de 4.50 / 5 para atender a
+                                        los pacientes y una calificación de 3.73 / 5 para el tiempo de espera. Puede
+                                        leer reseñas y calificaciones individuales en su perfil.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!--Encontrar médicos-->
+                <li class="collection-item">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card-content">
+                                <div class="row">
+                                    <span class="card-title justify-align truncate" style="color: #01579b;">
+                                        <h6><b>Encontrar médicos</b></h6>
+                                    </span>
+                                    
+                                    <!--Tabs-->
+
                                 </div>
                             </div>
                         </div>
@@ -1372,6 +1727,190 @@
                 var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
             }
             google.maps.event.addDomListener(window, 'load', initialize);
+
+            //Inicialización Autocomplete
+            var options = {
+                data: {
+                    "HTML": null,
+                    "CSS": null,
+                    "JAVASCRIPT": 'https://placehold.it/250x250'
+                },
+                onAutocomplete: function (texto) {
+                    console.log(`diste clic ${texto}`);
+                }
+            }
+
+            var elems = document.querySelectorAll('.autocomplete');
+            var instances = M.Autocomplete.init(elems, options);
+
+            //Inicialización de Me gusta
+            (function ($) {
+
+                var likeBtn = 'like',
+                    dislikeBtn = 'dislike';
+
+                var defaults = {
+                    click: null,
+                    beforeClick: null,
+                    initialValue: 0,
+                    reverseMode: true,
+                    readOnly: false,
+                    likeBtnClass: 'like',
+                    dislikeBtnClass: 'dislike',
+                    activeClass: 'active',
+                    disabledClass: 'disabled'
+                };
+
+                function LikeDislike(element, options) {
+                    this.element = element;
+                    this.opts = $.extend({}, defaults, options);
+                    this.init();
+                }
+
+                LikeDislike.prototype = {
+                    init: function () {
+                        this.btns = $(this.element).find('.' + this.opts.likeBtnClass + ', .' + this.opts.dislikeBtnClass);
+                        this.readOnly(this.opts.readOnly);
+                        if (this.opts.initialValue !== 0) {
+                            var activeBtn = this.opts.initialValue === 1 ? likeBtn : dislikeBtn;
+                            this.btnDown(activeBtn);
+                        }
+                        return this;
+                    },
+                    readOnly: function (state) {
+                        var btns = this.btns;
+                        if (!state) {
+                            if (!this.opts.reverseMode) {
+                                var notActiveBtns = btns.not('.' + this.opts.activeClass);
+                                if (notActiveBtns.length) {
+                                    btns = notActiveBtns;
+                                }
+                            }
+                            this.enable(btns);
+                        } else {
+                            this.disable(btns);
+                        }
+                    },
+                    getBtn: function (btnType) {
+                        if (btnType === likeBtn) {
+                            return $(this.element).find('.' + this.opts.likeBtnClass);
+                        } else if (btnType === dislikeBtn) {
+                            return $(this.element).find('.' + this.opts.dislikeBtnClass);
+                        } else {
+                            $.error('Wrong btnType: ' + btnType);
+                        }
+                    },
+                    btnDown: function (btnType) {
+                        var btn = this.getBtn(btnType);
+                        btn.addClass(this.opts.activeClass);
+                        if (!this.opts.reverseMode) {
+                            this.disable(btn);
+                        }
+                    },
+                    btnUp: function (btnType) {
+                        var btn = this.getBtn(btnType);
+                        btn.removeClass(this.opts.activeClass);
+                        if (!this.opts.reverseMode) {
+                            this.enable(btn);
+                        }
+                    },
+                    enable: function (btn) {
+                        var self = this;
+                        var opts = self.opts;
+
+                        btn.removeClass(opts.disabledClass);
+
+                        if (opts.beforeClick) {
+                            btn.on('beforeClick', function (event) {
+                                return opts.beforeClick.call(self, event);
+                            });
+                        }
+
+                        btn.on('click', function (event) {
+                            var btn = $(this);
+
+                            if (opts.beforeClick && !btn.triggerHandler('beforeClick')) {
+                                return false;
+                            }
+
+                            var btnType = btn.hasClass(opts.likeBtnClass) ? likeBtn : dislikeBtn;
+                            var hasActive = self.btns.hasClass(opts.activeClass);
+                            var isActive = btn.hasClass(opts.activeClass);
+
+                            var value = 0, l = 0, d = 0;
+
+                            if (btnType === likeBtn) {
+                                if (isActive) {
+                                    self.btnUp(likeBtn);
+                                    l = -1;
+                                } else {
+                                    if (hasActive) {
+                                        self.btnUp(dislikeBtn);
+                                        d = -1;
+                                    }
+                                    self.btnDown(likeBtn);
+                                    l = 1;
+                                    value = 1;
+                                }
+                            } else {
+                                if (isActive) {
+                                    self.btnUp(dislikeBtn);
+                                    d = -1;
+                                } else {
+                                    if (hasActive) {
+                                        self.btnUp(likeBtn);
+                                        l = -1;
+                                    }
+                                    self.btnDown(dislikeBtn);
+                                    d = 1;
+                                    value = -1;
+                                }
+                            }
+
+                            opts.click.call(self, value, l, d, event);
+                        });
+                    },
+                    disable: function (btn) {
+                        btn.addClass(this.opts.disabledClass);
+                        btn.off();
+                    }
+                };
+
+                $.fn.likeDislike = function (options) {
+                    return this.each(function () {
+                        if (!$.data(this, "plugin_LikeDislike")) {
+                            $.data(this, "plugin_LikeDislike",
+                                new LikeDislike(this, options));
+                        }
+                    });
+                };
+
+            })(jQuery);
+
+            $('#rating2').likeDislike({
+                reverseMode: true,
+                disabledClass: 'disable',
+                click: function (value, l, d, event) {
+                    var likes = $(this.element).find('.likes');
+                    var dislikes = $(this.element).find('.dislikes');
+
+                    likes.text(parseInt(likes.text()) + l);
+                    dislikes.text(parseInt(dislikes.text()) + d);
+                }
+            });
+
+            $('#rating3').likeDislike({
+                reverseMode: true,
+                disabledClass: 'disable',
+                click: function (value, l, d, event) {
+                    var likes = $(this.element).find('.likes');
+                    var dislikes = $(this.element).find('.dislikes');
+
+                    likes.text(parseInt(likes.text()) + l);
+                    dislikes.text(parseInt(dislikes.text()) + d);
+                }
+            });
+
         }); 
     </script>
 </body>
