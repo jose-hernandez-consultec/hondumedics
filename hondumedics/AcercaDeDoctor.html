@@ -193,6 +193,11 @@
         .btn-bordes-azul {
             border: #00b0ff 2px solid;
         }
+
+        /*Tabs*/
+        .tabs .indicator {
+            background-color: #01579b;
+        }
     </style>
 </head>
 
@@ -302,7 +307,7 @@
                                 <span class="material-icons checked">star</span>
                                 <span class="material-icons unchecked">star</span>
                                 <br>
-                                <p><a href="#">3 Opiniones</a></p>
+                                <p><a href="#opiniones">3 Opiniones</a></p>
                             </div>
                         </div>
                         <!--Comentarios-->
@@ -1023,7 +1028,7 @@
                     </div>
                 </li>
                 <!--Ver Opiniones-->
-                <li class="collection-item">
+                <li class="collection-item" id="opiniones">
                     <div class="row">
                         <div class="col s12 m12 l12">
                             <div class="card-content">
@@ -1283,8 +1288,216 @@
                                     <span class="card-title justify-align truncate" style="color: #01579b;">
                                         <h6><b>Encontrar médicos</b></h6>
                                     </span>
-                                    
+
                                     <!--Tabs-->
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <ul class="tabs white" id="tabs">
+                                                <li class="tab col s12 m3"><a class="black-text"
+                                                        href="#lugares"><b>Lugares</b></a></li>
+                                                <li class="tab col s12 m3"><a class="black-text"
+                                                        href="#especialidades"><b>Especialidades</b></a></li>
+                                                <li class="tab col s12 m3"><a class="black-text"
+                                                        href="#procedimientos_tratamientos" style="font-size: 12px;"><b>Procedimientos y
+                                                            Tratamientos</b></a></li>
+                                                <li class="tab col s12 m3"><a class="black-text"
+                                                        href="#mas"><b>Más</b></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="lugares" class="col s12"><br>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en La Ceiba, Atlántida</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Trujillo, Colón</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Comayagua, Comayagua</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Santa Rosa de Copán, Copán</a>
+                                                </div>
+                                            </div>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en San Pedro Sula, Cortés</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Choluteca, Choluteca</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Yuscarán, El Paraíso</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Distrito Central, Francisco Morazán</a>
+                                                </div>
+                                            </div>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Puerto Lempira, Gracias a Dios</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en La Esperanza, Intibucá</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Roatán, Islas de la Bahía</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en La Paz, La Paz</a>
+                                                </div>
+                                            </div>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Gracias, Lempira</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Ocotepeque, Ocotepeque</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Juticalpa, Olancho</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Santa Bárbara, Santa Bárbara</a>
+                                                </div>
+                                            </div>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Nacaome, Valle</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Doctores en Yoro, Yoro</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="especialidades" class="col s12"><br>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Alegista</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Cardiólogo</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Dermatólogo</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Médico de oído, nariz y garganta</a>
+                                                </div>
+                                            </div>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Gastroenterólogo</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Gineco-obstetra</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Oftamólogo</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Optometrista</a>
+                                                </div>
+                                            </div>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Cirujano ortopédico</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Pediatra</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Podólogo</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Psiquiatra</a>
+                                                </div>
+                                            </div>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Urólogo</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Más Especialidades</a>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div id="procedimientos_tratamientos" class="col s12"><br>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Seguimiento de cardiología</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Consulta de endocrinología</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Seguimiento endocrinológico</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Consulta ENT</a>
+                                                </div>
+                                            </div>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Consulta de pie</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Seguimiento de pie</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Enfermedad</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Consulta de neurología</a>
+                                                </div>
+                                            </div>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Problemas de nariz</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Chequeo de 3 meses para bebés sanos</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Calambres abdominales</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Dolor abdominal</a>
+                                                </div>
+                                            </div>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Pruebas anormales de ANA</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Mamografía anormal</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Ausencia de menstruación / amenorrea</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Más procedimientos</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="mas" class="col s12"><br>
+                                            <div class="row center-align">
+                                                <div class="col s3">
+                                                    <a href="#">Cirugía pancreática</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Prueba de ETS</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Pruebas de ETS en SPS</a>
+                                                </div>
+                                                <div class="col s3">
+                                                    <a href="#">Pruebas de ETS en Tegucigalpa</a>
+                                                </div>
+                                            </div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -1657,6 +1870,7 @@
                 coverTrigger: false,
                 belowOrigin: true
             });
+            $('.tabs').tabs();
             $('.carousel').carousel();
 
             //Inicialización Carousel

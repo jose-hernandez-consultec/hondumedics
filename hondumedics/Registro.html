@@ -48,7 +48,7 @@
                 <br>
                 <br>
                 <br>
-                <form id="formulario">
+                <form id="formulario" name="formulario" method="POST">
                     <div class="col s12">
                         <p style="text-align: center;">
                             <h5>Crea una cuenta</h5>
@@ -137,8 +137,7 @@
                                     </p>
                                     <p>
                                         <label>
-                                            <input id="female" class="with-gap" name="gender" type="radio"
-                                                value="2" />
+                                            <input id="female" class="with-gap" name="gender" type="radio" value="2" />
                                             <span>Femenino</span>
                                         </label>
                                     </p>
@@ -170,10 +169,12 @@
                         <div class="col s12 m4 l4">
                             <p></p>
                         </div>
-                        <center><div class="col s12 m4 l4"><a href="#"
-                                class="btn tooltipped btn-pink white-text waves-effect waves-pink btn-large"
-                                id="btnGuardar" data-position="left" data-tooltip="Guardar registro.">Guardar<i
-                                    class="material-icons left">save</i></a></div></center>
+                        <center>
+                            <div class="col s12 m4 l4"><a href="#"
+                                    class="btn tooltipped btn-pink white-text waves-effect waves-pink btn-large"
+                                    id="btnGuardar" data-position="left" data-tooltip="Guardar registro.">Guardar<i
+                                        class="material-icons left">save</i></a></div>
+                        </center>
                         <div class="col s12 m4 l4">
                             <p></p>
                         </div>
@@ -208,7 +209,7 @@
                 var apellido_registro = $('#apellido').val();
                 var fecha_registro = $('#fechaNac').val();
                 var select_gender = Number($('input[name="gender"]').is(':checked'));
-                var aceptar_condiciones = $('#aceptar').is(':checked');
+                var aceptar_condiciones = Number($('#aceptar').is(':checked'));
 
                 //Validar que nada este vacio
                 var valido = true;
@@ -217,10 +218,10 @@
                     valido = false;
                 }
 
-               /* if (email2_registro == "" || email2_registro.length === 0) {
-                    alert("La Confirmación De Correo Electrónico Está Vacía");
-                    valido = false;
-                }*/
+                /* if (email2_registro == "" || email2_registro.length === 0) {
+                     alert("La Confirmación De Correo Electrónico Está Vacía");
+                     valido = false;
+                 }*/
 
                 if (password_registro == "" || password_registro.length === 0) {
                     alert("La Contraseña Está Vacía");
@@ -251,50 +252,61 @@
                 }
 
                 // si la cantidad de checkboxes "chequeados" es cero, entonces se evita que se envíe el formulario y se muestra una alerta al usuario
-                if (aceptar_condiciones) {
+                /*if (aceptar_condiciones) {
                     alert('Campo Correcto');
-                }else{
+                } else {
                     alert('Debe Aceptar Las Condiciones');
                     valido = false;
-                }
+                }*/
 
-                $('#aceptar').change(function(){
+                /*$('#aceptar').change(function(){
                     var aceptar_condiciones = false;
                     if(this.checked){
                         aceptar_condiciones = true;
                     }
                     //alert(aceptar_condiciones);
-                });
+                });*/
+
+                //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
+                console.log(parseInt(aceptar_condiciones));
+
+                if (parseInt(aceptar_condiciones) != 0 && parseInt(aceptar_condiciones) != 1) {
+                    alert("Debe Aceptar Las Condiciones");
+                    valido = false;
+                }
 
                 //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                 if (valido) {
-                        $.ajax({
-                            url: 'https://hondumedics-server.herokuapp.com/patients/newPatient',
-                            dataType: 'json',
-                            type: 'POST',
-                            contentType: 'application/json',
-                            data: JSON.stringify({ "email": email_registro, "password": password_registro, "first_name": nombre_registro, "last_name": apellido_registro, "birthdate": fecha_registro, "geneder": select_gender, "tos_approved": aceptar_condiciones }),
-                            processData: false,
-                                success: function (data) {
-                                    console.log(data);
-                                    if (data.added) {
-                                        alert("Agregue nuevo usuario");
-                                        form[0].reset();
-                                    }
-                                },
-                                error: function (error) {
-                                    console.log(error);
-                                    if (error.status === 403) {
-                                        alert("Ya existe un usuario con ese correo electrónico!");
-                                    }
-                                }
-                            });
-                        } else {
-                            alert("Hay errores en el formulario");
-                        }
-                });
+                    $.ajax({
+                        url: 'https://hondumedics-server.herokuapp.com/patients/addNewPatient',
+                        dataType: 'json',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ "email": email_registro, "password": password_registro, "first_name": nombre_registro, "last_name": apellido_registro, "birthdate": fecha_registro, "gender": select_gender, "tos_approved": aceptar_condiciones }),
+                        processData: false,
+                        success: function (data) {
+                            console.log(data);
+                            if (data.added) {
+                                alert("Agregue nuevo usuario");
+                                //Redireccionando a login.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
+                                window.location.href = "./login.html";
 
+                                form[0].reset();
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error);
+                            if (error.status === 403) {
+                                alert("Ya existe un usuario con ese correo electrónico!");
+                            }
+                        }
+                    });
+                } else {
+                    alert("Hay errores en el formulario");
+                }
             });
+
+        });
     </script>
 </body>
 

@@ -54,76 +54,70 @@
                 <br>
                 <br>
                 <br>
-                <div class="col s12 m4 l4">
-                    <p></p>
-                </div>
-                <div class="col s12 m4 l4"><a href="Registro.html"
-                        class="btn tooltipped btn-pink white-text waves-effect waves-pink btn-large"
-                        data-position="left" data-tooltip="Regístrate con Correo Electrónico."
-                        id="btnRegistrate">Regístrate
-                        <i class="material-icons left">create</i></a></div>
-                <div class="col s12 m4 l4">
-                    <p></p>
-                </div>
-                <br>
-                <div class="col s12">
-                    <p style="text-align: center;">
-                        <h5>ó</h5>
-                    </p>
-                </div>
-                <div class="col s12">
-                    <p style="text-align: center;">
-                        <h6><b>Iniciar Sesión con correo electrónico</b></h6>
-                    </p>
-                </div>
-                <div class="row">
+                <form id="formulario" name="formulario" method="POST">
                     <div class="col s12 m4 l4">
                         <p></p>
                     </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="emailPatient" type="email" class="validate">
-                        <label for="emailPatient">Correo Electrónico</label>
-                    </div>
+                    <div class="col s12 m4 l4"><a href="Registro.html"
+                            class="btn tooltipped btn-pink white-text waves-effect waves-pink btn-large"
+                            data-position="left" data-tooltip="Regístrate con Correo Electrónico."
+                            id="btnRegistrate">Regístrate
+                            <i class="material-icons left">create</i></a></div>
                     <div class="col s12 m4 l4">
                         <p></p>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m4 l4">
-                        <p></p>
+                    <br>
+                    <div class="col s12">
+                        <p style="text-align: center;">
+                            <h5>ó</h5>
+                        </p>
                     </div>
-                    <div class="input-field col s12 m4 l4">
-                        <input id="passwordPatient" type="password" class="validate">
-                        <label for="passwordPatient">Contraseña</label>
+                    <div class="col s12">
+                        <p style="text-align: center;">
+                            <h6><b>Iniciar Sesión con correo electrónico</b></h6>
+                        </p>
                     </div>
-                    <div class="col s12 m4 l4">
-                        <p></p>
+                    <div class="row">
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="emailPatient" type="email" class="validate">
+                            <label for="emailPatient">Correo Electrónico</label>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
                     </div>
-                </div>
-                <!--<div class="row">
-                    <p>
-                        <label>
-                            <input type="checkbox" class="filled-in" checked="checked" id="chk1" />
-                            <span>Mantenme conectado</span>
-                        </label>
-                    </p>
-                </div>-->
-                <div class="row">
-                    <div class="col s12 m4 l4">
-                        <p></p>
+                    <div class="row">
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input id="passwordPatient" type="password" class="validate">
+                            <label for="passwordPatient">Contraseña</label>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
                     </div>
-                    <div class="col s12 m4 l4"><a href="#"
-                            class="btn btn-pink white-text waves-effect waves-pink btn-large"
-                            id="btnIniciarSesionPatient">Iniciar Sesión</a>
+                    <div class="row">
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
+                        <div class="col s12 m4 l4"><a href="#"
+                                class="btn btn-pink white-text waves-effect waves-pink btn-large"
+                                id="btnIniciarSesionPatient">Iniciar Sesión</a>
+                        </div>
+                        <div class="col s12 m4 l4">
+                            <p></p>
+                        </div>
                     </div>
-                    <div class="col s12 m4 l4">
-                        <p></p>
+                    <div class="row">
+                        <a data-test="sign-in-forgot-password" href="#" target="_self" role="button" tabindex="0"
+                            id="linkContraOlivi"><span>¿Olvidaste tu contraseña?</span></a>
                     </div>
-                </div>
-                <div class="row">
-                    <a data-test="sign-in-forgot-password" href="#" target="_self" role="button" tabindex="0"
-                        id="linkContraOlivi"><span>¿Olvidaste tu contraseña?</span></a>
-                </div>
+                </form>
             </div>
     </div>
     </center>
@@ -156,14 +150,30 @@
                     valido = false;
                 }
 
+                //Enviar y Recibir parámetros
+                 //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro.
+                 function getQueryVariable(variable) {
+                        // Estoy asumiendo que query es window.location.search.substring(1);
+                        var query = "emailPatient=&passwordPatient=";
+                        var vars = query.split("&");
+                        alert(vars);
+                        for (var i = 0; i < vars.length; i++) {
+                            var pair = vars[i].split("=");
+                            if (pair[0] == variable) {
+                                return pair[1];
+                            }
+                        }
+                        return false;
+                    }
+
                 //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                 if (valido) {
                     $.ajax({
-                        url: 'https://hondumedics-server.herokuapp.com/patients/login',
+                        url: 'https://hondumedics-server.herokuapp.com/patients/patientLogin',
                         dataType: 'json',
                         type: 'POST',
                         contentType: 'application/json',
-                        data: JSON.stringify({ "username": emailPatient, "password": passPatient }),
+                        data: JSON.stringify({ "email": emailPatient, "password": passPatient }),
                         processData: false,
                         success: function (data) {
                             console.log(data);
@@ -171,8 +181,10 @@
                                 var patient = data.patient;
                                 alert(data.message);
 
+                                //Redireccionando a PerfilDePaciente.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
+                                window.location.href = "./PerfilDePaciente.html";
                                 //Redireccionando a dashboard.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
-                                //window.location.href = "./dashboard.html?first_name=" + patient.first_name + "&last_name=" + patient.last_name;
+                                window.location.href = "./PerfilDePaciente.html?first_name=" + patient.first_name + "&last_name=" + patient.last_name;
 
                                 //form[0].reset();
                             }
