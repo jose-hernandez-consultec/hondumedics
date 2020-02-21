@@ -13,6 +13,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+
     <!-- Estilos CSS -->
     <style>
         .nav-wrapper {
@@ -151,20 +152,20 @@
                 }
 
                 //Enviar y Recibir parámetros
-                 //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro.
-                 function getQueryVariable(variable) {
-                        // Estoy asumiendo que query es window.location.search.substring(1);
-                        var query = "emailPatient=&passwordPatient=";
-                        var vars = query.split("&");
-                        alert(vars);
-                        for (var i = 0; i < vars.length; i++) {
-                            var pair = vars[i].split("=");
-                            if (pair[0] == variable) {
-                                return pair[1];
-                            }
+                //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro.
+                function getQueryVariable(variable) {
+                    // Estoy asumiendo que query es window.location.search.substring(1);
+                    var query = "emailPatient=&passwordPatient=";
+                    var vars = query.split("&");
+                    alert(vars);
+                    for (var i = 0; i < vars.length; i++) {
+                        var pair = vars[i].split("=");
+                        if (pair[0] == variable) {
+                            return pair[1];
                         }
-                        return false;
                     }
+                    return false;
+                }
 
                 //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                 if (valido) {
@@ -183,7 +184,8 @@
 
                                 //Redireccionando a PerfilDePaciente.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
                                 window.location.href = "./PerfilDePaciente.html";
-                                //Redireccionando a dashboard.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
+
+                                //Redireccionando a PerfilDePaciente.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
                                 window.location.href = "./PerfilDePaciente.html?first_name=" + patient.first_name + "&last_name=" + patient.last_name;
 
                                 //form[0].reset();
