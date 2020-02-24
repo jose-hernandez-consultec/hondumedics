@@ -254,47 +254,45 @@
                             <div class="row">
                                 <div class="input-field col s6">
                                     <i class="material-icons prefix">account_circle</i>
-                                    <input id="first_name" type="text" class="validate" value="Gina">
+                                    <input id="first_name" type="text" class="validate">
                                     <label class="active" for="first_name">NOMBRE</label>
                                 </div>
                                 <div class="input-field col s6">
                                     <i class="material-icons prefix">account_circle</i>
-                                    <input id="last_name" type="text" class="validate" value="Padilla">
+                                    <input id="last_name" type="text" class="validate">
                                     <label class="active" for="last_name">APELLIDO</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s6">
                                     <i class="material-icons prefix">date_range</i>
-                                    <input id="date_of_birth" type="text" class="datepicker" value="Jul 12, 1990">
+                                    <input id="date_of_birth" type="text" class="datepicker">
                                     <label class="active" for="date_of_birth">FECHA DE NACIMIENTO</label>
                                 </div>
                                 <div class="input-field col s6">
                                     <i class="material-icons prefix">phone</i>
-                                    <input id="phone_number" type="text" class="validate" value="1234-5678">
+                                    <input id="phone_number" type="text" class="validate">
                                     <label class="active" for="phone_number">TELÉFONO</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">email</i>
-                                    <input id="email" type="email" class="validate" value="padillagina90@gmail.com">
+                                    <input id="email" name="email" type="email" class="validate">
                                     <label class="active" for="email">CORREO ELECTRÓNICO</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">home</i>
-                                    <textarea id="address_house"
-                                        class="materialize-textarea">Colonia Kennedy, Sector 10, Bloque D-1 Casa #4321.</textarea>
+                                    <textarea id="address_house" class="materialize-textarea"></textarea>
                                     <label class="active" for="address_house">DIRECCIÓN DE CASA</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">work</i>
-                                    <textarea id="address_work"
-                                        class="materialize-textarea">Colonia La Palmira, Edificio Rojo, Piso 4, Suite 402.</textarea>
+                                    <textarea id="address_work" class="materialize-textarea"></textarea>
                                     <label class="active" for="address_work">DIRECCIÓN DE TRABAJO</label>
                                 </div>
                             </div>
@@ -355,6 +353,36 @@
             });
             $('.modal').modal();
             $('.datepicker').datepicker();
+
+            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+            var first_name = getQueryVariable("first_name");
+            var last_name = getQueryVariable("last_name");
+            var fecha_nacimiento = getQueryVariable("birthdate");
+            var email = getQueryVariable("email");
+
+
+            $("#Name").text(unescape(first_name + " " + last_name));
+            $("#fechaNacimiento").text(fecha_nacimiento);
+
+            $("#first_name").val(first_name);
+            $("#last_name").val(last_name);
+            $("#email").val(email);
+            $("#date_of_birth").val(fecha_nacimiento);
+
+
+
+            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
+                    }
+                }
+                return false;
+            }
 
             //El método click() adjunta una función de controlador de eventos a un elemento HTML.
             //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
@@ -427,29 +455,6 @@
                     valido = false;
                 }
             });
-
-            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-            var first_name = getQueryVariable("first_name");
-            var last_name = getQueryVariable("last_name");
-            var fecha_nacimiento = getQueryVariable("date_of_birth");
-
-            $("#Name").text(unescape(first_name + " " + last_name));
-            $("#fechaNacimiento").text(fecha_nacimiento);
-
-
-            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
-            function getQueryVariable(variable) {
-                var query = window.location.search.substring(1);
-                var vars = query.split("&");
-                for (var i = 0; i < vars.length; i++) {
-                    var pair = vars[i].split("=");
-                    if (pair[0] == variable) {
-                        return pair[1];
-                    }
-                }
-                return false;
-            }
-
         }); 
     </script>
 </body>
