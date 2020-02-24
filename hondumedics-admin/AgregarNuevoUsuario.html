@@ -56,10 +56,6 @@
             margin-left: 1rem !important;
         }
 
-        .brand-logo {
-            font-weight: 900;
-        }
-
         .dropdown-content {
             background-color: #FFFFFF;
             margin: 0;
@@ -187,45 +183,48 @@
 
 <body>
     <!--Navbar-->
-    <nav class="nav-wrapper">
-        <div class="nav-wrapper">
-            <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
-                <i class="material-icons">menu</i></a>
-            <div class="container">
-                <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
-                <ul class="right hide-on-med-and-down">
-                    <!-- Buscar -->
-                    <li>
-                        <div class="center row">
-                            <div class="col s12">
-                                <div class="row" id="topbarsearch">
-                                    <div class="input-field col s6 s12 white-text">
-                                        <i class="white-text material-icons prefix">search</i>
-                                        <input type="text" placeholder="search" id="autocomplete-input"
-                                            class="autocomplete white-text">
+    <div class="row">
+        <nav class="nav-wrapper">
+            <div class="nav-wrapper">
+                <a href="" class=" left sidenav-trigger hide-on-medium-and-up" data-target="sidenav-1">
+                    <i class="material-icons">menu</i></a>
+                <div class="col s2"></div>
+                <div class="col s10">
+                    <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
+                    <ul class="right hide-on-med-and-down">
+                        <!-- Buscar -->
+                        <li>
+                            <div class="center row">
+                                <div class="col s12">
+                                    <div class="row" id="topbarsearch">
+                                        <div class="input-field col s6 s12 white-text">
+                                            <i class="white-text material-icons prefix">search</i>
+                                            <input type="text" placeholder="search" id="autocomplete-input"
+                                                class="autocomplete white-text">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <!-- Notifications -->
-                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
-                            <span style="color: #464646;">Notificación</span>
-                            <span class="new badge red">3</span><i class="material-icons right">notifications_none
-                                <small class="notification-badge">3</small>
-                            </i></a>
-                    </li>
+                        </li>
+                        <!-- Notifications -->
+                        <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                                <span style="color: #464646;">Notificación</span>
+                                <span class="new badge red">3</span><i class="material-icons right">notifications_none
+                                    <small class="notification-badge">3</small>
+                                </i></a>
+                        </li>
 
-                    <!-- Dropdown Trigger Menú Administrador-->
-                    <li>
-                        <a href="#" class="dropdown-trigger" data-target="dropdown1">
-                            Administrador
-                            <i class="material-icons right">arrow_drop_down</i>
-                        </a></li>
-                </ul>
+                        <!-- Dropdown Trigger Menú Administrador-->
+                        <li>
+                            <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                                Hola, <span style="font-size: 15px; font-weight: bold;" id="username"></span>
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <!-- Dropdown Structure Lista de menú de Administrador-->
     <ul id='dropdown1' class='dropdown-content'>
         <li><a href="Perfil.html">
@@ -312,7 +311,7 @@
     </ul>
 
     <!-- Menú oculto-->
-    <ul class="sidenav fixed" id="menu-responsive">
+    <ul class="sidenav sidenav-fixed" id="sidenav-1">
         <li>
             <div class="user-view">
                 <div class="background">
@@ -377,12 +376,14 @@
             <!-- Page Header -->
             <div class="page-header">
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s2"></div>
+                    <div class="col s10">
                         <h2 class="black-text center">Agregar Nuevo Usuario</h2>
                     </div>
                     <div class="container">
                         <div class="row">
-                            <form class="col s12" method="POST" id="formulario" onsubmit="this.reset()">
+                            <div class="col s2"></div>
+                            <form class="col s10" method="POST" id="formulario" onsubmit="this.reset()"><br>
                                 <div class="row">
                                     <div class="input-field col s6">
                                         <input id="first_name" name="first_name" type="text" class="validate">
@@ -444,6 +445,7 @@
                     M.AutoInit();
                     $('.sidenav').sidenav();
                     $('.sidenav-trigger').sidenav();
+                    $('.sidenav-1').sidenav({ edge: 'left' });
                     $('select').formSelect();
                     $('.dropdown-trigger').dropdown({
                         coverTrigger: false,
@@ -531,15 +533,25 @@
                             alert("Hay errores en el formulario");
                         }
                     });
+                    //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+                    var first_name = getQueryVariable("first_name");
+
+                    $("#username").text(unescape(first_name));
+
+
+                    //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
+                    function getQueryVariable(variable) {
+                        var query = window.location.search.substring(1);
+                        var vars = query.split("&");
+                        for (var i = 0; i < vars.length; i++) {
+                            var pair = vars[i].split("=");
+                            if (pair[0] == variable) {
+                                return pair[1];
+                            }
+                        }
+                        return false;
+                    }
                 });
-
-
-                //Expresiones Regulares
-                /*function validarCorreo(email_usuario) {
-                    var validarCorreo = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-                    return validarCorreo.test(email_usuario);
-                }*/
-
             </script>
 </body>
 

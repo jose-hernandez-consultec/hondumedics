@@ -57,10 +57,6 @@
             margin-left: 1rem !important;
         }
 
-        .brand-logo {
-            font-weight: 900;
-        }
-
         .dropdown-content {
             background-color: #FFFFFF;
             margin: 0;
@@ -122,10 +118,7 @@
             border-radius: 150px;
         }
 
-        td {
-            text-align: center;
-        }
-         .container-1 {
+        .container-1 {
             width: 100%;
             max-width: initial;
         }
@@ -137,49 +130,68 @@
         .container-1>.row>.col {
             padding: 0;
         }
+
+        table {
+            width: 100%;
+            height: 50½;
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        td {
+            width: 0px;
+            height: 30px;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <!--Navbar-->
-    <nav class="nav-wrapper">
-        <div class="nav-wrapper">
-            <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
-                <i class="material-icons">menu</i></a>
-            <div class="container">
-                <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <div class="center row">
-                            <div class="col s12">
-                                <div class="row" id="topbarsearch">
-                                    <div class="input-field col s6 s12 white-text">
-                                        <i class="white-text material-icons prefix">search</i>
-                                        <input type="text" placeholder="search" id="autocomplete-input"
-                                            class="autocomplete white-text">
+    <div class="row">
+        <nav class="nav-wrapper">
+            <div class="nav-wrapper">
+                <a href="" class="left sidenav-trigger hide-on-medium-and-up" data-target="sidenav-1">
+                    <i class="material-icons">menu</i></a>
+                <div class="col s2"></div>
+                <div class="col s10">
+                    <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <div class="center row">
+                                <div class="col s12">
+                                    <div class="row" id="topbarsearch">
+                                        <div class="input-field col s6 s12 white-text">
+                                            <i class="white-text material-icons prefix">search</i>
+                                            <input type="text" placeholder="search" id="autocomplete-input"
+                                                class="autocomplete white-text">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <!--Notifications-->
-                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
-                            <span style="color: #464646;">Notificación</span>
-                            <span class="new badge red">3</span><i class="material-icons right">notifications_none
-                                <small class="notification-badge">3</small>
-                            </i></a>
-                    </li>
+                        </li>
+                        <!--Notifications-->
+                        <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                                <span style="color: #464646;">Notificación</span>
+                                <span class="new badge red">3</span><i class="material-icons right">notifications_none
+                                    <small class="notification-badge">3</small>
+                                </i></a>
+                        </li>
 
-                    <!-- Dropdown Trigger -->
-                    <li>
-                        <a href="#" class="dropdown-trigger" data-target="dropdown1">
-                            Administrador
-                            <i class="material-icons right">arrow_drop_down</i>
-                        </a></li>
-                </ul>
+                        <!-- Dropdown Trigger -->
+                        <li>
+                            <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                                Hola, <span style="font-size: 15px; font-weight: bold;" id="username"></span>
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
         <li><a href="Perfil.html">
@@ -265,7 +277,7 @@
     </ul>
 
     <!--Menú Oculto-->
-    <ul class="sidenav fixed" id="menu-responsive">
+    <ul class="sidenav sidenav-fixed" id="sidenav-1">
         <li>
             <div class="user-view">
                 <div class="background">
@@ -303,7 +315,8 @@
             </a>
         </li>
         <li>
-            <a href="ListaEspecialidades.html"><i class="material-icons black-text">format_align_justify</i>Especialidades
+            <a href="ListaEspecialidades.html"><i
+                    class="material-icons black-text">format_align_justify</i>Especialidades
             </a>
         </li>
         <li>
@@ -311,7 +324,7 @@
             </a>
         </li>
         <div class="divider"></div>
-        
+
         <li>
             <a href="AgregarNuevoUsuario.html"><i class="material-icons black-text">add</i>Agregar Nuevo Usuario
             </a>
@@ -329,13 +342,15 @@
             <!-- Page Header -->
             <div class="page-header">
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s2"></div>
+                    <div class="col s10">
                         <h3 class="black-text center">Lista de Pacientes</h3>
                         <h6 class="blue-text center"><b>Dashboard / Usuarios /</b> Pacientes</h6>
                     </div>
                     <!--Lista de Pacientes-->
                     <div class="row">
-                        <div class="col s12 l12">
+                        <div class="col s2"></div>
+                        <div class="col s10 l10">
                             <br>
                             <br>
                             <br>
@@ -344,28 +359,24 @@
                                     <table id="example" class="display highlight" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Id Paciente</th>
-                                                <th>Nombre del Paciente</th>
-                                                <th>Edad</th>
-                                                <th>Dirección</th>
-                                                <th>Teléfono</th>
-                                                <th>Última Visita</th>
-                                                <th>Pagado</th>
+                                                <th>ID</th>
+                                                <th>NOMBRES</th>
+                                                <th>APELLIDO</th>
+                                                <th>CORREO</th>
+                                                <th>FECHA DE NACIMIENTO</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Id Paciente</th>
-                                                <th>Nombre del Paciente</th>
-                                                <th>Edad</th>
-                                                <th>Dirección</th>
-                                                <th>Teléfono</th>
-                                                <th>Última Visita</th>
-                                                <th>Pagado</th>
+                                                <th>ID</th>
+                                                <th>NOMBRES</th>
+                                                <th>APELLIDO</th>
+                                                <th>CORREO</th>
+                                                <th>FECHA DE NACIMIENTO</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <tr>
+                                            <!--<tr>
                                                 <td>PT001</td>
                                                 <td><a href="UserProfilePatient.html">
                                                         <img src="http://cdn2.upsocl.com/wp-content/uploads/2045/06/mujer-372x248.jpg"
@@ -376,175 +387,7 @@
                                                 <td>99999999</td>
                                                 <td>21 Sep 2919</td>
                                                 <td>$150.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT002</td>
-                                                <td><a href="UserProfilePatient2.html">
-                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcz1sSva7aFhG4cnwa6JkdFz5sIU4hw7cEX1m3pSOyUMZNnMUX&s"
-                                                            class="imgRedonda" /></a><br><a href="#">Erick Bu</a></td>
-                                                <td>29</td>
-                                                <td>1916 – Caseríos de Chenales, San José del Boquerón, La Esperanza,
-                                                    Intibucá</td>
-                                                <td>88888888</td>
-                                                <td>10 Oct 2019</td>
-                                                <td>$350.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT003</td>
-                                                <td><a href="UserProfilePatient3.html">
-                                                        <img src="https://image.shutterstock.com/image-photo/closeup-portrait-beautiful-woman-smiling-260nw-693028582.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Marleen
-                                                        Vargas</a></td>
-                                                <td>31</td>
-                                                <td>1925 – Barrio Paz Barahona, SPS, Cortés</td>
-                                                <td>77777777</td>
-                                                <td>05 OCt 2019</td>
-                                                <td>$300.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT004</td>
-                                                <td><a href="UserProfilePatient4.html">
-                                                        <img src="https://image.shutterstock.com/image-photo/smiling-man-crossed-arms-over-260nw-371570986.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Víctor
-                                                        Guzmán</a></td>
-                                                <td>27</td>
-                                                <td>1976 – Barrio Suyapa y Colonia Suyapa Anach, SPS, Cortés</td>
-                                                <td>55555555</td>
-                                                <td>02 Nov 2019</td>
-                                                <td>$250.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT005</td>
-                                                <td><a href="UserProfilePatient5.html">
-                                                        <img src="https://static4.depositphotos.com/1005592/337/i/950/depositphotos_3371246-stock-photo-attractive-latino-women.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Ericka
-                                                        Bueso</a></td>
-                                                <td>26</td>
-                                                <td>1982 – Colonia El Carmen, Santa Rosa, Copán</td>
-                                                <td>44444444</td>
-                                                <td>12 Nov 2019</td>
-                                                <td>$150.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT006</td>
-                                                <td><a href="#">
-                                                        <img src="https://www.ohioattorneygeneral.gov/getattachment/ce053fd0-1177-4d98-af51-e379958224a5/Reed-(16).aspx"
-                                                            class="imgRedonda" /></a><br><a href="#">Charleene
-                                                        Reed</a></td>
-                                                <td>40</td>
-                                                <td>1990 – Colonia Brisas del Canadá, Zacapa, Santa Bárbara</td>
-                                                <td>33333333</td>
-                                                <td>25 Oct 2019</td>
-                                                <td>$100.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT007</td>
-                                                <td><a href="#">
-                                                        <img src="https://www.diariohispaniola.com/fotos/1/F84F6F54-9C16-439D-8AE3-9BA9D98C6C9E_cx0_cy4_cw0_w1023_r1_s.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Travis
-                                                        Fernández</a></td>
-                                                <td>42</td>
-                                                <td>0201 - Colo. Los Maestros, Trujillo, Colón</td>
-                                                <td>2222222</td>
-                                                <td>17 Sep 2019</td>
-                                                <td>$120.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT008</td>
-                                                <td><a href="#">
-                                                        <img src="https://media.bizj.us/view/img/10384378/carlos-kelly-6070667*220xx456-608-97-0.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Carlos
-                                                        Kelly</a></td>
-                                                <td>56</td>
-                                                <td>0301, Rancho Gloria, Comayagua, Comayagua</td>
-                                                <td>98989898</td>
-                                                <td>11 Nov 2019</td>
-                                                <td>$130.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT009</td>
-                                                <td><a href="#">
-                                                        <img src="https://i2.wp.com/metricadigital.com/contenido/uploads/2018/09/Michelle-N%C3%BA%C3%B1ez-Ponce-candidata-de-Morena-a-Valle-de-Bravo.jpg?fit=600%2C600"
-                                                            class="imgRedonda" /></a><br><a href="#">Michelle
-                                                        Nuñez</a></td>
-                                                <td>33</td>
-                                                <td>0605 - San Isidro, El Corpus, Choluteca</td>
-                                                <td>87878787</td>
-                                                <td>04 Oct 2019</td>
-                                                <td>$260.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT010</td>
-                                                <td><a href="#">
-                                                        <img src="https://www.richardwilliamsassociates.com/uploads/2/4/7/4/24747175/ginamoore3_2_orig.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Gina
-                                                        Moore</a></td>
-                                                <td>29</td>
-                                                <td>0703 - El Arenal, Danlí, El Paraíso</td>
-                                                <td>76767676</td>
-                                                <td>06 Sep 2019</td>
-                                                <td>$290.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT011</td>
-                                                <td><a href="#">
-                                                        <img src="https://img.europapress.es/fotoweb/fotonoticia_20190306153854_640.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Elisa
-                                                        Galileo</a></td>
-                                                <td>60</td>
-                                                <td>0801 - El Alamo, Tegucigalpa, Francisco Morazán</td>
-                                                <td>65656565</td>
-                                                <td>23 Oct 2019</td>
-                                                <td>$300.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT012</td>
-                                                <td><a href="#">
-                                                        <img src="https://pbs.twimg.com/profile_images/914719766652248064/IUBGBIVG_400x400.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Reyna
-                                                        Castellanos</a></td>
-                                                <td>35</td>
-                                                <td>0801 - La Estancia, Tegucigalpa, Francisco Morazán</td>
-                                                <td>54545454</td>
-                                                <td>09 Nov 2019</td>
-                                                <td>$320.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT013</td>
-                                                <td><a href="#">
-                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz7z3fTI6sA2Wtb5k6YD8cRQL8HcOdY10R5jOGuHa4fIfb-bn8Vw&s"
-                                                            class="imgRedonda" /></a><br><a href="#">Daniel
-                                                        Castillo</a></td>
-                                                <td>34</td>
-                                                <td>1501 - Pueblo Nuevo, Juticalpa, Olancho</td>
-                                                <td>43434343</td>
-                                                <td>14 Oct 2019</td>
-                                                <td>$330.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT014</td>
-                                                <td><a href="#">
-                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1FkfepR_mjE-um3ViFLFv_-z-iMAsztjFuSEklAKWzSgR-wo&s"
-                                                            class="imgRedonda" /></a><br><a href="#">Jessica
-                                                        Garza</a></td>
-                                                <td>39</td>
-                                                <td>1805 - La Ceibita, Jocón, Yoro</td>
-                                                <td>32323232</td>
-                                                <td>14 Nov 2019</td>
-                                                <td>$160.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>PT015</td>
-                                                <td><a href="#">
-                                                        <img src="http://5-207-10727-6.b.cdn12.com/44208810.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">James
-                                                        Coello</a></td>
-                                                <td>55</td>
-                                                <td>0303 - Ignorado, Lepaera, Lempira</td>
-                                                <td>21212121</td>
-                                                <td>31 Oct 2019</td>
-                                                <td>$190.00</td>
-                                            </tr>
+                                            </tr>-->
                                         </tbody>
                                     </table>
                                 </div>
@@ -561,10 +404,48 @@
             //Inicialización de las propiedades de Materialize css.
             M.AutoInit();
             $('.sidenav').sidenav();
+            $('.sidenav-1').sidenav({ edge: 'left' });
             $('.sidenav-trigger').sidenav();
             $('.dropdown-trigger').dropdown({
                 coverTrigger: false,
                 belowOrigin: true
+            });
+
+            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+            var first_name = getQueryVariable("first_name");
+
+            $("#username").text(unescape(first_name));
+
+
+            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
+                    }
+                }
+                return false;
+            }
+
+             //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
+             $.ajax({
+                url: 'https://hondumedics-server.herokuapp.com/patients',
+                type: 'GET',
+                dataType: 'json', //added data
+                success: function (data) {
+                    console.log(data);
+                    var datos = data;
+                    for (var i = 0; i <= datos.length; i++) {
+                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
+
+                            $("#example").append('<tr>' + '<td>' + datos[i].patient_id + '</td>' + '<td>' + datos[i].first_name + '</td>' + '<td>' + datos[i].last_name + '</td>' + '<td>' + datos[i].email + '</td>' + '<td>' + datos[i].birthdate + '</td>' + '</tr>');
+                        }
+
+                    }
+                }
             });
 
             //Inicializar la tabla dinámica.
@@ -597,6 +478,7 @@
             $("select").val('10');
             $('select').addClass("browser-default");
             $('select').material_select();
+
         });
     </script>
 </body>

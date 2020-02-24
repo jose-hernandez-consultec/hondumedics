@@ -17,7 +17,7 @@
     <!--DataTable-->
     <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    
+
     <!-- Estilos CSS -->
 
     <style>
@@ -56,10 +56,6 @@
         .input-field .prefix~.validate~label,
         .input-field .prefix~.autocomplete-content {
             margin-left: 1rem !important;
-        }
-
-        .brand-logo {
-            font-weight: 900;
         }
 
         .dropdown-content {
@@ -123,9 +119,6 @@
             border-radius: 150px;
         }
 
-        td {
-            text-align: center;
-        }
         .container-1 {
             width: 100%;
             max-width: initial;
@@ -138,49 +131,68 @@
         .container-1>.row>.col {
             padding: 0;
         }
+
+        table {
+            width: 100%;
+            height: 50½;
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        td {
+            width: 0px;
+            height: 30px;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <!--Navbar-->
-    <nav class="nav-wrapper">
-        <div class="nav-wrapper">
-            <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
-                <i class="material-icons">menu</i></a>
-            <div class="container">
-                <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <div class="center row">
-                            <div class="col s12">
-                                <div class="row" id="topbarsearch">
-                                    <div class="input-field col s6 s12 white-text">
-                                        <i class="white-text material-icons prefix">search</i>
-                                        <input type="text" placeholder="search" id="autocomplete-input"
-                                            class="autocomplete white-text">
+    <div class="row">
+        <nav class="nav-wrapper">
+            <div class="nav-wrapper">
+                <a href="" class="left sidenav-trigger hide-on-medium-and-up" data-target="sidenav-1">
+                    <i class="material-icons">menu</i></a>
+                <div class="col s2"></div>
+                <div class="col s10">
+                    <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <div class="center row">
+                                <div class="col s12">
+                                    <div class="row" id="topbarsearch">
+                                        <div class="input-field col s6 s12 white-text">
+                                            <i class="white-text material-icons prefix">search</i>
+                                            <input type="text" placeholder="search" id="autocomplete-input"
+                                                class="autocomplete white-text">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <!--Notifications-->
-                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
-                            <span style="color: #464646;">Notificación</span>
-                            <span class="new badge red">3</span><i class="material-icons right">notifications_none
-                                <small class="notification-badge">3</small>
-                            </i></a>
-                    </li>
+                        </li>
+                        <!--Notifications-->
+                        <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                                <span style="color: #464646;">Notificación</span>
+                                <span class="new badge red">3</span><i class="material-icons right">notifications_none
+                                    <small class="notification-badge">3</small>
+                                </i></a>
+                        </li>
 
-                    <!-- Dropdown Trigger -->
-                    <li>
-                        <a href="#" class="dropdown-trigger" data-target="dropdown1">
-                            Administrador
-                            <i class="material-icons right">arrow_drop_down</i>
-                        </a></li>
-                </ul>
+                        <!-- Dropdown Trigger -->
+                        <li>
+                            <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                                Hola, <span style="font-size: 15px; font-weight: bold;" id="username"></span>
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
         <li><a href="Perfil.html">
@@ -265,7 +277,7 @@
         </li>
     </ul>
     <!--Menú Oculto-->
-    <ul class="sidenav fixed" id="menu-responsive">
+    <ul class="sidenav sidenav-fixed" id="sidenav-1">
         <li>
             <div class="user-view">
                 <div class="background">
@@ -303,7 +315,8 @@
             </a>
         </li>
         <li>
-            <a href="ListaEspecialidades.html"><i class="material-icons black-text">format_align_justify</i>Especialidades
+            <a href="ListaEspecialidades.html"><i
+                    class="material-icons black-text">format_align_justify</i>Especialidades
             </a>
         </li>
         <li>
@@ -311,7 +324,7 @@
             </a>
         </li>
         <div class="divider"></div>
-        
+
         <li>
             <a href="AgregarNuevoUsuario.html"><i class="material-icons black-text">add</i>Agregar Nuevo Usuario
             </a>
@@ -329,13 +342,15 @@
             <!-- Page Header -->
             <div class="page-header">
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s2"></div>
+                    <div class="col s10">
                         <h3 class="black-text center">Lista de Doctores</h3>
                         <h6 class="blue-text center"><b>Dashboard / Usuarios /</b> Doctores</h6>
                     </div>
                     <!--Lista de Pacientes-->
                     <div class="row">
-                        <div class="col s12 l12">
+                        <div class="col s2"></div>
+                        <div class="col s10 l10">
                             <br>
                             <br>
                             <br>
@@ -567,11 +582,31 @@
             //Inicialización de las propiedades de Materialize css.
             M.AutoInit();
             $('.sidenav').sidenav();
+            $('.sidenav-1').sidenav({ edge: 'left' });
             $('.sidenav-trigger').sidenav();
             $('.dropdown-trigger').dropdown({
                 coverTrigger: false,
                 belowOrigin: true
             });
+
+            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+            var first_name = getQueryVariable("first_name");
+
+            $("#username").text(unescape(first_name));
+
+
+            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
+                    }
+                }
+                return false;
+            }
 
             //Inicializar la tabla dinámica
             $('#example').DataTable({

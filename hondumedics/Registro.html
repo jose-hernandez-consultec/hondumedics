@@ -34,54 +34,61 @@
         .btn-bordes {
             border: white 2px solid;
         }
+
+        body {
+            background-color: #ccc;
+        }
     </style>
 </head>
 
 <body>
     <!-- Formulario de Registro -->
+    <div class="row">
     <nav class="nav-wrapper">
-        <div class="container">
-            <a href="#" class="brand-logo">HonduMedics</a>
+        <div class="col s1"></div>
+        <div class="col s11">
+            <a href="index.html" class="brand-logo">HonduMedics</a>
         </div>
     </nav>
+</div>
     <div class="container">
         <div class="container">
             <div class="row">
                 <br>
                 <br>
                 <br>
-                <form id="formulario" name="formulario" method="POST">
-                    <div class="col s12">
-                        <p style="text-align: center;">
-                            <h5>Crea una cuenta</h5>
-                        </p>
-                    </div>
-                    <div class="row">
-                        <a data-test="create-account-have-account-link" href="Login.html" target="_self" role="button"
-                            tabindex="0" id="linkIniciarSesion"><span>¿Ya tienes uno? Iniciar Sesión</span></a>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                            <p></p>
+                <div class="card">
+                    <form id="formulario" name="formulario" method="POST">
+                        <div class="col s1"></div>
+                        <div class="col s11">
+                            <p style="text-align: center;">
+                                <h3>Crea una cuenta</h3>
+                            </p>
                         </div>
-                        <div class="input-field col s10">
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Introduce tu correo electrónico</label>
+                        <div class="row">
+                            <div class="col s1"></div>
+                            <div class="col s11">
+                                <a href="Login.html" id="linkIniciarSesion"><span>¿Ya tienes uno? Iniciar
+                                        Sesión</span></a>
+                            </div>
                         </div>
-                        <div class="col s12">
-                            <p></p>
+                        <div class="row">
+                            <div class="col s1"></div>
+                            <div class="input-field col s10">
+                                <input id="email" type="email" class="validate">
+                                <label for="email">Introduce tu correo electrónico</label>
+                            </div>
+                            <div class="col s1"></div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                            <p></p>
-                        </div>
-                        <div class="input-field col s10">
-                            <input id="password" type="password" class="validate"
-                                placeholder="Por lo menos 8 caracteres de longitud">
-                            <label for="password">Contraseña</label>
-                        </div>
-                        <div class="col s12">
+                        <div class="row">
+                            <div class="col s1"></div>
+                            <div class="input-field col s10">
+                                <input id="password" type="password" class="validate"
+                                    placeholder="Por lo menos 8 caracteres de longitud">
+                                <label for="password">Contraseña</label>
+                            </div>
+                            <div class="col s1"></div>
+                            <!--<div class="col s12">
                             <p><b>Reglas de contraseña</b></p>
                             <p style="font-family: Arial, Helvetica, sans-serif; font-size: small;">1. Tiene al menos 8
                                 caracteres</p>
@@ -93,71 +100,82 @@
                                 de espacio en blanco</p>
                             <p style="font-family: Arial, Helvetica, sans-serif; font-size: small;">4. No es fácil de
                                 adivinar</p>
+                        </div>-->
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                            <p style="text-align: center;">
-                                <h5>Tu nombre</h5>
-                            </p>
+                        <div class="row">
+                            <div class="col s1"></div>
+                            <div class="col s11">
+                                <p style="text-align: center;">
+                                    <h5>Tu nombre</h5>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6 m6">
-                            <input placeholder="Escribe su nombre" id="nombre" type="text" class="validate">
-                            <label for="nombre">Nombre</label>
+                        <div class="row">
+                            <div class="col s1"></div>
+                            <div class="input-field col s5 m5">
+                                <input placeholder="Escribe su nombre" id="nombre" type="text" class="validate">
+                                <label for="nombre">Nombre</label>
+                            </div>
+                            <div class="input-field col s5 m5">
+                                <input placeholder="Escribe su apellido" id="apellido" type="text" class="validate">
+                                <label for="apellido">Apellido</label>
+                            </div>
+                            <div class="col s1"></div>
                         </div>
-                        <div class="input-field col s6 m6">
-                            <input placeholder="Escribe su apellido" id="apellido" type="text" class="validate">
-                            <label for="apellido">Apellido</label>
+                        <div class="row">
+                            <div class="col s1"></div>
+                            <div class="col s11">
+                                <p style="text-align: center;">
+                                    <h5>Fecha de Nacimiento</h5>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                            <p style="text-align: center;">
-                                <h5>Fecha de Nacimiento</h5>
-                            </p>
+                        <div class="row">
+                            <div class="col s1"></div>
+                            <div class="input-field col s10">
+                                <input type="text" class="datepicker" id="fecha">
+                            </div>
+                            <div class="col s1"></div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" class="datepicker" placeholder="Fecha de Nacimiento" id="fechaNac">
+                        <div class="row">
+                            <div class="col s1"></div>
+                            <fieldset class="col s10">
+                                <legend>
+                                    <h4>Sexo</h4>
+                                </legend>
+                                <center>
+                                    <form id="form2">
+                                        <p>
+                                            <label>
+                                                <input id="male" class="with-gap" name="gender" type="radio"
+                                                    value="1" />
+                                                <span>Masculino</span>
+                                            </label>
+                                        </p>
+                                        <p>
+                                            <label>
+                                                <input id="female" class="with-gap" name="gender" type="radio"
+                                                    value="2" />
+                                                <span>Femenino</span>
+                                            </label>
+                                        </p>
+                                    </form>
                         </div>
-                    </div>
-                    <div class="row">
-                        <fieldset>
-                            <legend>
-                                <h4>Sexo</h4>
-                            </legend>
-                            <center>
-                                <form action="#" id="form2">
-                                    <p>
-                                        <label>
-                                            <input id="male" class="with-gap" name="gender" type="radio" value="1" />
-                                            <span>Masculino</span>
-                                        </label>
-                                    </p>
-                                    <p>
-                                        <label>
-                                            <input id="female" class="with-gap" name="gender" type="radio" value="2" />
-                                            <span>Femenino</span>
-                                        </label>
-                                    </p>
-                                </form>
-                            </center>
+                        </center>
                         </fieldset>
-                    </div>
-                    <div class="row">
-                        <form action="#" id="form3">
-                            <p>
-                                <label>
-                                    <input id="aceptar" class="filled-in" name="aceptar" type="checkbox" />
-                                    <span>He leído y acepto los
-                                        <a href="">Términos de uso </a> y <a href="">la Política de privacidad de</a>
-                                        HonduMedics</span>
-                                </label>
-                            </p>
-                            <!--<div class="row">
+                        <div class="col s1"></div>
+                        <div class="row">
+                            <form action="#" id="form3">
+                                <p>
+                                    <label>
+                                        <input id="aceptar" class="filled-in" name="aceptar" type="checkbox" />
+                                        <span>He leído y acepto los
+                                            <a href="">Términos de uso </a> y <a href="">la Política de privacidad
+                                                de</a>
+                                            HonduMedics</span>
+                                    </label>
+                                </p>
+                                <!--<div class="row">
                                 <p>
                                     <label>
                                         <input id="mantener" type="checkbox" class="filled-in" checked="checked" name="valor1" />
@@ -165,25 +183,27 @@
                                     </label>
                                 </p>
                             </div>-->
-                        </form>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m4 l4">
-                            <p></p>
+                            </form>
                         </div>
-                        <center>
-                            <div class="col s12 m4 l4"><a href="#"
-                                    class="btn tooltipped btn-pink white-text waves-effect waves-pink btn-large"
-                                    id="btnGuardar" data-position="left" data-tooltip="Guardar registro.">Guardar<i
-                                        class="material-icons left">save</i></a></div>
-                        </center>
-                        <div class="col s12 m4 l4">
-                            <p></p>
+                        <div class="row">
+                            <div class="col s12 m4 l4">
+                                <p></p>
+                            </div>
+                            <center>
+                                <div class="col s12 m4 l4"><a href="#"
+                                        class="btn tooltipped btn-pink white-text waves-effect waves-pink btn-large"
+                                        id="btnGuardar" data-position="left" data-tooltip="Guardar registro.">Guardar<i
+                                            class="material-icons left">save</i></a></div><br><br>
+                            </center>
+                            <div class="col s12 m4 l4">
+                                <p></p>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -192,6 +212,21 @@
         $(document).ready(function () {
             //Inicialización de las propiedades de Materialize css.
             $('.datepicker').datepicker();
+            $('.datepicker').pickadate({
+                monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+                selectMonths: true,
+                selectYears: 20, // Puedes cambiarlo para mostrar más o menos años
+                today: 'Hoy',
+                clear: 'Limpiar',
+                close: 'Ok',
+                labelMonthNext: 'Siguiente mes',
+                labelMonthPrev: 'Mes anterior',
+                labelMonthSelect: 'Selecciona un mes',
+                labelYearSelect: 'Selecciona un año',
+            });
             $('.tooltipped').tooltip();
 
             var form = $("#formulario");

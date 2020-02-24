@@ -57,10 +57,6 @@
             margin-left: 1rem !important;
         }
 
-        .brand-logo {
-            font-weight: 900;
-        }
-
         .dropdown-content {
             background-color: #FFFFFF;
             margin: 0;
@@ -169,6 +165,20 @@
             height: 30px;
             text-align: center;
         }
+
+        .container-1 {
+            width: 100%;
+            max-width: initial;
+        }
+
+        .container-1>.row {
+            margin: 0;
+        }
+
+        .container-1>.row>.col {
+            padding: 0;
+        }
+
     </style>
 </head>
 
@@ -178,10 +188,10 @@
     <div class="row">
         <nav class="nav-wrapper">
             <div class="nav-wrapper">
-                <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
+                <a href="" class="left sidenav-trigger hide-on-medium-and-up" data-target="sidenav-1">
                     <i class="material-icons">menu</i></a>
-                <div class="col s1"></div>
-                <div class="col s11">
+                <div class="col s2"></div>
+                <div class="col s10">
                     <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
                     <ul class="right hide-on-med-and-down">
                         <!-- Buscar -->
@@ -209,8 +219,7 @@
                         <!-- Dropdown Trigger Menú Administrador-->
                         <li>
                             <a href="#" class="dropdown-trigger" data-target="dropdown1">
-                                Hola, <span style="font-size: 15px; font-weight: bold;"
-                                id="username"></span>
+                                Hola, <span style="font-size: 15px; font-weight: bold;" id="username"></span>
                                 <i class="material-icons right">arrow_drop_down</i>
                             </a></li>
                         <div class="col s1"></div>
@@ -305,7 +314,7 @@
     </ul>
 
     <!-- Menú Oculto-->
-    <ul class="sidenav fixed" id="menu-responsive">
+    <ul class="sidenav sidenav-fixed" id="sidenav-1">
         <li>
             <div class="user-view">
                 <div class="background">
@@ -366,11 +375,12 @@
 
     <!--Dashboard-->
     <div class="" style="min-height: 657px;">
-        <div class="container">
+        <div class="container-1">
             <!-- Page Header -->
             <div class="page-header">
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s2"></div>
+                    <div class="col s10">
                         <h2 class="black-text left">Bienvenido <span id="UserName"></span></h2>
                         <br>
                         <br>
@@ -381,7 +391,8 @@
                         <h4 class="blue-text center">Administrador</h4>
                     </div>
                     <div class="row">
-                        <div class="col s12 m6 l3">
+                        <div class="col s3"></div>
+                        <div class="col s12 m6 l2">
                             <div class="card">
                                 <center>
                                     <div class="card-content green white-text">
@@ -399,7 +410,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m6 l3">
+                        <div class="col s12 m6 l2">
                             <div class="card">
                                 <center>
                                     <div class="card-content purple white-text">
@@ -417,7 +428,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m6 l3">
+                        <div class="col s12 m6 l2">
                             <div class="card">
                                 <center>
                                     <div class="card-content blue-grey white-text">
@@ -435,7 +446,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m6 l3">
+                        <div class="col s12 m6 l2">
                             <div class="card">
                                 <center>
                                     <div class="card-content deep-purple white-text">
@@ -446,21 +457,22 @@
                                         <h4>$ 58654</h4>
                                     </div>
                                 </center>
-                                <div class="card-action  deep-purple darken-2">
+                                <div class="card-action deep-purple darken-2">
                                     <div class="progress">
                                         <div class="determinate" style="width: 76%"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col l6 m6 s12">
+                        <div class="col s3"></div>
+                        <div class="col l4 m6 s12">
                             <div class="card card-bg">
                                 <div class="card-content">
                                     <canvas id="myChart"></canvas>
                                 </div>
                             </div>
                         </div>
-                        <div class="col l6 m6 s12">
+                        <div class="col l4 m6 s12">
                             <div class="card card-bg">
                                 <div class="card-content">
                                     <canvas id="myChart2"></canvas>
@@ -469,7 +481,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12 m6 l6">
+                        <div class="col s2"></div>
+                        <div class="col s12 m6 l5">
                             <div class="card">
                                 <div class="card-content">
                                     <span class="card-title center"><b>Lista de Doctores</b></span>
@@ -607,7 +620,7 @@
 
                             </div>
                         </div>
-                        <div class="col s12 m6 l6">
+                        <div class="col s12 m6 l5">
                             <div class="card">
                                 <div class="card-content">
                                     <span class="card-title center"><b>Lista de Pacientes</b></span>
@@ -681,7 +694,8 @@
                     </div>
                     <!--Lista de citas-->
                     <div class="row">
-                        <div class="col s12 l12">
+                        <div class="col s2"></div>
+                        <div class="col s10 l10">
                             <div class="card">
                                 <div class="card-content">
                                     <span class="card-title"><b>Lista de Citas</b></span>
@@ -846,6 +860,7 @@
                 //Inicialización de las propiedades de Materialize css.
                 M.AutoInit();
                 $('.sidenav').sidenav();
+                $('.sidenav-1').sidenav({ edge: 'left' });
                 $('.sidenav-trigger').sidenav();
                 $('.modal').modal();
                 $('select').formSelect();

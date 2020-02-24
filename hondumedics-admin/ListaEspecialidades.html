@@ -57,10 +57,6 @@
             margin-left: 1rem !important;
         }
 
-        .brand-logo {
-            font-weight: 900;
-        }
-
         .dropdown-content {
             background-color: #FFFFFF;
             margin: 0;
@@ -135,44 +131,47 @@
 
 <body>
     <!--Navbar-->
-    <nav class="nav-wrapper">
-        <div class="nav-wrapper">
-            <a href="" class="sidenav-trigger show-on-large" data-target="menu-responsive">
-                <i class="material-icons">menu</i></a>
-            <div class="container">
-                <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <div class="center row">
-                            <div class="col s12">
-                                <div class="row" id="topbarsearch">
-                                    <div class="input-field col s6 s12 white-text">
-                                        <i class="white-text material-icons prefix">search</i>
-                                        <input type="text" placeholder="search" id="autocomplete-input"
-                                            class="autocomplete white-text">
+    <div class="row">
+        <nav class="nav-wrapper">
+            <div class="nav-wrapper">
+                <a href="" class="left sidenav-trigger hide-on-medium-and-up" data-target="sidenav-1">
+                    <i class="material-icons">menu</i></a>
+                <div class="col s2"></div>
+                <div class="col s10">
+                    <a href="dashboard.html" class="brand-logo">HM Admin Panel</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <div class="center row">
+                                <div class="col s12">
+                                    <div class="row" id="topbarsearch">
+                                        <div class="input-field col s6 s12 white-text">
+                                            <i class="white-text material-icons prefix">search</i>
+                                            <input type="text" placeholder="search" id="autocomplete-input"
+                                                class="autocomplete white-text">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <!--Notifications-->
-                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
-                            <span style="color: #464646;">Notificación</span>
-                            <span class="new badge red">3</span><i class="material-icons right">notifications_none
-                                <small class="notification-badge">3</small>
-                            </i></a>
-                    </li>
+                        </li>
+                        <!--Notifications-->
+                        <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                                <span style="color: #464646;">Notificación</span>
+                                <span class="new badge red">3</span><i class="material-icons right">notifications_none
+                                    <small class="notification-badge">3</small>
+                                </i></a>
+                        </li>
 
-                    <!-- Dropdown Trigger -->
-                    <li>
-                        <a href="#" class="dropdown-trigger" data-target="dropdown1">
-                            Administrador
-                            <i class="material-icons right">arrow_drop_down</i>
-                        </a></li>
-                </ul>
+                        <!-- Dropdown Trigger -->
+                        <li>
+                            <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                                Hola, <span style="font-size: 15px; font-weight: bold;" id="username"></span>
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
         <li><a href="Perfil.html">
@@ -258,7 +257,7 @@
     </ul>
 
     <!--Menú Oculto-->
-    <ul class="sidenav fixed" id="menu-responsive">
+    <ul class="sidenav sidenav-fixed" id="sidenav-1">
         <li>
             <div class="user-view">
                 <div class="background">
@@ -305,7 +304,7 @@
             </a>
         </li>
         <div class="divider"></div>
-        
+
         <li>
             <a href="AgregarNuevoUsuario.html"><i class="material-icons black-text">add</i>Agregar Nuevo Usuario
             </a>
@@ -319,21 +318,25 @@
 
     <!--Dashboard-->
     <div class="" style="min-height: 657px;">
-        <div class="container">
+        <div class="container-1">
             <!-- Page Header -->
             <div class="page-header">
                 <div class="row">
-                    <div class="col s12 l12">
-                        <h3 class="black-text">Lista de Especialidades</h3>
-                        <h6 class="blue-text"><b>Dashboard /</b> Especialidades</h6>
-                        <!-- Modal Trigger -->
-                        <a id="back5" class="waves-effect waves-light btn blue modal-trigger right" href="#modal1">
-                            <i class="material-icons left">add</i>Añadir</a>
-
+                    <div class="col s2"></div>
+                    <div class="col s10">
+                        <h3 class="black-text center">Lista de Especialidades</h3>
+                        <h6 class="blue-text center"><b>Dashboard /</b> Especialidades</h6>
+                        <!-- Modal Trigger --><br>
+                        <div class="col s10"></div>
+                            <div class="col s2">
+                            <a id="back5" class="waves-effect waves-light btn blue modal-trigger" href="#modal1">
+                                <i class="material-icons left">add</i>Añadir</a></div>
+                        
                         <!-- Modal Structure -->
                         <div id="modal1" class="modal modal-fixed-footer">
                             <div class="modal-content">
                                 <h4 style="text-align: center;">Añadir Especialidad</h4>
+                                <br>
                                 <br>
                                 <div class="row">
                                     <form class="col s12">
@@ -370,7 +373,8 @@
                     </div>
                     <!--Lista de Especialidades-->
                     <div class="row">
-                        <div class="col s12 l12">
+                        <div class="col s2"></div>
+                        <div class="col s10">
                             <br>
                             <br>
                             <br>
@@ -401,10 +405,10 @@
                                                 <td>
                                                     <!-- Modal Trigger -->
                                                     <a class="btn-floating btn-medium waves-effect waves-light btn green modal-trigger center btn tooltipped"
-                                                    data-position="bottom" data-tooltip="Editar" href="#modal2"><i
+                                                        data-position="bottom" data-tooltip="Editar" href="#modal2"><i
                                                             class="material-icons left">create</i>Editar</a>
                                                     <a class="btn-floating btn-medium waves-effect waves-light btn red modal-trigger center tooltipped"
-                                                    data-position="bottom" data-tooltip="Eliminar" href="#modal3"><i
+                                                        data-position="bottom" data-tooltip="Eliminar" href="#modal3"><i
                                                             class="material-icons left">delete_forever</i>Eliminar</a>
 
                                                     <!-- Modal Structure -->
@@ -434,7 +438,8 @@
                                                                             </div>
                                                                             <div class="file-path-wrapper">
                                                                                 <input class="file-path validate"
-                                                                                    type="text" value="https://static.thenounproject.com/png/1501127-200.png"
+                                                                                    type="text"
+                                                                                    value="https://static.thenounproject.com/png/1501127-200.png"
                                                                                     placeholder="Subir Archivo" />
                                                                             </div>
                                                                         </div>
@@ -473,10 +478,10 @@
                                                 <td>
                                                     <!-- Modal Trigger -->
                                                     <a class="btn-floating btn-medium waves-effect waves-light btn green modal-trigger center btn tooltipped"
-                                                    data-position="bottom" data-tooltip="Editar" href="#modal4"><i
+                                                        data-position="bottom" data-tooltip="Editar" href="#modal4"><i
                                                             class="material-icons left">create</i>Editar</a>
                                                     <a class="btn-floating btn-medium waves-effect waves-light btn red modal-trigger center tooltipped"
-                                                    data-position="bottom" data-tooltip="Eliminar" href="#modal5"><i
+                                                        data-position="bottom" data-tooltip="Eliminar" href="#modal5"><i
                                                             class="material-icons left">delete_forever</i>Eliminar</a>
 
                                                     <!-- Modal Structure -->
@@ -506,7 +511,8 @@
                                                                             </div>
                                                                             <div class="file-path-wrapper">
                                                                                 <input class="file-path validate"
-                                                                                    type="text" value="https://static.thenounproject.com/png/867650-200.png"
+                                                                                    type="text"
+                                                                                    value="https://static.thenounproject.com/png/867650-200.png"
                                                                                     placeholder="Subir Archivo" />
                                                                             </div>
                                                                         </div>
@@ -545,10 +551,10 @@
                                                 <td>
                                                     <!-- Modal Trigger -->
                                                     <a class="btn-floating btn-medium waves-effect waves-light btn green modal-trigger center btn tooltipped"
-                                                    data-position="bottom" data-tooltip="Editar" href="#modal6"><i
+                                                        data-position="bottom" data-tooltip="Editar" href="#modal6"><i
                                                             class="material-icons left">create</i>Editar</a>
                                                     <a class="btn-floating btn-medium waves-effect waves-light btn red modal-trigger center tooltipped"
-                                                    data-position="bottom" data-tooltip="Eliminar" href="#modal7"><i
+                                                        data-position="bottom" data-tooltip="Eliminar" href="#modal7"><i
                                                             class="material-icons left">delete_forever</i>Eliminar</a>
 
                                                     <!-- Modal Structure -->
@@ -578,7 +584,8 @@
                                                                             </div>
                                                                             <div class="file-path-wrapper">
                                                                                 <input class="file-path validate"
-                                                                                    type="text" value="https://cdn4.iconfinder.com/data/icons/health-and-medical-center-line/68/medical_hospital-39-512.png"
+                                                                                    type="text"
+                                                                                    value="https://cdn4.iconfinder.com/data/icons/health-and-medical-center-line/68/medical_hospital-39-512.png"
                                                                                     placeholder="Subir Archivo" />
                                                                             </div>
                                                                         </div>
@@ -617,10 +624,10 @@
                                                 <td>
                                                     <!-- Modal Trigger -->
                                                     <a class="btn-floating btn-medium waves-effect waves-light btn green modal-trigger center btn tooltipped"
-                                                    data-position="bottom" data-tooltip="Editar" href="#modal8"><i
+                                                        data-position="bottom" data-tooltip="Editar" href="#modal8"><i
                                                             class="material-icons left">create</i>Editar</a>
                                                     <a class="btn-floating btn-medium waves-effect waves-light btn red modal-trigger center tooltipped"
-                                                    data-position="bottom" data-tooltip="Eliminar" href="#modal9"><i
+                                                        data-position="bottom" data-tooltip="Eliminar" href="#modal9"><i
                                                             class="material-icons left">delete_forever</i>Eliminar</a>
 
                                                     <!-- Modal Structure -->
@@ -650,7 +657,8 @@
                                                                             </div>
                                                                             <div class="file-path-wrapper">
                                                                                 <input class="file-path validate"
-                                                                                    type="text" value="https://cdn2.iconfinder.com/data/icons/medical-specialties-1/256/Cardiology-512.png"
+                                                                                    type="text"
+                                                                                    value="https://cdn2.iconfinder.com/data/icons/medical-specialties-1/256/Cardiology-512.png"
                                                                                     placeholder="Subir Archivo" />
                                                                             </div>
                                                                         </div>
@@ -689,10 +697,11 @@
                                                 <td>
                                                     <!-- Modal Trigger -->
                                                     <a class="btn-floating btn-medium waves-effect waves-light btn green modal-trigger center btn tooltipped"
-                                                    data-position="bottom" data-tooltip="Editar" href="#modal10"><i
+                                                        data-position="bottom" data-tooltip="Editar" href="#modal10"><i
                                                             class="material-icons left">create</i>Editar</a>
                                                     <a class="btn-floating btn-medium waves-effect waves-light btn red modal-trigger center tooltipped"
-                                                    data-position="bottom" data-tooltip="Eliminar" href="#modal11"><i
+                                                        data-position="bottom" data-tooltip="Eliminar"
+                                                        href="#modal11"><i
                                                             class="material-icons left">delete_forever</i>Eliminar</a>
 
                                                     <!-- Modal Structure -->
@@ -722,7 +731,8 @@
                                                                             </div>
                                                                             <div class="file-path-wrapper">
                                                                                 <input class="file-path validate"
-                                                                                    type="text" value="https://www.creativefabrica.com/wp-content/uploads/2019/04/Dentist-icon-by-hellopixelzstudio-580x386.png"
+                                                                                    type="text"
+                                                                                    value="https://www.creativefabrica.com/wp-content/uploads/2019/04/Dentist-icon-by-hellopixelzstudio-580x386.png"
                                                                                     placeholder="Subir Archivo" />
                                                                             </div>
                                                                         </div>
@@ -769,11 +779,31 @@
             M.AutoInit();
             $('.sidenav').sidenav();
             $('.sidenav-trigger').sidenav();
+            $('.sidenav-1').sidenav({ edge: 'left' });
             $('.modal').modal();
             $('.dropdown-trigger').dropdown({
                 coverTrigger: false,
                 belowOrigin: true
             });
+
+            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+            var first_name = getQueryVariable("first_name");
+
+            $("#username").text(unescape(first_name));
+
+
+            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
+                    }
+                }
+                return false;
+            }
 
             //Inicializar la tabla dinámica.
             $('#example').DataTable({
