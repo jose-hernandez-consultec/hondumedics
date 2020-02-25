@@ -68,29 +68,33 @@
 
 <body>
     <!-- Formulario de Dashboard -->
-    <nav class="nav-wrapper">
-        <div class="nav-wrapper">
-            <div class="container">
-                <a href="dashboard.html" class="brand-logo">HoduMedics</a>
-                <ul class="right hide-on-med-and-down">
-                    <!-- Notifications -->
-                    <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
-                            <span style="color: #FC5A5A;">Notificaciones</span>
-                            <span class="new badge red">3</span><i class="material-icons right">notifications_none
-                                <small class="notification-badge">3</small>
-                            </i></a>
-                    </li>
+    <div class="row">
+        <nav class="nav-wrapper">
+            <div class="nav-wrapper">
+                <div class="col s1"></div>
+                <div class="col s10">
+                    <a href="index.html" class="brand-logo">HoduMedics</a>
+                    <ul class="right hide-on-med-and-down">
+                        <!-- Notifications -->
+                        <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>
+                                <span style="color: #FC5A5A;">Notificaciones</span>
+                                <span class="new badge red">3</span><i class="material-icons right">notifications_none
+                                    <small class="notification-badge">3</small>
+                                </i></a>
+                        </li>
 
-                    <!-- Dropdown Trigger Menú Administrador-->
-                    <li>
-                        <a href="#" class="dropdown-trigger" data-target="dropdown1">
-                            Paciente
-                            <i class="material-icons right">arrow_drop_down</i>
-                        </a></li>
-                </ul>
+                        <!-- Dropdown Trigger Menú Administrador-->
+                        <li>
+                            <a href="#" class="dropdown-trigger" data-target="dropdown1">
+                                Paciente
+                                <i class="material-icons right">arrow_drop_down</i>
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="col s1"></div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <!-- Dropdown Structure Menú Administrador-->
     <ul id='dropdown1' class='dropdown-content'>
         <li><a href="Perfil.html">

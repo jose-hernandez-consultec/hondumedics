@@ -44,13 +44,13 @@
 <body>
     <!-- Formulario de Registro -->
     <div class="row">
-    <nav class="nav-wrapper">
-        <div class="col s1"></div>
-        <div class="col s11">
-            <a href="index.html" class="brand-logo">HonduMedics</a>
-        </div>
-    </nav>
-</div>
+        <nav class="nav-wrapper">
+            <div class="col s1"></div>
+            <div class="col s11">
+                <a href="index.html" class="brand-logo">HonduMedics</a>
+            </div>
+        </nav>
+    </div>
     <div class="container">
         <div class="container">
             <div class="row">
@@ -133,7 +133,7 @@
                         <div class="row">
                             <div class="col s1"></div>
                             <div class="input-field col s10">
-                                <input type="text" class="datepicker" id="fecha">
+                                <input type="text" class="datepicker" id="birthday" name="birthday">
                             </div>
                             <div class="col s1"></div>
                         </div>
@@ -212,21 +212,14 @@
         $(document).ready(function () {
             //Inicialización de las propiedades de Materialize css.
             $('.datepicker').datepicker();
-            $('.datepicker').pickadate({
-                monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-                selectMonths: true,
-                selectYears: 20, // Puedes cambiarlo para mostrar más o menos años
-                today: 'Hoy',
-                clear: 'Limpiar',
-                close: 'Ok',
-                labelMonthNext: 'Siguiente mes',
-                labelMonthPrev: 'Mes anterior',
-                labelMonthSelect: 'Selecciona un mes',
-                labelYearSelect: 'Selecciona un año',
-            });
+            $('.datepicker').pickadate(
+                {
+                    selectMonths: true,
+                    selectYears: 50,
+                    format: 'yyyy-mm-dd',
+                    min: new Date(2010, 1, 1),
+                    max: moment().year(moment().year() - 18).toDate()  // `true` sets it to today. `false` removes any limits.
+                });
             $('.tooltipped').tooltip();
 
             var form = $("#formulario");

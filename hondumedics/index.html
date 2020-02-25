@@ -38,82 +38,311 @@
         .page-footer {
             background: #FC5A5A;
         }
+
+        .card-image {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            overflow: hidden;
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+        }
+
+        .circular--portrait img {
+            width: 100%;
+            height: auto;
+            margin-left: -50px;
+        }
+
+        .circular--landscape img {
+            width: auto;
+            height: 100%;
+            margin-left: 0%;
+        }
+
+        .zoom {
+            transition: transform .2s;
+            /*Animations*/
+        }
+
+        .zoom:hover {
+            transform: scale(1.1);
+        }
+
+        html {
+            background-color: white;
+        }
+
+        .blue {
+            background-color: #64b5f6;
+        }
+
+        .btn-yellow{
+            background-color: #f57f17;
+        }
     </style>
 </head>
 
 <body>
     <!--Navbar-->
-    <nav class="nav-wrapper">
-            <a href="#" class="brand-logo">HonduMedics</a>
-            <ul class="right hide-on-med-and-down">
-                <!--<li><a href="#" class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
-                        data-position="left" data-tooltip="Ingresa aquí." id="btnHM">Incluya su
-                        práctica en
-                        HonduMedics</a></li>-->
-                <li>
-                    <a href="#" class="dropdown-trigger" data-target="dropdown1">
-                        Pacientes
-                        <i class="material-icons right">arrow_drop_down</i>
-                    </a> </li>
-                <li>
-                    <a href="#" class="dropdown-trigger" data-target="dropdown2">
-                        Doctores
-                        <i class="material-icons right">arrow_drop_down</i>
-                    </a> </li>
-                <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="hondumedics/Login.html">
-                            <span style="color: #FC5A5A;"><center>Iniciar Sesión</center></span>
-                        </a></li>
-                    <li><a href="hondumedics/Registro.html">
-                            <span style="color: #FC5A5A;"><center>Registrar</center></span>
-                        </a></li>
+    <div class="row">
+        <nav class="nav-wrapper">
+            <div class="col s1"></div>
+            <div class="col s10">
+                <a href="index.html" class="brand-logo">HonduMedics</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#" class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
+                            data-position="left" data-tooltip="Ingresa aquí." id="btnHM">Incluya su
+                            práctica en
+                            HonduMedics</a></li>
+                    <li>
+                        <a href="#" class="dropdown-trigger center" data-target="dropdown1">
+                            Pacientes
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a> </li>
+                    <li>
+                        <a href="#" class="dropdown-trigger center" data-target="dropdown2">
+                            Doctores
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a> </li>
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="Login.html">
+                                <span style="color: #FC5A5A;">
+                                    <center>Iniciar Sesión</center>
+                                </span>
+                            </a></li>
+                        <li>
+                            <a href="Registro.html">
+                                <span style="color: #FC5A5A;">
+                                    <center>Registrar</center>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul id='dropdown2' class='dropdown-content'>
+                        <li>
+                            <a href="LoginDoctor.html">
+                                <span style="color: #FC5A5A;">
+                                    <center>Iniciar Sesión</center>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
                 </ul>
-                <ul id='dropdown2' class='dropdown-content'>
-                    <li><a href="hondumedics/LoginDoctor.html">
-                           <span style="color: #FC5A5A;"><center>Iniciar Sesión</center></span>
-                        </a></li>
-                        <li><a href="Unirse.html">
-                            <span style="color: #FC5A5A;"><center>Unirse</center></span>
-                         </a></li>
-                </ul>
-            </ul>
-    </nav>
+            </div>
+            <div class="col s1"></div>
+        </nav>
+    </div>
     <br>
     <br>
     <br>
-    <div class="container">
+    <!--<div class="container">-->
+
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12 m6 l6 center">
+                    <h4 style="color: #01579b;"><b>Encuentra médicos en tu plataforma</b></h4><br><br>
+                </div>
+                <div class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12 m4 l4">
+                            <i class="material-icons prefix">search</i>
+                            <select>
+                                <option value="" disabled selected>Favor Seleccionar</option>
+                                <optgroup label="Todas Las Especialidades">
+                                    <option id="opcion1" value="1">Anatomía Patológica</option>
+                                    <option id="opcion2" value="2">Alergología</option>
+                                    <option id="opcion3" value="3">Cardiología</option>
+                                    <option id="opcion4" value="4">Cirugía Cardiaca</option>
+                                    <option id="opcion5" value="5">Cirugía General</option>
+                                    <option id="opcion6" value="6">Cirugía Plástica</option>
+                                    <option id="opcion7" value="7">Cirugía de Mama</option>
+                                    <option id="opcion8" value="8">Cirugía Maxilofacial</option>
+                                    <option id="opcion9" value="9">Cirugía Vascular</option>
+                                    <option id="opcion10" value="10">Dermatología</option>
+                                    <option id="opcion11" value="11">Endocrinología y Nutrición</option>
+                                    <option id="opcion12" value="12">Gastroenterología - Digestivo</option>
+                                    <option id="opcion13" value="13">Genética</option>
+                                    <option id="opcion14" value="14">Geriatría</option>
+                                    <option id="opcion15" value="15">Ginecología</option>
+                                    <option id="opcion16" value="16">Hematología</option>
+                                    <option id="opcion17" value="17">Enfermedades Del Hígado (Hepatología)</option>
+                                    <option id="opcion18" value="18">Enfermedades Infecciosas</option>
+                                    <option id="opcion19" value="19">Medicina General</option>
+                                    <option id="opcion20" value="20">Medicina Interna</option>
+                                    <option id="opcion21" value="21">Nefrología</option>
+                                    <option id="opcion22" value="22">Neumología</option>
+                                    <option id="opcion23" value="23">Neurología</option>
+                                    <option id="opcion24" value="24">Neurocirugía</option>
+                                    <option id="opcion25" value="25">Odontología</option>
+                                    <option id="opcion26" value="26">Oftalmología</option>
+                                    <option id="opcion27" value="27">Otorrinolaringología</option>
+                                    <option id="opcion28" value="28">Oncología</option>
+                                    <option id="opcion29" value="29">Pediatría</option>
+                                    <option id="opcion30" value="30">Proctología</option>
+                                    <option id="opcion31" value="31">Psiquiatría</option>
+                                    <option id="opcion32" value="32">Rehabilitación y M. Deportiva</option>
+                                    <option id="opcion33" value="33">Reumatología</option>
+                                    <option id="opcion34" value="34">Traumatología</option>
+                                    <option id="opcion35" value="35">Urología</option>
+                                </optgroup>
+                            </select>
+                            <label>Condición, Nombre del doctor, Procedimiento...</label>
+                        </div>
+                        <div class="input-field col s12 m3 l3">
+                            <i class="material-icons prefix">place</i>
+                            <input type="text" id="place-input" class="autocomplete"
+                                placeholder="Ciudad o código postal ">
+                        </div>
+                        <div class="input-field col s12 m2 l3">
+                            <i class="material-icons prefix">date_range</i>
+                            <input type="text" id="date-input" class="datepicker" placeholder="Fecha...">
+                        </div>
+                        <!--<div class="input-field col s12 m4 l2">
+                    <i class="material-icons prefix">help</i>
+                    <select>
+                        <optgroup label="team 1">
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                        </optgroup>
+                        <optgroup label="team 2">
+                            <option value="3">Option 3</option>
+                            <option value="4">Option 4</option>
+                        </optgroup>
+                    </select>
+                </div>-->
+                        <div class="input-field col s12 m4 l1 center">
+                            <a class="waves-effect waves-light btn btn-pink tooltipped" data-position="bottom"
+                                data-tooltip="Buscar Doctores"><i class="material-icons center">search</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--</div>-->
+
+    <!--Especialidades principales en HonduMedics-->
+
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12 m12 l3 center">
+                    <h6 style="color: #01579b;"><b>Especialidades principales en HonduMedics:</b></h6>
+                </div><br><br><br>
+                <div class="row">
+                    <div class="col s12 m6 l2 center">
+                        <div class="card-image circular--landscape circular--portrait zoom">
+                            <img
+                                src="https://image.freepik.com/vector-gratis/estetoscopio-dibujos-animados_60352-2861.jpg"><br>
+                        </div>
+                        <br>
+                        <a href="#"><b>Pediatría</b></a>
+                    </div>
+                    <div class="col s12 m6 l2 center">
+                        <div class="card-image circular--landscape circular--portrait zoom">
+                            <img
+                                src="https://img.freepik.com/free-vector/clean-tooth-background_1270-86.jpg?size=338&ext=jpg"><br>
+                        </div>
+                        <br>
+                        <a href="#"><b>Odontología</b></a>
+                    </div>
+                    <div class="col s12 m6 l2 center">
+                        <div class="card-image circular--landscape circular--portrait zoom">
+                            <img
+                                src="https://image.freepik.com/vector-gratis/mirando-germenes-bacterias-manos-lupa_1294-97.jpg"><br>
+                        </div>
+                        <br>
+                        <a href="#"><b>Dermatología</b></a>
+                    </div>
+                    <div class="col s12 m6 l2 center">
+                        <div class="card-image circular--landscape circular--portrait zoom">
+                            <img
+                                src="https://media.istockphoto.com/vectors/two-white-cups-of-coffee-on-turquoise-background-with-shadow-view-vector-id993954732?k=6&m=993954732&s=612x612&w=0&h=sr2QNf08yUDfEb_3h9UjC_1slaPnphMFgxyRlvcp-WQ="><br>
+                        </div>
+                        <br>
+                        <a href="#"><b>Psiquiatra</b></a>
+                    </div>
+                    <div class="col s12 m6 l2 center">
+                        <div class="card-image circular--landscape circular--portrait zoom">
+                            <img
+                                src="https://previews.123rf.com/images/mykub/mykub1604/mykub160400128/54664164-dibujos-animados-dise%C3%B1o-de-la-vista-de-ojos-saltones-divertido.jpg"><br>
+                        </div>
+                        <br>
+                        <a href="#"><b>Oftalmología</b></a>
+                    </div>
+                    <div class="col s12 m6 l2 center">
+                        <div class="card-image circular--landscape circular--portrait zoom">
+                            <img
+                                src="https://img.freepik.com/vector-gratis/dolor-piernas-lesiones-calambres-musculares_43880-32.jpg?size=338&ext=jpg"><br>
+                        </div>
+                        <br>
+                        <a href="#"><b>Medicina Deportiva</b></a>
+                    </div>
+                    <div class="col s12 m6 l2 center">
+                        <div class="card-image circular--landscape circular--portrait zoom">
+                            <img
+                                src="https://us.123rf.com/450wm/arcady31/arcady311904/arcady31190400124/121012785-stock-vector-stomach-vector-cartoon-icon-isolated-on-white-background.jpg?ver=6"><br>
+                        </div>
+                        <br>
+                        <a href="#"><b>Gastroenterología</b></a>
+                    </div>
+                    <div class="col s12 m6 l2 center">
+                        <div class="card-image circular--landscape circular--portrait zoom">
+                            <img
+                                src="https://t3.ftcdn.net/jpg/01/59/70/44/240_F_159704489_toyv5IASOqQnDUCJzKYX2XPy1h9OOIC7.jpg"><br>
+                        </div>
+                        <br>
+                        <a href="#"><b>Urología</b></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blue">
         <div class="row">
             <div class="col s12">
                 <div class="row">
-                    <div class="input-field col s4">
-                        <i class="material-icons prefix">search</i>
-                        <input type="text" id="search-input" class="autocomplete"
-                            placeholder="Condición, Nombre del doctor, Procedimiento... ">
+                    <div class="col s5"></div>
+                    <div class="col s12 m12 l6 center">
+                        <h3 style="color: white;"><b>Obtén la aplicación HonduMedics</b></h3>
                     </div>
-                    <div class="input-field col s3">
-                        <i class="material-icons prefix">place</i>
-                        <input type="text" id="place-input" class="autocomplete" placeholder="Ciudad o código postal ">
-                    </div>
-                    <div class="input-field col s2">
-                        <i class="material-icons prefix">date_range</i>
-                        <input type="text" id="date-input" class="datepicker" placeholder="Fecha...">
-                    </div>
-                    <div class="input-field col s2">
-                        <i class="material-icons prefix">help</i>
-                        <select>
-                            <optgroup label="team 1">
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                            </optgroup>
-                            <optgroup label="team 2">
-                                <option value="3">Option 3</option>
-                                <option value="4">Option 4</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div class="input-field col s1">
-                        <a class="waves-effect waves-light btn btn-pink"><i class="material-icons center">search</i></a>
-                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s5"></div>
+                <div class="col s12 m12 l6 center">
+                    <ul>
+                        <li>
+                            <h5 style="color: white;">Encuentra médicos cercanos en tu plataforma</h5>
+                        </li>
+                        <li>
+                            <h5 style="color: white;">Buscar opiniones de médicos por pacientes reales</h5>
+                        </li>
+                        <li>
+                            <h5 style="color: white;">Reserve citas médicas con un toque</h5>
+                        </li>
+                        <br>
+                        <li>
+                            <h5 style="color: white;">Envíeme un enlace a la aplicación</h5>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col s6">
+                                    <div class="input-field col s6 right">
+                                        <input placeholder="(+504) 5555-5555" id="enlace" type="text" class="validate">
+                                      </div>
+                                </div>
+                                <div class="col s6">
+                                    <br>
+                                    <a class="waves-effect waves-light btn btn-yellow left"><i class="material-icons left">send</i>Enviar enlace</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
