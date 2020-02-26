@@ -366,12 +366,12 @@
 
 
             $("#Name").text(unescape(first_name + " " + last_name));
-            $("#fechaNacimiento").text(fecha_nacimiento);
+            $("#fechaNacimiento").text(unescape(fecha_nacimiento));
 
-            $("#first_name").val(first_name);
-            $("#last_name").val(last_name);
-            $("#email").val(email);
-            $("#date_of_birth").val(fecha_nacimiento);
+            $("#first_name").val(unescape(first_name));
+            $("#last_name").val(unescape(last_name));
+            $("#email").val(unescape(email));
+            $("#date_of_birth").val(unescape(fecha_nacimiento));
 
 
 

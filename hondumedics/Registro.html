@@ -212,14 +212,6 @@
         $(document).ready(function () {
             //Inicialización de las propiedades de Materialize css.
             $('.datepicker').datepicker();
-            $('.datepicker').pickadate(
-                {
-                    selectMonths: true,
-                    selectYears: 50,
-                    format: 'yyyy-mm-dd',
-                    min: new Date(2010, 1, 1),
-                    max: moment().year(moment().year() - 18).toDate()  // `true` sets it to today. `false` removes any limits.
-                });
             $('.tooltipped').tooltip();
 
             var form = $("#formulario");
@@ -237,7 +229,7 @@
                 var password_registro = $('#password').val();
                 var nombre_registro = $('#nombre').val();
                 var apellido_registro = $('#apellido').val();
-                var fecha_registro = $('#fechaNac').val();
+                var fecha_registro = $('#birthday').val();
                 var select_gender = Number($('input[name="gender"]').is(':checked'));
                 var aceptar_condiciones = Number($('#aceptar').is(':checked'));
 
@@ -267,8 +259,9 @@
                     alert("El Apellido Está Vacío");
                     valido = false;
                 }
-
-                if (fecha_registro == "" || fecha_registro.length === 0) {
+                
+                console.log(fecha_registro);
+                if (fecha_registro == "") {
                     alert("La Fecha Está Vacía");
                     valido = false;
                 }
