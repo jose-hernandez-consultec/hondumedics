@@ -47,11 +47,15 @@
 
 <body>
     <!--Navbar-->
+    <div class="row">
     <nav class="nav-wrapper">
-        <div class="container">
+        <div class="col s1"></div>
+        <div class="col s10">
             <a href="#" class="brand-logo">HonduMedics</a>
         </div>
+        <div class="col s1"></div>
     </nav>
+</div>
     <br>
     <br>
     <br>
@@ -125,7 +129,7 @@
                             <div class="input-field col s6">
                                 <input id="zip_code" type="text" name="zip_code" placeholder="Escribe 5 caracteres"
                                     class="validate">
-                                <label for="zip_code">Código Postal *</label>
+                                <label for="zip_code">Número de Colegiación *</label>
                             </div>
                             <div class="input-field col s6">
                                 <input id="email" type="email" name="email" class="validate">
@@ -214,13 +218,13 @@
                     }
 
                     //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
-                    /*if (valido) {
+                    if (valido) {
                         $.ajax({
-                            url: '',
+                            url: 'http://hondumedics-server.herokuapp.com/doctorRequests/newDoctorRequest',
                             dataType: 'json',
                             type: 'POST',
                             contentType: 'application/json',
-                            data: JSON.stringify({ "first_name": nombre_doctor, "last_name": apellido_doctor, "speciality": seleccionar_especialidad, "phonenumber": phonenumber_doctor, "zipcode": zipcode_doctor, "email": email_doctor }),
+                            data: JSON.stringify({ "first_name": nombre_doctor, "last_name": apellido_doctor, "speciality_name": seleccionar_especialidad, "email": email_doctor, "phone_number": phonenumber_doctor, "doctor_number": zipcode_doctor }),
                             processData: false,
                             success: function (data) {
                                 console.log(data);
@@ -238,7 +242,7 @@
                         });
                     } else {
                         alert("Hay errores en el formulario");
-                    }*/
+                    }
                 });
             });
         </script>

@@ -37,11 +37,22 @@
 
 <body>
     <!-- Formulario de Registro -->
-    <nav class="nav-wrapper">
-        <div class="container">
-            <a href="#" class="brand-logo">HonduMedics</a>
-        </div>
-    </nav>
+    <div class="row">
+        <nav class="nav-wrapper">
+            <div class="col s1"></div>
+            <div class="col s10">
+                <a href="#" class="brand-logo">HonduMedics</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="../Unirse.html"
+                            class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
+                            data-position="left" data-tooltip="Ingresa aquí." id="btnHM">Incluya su
+                            práctica en
+                            HonduMedics</a></li>
+                </ul>
+            </div>
+            <div class="col s1"></div>
+        </nav>
+    </div>
     <div class="container">
         <div class="container">
             <div class="row">
@@ -132,89 +143,91 @@
                 </div>
                 <div class="row">
                     <div class="col s12 m4 l4"></div>
-                    <center><div class="col s12 m6 l6"><a href="#"
-                            class="btn btn-pink white-text waves-effect waves-pink btn-large"
-                            id="btnSolicitar">Solicitar<i class="material-icons left">save</i></a></div></center>
+                    <center>
+                        <div class="col s12 m6 l6"><a href="#"
+                                class="btn btn-pink white-text waves-effect waves-pink btn-large"
+                                id="btnSolicitar">Solicitar<i class="material-icons left">save</i></a></div>
+                    </center>
                     <div class="col s12 m4 l4"></div>
                 </div>
             </div>
         </div>
     </div>
 
-        <script>
-            //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
-            $(document).ready(function () {
-                //Inicialización de las propiedades de Materialize css.
-                M.AutoInit();
-                $('select').formSelect();
+    <script>
+        //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
+        $(document).ready(function () {
+            //Inicialización de las propiedades de Materialize css.
+            M.AutoInit();
+            $('select').formSelect();
 
-                var form = $("#formulario");
-                //El método click() adjunta una función de controlador de eventos a un elemento HTML.
-                //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
-                $("#btnSolicitar").click(function (e) {
-                    e.preventDefault(); //Detiene la acción predeterminada de un elemento.
-                    //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
-                    var nombre_doctor = $('#nombre').val();
-                    var apellido_doctor = $('#apellido').val();
-                    var email_doctor = $('#email').val();
-                    var phonenumber_doctor = $('#phone_number').val();
-                    var numero_colegiacion_doctor = $('#membership_number').val();
-                    var seleccionar_especialidad = $('#especialidad_principal').val();
+            var form = $("#formulario");
+            //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+            //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
+            $("#btnSolicitar").click(function (e) {
+                e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
+                var nombre_doctor = $('#nombre').val();
+                var apellido_doctor = $('#apellido').val();
+                var email_doctor = $('#email').val();
+                var phonenumber_doctor = $('#phone_number').val();
+                var numero_colegiacion_doctor = $('#membership_number').val();
+                var seleccionar_especialidad = $('#especialidad_principal').val();
 
-                    //Validar que nada este vacio
-                    var valido = true;
-                    if (nombre_doctor === "" || nombre_doctor.length === 0) {
-                        alert("El nombre esta vacío");
-                        valido = false;
-                    }
+                //Validar que nada este vacio
+                var valido = true;
+                if (nombre_doctor === "" || nombre_doctor.length === 0) {
+                    alert("El nombre esta vacío");
+                    valido = false;
+                }
 
-                    if (apellido_doctor == "" || apellido_doctor.length === 0) {
-                        alert("El apellido esta vacío");
-                        valido = false;
-                    }
+                if (apellido_doctor == "" || apellido_doctor.length === 0) {
+                    alert("El apellido esta vacío");
+                    valido = false;
+                }
 
-                    if (email_doctor == "" || email_doctor.length === 0) {
-                        alert("El Correo Está Vacío");
-                        valido = false;
-                    }
+                if (email_doctor == "" || email_doctor.length === 0) {
+                    alert("El Correo Está Vacío");
+                    valido = false;
+                }
 
-                    if (phonenumber_doctor == "" || phonenumber_doctor.length === 0) {
-                        alert("El Número De Teléfono Está Vacío");
-                        valido = false;
-                    }
+                if (phonenumber_doctor == "" || phonenumber_doctor.length === 0) {
+                    alert("El Número De Teléfono Está Vacío");
+                    valido = false;
+                }
 
-                    if (numero_colegiacion_doctor == "" || numero_colegiacion_doctor.length === 0) {
-                        alert("El Número De Colegiación Está Vacío");
-                        valido = false;
-                    }
+                if (numero_colegiacion_doctor == "" || numero_colegiacion_doctor.length === 0) {
+                    alert("El Número De Colegiación Está Vacío");
+                    valido = false;
+                }
 
-                    //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
-                    console.log(parseInt(seleccionar_especialidad));
+                //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
+                console.log(parseInt(seleccionar_especialidad));
 
-                    if (parseInt(seleccionar_especialidad) != 0 && parseInt(seleccionar_especialidad) != 1
-                        && parseInt(seleccionar_especialidad) != 2 && parseInt(seleccionar_especialidad) != 3
-                        && parseInt(seleccionar_especialidad) != 4 && parseInt(seleccionar_especialidad) != 5
-                        && parseInt(seleccionar_especialidad) != 6 && parseInt(seleccionar_especialidad) != 7
-                        && parseInt(seleccionar_especialidad) != 8 && parseInt(seleccionar_especialidad) != 9
-                        && parseInt(seleccionar_especialidad) != 10 && parseInt(seleccionar_especialidad) != 11
-                        && parseInt(seleccionar_especialidad) != 12 && parseInt(seleccionar_especialidad) != 13
-                        && parseInt(seleccionar_especialidad) != 14 && parseInt(seleccionar_especialidad) != 15
-                        && parseInt(seleccionar_especialidad) != 16 && parseInt(seleccionar_especialidad) != 17
-                        && parseInt(seleccionar_especialidad) != 18 && parseInt(seleccionar_especialidad) != 19
-                        && parseInt(seleccionar_especialidad) != 20 && parseInt(seleccionar_especialidad) != 21
-                        && parseInt(seleccionar_especialidad) != 22 && parseInt(seleccionar_especialidad) != 23
-                        && parseInt(seleccionar_especialidad) != 24 && parseInt(seleccionar_especialidad) != 25
-                        && parseInt(seleccionar_especialidad) != 26 && parseInt(seleccionar_especialidad) != 27
-                        && parseInt(seleccionar_especialidad) != 28 && parseInt(seleccionar_especialidad) != 29
-                        && parseInt(seleccionar_especialidad) != 30 && parseInt(seleccionar_especialidad) != 31
-                        && parseInt(seleccionar_especialidad) != 32 && parseInt(seleccionar_especialidad) != 33
-                        && parseInt(seleccionar_especialidad) != 34) {
-                        alert("Seleccione La Opción De Especialidad Principal");
-                        valido = false;
-                    }
-                });
-            }); 
-        </script>
+                if (parseInt(seleccionar_especialidad) != 0 && parseInt(seleccionar_especialidad) != 1
+                    && parseInt(seleccionar_especialidad) != 2 && parseInt(seleccionar_especialidad) != 3
+                    && parseInt(seleccionar_especialidad) != 4 && parseInt(seleccionar_especialidad) != 5
+                    && parseInt(seleccionar_especialidad) != 6 && parseInt(seleccionar_especialidad) != 7
+                    && parseInt(seleccionar_especialidad) != 8 && parseInt(seleccionar_especialidad) != 9
+                    && parseInt(seleccionar_especialidad) != 10 && parseInt(seleccionar_especialidad) != 11
+                    && parseInt(seleccionar_especialidad) != 12 && parseInt(seleccionar_especialidad) != 13
+                    && parseInt(seleccionar_especialidad) != 14 && parseInt(seleccionar_especialidad) != 15
+                    && parseInt(seleccionar_especialidad) != 16 && parseInt(seleccionar_especialidad) != 17
+                    && parseInt(seleccionar_especialidad) != 18 && parseInt(seleccionar_especialidad) != 19
+                    && parseInt(seleccionar_especialidad) != 20 && parseInt(seleccionar_especialidad) != 21
+                    && parseInt(seleccionar_especialidad) != 22 && parseInt(seleccionar_especialidad) != 23
+                    && parseInt(seleccionar_especialidad) != 24 && parseInt(seleccionar_especialidad) != 25
+                    && parseInt(seleccionar_especialidad) != 26 && parseInt(seleccionar_especialidad) != 27
+                    && parseInt(seleccionar_especialidad) != 28 && parseInt(seleccionar_especialidad) != 29
+                    && parseInt(seleccionar_especialidad) != 30 && parseInt(seleccionar_especialidad) != 31
+                    && parseInt(seleccionar_especialidad) != 32 && parseInt(seleccionar_especialidad) != 33
+                    && parseInt(seleccionar_especialidad) != 34) {
+                    alert("Seleccione La Opción De Especialidad Principal");
+                    valido = false;
+                }
+            });
+        }); 
+    </script>
 </body>
 
 </html>

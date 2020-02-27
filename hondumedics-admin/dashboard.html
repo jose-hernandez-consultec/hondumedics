@@ -326,7 +326,7 @@
                         alt="" class="circle">
                 </a>
                 <span class="white-text name"><span id="UserName1"></span></span>
-                <span class="white-text email">admin@admin.com</span>
+                <span class="white-text email"><span id="email1"></span>
             </div>
         </li>
         <li>
@@ -341,6 +341,10 @@
 
         <li>
             <a href="ListaDoctores.html"><i class="material-icons black-text">people</i>Doctores
+            </a>
+        </li>
+        <li>
+            <a href="SolicitudesDeDoctores.html"><i class="material-icons black-text">assignment_turned_in</i>Solicitudes
             </a>
         </li>
         <li>
@@ -872,11 +876,12 @@
                 //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
                 var first_name = getQueryVariable("first_name");
                 var last_name = getQueryVariable("last_name");
+                var email = getQueryVariable("email");
 
                 $("#UserName").text(unescape(first_name + " " + last_name));
                 $("#UserName1").text(unescape(first_name + " " + last_name));
                 $("#username").text(unescape(first_name));
-
+                $("#email1").text(unescape(email));
 
                 //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
                 function getQueryVariable(variable) {
