@@ -344,7 +344,7 @@
             </a>
         </li>
         <li>
-            <a href="SolicitudesDeDoctores.html"><i class="material-icons black-text">assignment_turned_in</i>Solicitudes
+            <a class="link-solicitudes" ><i class="material-icons black-text">assignment_turned_in</i>Solicitudes
             </a>
         </li>
         <li>
@@ -895,60 +895,73 @@
                     }
                     return false;
                 }
-            });
 
-            //Obtener las gráficas de barras
-            var chr = document.getElementById("myChart").getContext("2d");
-            var chr2 = document.getElementById("myChart2").getContext("2d");
-            var myChart = new Chart(chr, {
-                type: 'bar',
-                data: {
-                    labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019'],
-                    datasets: [{
-                        label: 'Ingresos',
-                        data: [10000, 30000, 50000, 20000, 60000, 40000, 70000],
-                        backgroundColor: 'rgba(0,0,255,0.6)',
-                        borderColor: '#000000',
-                        borderWidth: 1,
-                    }]
-                },
-                options: {
-                    legend: {
-                        labels: {
-                            fontColor: '#000000',
-                        }
 
-                    }
-                }
-            });
-            //Obtener las gráficas lineales
-            var myChart2 = new Chart(chr2, {
-                type: 'line',
-                data: {
-                    labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019'],
-                    datasets: [{
-                        label: 'Médico',
-                        data: [10, 250, 300, 150, 100, 50, 200],
-                        backgroundColor: 'rgba(0,0,255,0.6)',
-                        borderColor: '#000000',
-                        borderWidth: 1,
+                //Evento Click del link con clase llamada link-solicitudes
+                $(".link-solicitudes").click(function(){
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                    window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+
+                //Obtener las gráficas de barras
+                var chr = document.getElementById("myChart").getContext("2d");
+                var chr2 = document.getElementById("myChart2").getContext("2d");
+                var myChart = new Chart(chr, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019'],
+                        datasets: [{
+                            label: 'Ingresos',
+                            data: [10000, 30000, 50000, 20000, 60000, 40000, 70000],
+                            backgroundColor: 'rgba(0,0,255,0.6)',
+                            borderColor: '#000000',
+                            borderWidth: 1,
+                        }]
                     },
-                    {
-                        label: 'Paciente',
-                        data: [20, 210, 304, 458, 223, 123, 180],
-                        backgroundColor: 'rgba(249, 255, 138, 1)',
-                        borderColor: '#000000',
-                        borderWidth: 1,
-                    }]
-                },
-                options: {
-                    legend: {
-                        labels: {
-                            fontColor: '#000000',
+                    options: {
+                        legend: {
+                            labels: {
+                                fontColor: '#000000',
+                            }
+
                         }
                     }
-                }
+                });
+
+                //Obtener las gráficas lineales
+                var myChart2 = new Chart(chr2, {
+                    type: 'line',
+                    data: {
+                        labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019'],
+                        datasets: [{
+                            label: 'Médico',
+                            data: [10, 250, 300, 150, 100, 50, 200],
+                            backgroundColor: 'rgba(0,0,255,0.6)',
+                            borderColor: '#000000',
+                            borderWidth: 1,
+                        },
+                        {
+                            label: 'Paciente',
+                            data: [20, 210, 304, 458, 223, 123, 180],
+                            backgroundColor: 'rgba(249, 255, 138, 1)',
+                            borderColor: '#000000',
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            labels: {
+                                fontColor: '#000000',
+                            }
+                        }
+                    }
+                });
             });
+
+            
+            
         </script>
 </body>
 
