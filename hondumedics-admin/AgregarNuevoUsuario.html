@@ -323,8 +323,8 @@
                         alt="" class="circle">
                 </a>
                 <span class="white-text name"><span style="font-size: 15px; font-weight: bold;"
-                    id="username1"></span></span>
-            <span class="white-text email"><span id="email1"></span>
+                        id="username1"></span></span>
+                <span class="white-text email"><span id="email1"></span>
             </div>
         </li>
         <li>
@@ -584,6 +584,42 @@
                         if (email_usuario == "" || email_usuario.length === 0) {
                             alert("El Correo Está Vacío");
                             valido = false;
+                        }
+
+                        if (!isValidEmail(email_usuario)) {
+                            alert("Dirección de correo electrónico no válido");
+                        }
+
+                        //Función es correo electrónico válido
+                        function isValidEmail(email_usuario) {
+                            //Verificar la longitud mínima válida de un correo electrónico
+                            if (email_usuario.length <= 2) {
+                                return false;
+                            }
+
+                            //Si el correo electrónico tiene carácter @
+                            if (email_usuario.indexOf("@") == -1) {
+                                return false;
+                            }
+
+                            var partes = email_usuario.split("@");
+                            var punto = partes[1].indexOf(".");
+                            var longitud = partes[1].length;
+                            var divisiones_puntos = partes[1].split(".");
+                            var recuento_puntos = divisiones_puntos.length - 1;
+
+                            //Verificar si el punto está presente y ese mínimo un carácter después de @
+                            if (punto == -1 | punto < 2 || recuento_puntos > 2) {
+                                return false;
+                            }
+
+                            //Comprobar si el punto no es el último carácter y si los puntos no se repiten
+                            for (var i = 0; i < divisiones_puntos.length; i++) {
+                                if (divisiones_puntos[i].length == 0) {
+                                    return false;
+                                }
+                            }
+                            return true;
                         }
 
                         if (pass_usuario == "" || pass_usuario.length === 0) {

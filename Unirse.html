@@ -48,14 +48,14 @@
 <body>
     <!--Navbar-->
     <div class="row">
-    <nav class="nav-wrapper">
-        <div class="col s1"></div>
-        <div class="col s10">
-            <a href="#" class="brand-logo">HonduMedics</a>
-        </div>
-        <div class="col s1"></div>
-    </nav>
-</div>
+        <nav class="nav-wrapper">
+            <div class="col s1"></div>
+            <div class="col s10">
+                <a href="#" class="brand-logo">HonduMedics</a>
+            </div>
+            <div class="col s1"></div>
+        </nav>
+    </div>
     <br>
     <br>
     <br>
@@ -158,7 +158,7 @@
                 //Función Click del boton Unirse
                 $("#btnUnirse").click(function (e) {
                     e.preventDefault(); //Detiene la acción predeterminada de un elemento.
-                //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
+                    //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
                     var nombre_doctor = $('#first_name').val();
                     var apellido_doctor = $('#last_name').val();
                     var seleccionar_especialidad = $('#especialidad_principal').val();
@@ -208,13 +208,49 @@
                     }
 
                     if (zipcode_doctor == "" || zipcode_doctor.length === 0) {
-                        alert("El Código Postal Está Vacío");
+                        alert("El Número de Colegiación Está Vacío");
                         valido = false;
                     }
 
                     if (email_doctor == "" || email_doctor.length === 0) {
                         alert("El Correo Está Vacío");
                         valido = false;
+                    }
+
+                    if (!isValidEmail(email_doctor)) {
+                        alert("Dirección de correo electrónico no válido");
+                    }
+
+                    //Función es correo electrónico válido
+                    function isValidEmail(email_doctor) {
+                        //Verificar la longitud mínima válida de un correo electrónico
+                        if (email_doctor.length <= 2) {
+                            return false;
+                        }
+
+                        //Si el correo electrónico tiene carácter @
+                        if (email_doctor.indexOf("@") == -1) {
+                            return false;
+                        }
+
+                        var partes = email_doctor.split("@");
+                        var punto = partes[1].indexOf(".");
+                        var longitud = partes[1].length;
+                        var divisiones_puntos = partes[1].split(".");
+                        var recuento_puntos = divisiones_puntos.length - 1;
+
+                        //Verificar si el punto está presente y ese mínimo un carácter después de @
+                        if (punto == -1 | punto < 2 || recuento_puntos > 2) {
+                            return false;
+                        }
+
+                        //Comprobar si el punto no es el último carácter y si los puntos no se repiten
+                        for (var i = 0; i < divisiones_puntos.length; i++) {
+                            if (divisiones_puntos[i].length == 0) {
+                                return false;
+                            }
+                        }
+                        return true;
                     }
 
                     //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).

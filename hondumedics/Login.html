@@ -154,9 +154,46 @@
                     alert('El Correo Electrónico Está Vacío');
                     valido = false;
                 }
+
+                if(!isValidEmail(emailPatient)){
+                    alert("Dirección de correo electrónico no válido");
+                }
+
                 if (passPatient === "" || passPatient.length === 0) {
                     alert('La Contraseña Está Vacía');
                     valido = false;
+                }
+
+                //Función es correo electrónico válido
+                function isValidEmail(emailPatient) {
+                    //Verificar la longitud mínima válida de un correo electrónico
+                    if (emailPatient.length <= 2) {
+                        return false;
+                    }
+
+                    //Si el correo electrónico tiene carácter @
+                    if (emailPatient.indexOf("@") == -1) {
+                        return false;
+                    }
+
+                    var partes = emailPatient.split("@");
+                    var punto = partes[1].indexOf(".");
+                    var longitud = partes[1].length;
+                    var divisiones_puntos = partes[1].split(".");
+                    var recuento_puntos = divisiones_puntos.length - 1;
+
+                    //Verificar si el punto está presente y ese mínimo un carácter después de @
+                    if (punto == -1 | punto < 2 || recuento_puntos > 2) {
+                        return false;
+                    }
+
+                    //Comprobar si el punto no es el último carácter y si los puntos no se repiten
+                    for (var i = 0; i < divisiones_puntos.length; i++) {
+                        if (divisiones_puntos[i].length == 0) {
+                            return false;
+                        }
+                    }
+                    return true;
                 }
 
                 //Enviar y Recibir parámetros
@@ -206,8 +243,6 @@
                 } else {
                     alert("Hay errores en el formulario");
                 }
-
-               
             });
         }); 
     </script>

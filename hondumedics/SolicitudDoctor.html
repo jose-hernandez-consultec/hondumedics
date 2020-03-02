@@ -144,7 +144,7 @@
                 <div class="row">
                     <div class="col s12 m4 l4"></div>
                     <center>
-                        <div class="col s12 m6 l6"><a href="#"
+                        <div class="col s12 m4 l4"><a href="#"
                                 class="btn btn-pink white-text waves-effect waves-pink btn-large"
                                 id="btnSolicitar">Solicitar<i class="material-icons left">save</i></a></div>
                     </center>
@@ -191,6 +191,42 @@
                     valido = false;
                 }
 
+                if(!isValidEmail(email_doctor)){
+                    alert("Dirección de correo electrónico no válido");
+                }
+
+                //Función es correo electrónico válido
+                function isValidEmail(email_doctor) {
+                    //Verificar la longitud mínima válida de un correo electrónico
+                    if (email_doctor.length <= 2) {
+                        return false;
+                    }
+
+                    //Si el correo electrónico tiene carácter @
+                    if (email_doctor.indexOf("@") == -1) {
+                        return false;
+                    }
+
+                    var partes = email_doctor.split("@");
+                    var punto = partes[1].indexOf(".");
+                    var longitud = partes[1].length;
+                    var divisiones_puntos = partes[1].split(".");
+                    var recuento_puntos = divisiones_puntos.length - 1;
+
+                    //Verificar si el punto está presente y ese mínimo un carácter después de @
+                    if (punto == -1 | punto < 2 || recuento_puntos > 2) {
+                        return false;
+                    }
+
+                    //Comprobar si el punto no es el último carácter y si los puntos no se repiten
+                    for (var i = 0; i < divisiones_puntos.length; i++) {
+                        if (divisiones_puntos[i].length == 0) {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+
                 if (phonenumber_doctor == "" || phonenumber_doctor.length === 0) {
                     alert("El Número De Teléfono Está Vacío");
                     valido = false;
@@ -225,6 +261,7 @@
                     alert("Seleccione La Opción De Especialidad Principal");
                     valido = false;
                 }
+
             });
         }); 
     </script>
