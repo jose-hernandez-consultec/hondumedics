@@ -281,8 +281,8 @@
                         alt="" class="circle">
                 </a>
                 <span class="white-text name"><span style="font-size: 15px; font-weight: bold;"
-                        id="username1"></span></span>
-                <span class="white-text email"><span id="email1"></span>
+                    id="username1"></span></span>
+            <span class="white-text email"><span id="email1"></span>
             </div>
         </li>
         <li>
@@ -494,7 +494,7 @@
                                             </tr>
                                             <tr>
                                                 <td>HT010</td>
-                                                <td><a href="PerfilHospitalDrEnreiqueAguilar.html">
+                                                <td><a class="link-perfil-hospital">
                                                         <img src="http://fundages-heac.com/onewebmedia/20170407_081943.jpg"
                                                             class="imgRedonda" /></a><br><a
                                                         href="https://www.ecured.cu/Hospital_Dr._Enrique_Aguilar_Cerrato">Hospital
@@ -907,6 +907,13 @@
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
                 window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+            });
+
+            //Evento Click del link con clase llamada link-agregar-nuevo-usuario
+            $(".link-perfil-hospital").click(function () {
+
+                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                window.location.href = "./PerfilHospitalDrEnreiqueAguilar.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
 

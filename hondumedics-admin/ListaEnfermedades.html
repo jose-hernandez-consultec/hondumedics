@@ -269,7 +269,7 @@
                         alt="" class="circle">
                 </a>
                 <span class="white-text name"><span style="font-size: 15px; font-weight: bold;"
-                    id="username1"></span></span>
+                        id="username1"></span></span>
                 <span class="white-text email"><span id="email1"></span>
             </div>
         </li>
@@ -677,17 +677,15 @@
                 coverTrigger: false,
                 belowOrigin: true
             });
-            
-           //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-           var first_name = getQueryVariable("first_name");
+
+            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+            var first_name = getQueryVariable("first_name");
             var last_name = getQueryVariable("last_name");
             var email = getQueryVariable("email");
 
             $("#username").text(unescape(first_name));
             $("#username1").text(unescape(first_name + " " + last_name));
             $("#email1").text(unescape(email));
-
-
 
             //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
             function getQueryVariable(variable) {
@@ -705,70 +703,70 @@
             //Evento Click del link con clase llamada link-dashboard
             $(".link-dashboard").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 682, 683 y 684 respectivamente
                 window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-pacientes
             $(".link-pacientes").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 682, 683 y 684 respectivamente
                 window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-doctores
             $(".link-doctores").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 682, 683 y 684 respectivamente
                 window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-solicitudes
             $(".link-solicitudes").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 682, 683 y 684 respectivamente
                 window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-solicitudes-rechazadas
             $(".link-solicitudes-rechazadas").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 682, 683 y 684 respectivamente
                 window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-citas
             $(".link-citas").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 682, 683 y 684 respectivamente
                 window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-hospitales
             $(".link-hospitales").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 682, 683 y 684 respectivamente
                 window.location.href = "./ListaHospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-especialidades
             $(".link-especialidades").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 682, 683 y 684 respectivamente
                 window.location.href = "./ListaEspecialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-enfermedades
             $(".link-enfermedades").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 682, 683 y 684 respectivamente
                 window.location.href = "./ListaEnfermedades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-agregar-nuevo-usuario
             $(".link-agregar-nuevo-usuario").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 877,878 y 879 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 682, 683 y 684 respectivamente
                 window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
             //Inicializar la tabla dinámica.
