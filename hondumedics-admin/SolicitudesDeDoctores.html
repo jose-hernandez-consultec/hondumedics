@@ -156,6 +156,15 @@
         h1 {
             color: #448aff;
         }
+
+        .sidenav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 17%;
+            will-change: opacity;
+        }
     </style>
 </head>
 
@@ -292,7 +301,7 @@
             <div class="user-view">
                 <div class="background">
                     <img src="https://hdblackwallpaper.com/wallpaper/2015/04/1200-x-900-solid-black-wallpaper-22-wide-wallpaper.jpg"
-                        alt="" class="responsive-img">
+                        style="height: 100%;" alt="" class="responsive-img">
                 </div>
                 <a href="">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjf_mMlWmPrhB7-ifZVsjOgsJHDLe_QvLbLhW5bwtSW8fVNYfI&s"
@@ -321,7 +330,8 @@
             </a>
         </li>
         <li>
-            <a class="link-solicitudes-rechazadas"><i class="material-icons black-text">cancel</i>Solicitudes Rechazadas
+            <a style="font-size: 0.49em;" class="link-solicitudes-rechazadas"><i
+                    class="material-icons black-text">cancel</i>Solicitudes Rechazadas
             </a>
         </li>
         <li>
@@ -333,27 +343,30 @@
             </a>
         </li>
         <li>
-            <a class="link-especialidades"><i class="material-icons black-text">format_align_justify</i>Especialidades
+            <a style="font-size: 0.79em;" class="link-especialidades"><i
+                    class="material-icons black-text">format_align_justify</i>Especialidades
             </a>
         </li>
         <li>
-            <a class="link-enfermedades"><i class="material-icons black-text">format_align_justify</i>Enfermedades
+            <a style="font-size: 0.8em;" class="link-enfermedades"><i
+                    class="material-icons black-text">format_align_justify</i>Enfermedades
             </a>
         </li>
         <div class="divider"></div>
 
         <li>
-            <a class="link-agregar-nuevo-usuario"><i class="material-icons black-text">add</i>Agregar Nuevo Usuario
+            <a style="font-size: 0.48em;" class="link-agregar-nuevo-usuario"><i
+                    class="material-icons black-text">add</i>Agregar Nuevo Usuario
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            <a style="font-size: 0.86em;" href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
         </li>
     </ul>
     <!--SideNav Finished-->
 
-    <!--Dashboard-->
+    <!--Panel de Solicitudes de Doctores-->
     <div class="" style="min-height: 657px;">
         <form id="form1">
             <div class="container-1">
@@ -377,7 +390,6 @@
                                         <table id="example" class="striped centered">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>NOMBRES</th>
                                                     <th>APELLIDO</th>
                                                     <th>ESPECIALIDAD</th>
@@ -433,8 +445,6 @@
             $("#username1").text(unescape(first_name + " " + last_name));
             $("#email1").text(unescape(email));
 
-
-
             //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
             function getQueryVariable(variable) {
                 var query = window.location.search.substring(1);
@@ -451,70 +461,70 @@
             //Evento Click del link con clase llamada link-dashboard
             $(".link-dashboard").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 428, 429 y 430 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 440, 441 y 442 respectivamente
                 window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-pacientes
             $(".link-pacientes").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 428, 429 y 430 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 440, 441 y 442 respectivamente
                 window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-doctores
             $(".link-doctores").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 428, 429 y 430 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 440, 441 y 442 respectivamente
                 window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-solicitudes
             $(".link-solicitudes").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 428, 429 y 430 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 440, 441 y 442 respectivamente
                 window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-solicitudes-rechazadas
             $(".link-solicitudes-rechazadas").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 428, 429 y 430 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 440, 441 y 442 respectivamente
                 window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-citas
             $(".link-citas").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 428, 429 y 430 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 440, 441 y 442 respectivamente
                 window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-hospitales
             $(".link-hospitales").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 428, 429 y 430 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 440, 441 y 442 respectivamente
                 window.location.href = "./ListaHospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-especialidades
             $(".link-especialidades").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 428, 429 y 430 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 440, 441 y 442 respectivamente
                 window.location.href = "./ListaEspecialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-enfermedades
             $(".link-enfermedades").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 428, 429 y 430 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 440, 441 y 442 respectivamente
                 window.location.href = "./ListaEnfermedades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-agregar-nuevo-usuario
             $(".link-agregar-nuevo-usuario").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 428, 429 y 430 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 440, 441 y 442 respectivamente
                 window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
@@ -532,7 +542,7 @@
                             if (datos[i].requestApproved === -1) {
                                 $('.tooltipped').tooltip();
 
-                                $("#example").append('<tr>' + '<td>' + datos[i].request_id + '</td>' + '<td>' + datos[i].first_name + '</td>' + '<td>'
+                                $("#example").append('<tr>' + '<td>' + datos[i].first_name + '</td>' + '<td>'
                                     + datos[i].last_name + '</td>' + '<td>' + datos[i].speciality_name + '</td>' + '<td>' + datos[i].email + '</td>'
                                     + '<td>' + datos[i].phone_number + '</td>' + '<td>' + datos[i].doctor_number + '</td>'
                                     + '<td><a style="position:relative;z-index:0;" class="btnAprobado btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Aprobar" data-requestid=' + datos[i].request_id + '><i class="material-icons">check</i></a><a style="position:relative;z-index:0;" class="btnRechazar btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Rechazar" data-requestid=' + datos[i].request_id + '><i class="material-icons">clear</i></a></td>' + '</tr>');
@@ -540,6 +550,7 @@
                         }
 
                     }
+
                     //Función Click del botón Aprobar
                     $(".btnAprobado").click(function () {
                         //Aprobar ID con atributo data

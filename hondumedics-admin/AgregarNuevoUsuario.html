@@ -165,6 +165,15 @@
             text-align: center;
         }
 
+        .sidenav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 17%;
+            will-change: opacity;
+        }
+
         /*.container {
             width: 100%;
             max-width: initial;
@@ -316,7 +325,7 @@
             <div class="user-view">
                 <div class="background">
                     <img src="https://hdblackwallpaper.com/wallpaper/2015/04/1200-x-900-solid-black-wallpaper-22-wide-wallpaper.jpg"
-                        alt="" class="responsive-img">
+                        style="height: 100%;" alt="" class="responsive-img">
                 </div>
                 <a href="">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjf_mMlWmPrhB7-ifZVsjOgsJHDLe_QvLbLhW5bwtSW8fVNYfI&s"
@@ -345,7 +354,8 @@
             </a>
         </li>
         <li>
-            <a class="link-solicitudes-rechazadas"><i class="material-icons black-text">cancel</i>Solicitudes Rechazadas
+            <a style="font-size: 0.49em;" class="link-solicitudes-rechazadas"><i
+                    class="material-icons black-text">cancel</i>Solicitudes Rechazadas
             </a>
         </li>
         <li>
@@ -357,26 +367,29 @@
             </a>
         </li>
         <li>
-            <a class="link-especialidades"><i class="material-icons black-text">format_align_justify</i>Especialidades
+            <a style="font-size: 0.79em;" class="link-especialidades"><i
+                    class="material-icons black-text">format_align_justify</i>Especialidades
             </a>
         </li>
         <li>
-            <a class="link-enfermedades"><i class="material-icons black-text">format_align_justify</i>Enfermedades
+            <a style="font-size: 0.8em;" class="link-enfermedades"><i
+                    class="material-icons black-text">format_align_justify</i>Enfermedades
             </a>
         </li>
         <div class="divider"></div>
         <li>
-            <a class="link-agregar-nuevo-usuario"><i class="material-icons black-text">add</i>Agregar Nuevo Usuario
+            <a style="font-size: 0.48em;" class="link-agregar-nuevo-usuario"><i
+                    class="material-icons black-text">add</i>Agregar Nuevo Usuario
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            <a style="font-size: 0.86em;" href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
         </li>
     </ul>
     <!--SideNav Finished-->
 
-    <!-- Formulario de Agregar Nuevo Usuario-->
+    <!-- Panel de Agregar Nuevo Usuario-->
     <div class="" style="min-height: 657px;">
         <div class="container">
             <!-- Page Header -->
@@ -489,70 +502,70 @@
                     //Evento Click del link con clase llamada link-dashboard
                     $(".link-dashboard").click(function () {
 
-                        //las variables first_name, last_name y email estan declaradas en las lineas 468, 469 y 470 respectivamente
+                        //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
                         window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                     });
 
                     //Evento Click del link con clase llamada link-pacientes
                     $(".link-pacientes").click(function () {
 
-                        //las variables first_name, last_name y email estan declaradas en las lineas 468, 469 y 470 respectivamente
+                        //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
                         window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                     });
 
                     //Evento Click del link con clase llamada link-doctores
                     $(".link-doctores").click(function () {
 
-                        //las variables first_name, last_name y email estan declaradas en las lineas 468, 469 y 470 respectivamente
+                        //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
                         window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                     });
 
                     //Evento Click del link con clase llamada link-solicitudes
                     $(".link-solicitudes").click(function () {
 
-                        //las variables first_name, last_name y email estan declaradas en las lineas 468, 469 y 470 respectivamente
+                        //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
                         window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                     });
 
                     //Evento Click del link con clase llamada link-solicitudes-rechazadas
                     $(".link-solicitudes-rechazadas").click(function () {
 
-                        //las variables first_name, last_name y email estan declaradas en las lineas 468, 469 y 470 respectivamente
+                        //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
                         window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                     });
 
                     //Evento Click del link con clase llamada link-citas
                     $(".link-citas").click(function () {
 
-                        //las variables first_name, last_name y email estan declaradas en las lineas 468, 469 y 470 respectivamente
+                        //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
                         window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                     });
 
                     //Evento Click del link con clase llamada link-hospitales
                     $(".link-hospitales").click(function () {
 
-                        //las variables first_name, last_name y email estan declaradas en las lineas 468, 469 y 470 respectivamente
+                        //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
                         window.location.href = "./ListaHospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                     });
 
                     //Evento Click del link con clase llamada link-especialidades
                     $(".link-especialidades").click(function () {
 
-                        //las variables first_name, last_name y email estan declaradas en las lineas 468, 469 y 470 respectivamente
+                        //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
                         window.location.href = "./ListaEspecialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                     });
 
                     //Evento Click del link con clase llamada link-enfermedades
                     $(".link-enfermedades").click(function () {
 
-                        //las variables first_name, last_name y email estan declaradas en las lineas 468, 469 y 470 respectivamente
+                        //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
                         window.location.href = "./ListaEnfermedades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                     });
 
                     //Evento Click del link con clase llamada link-agregar-nuevo-usuario
                     $(".link-agregar-nuevo-usuario").click(function () {
 
-                        //las variables first_name, last_name y email estan declaradas en las lineas 468, 469 y 470 respectivamente
+                        //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
                         window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                     });
 
