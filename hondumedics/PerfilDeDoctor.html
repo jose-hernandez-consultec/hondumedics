@@ -471,11 +471,11 @@
             var email = getQueryVariable("email");
             //var phone_number_doctor = getQueryVariable("phone_number");
 
-            $("#username").text(unescape(first_name));
-            $("#Name").text(unescape(first_name + " " + last_name));
-            $("#first_name").val(unescape(first_name));
-            $("#last_name").val(unescape(last_name));
-            $("#email").val(unescape(email));
+            $("#username").text(decodeURIComponent(first_name));
+            $("#Name").text(decodeURIComponent(first_name + " " + last_name));
+            $("#first_name").val(decodeURIComponent(first_name));
+            $("#last_name").val(decodeURIComponent(last_name));
+            $("#email").val(decodeURIComponent(email));
             //$("#phone_number").val(unescape(phone_number_doctor));
 
             //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro

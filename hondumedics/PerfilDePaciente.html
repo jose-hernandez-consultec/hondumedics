@@ -363,14 +363,14 @@
             var fecha_nacimiento = getQueryVariable("birthdate");
             var email = getQueryVariable("email");
             
-            $("#username").text(unescape(first_name));
-            $("#Name").text(unescape(first_name + " " + last_name));
-            $("#fechaNacimiento").text(unescape(fecha_nacimiento));
+            $("#username").text(decodeURIComponent(first_name));
+            $("#Name").text(decodeURIComponent(first_name + " " + last_name));
+            $("#fechaNacimiento").text(decodeURIComponent(fecha_nacimiento));
 
-            $("#first_name").val(unescape(first_name));
-            $("#last_name").val(unescape(last_name));
-            $("#email").val(unescape(email));
-            $("#date_of_birth").val(unescape(fecha_nacimiento));
+            $("#first_name").val(decodeURIComponent(first_name));
+            $("#last_name").val(decodeURIComponent(last_name));
+            $("#email").val(decodeURIComponent(email));
+            $("#date_of_birth").val(decodeURIComponent(fecha_nacimiento));
 
             //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
             function getQueryVariable(variable) {

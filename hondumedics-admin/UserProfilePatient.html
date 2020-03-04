@@ -1065,9 +1065,9 @@ Registro de entrada de los pacientes y recogida de la información.</textarea>
             var last_name = getQueryVariable("last_name");
             var email = getQueryVariable("email");
 
-            $("#username").text(unescape(first_name));
-            $("#UserName1").text(unescape(first_name + " " + last_name));
-            $("#email1").text(unescape(email));
+            $("#username").text(decodeURIComponent(first_name));
+            $("#UserName1").text(decodeURIComponent(first_name + " " + last_name));
+            $("#email1").text(decodeURIComponent(email));
 
             //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
             function getQueryVariable(variable) {

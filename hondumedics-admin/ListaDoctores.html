@@ -604,9 +604,9 @@
             var last_name = getQueryVariable("last_name");
             var email = getQueryVariable("email");
 
-            $("#username").text(unescape(first_name));
-            $("#username1").text(unescape(first_name + " " + last_name));
-            $("#email1").text(unescape(email));
+            $("#username").text(decodeURIComponent(first_name));
+            $("#username1").text(decodeURIComponent(first_name + " " + last_name));
+            $("#email1").text(decodeURIComponent(email));
 
             //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
             function getQueryVariable(variable) {
