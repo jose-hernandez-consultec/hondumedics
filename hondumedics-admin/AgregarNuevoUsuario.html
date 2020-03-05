@@ -425,8 +425,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input id="username" name="username" type="text" class="validate">
-                                        <label for="username">Nombre de Usuario</label>
+                                        <input id="username_text" name="username_text" type="text" class="validate">
+                                        <label for="username_text">Nombre de Usuario</label>
                                     </div>
                                     <div class="input-field col s6">
                                         <label>Tipo de Acceso</label>
@@ -580,7 +580,7 @@
                         var apellido_usuario = $('#last_name').val();
                         var email_usuario = $('#email').val();
                         var pass_usuario = $('#password').val();
-                        var username_usuario = $('#username').val();
+                        var username_usuario = $('#username_text').val();
                         var seleccionar_usuario = $('#access').val();
 
                         //Validar que nada este vacio
@@ -656,7 +656,7 @@
                         //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                         if (valido) {
                             $.ajax({
-                                url: 'https://hondumedics-server.herokuapp.com/admins/addNewAdmin',
+                                url: 'http://localhost:5000/admins/addNewAdmin',
                                 dataType: 'json',
                                 type: 'POST',
                                 contentType: 'application/json',

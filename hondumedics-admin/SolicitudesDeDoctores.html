@@ -531,7 +531,7 @@
 
             //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
             $.ajax({
-                url: 'http://hondumedics-server.herokuapp.com/doctorRequests',
+                url: 'http://localhost:5000/doctorRequests',
                 type: 'GET',
                 dataType: 'json', //added data
                 success: function (data) {
@@ -559,7 +559,7 @@
                         console.log("Aprobar");
 
                         $.ajax({
-                            url: 'http://hondumedics-server.herokuapp.com/doctorRequests/approveRequest',
+                            url: 'http://localhost:5000/doctorRequests/approveRequest',
                             dataType: 'json',
                             type: 'POST',
                             contentType: 'application/json',
@@ -583,7 +583,7 @@
                         console.log("Rechazar");
 
                         $.ajax({
-                            url: 'http://hondumedics-server.herokuapp.com/doctorRequests/rejectRequest',
+                            url: 'http://localhost:5000/doctorRequests/rejectRequest',
                             dataType: 'json',
                             type: 'POST',
                             contentType: 'application/json',

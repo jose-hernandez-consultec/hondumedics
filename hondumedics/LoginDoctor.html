@@ -196,7 +196,7 @@
                     //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                     if (valido) {
                         $.ajax({
-                            url: 'http://hondumedics-server.herokuapp.com/doctors/doctorLogin',
+                            url: 'http://localhost:5000/doctors/doctorLogin',
                             dataType: 'json',
                             type: 'POST',
                             contentType: 'application/json',
@@ -207,7 +207,6 @@
                                 if (data.login) {
                                     var doctor = data.doctor;
                                     alert(data.message);
-
                                     //Redireccionando a PerfilDePaciente.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
                                     window.location.href = "./PerfilDeDoctor.html?first_name=" + doctor.first_name + "&last_name=" + doctor.last_name + "&email=" + doctor.email;
 
