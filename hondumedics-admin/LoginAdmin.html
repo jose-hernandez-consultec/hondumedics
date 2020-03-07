@@ -193,9 +193,9 @@
                             processData: false,
                             success: function (data) {
                                 console.log(data);
-                                if (data.login) {
+                                if (data.auth) {
                                     var admin = data.admin;
-                                    alert(data.message);
+                                    alert("Bienvenido");
 
                                     //Redireccionando a dashboard.html y enviando dos paraemtros hacia esa pagina: first_name, last_name, email
                                     window.location.href = "./dashboard.html?first_name=" + admin.first_name + "&last_name=" + admin.last_name + "&email=" + admin.email;
