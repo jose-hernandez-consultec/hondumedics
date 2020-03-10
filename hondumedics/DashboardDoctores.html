@@ -15,7 +15,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Charts -->
     <!--Charts-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
 
 
 
@@ -89,53 +90,77 @@
             will-change: opacity;
         }
 
-        /*Donut Chart*/
-        .donut-chart svg {
-            pointer-events: none;
-            height: 100%;
-        }
-
-        .donut-chart svg path {
-            fill: none;
-            stroke-width: 35px;
-            stroke: #19a8ff;
-        }
-
-        .donut-chart {
-            width: 200px;
-            height: 200px;
-            position: relative;
+        /*Circular Progress bar*/
+        .progressbar {
             display: inline-block;
+            width: 100px;
+            margin: 4px;
         }
 
-        .donut-chart p {
-            margin: 0;
+        .circle {
+            width: 100%;
+            /* margin: 0 auto;*/
+            margin-top: 5px;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+        }
+
+        .circle canvas {
+            vertical-align: middle;
+        }
+
+        .circle div {
             position: absolute;
-            top: 35%;
+            top: 30px;
             left: 0;
             width: 100%;
             text-align: center;
-            font-size: 2em;
+            line-height: 40px;
+            font-size: 20px;
         }
 
-        .donut-chart span {
+        .circle strong i {
+            font-style: normal;
+            font-size: 0.6em;
+            font-weight: normal;
+        }
+
+        .circle span {
             display: block;
-            font-size: 0.5em;
+            color: #aaa;
+            margin-top: 12px;
         }
 
+        /*Tabs*/
+        .tabs .indicator {
+            background-color: #222;
+        }
 
-        /* Just for the purpose of this pen */
-        body {
+        /*Imagen Redonda*/
+        .imgRedonda {
+            width: 60px;
+            height: 60px;
+            border-radius: 150px;
+        }
+
+        table {
+            width: 100%;
+            height: 50½;
             text-align: center;
         }
 
-        .red svg path {
-            stroke: #ff3333;
+        th {
+            text-align: center;
         }
 
-        .green svg path {
-            stroke: #6ad44d;
+        td {
+            width: 0px;
+            height: 30px;
+            text-align: center;
         }
+    </style>
+
     </style>
 </head>
 
@@ -161,7 +186,7 @@
                         <!-- Dropdown Trigger Menú Administrador-->
                         <li>
                             <a href="#" class="dropdown-trigger" data-target="dropdown1">
-                                Hola, Ruby<span style="font-size: 14px; font-weight: bold;" id="username"></span>
+                                Hola, <span style="font-size: 14px; font-weight: bold;" id="username"></span>
                                 <i class="material-icons right">arrow_drop_down</i>
                             </a></li>
                     </ul>
@@ -265,16 +290,15 @@
                 </div>
                 <br>
                 <br>
-                <center><span class="black-text name" style="font-size: 14px; font-weight: bold;">Dra. Ruby Taylor
-                        <!--<span style="font-size: 15px; font-weight: bold;"
-                        id="UserName1"></span>--></span></center>
+                <center><span class="black-text name" style="font-size: 14px; font-weight: bold;">
+                        <span style="font-size: 15px; font-weight: bold;" id="UserName1"></span></span></center>
                 <center><span class="black-text especialidad" style="font-size: 13px; text-align: justify;">Cirugía oral
                         y maxilofacial.
                         <!--<span id="especialidad"></span>--></span></center>
             </div>
         </li>
         <li>
-            <a class="link-dashboard"><i class="material-icons black-text">dashboard</i>Dashboard
+            <a class="link-dashboard-doctores"><i class="material-icons black-text">dashboard</i>Dashboard
             </a>
         </li>
         <li>
@@ -322,118 +346,423 @@
                     <div class="col s2"></div>
                     <div class="col s10 m6 l10">
                         <div class="row">
-                            <div class="col s12">
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="row">
-                                            <div class="col s12 m4 l4">
-                                                <div class="card horizontal">
-                                                    <!--Total Pacientes-->
-                                                    <div class="donut-chart" data-percent="80">
-                                                        <p>80%</p>
-                                                    </div>
-                                                    <div class="card-stacked">
-                                                        <div class="card-content">
-                                                            <p style="font-size: 20px; font-weight: bold;">Total
-                                                                Pacientes</p>
-                                                            <br>
-                                                            <span
-                                                                style="font-size: 20px; font-weight: bold;">15</span><br><br>
-                                                            <span>Hasta Hoy</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col s12 m4 l4">
-                                                <div class="card horizontal">
-                                                    <!--Total Pacientes-->
-                                                    <div class="donut-chart red" data-percent="22">
-                                                        <p>22%</p>
-                                                    </div>
-                                                    <div class="card-stacked">
-                                                        <div class="card-content">
-                                                            <p style="font-size: 20px; font-weight: bold;">Pacientes hoy
-                                                            </p><br>
-                                                            <span
-                                                                style="font-size: 20px; font-weight: bold;">5</span><br><br>
-                                                            <span>06, Mar 2020</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                            <div class="col s12 m4">
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        <div class="progressbar" data-animate="false">
+                                            <div class="circle" data-percent="35">
+                                                <div></div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="card-stacked">
+                                        <div class="card-content center">
+                                            <span style="font-size: 20px; font-weight: bold;">Total Pacientes</span>
+                                            <p style="font-size: 15px; font-weight: bold;">15</p>
+                                            <p>Hasta Hoy</p>
+                                        </div>
 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m4">
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        <div class="progressbar" data-animate="false">
+                                            <div class="circle" data-percent="25">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-stacked">
+                                        <div class="card-content center">
+                                            <span style="font-size: 20px; font-weight: bold;">Pacientes Hoy</span>
+                                            <p style="font-size: 15px; font-weight: bold;">2</p>
+                                            <p>09, Mar 2020</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m4">
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        <div class="progressbar" data-animate="false">
+                                            <div class="circle" data-percent="40">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-stacked">
+                                        <div class="card-content center">
+                                            <span style="font-size: 20px; font-weight: bold;">Citas</span>
+                                            <p style="font-size: 15px; font-weight: bold;">10</p>
+                                            <p>10, Abr 2020</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Panel de Lista de Pacientes-->
+                            <br>
+                            <br>
+                            <div class="col s12 center">
+                                <h4>Citas de Pacientes</h4>
+                            </div>
+                            <br>
+                            <!--Tabs-->
+                            <div class="col s12">
+                                <ul class="tabs" style="background-color: #ffa1a1;" id="tabs">
+                                    <li class="tab col m6 s12"><a class="white-text" style="font-weight: bold;"
+                                            href="#hoy">Hoy</a></li>
+                                    <li class="tab col m6 s12"><a class="white-text" style="font-weight: bold;"
+                                            href="#proxima">Próxima Cita</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="hoy" class="col s12">
+                                <!--Lista de Citas de Pacientes de Hoy-->
+                                <br>
+                                <table class="responsive-table centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre del Paciente</th>
+                                            <th>Fecha de Cita</th>
+                                            <th>Propósito</th>
+                                            <th>Tipo</th>
+                                            <th>Pago</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td><a class="link-perfil-paciente">
+                                                    <img src="http://cdn2.upsocl.com/wp-content/uploads/2045/06/mujer-372x248.jpg"
+                                                        class="imgRedonda" /></a><br><a href="#">Gina
+                                                    Padilla</a>
+                                            </td>
+                                            <td>09 de Marzo 2020<br><span style="color: #0277bd;">9:00 am</span></td>
+                                            <td>Asma</td>
+                                            <td>Nuevo paciente</td>
+                                            <td>Lps. 300</td>
+                                            <td><a style="position:relative;z-index:0;"
+                                                    class="btnAceptar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Aceptar">
+                                                    <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;"
+                                                    class="btnCancelar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Cancelar">
+                                                    <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcz1sSva7aFhG4cnwa6JkdFz5sIU4hw7cEX1m3pSOyUMZNnMUX&s"
+                                                        class="imgRedonda" /></a><br><a href="#">Erick Bu</a>
+                                            </td>
+                                            <td>09 de Marzo 2020<br><span style="color: #0277bd;">9:30 am</span></td>
+                                            <td>Fiebre</td>
+                                            <td>Nuevo paciente</td>
+                                            <td>Lps. 200</td>
+                                            <td><a style="position:relative;z-index:0;"
+                                                    class="btnAceptar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Aceptar">
+                                                    <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;"
+                                                    class="btnCancelar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Cancelar">
+                                                    <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="UserProfilePatient3.html">
+                                                    <img src="https://image.shutterstock.com/image-photo/closeup-portrait-beautiful-woman-smiling-260nw-693028582.jpg"
+                                                        class="imgRedonda" /></a><br><a href="#">Marleen
+                                                    Vargas</a>
+                                            </td>
+                                            <td>09 de Marzo 2020<br><span style="color: #0277bd;">10:30 am</span></td>
+                                            <td>General</td>
+                                            <td>Nuevo paciente</td>
+                                            <td>Lps. 250</td>
+                                            <td><a style="position:relative;z-index:0;"
+                                                    class="btnAceptar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Aceptar">
+                                                    <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;"
+                                                    class="btnCancelar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Cancelar">
+                                                    <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="">
+                                                    <img src="https://image.shutterstock.com/image-photo/smiling-man-crossed-arms-over-260nw-371570986.jpg"
+                                                        class="imgRedonda" /></a><br><a href="#">Víctor
+                                                    Guzmán</a>
+                                            </td>
+                                            <td>09 de Marzo 2020<br><span style="color: #0277bd;">11:00 am</span></td>
+                                            <td>Dengue</td>
+                                            <td>Nuevo paciente</td>
+                                            <td>Lps. 240</td>
+                                            <td><a style="position:relative;z-index:0;"
+                                                    class="btnAceptar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Aceptar">
+                                                    <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;"
+                                                    class="btnCancelar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Cancelar">
+                                                    <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="">
+                                                    <img src="https://static4.depositphotos.com/1005592/337/i/950/depositphotos_3371246-stock-photo-attractive-latino-women.jpg"
+                                                        class="imgRedonda" /></a><br><a href="#">Ericka
+                                                    Bueso</a>
+                                            </td>
+                                            <td>09 de Marzo 2020<br><span style="color: #0277bd;">1:00 pm</span></td>
+                                            <td>Quemaduras</td>
+                                            <td>Nuevo paciente</td>
+                                            <td>Lps. 300</td>
+                                            <td><a style="position:relative;z-index:0;"
+                                                    class="btnAceptar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Aceptar">
+                                                    <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;"
+                                                    class="btnCancelar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Cancelar">
+                                                    <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="proxima" class="col s12">
+                                <!--Próxima Cita-->
+                                <br>
+                                <table class="responsive-table centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre del Paciente</th>
+                                            <th>Fecha de Cita</th>
+                                            <th>Propósito</th>
+                                            <th>Tipo</th>
+                                            <th>Pago</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td><a class="link-perfil-paciente">
+                                                    <img src="http://cdn2.upsocl.com/wp-content/uploads/2045/06/mujer-372x248.jpg"
+                                                        class="imgRedonda" /></a><br><a href="#">Gina
+                                                    Padilla</a>
+                                            </td>
+                                            <td>16 de Marzo 2020<br><span style="color: #0277bd;">11:00 am</span></td>
+                                            <td>Asma</td>
+                                            <td>Nuevo paciente</td>
+                                            <td>Lps. 300</td>
+                                            <td><a style="position:relative;z-index:0;"
+                                                    class="btnAceptar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Aceptar">
+                                                    <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;"
+                                                    class="btnCancelar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Cancelar">
+                                                    <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcz1sSva7aFhG4cnwa6JkdFz5sIU4hw7cEX1m3pSOyUMZNnMUX&s"
+                                                        class="imgRedonda" /></a><br><a href="#">Erick Bu</a>
+                                            </td>
+                                            <td>17 de Marzo 2020<br><span style="color: #0277bd;">1:30 pm</span></td>
+                                            <td>Fiebre</td>
+                                            <td>Nuevo paciente</td>
+                                            <td>Lps. 200</td>
+                                            <td><a style="position:relative;z-index:0;"
+                                                    class="btnAceptar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Aceptar">
+                                                    <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;"
+                                                    class="btnCancelar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Cancelar">
+                                                    <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="UserProfilePatient3.html">
+                                                    <img src="https://image.shutterstock.com/image-photo/closeup-portrait-beautiful-woman-smiling-260nw-693028582.jpg"
+                                                        class="imgRedonda" /></a><br><a href="#">Marleen
+                                                    Vargas</a>
+                                            </td>
+                                            <td>17 de Marzo 2020<br><span style="color: #0277bd;">2:30 pm</span></td>
+                                            <td>General</td>
+                                            <td>Nuevo paciente</td>
+                                            <td>Lps. 250</td>
+                                            <td><a style="position:relative;z-index:0;"
+                                                    class="btnAceptar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Aceptar">
+                                                    <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;"
+                                                    class="btnCancelar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Cancelar">
+                                                    <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="">
+                                                    <img src="https://image.shutterstock.com/image-photo/smiling-man-crossed-arms-over-260nw-371570986.jpg"
+                                                        class="imgRedonda" /></a><br><a href="#">Víctor
+                                                    Guzmán</a>
+                                            </td>
+                                            <td>18 de Marzo 2020<br><span style="color: #0277bd;">1:00 pm</span></td>
+                                            <td>Dengue</td>
+                                            <td>Nuevo paciente</td>
+                                            <td>Lps. 240</td>
+                                            <td><a style="position:relative;z-index:0;"
+                                                    class="btnAceptar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Aceptar">
+                                                    <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;"
+                                                    class="btnCancelar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Cancelar">
+                                                    <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="">
+                                                    <img src="https://static4.depositphotos.com/1005592/337/i/950/depositphotos_3371246-stock-photo-attractive-latino-women.jpg"
+                                                        class="imgRedonda" /></a><br><a href="#">Ericka
+                                                    Bueso</a>
+                                            </td>
+                                            <td>19 de Marzo 2020<br><span style="color: #0277bd;">11:00 am</span></td>
+                                            <td>Quemaduras</td>
+                                            <td>Nuevo paciente</td>
+                                            <td>Lps. 300</td>
+                                            <td><a style="position:relative;z-index:0;"
+                                                    class="btnAceptar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Aceptar">
+                                                    <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;"
+                                                    class="btnCancelar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
+                                                    data-position="bottom" data-tooltip="Cancelar">
+                                                    <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script>
-            //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
-            $(document).ready(function (e) {
-                //Inicialización de las propiedades de Materialize css.
-                M.AutoInit();
-                $('.sidenav').sidenav();
-                $('.dropdown-trigger').dropdown({
-                    coverTrigger: false,
-                    belowOrigin: true
-                });
+    <script>
+        //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
+        $(document).ready(function (e) {
+            //Inicialización de las propiedades de Materialize css.
+            M.AutoInit();
+            $('.sidenav').sidenav();
+            $('.sidenav-1').sidenav({ edge: 'left' });
+            $('.dropdown-trigger').dropdown({
+                coverTrigger: false,
+                belowOrigin: true
+            });
 
-                //Gráfico Circular o Dona
-                function Donut_chart(options) {
+            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+            var first_name = getQueryVariable("first_name");
+            var last_name = getQueryVariable("last_name");
 
-                    this.settings = $.extend({
-                        element: options.element,
-                        percent: 100
-                    }, options);
+            $("#username").text(decodeURIComponent(first_name));
+            $("#UserName1").text(decodeURIComponent(first_name + " " + last_name));
 
-
-                    this.circle = this.settings.element.find('path');
-                    this.settings.stroke_width = parseInt(this.circle.css('stroke-width'));
-                    this.radius = (parseInt(this.settings.element.css('width')) / 1.5 - this.settings.stroke_width) / 2;
-                    this.angle = -97.5; // Origin of the draw at the top of the circle
-                    this.i = Math.round(0.75 * this.settings.percent);
-                    this.first = true;
-
-                    this.animate = function () {
-                        this.timer = setInterval(this.loop.bind(this), 10);
-                    };
-
-                    this.loop = function (data) {
-                        this.angle += 5;
-                        this.angle %= 360;
-                        var radians = (this.angle / 180) * Math.PI;
-                        var x = this.radius + this.settings.stroke_width / 2 + Math.cos(radians) * this.radius;
-                        var y = this.radius + this.settings.stroke_width / 2 + Math.sin(radians) * this.radius;
-                        if (this.first == true) {
-                            var d = this.circle.attr('d') + " M " + x + " " + y;
-                            this.first = false;
-                        }
-                        else {
-                            var d = this.circle.attr('d') + " L " + x + " " + y;
-                        }
-                        this.circle.attr('d', d);
-                        this.i--;
-
-                        if (this.i <= 0) {
-                            clearInterval(this.timer);
-                        }
+            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
+            function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
                     }
-                };
+                }
+                return false;
+            }
 
-                $(function () {
-                    $('.donut-chart').each(function (index) {
-                        $(this).append('<svg preserveAspectRatio="xMidYMid" xmlns:xlink="http://www.w3.org/1999/xlink" id="donutChartSVG' + index + '"><path d="M100,100" /></svg>');
-                        var p = new Donut_chart({ element: $('#donutChartSVG' + index), percent: $(this).attr('data-percent') });
-                        p.animate();
-                    });
+            //Evento Click del link con clase llamada link-dashboard-doctores
+            $(".link-dashboard-doctores").click(function () {
+
+                //las variables first_name, last_name y email estan declaradas en las lineas 667 y 668 respectivamente
+                window.location.href = "./DashboardDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+            });
+
+            //Evento Click del link con clase llamada link-perfil-doctores
+            $(".link-perfil-doctores").click(function () {
+
+                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                window.location.href = "./PerfilDeDoctor.html?first_name=" + first_name + "&last_name=" + last_name;
+            });
+
+            //Evento Click del link con clase llamada link-experiencia-laboral
+            $(".link-experiencia-laboral").click(function () {
+
+                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                window.location.href = "./ExperienciaLaboral.html?first_name=" + first_name + "&last_name=" + last_name;
+            });
+
+            //Evento Click del link con clase llamada link-educacion
+            $(".link-educacion").click(function () {
+
+                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                window.location.href = "./Educacion.html?first_name=" + first_name + "&last_name=" + last_name;
+            });
+
+            //Evento Click del link con clase llamada link-certificaciones
+            $(".link-certificaciones").click(function () {
+
+                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                window.location.href = "./Certificaciones.html?first_name=" + first_name + "&last_name=" + last_name;
+            });
+
+            //Evento Click del link con clase llamada link-citas
+            $(".link-citas").click(function () {
+
+                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                window.location.href = "./Citas.html?first_name=" + first_name + "&last_name=" + last_name;
+            });
+
+            //Evento Click del link con clase llamada link-historiales-medicos
+            $(".link-historiales-medicos").click(function () {
+
+                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                window.location.href = "./HistorialesMedicos.html?first_name=" + first_name + "&last_name=" + last_name;
+            });
+
+
+            //Gráfico Circular o Dona
+            function animateElements() {
+                $('.progressbar').each(function () {
+                    var elementPos = $(this).offset().top;
+                    var topOfWindow = $(window).scrollTop();
+                    var percent = $(this).find('.circle').attr('data-percent');
+                    var percentage = parseInt(percent, 10) / parseInt(100, 10);
+                    var animate = $(this).data('animate');
+                    if (elementPos < topOfWindow + $(window).height() - 30 && !animate) {
+                        $(this).data('animate', true);
+                        $(this).find('.circle').circleProgress({
+                            startAngle: -Math.PI / 2,
+                            value: percent / 100,
+                            thickness: 14,
+                            fill: {
+                                color: '#01579b'
+                            }
+                        }).on('circle-animation-progress', function (event, progress, stepValue) {
+                            $(this).find('div').text((stepValue * 100).toFixed(0) + "%");
+                        }).stop();
+                    }
                 });
-            }); 
-        </script>
+            }
+
+            // Show animated elements
+            animateElements();
+            $(window).scroll(animateElements);
+
+        }); 
+    </script>
 </body>
 
 </html>

@@ -39,7 +39,7 @@
         <div class="container">
             <a href="#" class="brand-logo">HonduMedics</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#" class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
+                <li><a href="../Unirse.html" class="btn tooltipped btn-pink btn-bordes white-text waves-effect waves-pink"
                         data-position="left" data-tooltip="Ingresa aquí." id="btnHM">Incluya su
                         práctica en
                         HonduMedics</a></li>
@@ -208,7 +208,7 @@
                                     var doctor = data.doctor;
                                     alert(data.message);
                                     //Redireccionando a PerfilDePaciente.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
-                                    window.location.href = "./PerfilDeDoctor.html?first_name=" + doctor.first_name + "&last_name=" + doctor.last_name + "&email=" + doctor.email;
+                                    window.location.href = "./DashboardDoctores.html?first_name=" + doctor.first_name + "&last_name=" + doctor.last_name;
 
                                     //form[0].reset();
                                 }
