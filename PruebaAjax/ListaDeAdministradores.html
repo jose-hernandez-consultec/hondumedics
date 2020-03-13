@@ -373,7 +373,7 @@
 
             //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
             $.ajax({
-                url: 'https://hondumedics-server.herokuapp.com/admins',
+                url: 'https://localhost:5000/admins',
                 type: 'GET',
                 dataType: 'json', //added data
                 success: function (data) {
@@ -421,7 +421,7 @@
 
                             //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                             $.ajax({
-                                url: 'https://hondumedics-server.herokuapp.com/admins/deleteAdmin',
+                                url: 'https://localhost:5000/admins/deleteAdmin',
                                 type: 'POST',
                                 dataType: "json",
                                 contentType: "application/json",
