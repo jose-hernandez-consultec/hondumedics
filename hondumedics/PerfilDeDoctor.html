@@ -292,10 +292,10 @@
                 <br>
                 <br>
                 <center><span class="black-text name" style="font-size: 14px; font-weight: bold;">
-                    <span style="font-size: 15px; font-weight: bold;" id="UserName1"></span></span></center>
-            <center><span class="black-text especialidad" style="font-size: 13px; text-align: justify;">Cirugía oral
-                    y maxilofacial.
-                    <!--<span id="especialidad"></span>--></span></center>
+                        <span style="font-size: 15px; font-weight: bold;" id="UserName1"></span></span></center>
+                <center><span class="black-text especialidad" style="font-size: 13px; text-align: justify;">Cirugía oral
+                        y maxilofacial.
+                        <!--<span id="especialidad"></span>--></span></center>
             </div>
         </li>
         <li>
@@ -663,14 +663,14 @@
             $(".link-dashboard-doctores").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./DashboardDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./DashboardDoctores.html?first_name=" + first_name + "&last_name=" + last_name;
             });
 
-            //Evento Click del link con clase llamada link-perfil-doctores
-            $(".link-perfil-doctores").click(function () {
+            //Evento Click del link con clase llamada link-dashboard-doctores
+            $(".link-dashboard-doctores").click(function () {
 
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./PerfilDeDoctor.html?first_name=" + first_name + "&last_name=" + last_name;
+                //las variables first_name, last_name y email estan declaradas en las lineas 667 y 668 respectivamente
+                window.location.href = "./DashboardDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-experiencia-laboral
