@@ -23,13 +23,14 @@
             background-color: #FC5A5A;
         }
 
-        .btn-pink {
-            background-color: #FC5A5A;
+        .btn-white {
+            background-color: white;
         }
 
-        .btn-bordes {
-            border: white 2px solid;
+        .btn-bordes-pink {
+            border: #FC5A5A 2px solid;
         }
+
 
         .card-image {
             position: relative;
@@ -160,6 +161,67 @@
             width: 0px;
             height: 30px;
             text-align: center;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        .table-responsive {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        /*.table-wrapper {
+            overflow-x: scroll;
+            width: 100%;
+        }*/
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        td {
+            width: 30px;
+            padding: 5px 0 5px;
+            text-align: center;
+        }
+
+        th {
+            width: 75px;
+            padding: 5px 0 5px;
+            text-align: center;
+        }
+
+        body {
+            text-align: justify;
+        }
+
+        .modal {
+            left: 0;
+            right: 0;
+            background-color: white;
+            padding: 0;
+            width: 50%;
+            will-change: top, opacity;
+            max-height: 100%;
+        }
+
+        .modal .modal-footer {
+            border-radius: 0 0 2px 2px;
+            background-color: white;
+            padding: 4px 6px;
+            height: 45px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .modal-form-row {
+            margin-bottom: 0px;
         }
     </style>
 </head>
@@ -356,9 +418,114 @@
                                             <h5><b>Experiencia Laboral</b></h5>
                                         </left>
                                         <br>
-                                        
+                                        <!--Añadir Elementos de Experiencia Laboral-->
+                                        <!--Modal Trigger-->
+                                        <a style="color: #FC5A5A"
+                                            class="waves-effect waves-light btn btn-white btn-bordes-pink modal-trigger col s12 m6 l3"
+                                            href="#modal1"><i class="material-icons left">add</i>Añadir Experiencia</a>
+
+                                        <!--Modal Structure -->
+                                        <div id="modal1" class="modal">
+                                            <div class="modal-content center">
+                                                <h4>AGREGAR EXPERIENCIA LABORAL</h4>
+
+                                                <div class="row">
+                                                    <form class="col s12" id="FormExperiencia">
+                                                        <div class="row modal-form-row">
+                                                            <div class="input-field col s6">
+                                                                <i class="material-icons prefix">business</i>
+                                                                <input id="icon_business" type="text" class="validate">
+                                                                <label for="icon_business">Nombre de la Compañía</label>
+                                                            </div>
+                                                            <div class="input-field col s6">
+                                                                <i class="material-icons prefix">school</i>
+                                                                <input id="icon_school" type="text" class="validate">
+                                                                <label for="icon_school">Título Profesional</label>
+                                                            </div>
+                                                            <div class="input-field col s12">
+                                                                <i class="material-icons prefix">description</i>
+                                                                <textarea id="description"
+                                                                    class="materialize-textarea"></textarea>
+                                                                <label for="description">Descripción</label>
+                                                            </div>
+                                                            <div class="input-field col s12">
+                                                                <i class="material-icons prefix">location_on</i>
+                                                                <textarea id="location"
+                                                                    class="materialize-textarea"></textarea>
+                                                                <label for="location">Ubicación</label>
+                                                            </div>
+                                                            <div class="input-field col s6">
+                                                                <i class="material-icons prefix">date_range</i>
+                                                                <input id="icon_start_date" type="text"
+                                                                    class="datepicker">
+                                                                <label for="icon_start_date">Fecha Inicial</label>
+                                                            </div>
+                                                            <div class="input-field col s6">
+                                                                <i class="material-icons prefix">date_range</i>
+                                                                <input id="icon_end_date" type="text"
+                                                                    class="datepicker">
+                                                                <label for="icon_end_date">Fecha Final</label>
+                                                            </div>
+                                                            <div class="input-field col s12">
+                                                                <select id="current_job" class="browser-default" >
+                                                                    <option value="" disabled selected>¿Actualmente
+                                                                        trabaja?</option>
+                                                                    <option value="1">Sí</option>
+                                                                    <option value="2">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <center>
+                                                        <a href=""
+                                                            class="btnAgregar modal-action modal-close waves-effect waves-red btn white-text center"
+                                                            style="background-color: #2196f3; font-weight: bold;">Agregar</a>
+                                                        <a href=""
+                                                            class=" btnCancelar modal-action modal-close waves-effect waves-red btn white-text center"
+                                                            style="background-color: red; font-weight: bold;">Cancelar</a>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
+                                <br>
+                                <br>
+                                <table class="centered" id="table1">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre de la Compañía</th>
+                                            <th>Título Profesional</th>
+                                            <th>Descripción</th>
+                                            <th>Ubicación</th>
+                                            <th>Fecha Inicial</th>
+                                            <th>Fecha Final</th>
+                                            <th>¿Trabaja Actualmente?</th>
+                                            <th width="100px">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hospital Medical Center</td>
+                                            <td>Doctor en Medicina General</td>
+                                            <td>Descripción General</td>
+                                            <td>Colonia Las Minitas, Tepeyac</td>
+                                            <td>Ene 14, 2014</td>
+                                            <td>Actualidad</td>
+                                            <td>Sí</td>
+                                            <td><a style="position:relative;z-index:0;" 
+                                                class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" 
+                                                data-position="bottom" data-tooltip="Editar">
+                                                <i class="material-icons">check</i></a>
+                                                <a style="position:relative;z-index:0;" 
+                                                class="btnRechazar btn-floating btn-small waves-effect waves-light red btn tooltipped right" 
+                                                data-position="bottom" data-tooltip="Eliminar">
+                                                <i class="material-icons">clear</i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -379,7 +546,68 @@
                 coverTrigger: false,
                 belowOrigin: true
             });
+            $('.modal').modal();
+            $('.datepicker').datepicker({
+                container: 'body'
+            });
+            $('#datepicker').datepicker().datepicker('setDate', new Date());
+            $('.tooltipped').tooltip();
 
+            $('.btnAgregar').click(function (e){
+                e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                var nombre_empresa = $("#icon_business").val();
+                var titulo_profesional = $("#icon_school").val();
+                var descripcion = $("#description").val();
+                var ubicacion = $("#location").val();
+                var fecha_inicial = $("#icon_start_date").val();
+                var fecha_final = $("#icon_end_date").val();
+                var trabaja_actualmente = parseInt($("#current_job").val());
+
+                var valido = true;
+                //Validar Experiencia Laboral
+                if(nombre_empresa == "" || nombre_empresa.length === 0){
+                    alert("EL Nombre De La Compañía Está Vacía");
+                    valido = false;
+                }
+
+                if(titulo_profesional == ""|| titulo_profesional.length === 0){
+                    alert("El Título Profesional Está Vacío");
+                    valido = false;
+                }
+
+                if(descripcion == "" || descripcion.length === 0){
+                    alert("La Descripción Está Vacío");
+                    valido = false;
+                }
+
+                if(ubicacion == "" || ubicacion.length === 0){
+                    alert("La Ubicación Está Vacía");
+                    valido = false;
+                }
+
+                if(fecha_inicial == "" || fecha_inicial.length === 0){
+                    alert("La Fecha Inicial Está Vacía");
+                    valido = false;
+                }
+
+                if(fecha_final == "" || fecha_final.length === 0){
+                    alert("La Fecha Final Está Vacía");
+                    valido = false;
+                }
+
+                console.log(parseInt(trabaja_actualmente));
+
+                if(parseInt(trabaja_actualmente)!= 1 && parseInt(trabaja_actualmente) != 2){
+                    alert("Seleccione La Opción Trabaja Actualmente");
+                    valido = false;
+                }
+
+                $("#FormExperiencia")[0].reset();
+            });
+
+            $('.btnCancelar').click(function(){
+                $("#FormExperiencia")[0].reset();
+            })
 
             //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
             var first_name = getQueryVariable("first_name");
