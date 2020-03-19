@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Experiencia Laboral | Doctor</title>
+    <title>Educación | Doctor</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- JQuery JavaScript -->
@@ -409,38 +409,38 @@
                 <div class="row">
                     <div class="col s12 m6 l2"></div>
                     <div class="col s12 m6 l10">
-                        <!--Card Experiencia Laboral-->
+                        <!--Card Educación-->
                         <div class="card">
                             <div class="card-content">
                                 <div class="row">
                                     <form class="col s12 m12 l12 justify">
                                         <left>
-                                            <h5><b>Experiencia Laboral</b></h5>
+                                            <h5><b>Educación</b></h5>
                                         </left>
                                         <br>
-                                        <!--Añadir Experiencia Laboral-->
+                                        <!--Añadir Educación-->
                                         <!--Modal Trigger-->
                                         <a style="color: #FC5A5A"
                                             class="waves-effect waves-light btn btn-white btn-bordes-pink modal-trigger col s12 m6 l3"
-                                            href="#modal1"><i class="material-icons left">add</i>Añadir Experiencia</a>
+                                            href="#modal1"><i class="material-icons left">add</i>Añadir Educación</a>
 
                                         <!--Modal Structure -->
                                         <div id="modal1" class="modal">
                                             <div class="modal-content center">
-                                                <h4>AGREGAR EXPERIENCIA LABORAL</h4>
+                                                <h4>AGREGAR EDUCACIÓN</h4>
 
                                                 <div class="row">
-                                                    <form class="col s12" id="FormExperiencia">
+                                                    <form class="col s12" id="FormEducacion">
                                                         <div class="row modal-form-row">
                                                             <div class="input-field col s6">
-                                                                <i class="material-icons prefix">business</i>
-                                                                <input id="icon_business" type="text" class="validate">
-                                                                <label for="icon_business">Nombre de la Compañía</label>
+                                                                <i class="material-icons prefix">account_balance</i>
+                                                                <input id="icon_institue_name" type="text" class="validate">
+                                                                <label for="icon_institue_name">Nombre del Instituto</label>
                                                             </div>
                                                             <div class="input-field col s6">
                                                                 <i class="material-icons prefix">school</i>
-                                                                <input id="icon_school" type="text" class="validate">
-                                                                <label for="icon_school">Título Profesional</label>
+                                                                <input id="icon_degree_obtained" type="text" class="validate">
+                                                                <label for="icon_degree_obtained">Título Obtenido</label>
                                                             </div>
                                                             <div class="input-field col s12">
                                                                 <i class="material-icons prefix">description</i>
@@ -467,9 +467,8 @@
                                                                 <label for="icon_end_date">Fecha Final</label>
                                                             </div>
                                                             <div class="input-field col s12">
-                                                                <select id="current_job" class="browser-default">
-                                                                    <option value="" disabled selected>¿Actualmente
-                                                                        trabaja?</option>
+                                                                <select id="current_education" class="browser-default">
+                                                                    <option value="" disabled selected>¿Cursando Actualmente?</option>
                                                                     <option value="1">Sí</option>
                                                                     <option value="2">No</option>
                                                                 </select>
@@ -496,25 +495,25 @@
                                 <table class="centered" id="table1">
                                     <thead>
                                         <tr>
-                                            <th>Nombre de la Compañía</th>
-                                            <th>Título Profesional</th>
+                                            <th>Nombre del Instituto</th>
+                                            <th>Título Obtenido</th>
                                             <th>Descripción</th>
                                             <th>Ubicación</th>
                                             <th>Fecha Inicial</th>
                                             <th>Fecha Final</th>
-                                            <th>¿Trabaja Actualmente?</th>
+                                            <th>¿Cursando Actualmente?</th>
                                             <th width="100px">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Hospital Medical Center</td>
-                                            <td>Doctor en Medicina General</td>
+                                            <td>Instituto San José Del Carmen</td>
+                                            <td>Bachillerato En Ciencias Y Letras</td>
                                             <td>Descripción General</td>
-                                            <td>Colonia Las Minitas, Tepeyac</td>
-                                            <td>Ene 14, 2014</td>
-                                            <td>Actualidad</td>
-                                            <td>Sí</td>
+                                            <td>Colonia La Campaña, Tegucigalpa, Honduras</td>
+                                            <td>Febrero 01, 1990</td>
+                                            <td>Noviembre 30, 1995</td>
+                                            <td>No</td>
                                             <td><a style="position:relative;z-index:0;"
                                                     class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
                                                     data-position="bottom" data-tooltip="Editar">
@@ -555,23 +554,23 @@
 
             $('.btnAgregar').click(function (e) {
                 e.preventDefault(); //Detiene la acción predeterminada de un elemento.
-                var nombre_empresa = $("#icon_business").val();
-                var titulo_profesional = $("#icon_school").val();
+                var nombre_institucion = $("#icon_institue_name").val();
+                var titulo_obtenido = $("#icon_degree_obtained").val();
                 var descripcion = $("#description").val();
                 var ubicacion = $("#location").val();
                 var fecha_inicial = $("#icon_start_date").val();
                 var fecha_final = $("#icon_end_date").val();
-                var trabaja_actualmente = parseInt($("#current_job").val());
+                var cursando_actualmente = parseInt($("#current_education").val());
 
                 var valido = true;
                 //Validar Experiencia Laboral
-                if (nombre_empresa == "" || nombre_empresa.length === 0) {
-                    alert("El Nombre De La Compañía Está Vacío");
+                if (nombre_institucion == "" || nombre_institucion.length === 0) {
+                    alert("El Nombre De La Institución Está Vacío");
                     valido = false;
                 }
 
-                if (titulo_profesional == "" || titulo_profesional.length === 0) {
-                    alert("El Título Profesional Está Vacío");
+                if (titulo_obtenido == "" || titulo_obtenido.length === 0) {
+                    alert("El Título Obtenido Está Vacío");
                     valido = false;
                 }
 
@@ -595,18 +594,18 @@
                     valido = false;
                 }
 
-                console.log(parseInt(trabaja_actualmente));
+                console.log(parseInt(cursando_actualmente));
 
-                if (parseInt(trabaja_actualmente) != 1 && parseInt(trabaja_actualmente) != 2) {
-                    alert("Seleccione La Opción Trabaja Actualmente");
+                if (parseInt(cursando_actualmente) != 1 && parseInt(cursando_actualmente) != 2) {
+                    alert("Seleccione La Opción Estudia Actualmente");
                     valido = false;
                 }
 
-                $("#FormExperiencia")[0].reset();
+                $("#FormEducacion")[0].reset();
             });
 
             $('.btnCancelar').click(function () {
-                $("#FormExperiencia")[0].reset();
+                $("#FormEducacion")[0].reset();
             });
 
             //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
