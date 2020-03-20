@@ -416,12 +416,12 @@
             var access = getQueryVariable("access");
 
             //var nombreusuario = $("#UserNameEdit").text(first_name + " " + last_name);
-            $("#first_name").val(first_name);
-            $("#last_name").val(last_name);
+            $("#first_name").val(decodeURIComponent(first_name));
+            $("#last_name").val(decodeURIComponent(last_name));
             //$("#email").val(email);
             //$("#password").text(password);
-            $("#username").val(username);
-            $("#access").select(access);
+            $("#username").val(decodeURIComponent(username));
+            $("#access").select(decodeURIComponent(access));
             $("#usernameAdmin").text(decodeURIComponent(first_name));
             $("#usernameAdmin2").text(decodeURIComponent(first_name + " " + last_name));
             $("#emailAdmin").text(decodeURIComponent(email));
