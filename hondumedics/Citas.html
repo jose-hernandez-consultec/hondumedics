@@ -386,12 +386,6 @@
             <a class="link-citas"><i class="material-icons black-text">date_range</i>Citas
             </a>
         </li>
-        <li>
-            <a style="font-size: 0.8em;" class="link-historiales-medicos"><i
-                    class="material-icons black-text">format_list_bulleted</i>Historiales
-                Médicos
-            </a>
-        </li>
         <div class="divider"></div>
         <li>
             <a style="font-size: 0.86em;" href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
@@ -449,14 +443,15 @@
                                                                 href="#modal1" data-position="bottom"
                                                                 data-tooltip="Ver"><i
                                                                     class="material-icons center">visibility</i>n</a>
-                                                                    <!--Buttons Aceptar Y Cancelar-->
+                                                            <!--Buttons Aceptar Y Cancelar-->
                                                             <a style="background-color: #00e676"
                                                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped"
                                                                 href="" data-position="bottom" data-tooltip="Acpetar"><i
                                                                     class="material-icons center">check</i>n</a>
-                                                                    <a style="background-color: red"
+                                                            <a style="background-color: red"
                                                                 class="btn-floating btn-medium waves-effect waves-light btn tooltipped"
-                                                                href="" data-position="bottom" data-tooltip="Cancelar"><i
+                                                                href="" data-position="bottom"
+                                                                data-tooltip="Cancelar"><i
                                                                     class="material-icons center">clear</i>n</a>
 
                                                             <!--Modal Structure -->
@@ -468,24 +463,36 @@
                                                                         <form class="col s12" id="FormEducacion">
                                                                             <div class="row modal-form-row"><br>
                                                                                 <div class="col s12">
-                                                                                    <span style="font-size: 18px; font-weight: bold;">appointmet_id</span>
+                                                                                    <span
+                                                                                        style="font-size: 18px; font-weight: bold;">appointmet_id</span>
                                                                                     <p style="font-size: 18px;">21</p>
                                                                                 </div>
                                                                                 <div class="col s12"><br>
-                                                                                    <span style="font-size: 18px; font-weight: bold;">Nov 14, 2019</span>
-                                                                                    <p style="font-size: 18px;">10:00 am</p>
+                                                                                    <span
+                                                                                        style="font-size: 18px; font-weight: bold;">Nov
+                                                                                        14, 2019</span>
+                                                                                    <p style="font-size: 18px;">10:00 am
+                                                                                    </p>
                                                                                 </div>
                                                                                 <div class="col s12"><br>
-                                                                                    <span style="font-size: 18px; font-weight: bold;">Estado:</span>
-                                                                                    <p style="font-size: 18px;">Completado</p>
+                                                                                    <span
+                                                                                        style="font-size: 18px; font-weight: bold;">Estado:</span>
+                                                                                    <p style="font-size: 18px;">
+                                                                                        Completado</p>
                                                                                 </div>
                                                                                 <div class="col s12"><br>
-                                                                                    <span style="font-size: 18px; font-weight: bold;">Fecha de confirmación:</span>
-                                                                                    <p style="font-size: 18px;">Nov 20, 2019</p>
+                                                                                    <span
+                                                                                        style="font-size: 18px; font-weight: bold;">Fecha
+                                                                                        de confirmación:</span>
+                                                                                    <p style="font-size: 18px;">Nov 20,
+                                                                                        2019</p>
                                                                                 </div>
                                                                                 <div class="col s12"><br>
-                                                                                    <span style="font-size: 18px; font-weight: bold;">Monto pagado:</span>
-                                                                                    <p style="font-size: 18px;">Lps. 400.00</p>
+                                                                                    <span
+                                                                                        style="font-size: 18px; font-weight: bold;">Monto
+                                                                                        pagado:</span>
+                                                                                    <p style="font-size: 18px;">Lps.
+                                                                                        400.00</p>
                                                                                 </div>
                                                                             </div>
                                                                         </form>
@@ -598,15 +605,6 @@
                 //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
                 window.location.href = "./Citas.html?first_name=" + first_name + "&last_name=" + last_name;
             });
-
-            //Evento Click del link con clase llamada link-historiales-medicos
-            $(".link-historiales-medicos").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./HistorialesMedicos.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-
         }); 
     </script>
 </body>

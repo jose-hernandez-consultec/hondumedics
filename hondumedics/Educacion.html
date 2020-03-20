@@ -386,12 +386,6 @@
             <a class="link-citas"><i class="material-icons black-text">date_range</i>Citas
             </a>
         </li>
-        <li>
-            <a style="font-size: 0.8em;" class="link-historiales-medicos"><i
-                    class="material-icons black-text">format_list_bulleted</i>Historiales
-                Médicos
-            </a>
-        </li>
         <div class="divider"></div>
         <li>
             <a style="font-size: 0.86em;" href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
@@ -434,13 +428,17 @@
                                                         <div class="row modal-form-row">
                                                             <div class="input-field col s6">
                                                                 <i class="material-icons prefix">account_balance</i>
-                                                                <input id="icon_institue_name" type="text" class="validate">
-                                                                <label for="icon_institue_name">Nombre del Instituto</label>
+                                                                <input id="icon_institue_name" type="text"
+                                                                    class="validate">
+                                                                <label for="icon_institue_name">Nombre del
+                                                                    Instituto</label>
                                                             </div>
                                                             <div class="input-field col s6">
                                                                 <i class="material-icons prefix">school</i>
-                                                                <input id="icon_degree_obtained" type="text" class="validate">
-                                                                <label for="icon_degree_obtained">Título Obtenido</label>
+                                                                <input id="icon_degree_obtained" type="text"
+                                                                    class="validate">
+                                                                <label for="icon_degree_obtained">Título
+                                                                    Obtenido</label>
                                                             </div>
                                                             <div class="input-field col s12">
                                                                 <i class="material-icons prefix">description</i>
@@ -468,7 +466,8 @@
                                                             </div>
                                                             <div class="input-field col s12">
                                                                 <select id="current_education" class="browser-default">
-                                                                    <option value="" disabled selected>¿Cursando Actualmente?</option>
+                                                                    <option value="" disabled selected>¿Cursando
+                                                                        Actualmente?</option>
                                                                     <option value="1">Sí</option>
                                                                     <option value="2">No</option>
                                                                 </select>
@@ -515,7 +514,7 @@
                                             <td>Noviembre 30, 1995</td>
                                             <td>No</td>
                                             <td><a style="position:relative;z-index:0;"
-                                                    class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center"
+                                                    class="link-editar-educacion btn-floating btn-small waves-effect waves-light green btn tooltipped center"
                                                     data-position="bottom" data-tooltip="Editar">
                                                     <i class="material-icons">check</i></a>
                                                 <a style="position:relative;z-index:0;"
@@ -597,7 +596,7 @@
                 console.log(parseInt(cursando_actualmente));
 
                 if (parseInt(cursando_actualmente) != 1 && parseInt(cursando_actualmente) != 2) {
-                    alert("Seleccione La Opción Estudia Actualmente");
+                    alert("Seleccione La Opción Cursando Actualmente");
                     valido = false;
                 }
 
@@ -670,14 +669,12 @@
                 window.location.href = "./Citas.html?first_name=" + first_name + "&last_name=" + last_name;
             });
 
-            //Evento Click del link con clase llamada link-historiales-medicos
-            $(".link-historiales-medicos").click(function () {
+            //Evento Click del link con clase llamada link-citas
+            $(".link-editar-educacion").click(function () {
 
                 //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./HistorialesMedicos.html?first_name=" + first_name + "&last_name=" + last_name;
+                window.location.href = "./EditarEducacion.html?first_name=" + first_name + "&last_name=" + last_name;
             });
-
-
         }); 
     </script>
 </body>

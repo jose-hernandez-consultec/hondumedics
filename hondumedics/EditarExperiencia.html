@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Certificaiones | Doctor</title>
+    <title>Editar Experiencia Laboral | Doctor</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- JQuery JavaScript -->
@@ -403,102 +403,69 @@
                 <div class="row">
                     <div class="col s12 m6 l2"></div>
                     <div class="col s12 m6 l10">
-                        <!--Card Certificaciones-->
+                        <!--Card Experiencia Laboral-->
                         <div class="card">
                             <div class="card-content">
                                 <div class="row">
                                     <form class="col s12 m12 l12 justify">
                                         <left>
-                                            <h5><b>Certificaciones</b></h5>
+                                            <h5><b>Editar Experiencia Laboral</b></h5>
                                         </left>
                                         <br>
-                                        <!--Añadir Certificaciones-->
-                                        <!--Modal Trigger-->
-                                        <a style="color: #FC5A5A"
-                                            class="waves-effect waves-light btn btn-white btn-bordes-pink modal-trigger col s12 m6 l3"
-                                            href="#modal1"><i class="material-icons left">add</i>Añadir
-                                            Certificación</a>
-
-                                        <!--Modal Structure -->
-                                        <div id="modal1" class="modal">
-                                            <div class="modal-content center">
-                                                <h4>AGREGAR CERTIFICACIÓN</h4>
-
+                                        <!--Editar Experiencia Laboral-->
+                                        <div class="row">
+                                            <form class="col s12" id="FormExperiencia">
                                                 <div class="row">
-                                                    <form class="col s12" id="FormCertificacion">
-                                                        <div class="row modal-form-row">
-                                                            <div class="input-field col s12">
-                                                                <i class="material-icons prefix">class</i>
-                                                                <input id="icon_qualification_name" type="text"
-                                                                    class="validate">
-                                                                <label for="icon_qualification_name">Nombre de
-                                                                    Certificación</label>
-                                                            </div>
-                                                            <div class="input-field col s12">
-                                                                <i class="material-icons prefix">account_balance</i>
-                                                                <input id="icon_institute_name" type="text"
-                                                                    class="validate">
-                                                                <label for="icon_institute_name">Nombre del
-                                                                    Instituto</label>
-                                                            </div>
-                                                            <div class="input-field col s12">
-                                                                <i class="material-icons prefix">date_range</i>
-                                                                <input id="icon_start_date" type="text"
-                                                                    class="datepicker">
-                                                                <label for="icon_start_date">Fecha Inicial</label>
-                                                            </div>
-                                                            <div class="input-field col s12">
-                                                                <i class="material-icons prefix">date_range</i>
-                                                                <input id="icon_end_date" type="text"
-                                                                    class="datepicker">
-                                                                <label for="icon_end_date">Fecha Final</label>
-                                                            </div>
-                                                        </div>
-                                                    </form>
+                                                    <div class="input-field col s6">
+                                                        <i class="material-icons prefix">business</i>
+                                                        <input id="icon_business" type="text" class="validate">
+                                                        <label for="icon_business">Nombre de la Compañía</label>
+                                                    </div>
+                                                    <div class="input-field col s6">
+                                                        <i class="material-icons prefix">school</i>
+                                                        <input id="icon_school" type="text" class="validate">
+                                                        <label for="icon_school">Título Profesional</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <i class="material-icons prefix">description</i>
+                                                        <textarea id="description"
+                                                            class="materialize-textarea"></textarea>
+                                                        <label for="description">Descripción</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <i class="material-icons prefix">location_on</i>
+                                                        <textarea id="location" class="materialize-textarea"></textarea>
+                                                        <label for="location">Ubicación</label>
+                                                    </div>
+                                                    <div class="input-field col s6">
+                                                        <i class="material-icons prefix">date_range</i>
+                                                        <input id="icon_start_date" type="text" class="datepicker">
+                                                        <label for="icon_start_date">Fecha Inicial</label>
+                                                    </div>
+                                                    <div class="input-field col s6">
+                                                        <i class="material-icons prefix">date_range</i>
+                                                        <input id="icon_end_date" type="text" class="datepicker">
+                                                        <label for="icon_end_date">Fecha Final</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <select id="current_job" class="browser-default">
+                                                            <option value="" disabled selected>¿Actualmente
+                                                                trabaja?</option>
+                                                            <option value="1">Sí</option>
+                                                            <option value="2">No</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <center>
-                                                        <a href=""
-                                                            class="btnAgregar modal-action modal-close waves-effect waves-red btn white-text center"
-                                                            style="background-color: #2196f3; font-weight: bold;">Agregar</a>
-                                                        <a href=""
-                                                            class=" btnCancelar modal-action modal-close waves-effect waves-red btn white-text center"
-                                                            style="background-color: red; font-weight: bold;">Cancelar</a>
-                                                    </center>
-                                                </div>
-                                            </div>
+                                            </form>
+                                        </div>
+                                        <div class="center">
+                                            <a href="" class="btnAgregar waves-effect waves-red btn white-text center"
+                                                style="background-color: #2196f3; font-weight: bold;">Agregar</a>
+                                            <a  class="link-experiencia-laboral waves-effect waves-red btn white-text center"
+                                                style="background-color: red; font-weight: bold;">Cancelar</a>
                                         </div>
                                     </form>
                                 </div>
-                                <br>
-                                <br>
-                                <table class="centered" id="table1">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre de Certificación</th>
-                                            <th>Nombre del Instituto</th>
-                                            <th>Fecha Inicial</th>
-                                            <th>Fecha Final</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Certificación Médica</td>
-                                            <td>Colegio Médicos de Honduras</td>
-                                            <td>Sep 19, 1999</td>
-                                            <td>Actualidad</td>
-                                            <td><a style="position: relative; z-index:0;"
-                                                    class="link-editar-certificaciones btn-floating btn-small waves-effect waves-light green btn tooltipped center"
-                                                    data-position="bottom" data-tooltip="Editar"><i
-                                                        class="material-icons">check</i></a>
-                                                <a style="position: relative; z-index:0;"
-                                                    class="btnRechazar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
-                                                    data-position="bottom" data-tooltip="Eliminar"><i
-                                                        class="material-icons">clear</i></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
@@ -528,20 +495,33 @@
 
             $('.btnAgregar').click(function (e) {
                 e.preventDefault(); //Detiene la acción predeterminada de un elemento.
-                var nombre_certificacion = $("#icon_qualification_name").val();
-                var nombre_institucion = $("#icon_institute_name").val();
+                var nombre_empresa = $("#icon_business").val();
+                var titulo_profesional = $("#icon_school").val();
+                var descripcion = $("#description").val();
+                var ubicacion = $("#location").val();
                 var fecha_inicial = $("#icon_start_date").val();
                 var fecha_final = $("#icon_end_date").val();
+                var trabaja_actualmente = parseInt($("#current_job").val());
 
                 var valido = true;
                 //Validar Experiencia Laboral
-                if (nombre_certificacion == "" || nombre_certificacion.length === 0) {
-                    alert("El Nombre De La Certificación Está Vacío");
+                if (nombre_empresa == "" || nombre_empresa.length === 0) {
+                    alert("El Nombre De La Compañía Está Vacío");
                     valido = false;
                 }
 
-                if (nombre_institucion == "" || nombre_institucion.length === 0) {
-                    alert("El Nombre De La Institución Está Vacío");
+                if (titulo_profesional == "" || titulo_profesional.length === 0) {
+                    alert("El Título Profesional Está Vacío");
+                    valido = false;
+                }
+
+                if (descripcion == "" || descripcion.length === 0) {
+                    alert("La Descripción Está Vacía");
+                    valido = false;
+                }
+
+                if (ubicacion == "" || ubicacion.length === 0) {
+                    alert("La Ubicación Está Vacía");
                     valido = false;
                 }
 
@@ -555,11 +535,12 @@
                     valido = false;
                 }
 
-                $("#FormEducacion")[0].reset();
-            });
+                console.log(parseInt(trabaja_actualmente));
 
-            $('.btnCancelar').click(function () {
-                $("#FormEducacion")[0].reset();
+                if (parseInt(trabaja_actualmente) != 1 && parseInt(trabaja_actualmente) != 2) {
+                    alert("Seleccione La Opción Trabaja Actualmente");
+                    valido = false;
+                }
             });
 
             //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
@@ -622,13 +603,6 @@
 
                 //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
                 window.location.href = "./Citas.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-            //Evento Click del link con clase llamada link-certificaciones
-            $(".link-editar-certificaciones").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./EditarCertificaciones.html?first_name=" + first_name + "&last_name=" + last_name;
             });
 
         }); 
