@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
+    <script src="./src/funciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- Estilos CSS -->
     <style>
@@ -210,161 +210,137 @@
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
-            //Inicialización de las propiedades de Materialize css.
-            $('.datepicker').datepicker();
-            $('.tooltipped').tooltip();
 
-            var form = $("#formulario");
-            var form2 = $("#form2");
+            if (localStorage.getItem('patient') !== undefined && localStorage.getItem('patient') !== null){
+                window.location.href = "./PerfilDePaciente.html";
+            }else{    
+                //Inicialización de las propiedades de Materialize css.
+                $('.datepicker').datepicker();
+                $('.tooltipped').tooltip();
 
-            //El método click() adjunta una función de controlador de eventos a un elemento HTML.
-            //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
-            $("#btnGuardar").click(function (e) {
+                var form = $("#formulario");
+                var form2 = $("#form2");
 
-                e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
+                $("#btnGuardar").click(function (e) {
 
-                //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
-                var email_registro = $('#email').val();
-                //var email2_registro = $('#email2').val();
-                var password_registro = $('#password').val();
-                var nombre_registro = $('#nombre').val();
-                var apellido_registro = $('#apellido').val();
-                var fecha_registro = $('#birthday').val();
-                var select_gender = Number($('input[name="gender"]').is(':checked'));
-                var aceptar_condiciones = Number($('#aceptar').is(':checked'));
+                    e.preventDefault(); //Detiene la acción predeterminada de un elemento.
 
-                //Validar que nada este vacio
-                var valido = true;
-                if (email_registro === "" || email_registro.length === 0) {
-                    alert("El Correo Electrónico Está vacío");
-                    valido = false;
-                }
+                    //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
+                    var email_registro = $('#email').val();
+                    //var email2_registro = $('#email2').val();
+                    var password_registro = $('#password').val();
+                    var nombre_registro = $('#nombre').val();
+                    var apellido_registro = $('#apellido').val();
+                    var fecha_registro = $('#birthday').val();
+                    var select_gender = Number($('input[name="gender"]').is(':checked'));
+                    var aceptar_condiciones = Number($('#aceptar').is(':checked'));
 
-                if(!isValidEmail(email_registro)){
-                    alert("Dirección de correo electrónico no válido");
-                }
-
-                //Función es correo electrónico válido
-                function isValidEmail(email_registro) {
-                    //Verificar la longitud mínima válida de un correo electrónico
-                    if (email_registro.length <= 2) {
-                        return false;
-                    }
-
-                    //Si el correo electrónico tiene carácter @
-                    if (email_registro.indexOf("@") == -1) {
-                        return false;
-                    }
-
-                    var partes = email_registro.split("@");
-                    var punto = partes[1].indexOf(".");
-                    var longitud = partes[1].length;
-                    var divisiones_puntos = partes[1].split(".");
-                    var recuento_puntos = divisiones_puntos.length - 1;
-
-                    //Verificar si el punto está presente y ese mínimo un carácter después de @
-                    if (punto == -1 | punto < 2 || recuento_puntos > 2) {
-                        return false;
-                    }
-
-                    //Comprobar si el punto no es el último carácter y si los puntos no se repiten
-                    for (var i = 0; i < divisiones_puntos.length; i++) {
-                        if (divisiones_puntos[i].length == 0) {
-                            return false;
+                    var error_messages = [];
+                    //Validar que nada este vacio
+                    var valido = true;
+                    if (email_registro === "" || email_registro.length === 0) {
+                        error_messages.push("<span> - El correo electrónico no puede estar vacío. </span><br>");
+                        valido = false;
+                    }else{
+                        if(!isValidEmail(email_registro)){
+                            error_messages.push("<span> - El correo electrónico no es válido. </span><br>");
+                            valido = false;
                         }
                     }
-                    return true;
-                }
 
-                /* if (email2_registro == "" || email2_registro.length === 0) {
-                     alert("La Confirmación De Correo Electrónico Está Vacía");
-                     valido = false;
-                 }*/
-
-                if (password_registro == "" || password_registro.length === 0) {
-                    alert("La Contraseña Está Vacía");
-                    valido = false;
-                }
-
-                if (nombre_registro == "" || nombre_registro.length === 0) {
-                    alert("El Nombre Está Vacío");
-                    valido = false;
-                }
-
-                if (apellido_registro == "" || apellido_registro.length === 0) {
-                    alert("El Apellido Está Vacío");
-                    valido = false;
-                }
-
-                console.log(fecha_registro);
-                if (fecha_registro == "") {
-                    alert("La Fecha Está Vacía");
-                    valido = false;
-                }
-
-                //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
-                console.log(parseInt(select_gender));
-
-                if (parseInt(select_gender) != 1 && parseInt(select_gender) != 2) {
-                    alert("Seleccione La Opción De Género");
-                    valido = false;
-                }
-
-                // si la cantidad de checkboxes "chequeados" es cero, entonces se evita que se envíe el formulario y se muestra una alerta al usuario
-                /*if (aceptar_condiciones) {
-                    alert('Campo Correcto');
-                } else {
-                    alert('Debe Aceptar Las Condiciones');
-                    valido = false;
-                }*/
-
-                /*$('#aceptar').change(function(){
-                    var aceptar_condiciones = false;
-                    if(this.checked){
-                        aceptar_condiciones = true;
+                    if (password_registro == "" || password_registro.length === 0) {
+                        error_messages.push("<span> - La contraseña no puede estar vacía. </span><br>");
+                        valido = false;
                     }
-                    //alert(aceptar_condiciones);
-                });*/
 
-                //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
-                console.log(parseInt(aceptar_condiciones));
+                    if (nombre_registro == "" || nombre_registro.length === 0) {
+                        error_messages.push("<span> - El campo de nombre no puede estar vació. </span><br>");
+                        valido = false;
+                    }
 
-                if (parseInt(aceptar_condiciones) != 0 && parseInt(aceptar_condiciones) != 1) {
-                    alert("Debe Aceptar Las Condiciones");
-                    valido = false;
-                }
+                    if (apellido_registro == "" || apellido_registro.length === 0) {
+                        error_messages.push("<span> - El campo de apellido no puede estar vació. </span><br>");
+                        valido = false;
+                    }
 
-                //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
-                if (valido) {
-                    $.ajax({
-                        url: 'http://localhost:5000/patients/addNewPatient',
-                        dataType: 'json',
-                        type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify({ "email": email_registro, "password": password_registro, "first_name": nombre_registro, "last_name": apellido_registro, "birthdate": fecha_registro, "gender": select_gender, "tos_approved": aceptar_condiciones }),
-                        processData: false,
-                        success: function (data) {
-                            console.log(data);
-                            if (data.added) {
-                                alert("Agregue nuevo usuario");
-                                //Redireccionando a login.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
-                                window.location.href = "./login.html";
+                    console.log(fecha_registro);
+                    if (fecha_registro == "") {
+                        error_messages.push("<span> - Debe de introducir su fecha de nacimiento </span><br>");
+                        valido = false;
+                    }
 
-                                form[0].reset();
+                    if (parseInt(select_gender) != 1 && parseInt(select_gender) != 2) {
+                        error_messages.push("<span> - Debe seleccionar una opción de genero </span><br>");
+                        valido = false;
+                    }
+
+                    //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
+                    console.log(parseInt(aceptar_condiciones));
+
+                    if (parseInt(aceptar_condiciones) == 0) {
+                        error_messages.push("<span> - Debe aceptar los Términos y Condiciones </span><br>");
+                        valido = false;
+                    }
+
+                    //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
+                    if (valido) {
+                        $.ajax({
+                            url: 'http://localhost:5000/patients/addNewPatient',
+                            dataType: 'json',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({ "email": email_registro, "password": password_registro, "first_name": nombre_registro, "last_name": apellido_registro, "birthdate": fecha_registro, "gender": select_gender, "tos_approved": aceptar_condiciones }),
+                            processData: false,
+                            success: function (data) {
+                                console.log(data);
+                                if (data.added) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Bienvenido a Hondumedics!',
+                                        text: data.patient.first_name + " " + data.patient.last_name + ', su usuario ha sido agregado exitosamente',
+                                        confirmButtonText: 'Entendido'
+                                    }).then((result) => {
+                                        if (result.value) {
+                                            if (localStorage.getItem("patient") === null || localStorage.getItem("patient") === undefined){
+                                                localStorage.setItem("patient", JSON.stringify({
+                                                    patient_id: data.patient.patient_id,
+                                                }));
+                                            }
+                                            window.location.href = "./PerfilDePaciente.html";
+                                        }
+                                    });
+                                    //Redireccionando a login.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
+                                    
+                                    //Check if Browser Storage has patient data
+
+                                    
+                                }
+                            },
+                            error: function (error) {
+                                console.log(error);
+                                if (error.status === 403) {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: "Ya existe un usuario con ese correo electrónico",
+                                        icon: 'error',
+                                        confirmButtonText: 'Entendido'
+                                    });
+                                }
                             }
-                        },
-                        error: function (error) {
-                            console.log(error);
-                            if (error.status === 403) {
-                                alert("Ya existe un usuario con ese correo electrónico!");
-                            }
-                        }
-                    });
-                } else {
-                    alert("Hay errores en el formulario");
-                }
-            });
-
+                        });
+                    } else {
+                        var errors = "<p>" + error_messages.join('') + "</p>";
+                        Swal.fire({
+                            title: 'Hay errores en el formulario!',
+                            html: errors,
+                            icon: 'error',
+                            confirmButtonText: 'Entendido'
+                        });
+                    }
+                });
+            }
         });
     </script>
 </body>

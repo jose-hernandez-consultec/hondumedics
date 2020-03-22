@@ -13,6 +13,8 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <script src="./src/funciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- Estilos CSS -->
     <style>
@@ -148,68 +150,24 @@
                 var emailPatient = $('#emailPatient').val();
                 var passPatient = $('#passwordPatient').val();
 
+                var error_messages = [];
+
                 //Validar que nada esté vacío
                 var valido = true;
                 if (emailPatient === "" || emailPatient.length === 0) {
-                    alert('El Correo Electrónico Está Vacío');
-                    valido = false;
-                }
 
-                if (!isValidEmail(emailPatient)) {
-                    alert("Dirección de correo electrónico no válido");
+                    error_messages.push("<span> - El correo electrónico no puede estar vacío. </span><br>");
+                    valido = false;
+                }else{
+                    if (!isValidEmail(emailPatient)) {
+                        error_messages.push("<span> - El correo electrónico no es válido. </span><br>");
+                        valido = false;
+                    }
                 }
 
                 if (passPatient === "" || passPatient.length === 0) {
-                    alert('La Contraseña Está Vacía');
+                    error_messages.push("La contraseña esta vacía.");
                     valido = false;
-                }
-
-                //Función es correo electrónico válido
-                function isValidEmail(emailPatient) {
-                    //Verificar la longitud mínima válida de un correo electrónico
-                    if (emailPatient.length <= 2) {
-                        return false;
-                    }
-
-                    //Si el correo electrónico tiene carácter @
-                    if (emailPatient.indexOf("@") == -1) {
-                        return false;
-                    }
-
-                    var partes = emailPatient.split("@");
-                    var punto = partes[1].indexOf(".");
-                    var longitud = partes[1].length;
-                    var divisiones_puntos = partes[1].split(".");
-                    var recuento_puntos = divisiones_puntos.length - 1;
-
-                    //Verificar si el punto está presente y ese mínimo un carácter después de @
-                    if (punto == -1 | punto < 2 || recuento_puntos > 2) {
-                        return false;
-                    }
-
-                    //Comprobar si el punto no es el último carácter y si los puntos no se repiten
-                    for (var i = 0; i < divisiones_puntos.length; i++) {
-                        if (divisiones_puntos[i].length == 0) {
-                            return false;
-                        }
-                    }
-                    return true;
-                }
-
-                //Enviar y Recibir parámetros
-                //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro.
-                function getQueryVariable(variable) {
-                    // Estoy asumiendo que query es window.location.search.substring(1);
-                    var query = "emailPatient=&passwordPatient=";
-                    var vars = query.split("&");
-                    alert(vars);
-                    for (var i = 0; i < vars.length; i++) {
-                        var pair = vars[i].split("=");
-                        if (pair[0] == variable) {
-                            return pair[1];
-                        }
-                    }
-                    return false;
                 }
 
                 //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
@@ -225,23 +183,50 @@
                             console.log(data);
                             if (data.login) {
                                 var patient = data.patient;
-                                alert(data.message);
+                                Swal.fire({
+                                    title: "Bienvenido de vuelta, " +patient.first_name + " " + patient.last_name + "!",
+                                    icon: 'success',
+                                    confirmButtonText: 'Entendido'
+                                }).then((result) => {
+                                        if (result.value) {
+                                            if (localStorage.getItem("patient") === null || localStorage.getItem("patient") === undefined){
+                                                localStorage.setItem("patient", JSON.stringify({
+                                                    patient_id: data.patient.patient_id,
+                                                }));
+                                            }
+                                            window.location.href = "./PerfilDePaciente.html";
+                                        }
+                                    });;
 
-                                //Redireccionando a PerfilDePaciente.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
-                                window.location.href = "./PerfilDePaciente.html?first_name=" + patient.first_name + "&last_name=" + patient.last_name + "&email=" + patient.email + "&birthdate=" + patient.birthdate;
-
-                                //form[0].reset();
                             }
                         },
                         error: function (error) {
                             console.log(error);
                             if (error.status === 403) {
-                                alert(error.responseJSON.message);
+
+                                if (error.responseJSON.login == false){
+                                    if (error.responseJSON.message === "Unknown user!"){
+                                        Swal.fire({
+                                            title: 'Error!',
+                                            text: 'No existe un usuario con este correo electrónico',
+                                            icon: 'error',
+                                            confirmButtonText: 'Entendido'
+                                        });
+                                    }
+                                }
                             }
                         }
                     });
                 } else {
-                    alert("Hay errores en el formulario");
+                    var errors = "<p>" + error_messages.join('') + "</p>";
+
+                    console.log
+                    Swal.fire({
+                        title: 'Hay errores en el formulario!',
+                        html: errors,
+                        icon: 'error',
+                        confirmButtonText: 'Entendido'
+                    });
                 }
             });
         }); 
