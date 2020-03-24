@@ -14,6 +14,7 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
+    <script src="./hondumedics/src/funciones.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
@@ -67,71 +68,33 @@
                         <h2 style="text-align: center;">Únete HonduMedics Ahora</h2>
                         <br>
                         <div class="row">
-                            <div class="input-field col s6">
+                            <div class="input-field col s6 offset-s3">
                                 <input id="first_name" type="text" name="first_name" class="validate">
                                 <label for="first_name">Nombre *</label>
                             </div>
-                            <div class="input-field col s6">
+                        <div class="row">
+                        <div class="row"></div>
+                            <div class="input-field col s6 offset-s3">
                                 <input id="last_name" type="text" name="last_name" class="validate">
                                 <label for="last_name">Apellido *</label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s6">
-                                <label>Su Especialidad Principal *</label>
-                                <br>
-                                <br>
-                                <select class="browser-default" id="especialidad_principal">
-                                    <option value="" disabled selected>Favor Seleccionar</option>
-                                    <option id="opcion0" value="0">Anatomía Patológica</option>
-                                    <option id="opcion1" value="1">Alergología</option>
-                                    <option id="opcion2" value="2">Cardiología</option>
-                                    <option id="opcion3" value="3">Cirugía Cardiaca</option>
-                                    <option id="opcion4" value="4">Cirugía General</option>
-                                    <option id="opcion5" value="5">Cirugía Plástica</option>
-                                    <option id="opcion6" value="6">Cirugía de Mama</option>
-                                    <option id="opcion7" value="7">Cirugía Maxilofacial</option>
-                                    <option id="opcion8" value="8">Cirugía Vascular</option>
-                                    <option id="opcion9" value="9">Dermatología</option>
-                                    <option id="opcion10" value="10">Endocrinología y Nutrición</option>
-                                    <option id="opcion11" value="11">Gastroenterología - Digestivo</option>
-                                    <option id="opcion12" value="12">Genética</option>
-                                    <option id="opcion13" value="13">Geriatría</option>
-                                    <option id="opcion14" value="14">Ginecología</option>
-                                    <option id="opcion15" value="15">Hematología</option>
-                                    <option id="opcion16" value="16">Enfermedades Del Hígado (Hepatología)</option>
-                                    <option id="opcion17" value="17">Enfermedades Infecciosas</option>
-                                    <option id="opcion18" value="18">Medicina General</option>
-                                    <option id="opcion19" value="19">Medicina Interna</option>
-                                    <option id="opcion20" value="20">Nefrología</option>
-                                    <option id="opcion21" value="21">Neumología</option>
-                                    <option id="opcion22" value="22">Neurología</option>
-                                    <option id="opcion23" value="23">Neurocirugía</option>
-                                    <option id="opcion24" value="24">Oftalmología</option>
-                                    <option id="opcion25" value="25">Otorrinolaringología</option>
-                                    <option id="opcion26" value="26">Oncología</option>
-                                    <option id="opcion27" value="27">Pediatría</option>
-                                    <option id="opcion28" value="28">Proctología</option>
-                                    <option id="opcion29" value="29">Psiquiatría</option>
-                                    <option id="opcion30" value="30">Rehabilitación y M. Deportiva</option>
-                                    <option id="opcion31" value="31">Reumatología</option>
-                                    <option id="opcion32" value="32">Traumatología</option>
-                                    <option id="opcion33" value="33">Urología</option>
-                                </select>
-                            </div>
-                            <div class="input-field col s6">
+                            <div class="input-field col s6 offset-s3">
                                 <input id="phonenumber" name="phonenumber" type="text" placeholder="####-####"
                                     class="validate">
                                 <label for="phonenumber">Su Número De Teléfono *</label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s6">
+                            <div class="input-field col s6 offset-s3">
                                 <input id="zip_code" type="text" name="zip_code" placeholder="Escribe 5 caracteres"
                                     class="validate">
                                 <label for="zip_code">Número de Colegiación *</label>
                             </div>
-                            <div class="input-field col s6">
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6 offset-s3">
                                 <input id="email" type="email" name="email" class="validate">
                                 <label for="email">Correo Electrónico *</label>
                             </div>
@@ -178,30 +141,6 @@
                         valido = false;
                     }
 
-                    //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
-                    console.log(parseInt(seleccionar_especialidad));
-
-                    if (parseInt(seleccionar_especialidad) != 0 && parseInt(seleccionar_especialidad) != 1
-                        && parseInt(seleccionar_especialidad) != 2 && parseInt(seleccionar_especialidad) != 3
-                        && parseInt(seleccionar_especialidad) != 4 && parseInt(seleccionar_especialidad) != 5
-                        && parseInt(seleccionar_especialidad) != 6 && parseInt(seleccionar_especialidad) != 7
-                        && parseInt(seleccionar_especialidad) != 8 && parseInt(seleccionar_especialidad) != 9
-                        && parseInt(seleccionar_especialidad) != 10 && parseInt(seleccionar_especialidad) != 11
-                        && parseInt(seleccionar_especialidad) != 12 && parseInt(seleccionar_especialidad) != 13
-                        && parseInt(seleccionar_especialidad) != 14 && parseInt(seleccionar_especialidad) != 15
-                        && parseInt(seleccionar_especialidad) != 16 && parseInt(seleccionar_especialidad) != 17
-                        && parseInt(seleccionar_especialidad) != 18 && parseInt(seleccionar_especialidad) != 19
-                        && parseInt(seleccionar_especialidad) != 20 && parseInt(seleccionar_especialidad) != 21
-                        && parseInt(seleccionar_especialidad) != 22 && parseInt(seleccionar_especialidad) != 23
-                        && parseInt(seleccionar_especialidad) != 24 && parseInt(seleccionar_especialidad) != 25
-                        && parseInt(seleccionar_especialidad) != 26 && parseInt(seleccionar_especialidad) != 27
-                        && parseInt(seleccionar_especialidad) != 28 && parseInt(seleccionar_especialidad) != 29
-                        && parseInt(seleccionar_especialidad) != 30 && parseInt(seleccionar_especialidad) != 31
-                        && parseInt(seleccionar_especialidad) != 32 && parseInt(seleccionar_especialidad) != 33) {
-                        alert("Seleccione La Opción De Especialidad Principal");
-                        valido = false;
-                    }
-
                     if (phonenumber_doctor == "" || phonenumber_doctor.length === 0) {
                         alert("El Número De Teléfono Está Vacío");
                         valido = false;
@@ -219,38 +158,6 @@
 
                     if (!isValidEmail(email_doctor)) {
                         alert("Dirección de correo electrónico no válido");
-                    }
-
-                    //Función es correo electrónico válido
-                    function isValidEmail(email_doctor) {
-                        //Verificar la longitud mínima válida de un correo electrónico
-                        if (email_doctor.length <= 2) {
-                            return false;
-                        }
-
-                        //Si el correo electrónico tiene carácter @
-                        if (email_doctor.indexOf("@") == -1) {
-                            return false;
-                        }
-
-                        var partes = email_doctor.split("@");
-                        var punto = partes[1].indexOf(".");
-                        var longitud = partes[1].length;
-                        var divisiones_puntos = partes[1].split(".");
-                        var recuento_puntos = divisiones_puntos.length - 1;
-
-                        //Verificar si el punto está presente y ese mínimo un carácter después de @
-                        if (punto == -1 | punto < 2 || recuento_puntos > 2) {
-                            return false;
-                        }
-
-                        //Comprobar si el punto no es el último carácter y si los puntos no se repiten
-                        for (var i = 0; i < divisiones_puntos.length; i++) {
-                            if (divisiones_puntos[i].length == 0) {
-                                return false;
-                            }
-                        }
-                        return true;
                     }
 
                     //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).

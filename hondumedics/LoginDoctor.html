@@ -13,6 +13,11 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+
+    <script src="./src/funciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    
     <!-- Estilos CSS-->
     <style>
         .nav-wrapper {
@@ -130,69 +135,25 @@
                     var emailDoctor = $('#emailDoctor').val();
                     var passDoctor = $('#passwordDoctor').val();
 
+                    var error_messages = [];
+
                     //Validar que nada esté vacío
                     var valido = true;
                     if (emailDoctor === "" || emailDoctor.length === 0) {
-                        alert('El Correo Electrónico Está Vacío');
+                        error_messages.push("<span> - El correo electrónico no puede estar vacío. </span><br>");
                         valido = false;
-                    }
-
-                    if (!isValidEmail(emailDoctor)) {
-                        alert("Dirección de correo electrónico no válido");
+                    }else{
+                        if (!isValidEmail(emailDoctor)) {
+                            error_messages.push("<span> - El correo electrónico no es válido. </span><br>");
+                            valido = false;
+                        }
                     }
 
                     if (passDoctor === "" || passDoctor.length === 0) {
-                        alert('La Contraseña Está Vacía');
+                        error_messages.push("<span> - La contraseña no puede estar vacía. </span><br>");
                         valido = false;
                     }
 
-                    //Función es correo electrónico válido
-                    function isValidEmail(emailDoctor) {
-                        //Verificar la longitud mínima válida de un correo electrónico
-                        if (emailDoctor.length <= 2) {
-                            return false;
-                        }
-
-                        //Si el correo electrónico tiene carácter @
-                        if (emailDoctor.indexOf("@") == -1) {
-                            return false;
-                        }
-
-                        var partes = emailDoctor.split("@");
-                        var punto = partes[1].indexOf(".");
-                        var longitud = partes[1].length;
-                        var divisiones_puntos = partes[1].split(".");
-                        var recuento_puntos = divisiones_puntos.length - 1;
-
-                        //Verificar si el punto está presente y ese mínimo un carácter después de @
-                        if (punto == -1 | punto < 2 || recuento_puntos > 2) {
-                            return false;
-                        }
-
-                        //Comprobar si el punto no es el último carácter y si los puntos no se repiten
-                        for (var i = 0; i < divisiones_puntos.length; i++) {
-                            if (divisiones_puntos[i].length == 0) {
-                                return false;
-                            }
-                        }
-                        return true;
-                    }
-
-                    //Enviar y Recibir parámetros
-                    //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro.
-                    function getQueryVariable(variable) {
-                        // Estoy asumiendo que query es window.location.search.substring(1);
-                        var query = "emailDoctor=&passwordDoctor=";
-                        var vars = query.split("&");
-                        alert(vars);
-                        for (var i = 0; i < vars.length; i++) {
-                            var pair = vars[i].split("=");
-                            if (pair[0] == variable) {
-                                return pair[1];
-                            }
-                        }
-                        return false;
-                    }
                     //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                     if (valido) {
                         $.ajax({
@@ -205,23 +166,84 @@
                             success: function (data) {
                                 console.log(data);
                                 if (data.login) {
-                                    var doctor = data.doctor;
-                                    alert(data.message);
-                                    //Redireccionando a PerfilDePaciente.html y enviando dos paraemtros hacia esa pagina: first_name y last_name
-                                    window.location.href = "./DashboardDoctores.html?first_name=" + doctor.first_name + "&last_name=" + doctor.last_name;
-
-                                    //form[0].reset();
+                                    if(data.doctor.first_time_logged_in){
+                                        Swal.fire({
+                                            title: 'Debe actualizar su contraseña: ',
+                                            input: 'text',
+                                            cancelButtonText: 'Cancelar',
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Actualizar',
+                                            showLoaderOnConfirm: true,
+                                            reverseButtons: true,
+                                            preConfirm: (login) => {
+                                                return $.ajax({
+                                                    url: 'http://localhost:5000/doctors/updateDoctorPassword',
+                                                    dataType: 'json',
+                                                    type: 'POST',
+                                                    contentType: 'application/json',
+                                                    data: JSON.stringify({ "email": emailDoctor, password: login}),
+                                                    processData: false,
+                                                    success: function (data) {
+                                                        console.log(data);
+                                                    }
+                                                })
+                                                },
+                                                allowOutsideClick: () => !Swal.isLoading()
+                                        }).then((result) => {
+                                                if (result.value) {
+                                                    Swal.fire({
+                                                        title: "Bienvenido a Hondumedics, " +data.doctor.first_name + " " + data.doctor.last_name + "!",
+                                                        icon: 'success',
+                                                        confirmButtonText: 'Entendido'
+                                                    }).then((result) => {
+                                                        if (result.value) {
+                                                            localStorage.clear();
+                                                            localStorage.setItem("doctor", JSON.stringify({
+                                                                doctor_id: data.doctor.doctor_id,
+                                                            }));
+                                                            window.location.href = "./PerfilDeDoctor.html";
+                                                        }
+                                                    });
+                                                }
+                                        });
+                                    }else{
+                                        Swal.fire({
+                                            title: "Bienvenido de vuelta, " +data.doctor.first_name + " " + data.doctor.last_name + "!",
+                                            icon: 'success',
+                                            confirmButtonText: 'Entendido'
+                                        }).then((result) => {
+                                            if (result.value) {
+                                                localStorage.clear();
+                                                localStorage.setItem("doctor", JSON.stringify({
+                                                    doctor_id: data.doctor.doctor_id,
+                                                }));
+                                                window.location.href = "./PerfilDeDoctor.html";
+                                            }
+                                        });
+                                    }
                                 }
                             },
                             error: function (error) {
                                 console.log(error);
                                 if (error.status === 403) {
-                                    alert(error.responseJSON.message);
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Contraseña o Correo Incorrecto!',
+                                        icon: 'error',
+                                        confirmButtonText: 'Entendido'
+                                    });
                                 }
                             }
                         });
                     } else {
-                        alert("Hay errores en el formulario");
+                        var errors = "<p>" + error_messages.join('') + "</p>";
+                        console.log
+                        Swal.fire({
+                            title: 'Hay errores en el formulario!',
+                            html: errors,
+                            icon: 'error',
+                            confirmButtonText: 'Entendido'
+                        });
                     }
                 })
             }); 
