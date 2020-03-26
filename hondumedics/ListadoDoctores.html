@@ -1187,13 +1187,8 @@
                         //Check if Patient is logged in
                         var patient_id = -1;
                         if(localStorage.getItem('patient') === undefined || localStorage.getItem('patient') === null){
+                            error_messages.push("<span> - Debe iniciar sesión como paciente. </span><br>");
                             valido = false;
-                            Swal.fire({
-                                title: 'No ha iniciado sesión!',
-                                text: "Debe iniciar sesión como paciente para poder solicitar citas con médicos.",
-                                icon: 'error',
-                                confirmButtonText: 'Entendido'
-                            });
                         }else{
                             patient_id = JSON.parse(localStorage.getItem("patient")).patient_id;
                         }
@@ -1238,7 +1233,7 @@
                             var errors = "<p>" + error_messages.join('') + "</p>";
                             console.log
                             Swal.fire({
-                                title: 'Hay errores en el formulario!',
+                                title: 'Han ocurrido errores!',
                                 html: errors,
                                 icon: 'error',
                                 confirmButtonText: 'Entendido'
