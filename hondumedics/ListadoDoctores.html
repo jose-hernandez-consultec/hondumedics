@@ -28,7 +28,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.js"></script>
 
-
+    <script src="./src/funciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- Estilos CSS -->
     <style>
@@ -1070,22 +1071,6 @@
                     var datos = data;
                     for (var i = 0; i <= datos.length; i++) {
                         if (datos[i] != undefined) {
-                            //Inicialización Materialize css
-                            $('.datepicker').datepicker({
-                                container: 'body'
-                            });
-                            $('.timepicker').timepicker({
-                                container: 'body'
-                            });
-                            $('#datepicker').datepicker().datepicker('setDate', new Date());
-                            $('select').formSelect();
-                            $('.modal').modal();
-
-                            //Obtener cuántos elementos hay en la lista de doctores
-                            //var num = selected.children[0].children.length;
-                            var num = $("#lista_doctores").children().length;
-                            $("#NumberList").text(num);
-
                             //Listado dinámico
                             $("#lista_doctores").append('<li class="collection-item avatar"><br>'
                                 + '<img src="data:image/png;base64,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" alt="" class="circle"></img>'
@@ -1146,42 +1131,124 @@
                                 + '<td>-</td>' + '<th>' + '</th>' + '</tr>' + '</tbody>' + '</table>' + '</div>' + '</div>' + '</div>'
                                 + '<!--Botones de Ver Perfil y Reservar Cita-->' + '<div class="col s12 m4 14"></div>'
                                 + '<div class="col s12 m4 l4 center">' + '<a style="color: #FC5A5A;" href="PerfilDeDoctor.html" class="waves-effect waves-light btn white btn-bordes-pink col s12 m6 l2"><i class="material-icons left">account_circle</i>Ver Perfil</a>'
-                                + '<a style="color: #FC5A5A;" class="waves-effect waves-light btn white btn-bordes-pink modal-trigger col s12 m6 l2" href="#modal1"><i class="material-icons left">date_range</i>Reservar Cita</a>'
+                                + '<a style="color: #FC5A5A;" class="waves-effect waves-light btn white btn-bordes-pink modal-trigger col s12 m6 l2" href="#modal-'+i+'"><i class="material-icons left">date_range</i>Reservar Cita</a>'
                                 + '</div>' + '<div class="col s12 m4 14"></div>' + '<!-- Modal Trigger -->'
-                                + '<div id="modal1" class="modal"><form id="FormCitas"><div class="modal-content"><div class="modal-content center"><h4>HACER UNA CITA</h4><div class="row"><form class="col s12"><div class="row modal-form-row"><div class="input-field col s12"><input id="fecha_cita" type="text" class="datepicker"><label>Seleccione la fecha</label></div></div><div class="row"><div class="input-field col s12"><input id="hora_cita" type="text" class="timepicker"><label>Seleccione la hora</label></div></div><div class="row"><div class="input-field col s12"><label>Seleccione hospital y clínica</label><br><br><select id="seleccionar_clinica" class="browser-default"><option value="" disabled selected>Seleccione su opción</option><option id="option1" value="1">Hospital Y Clínicas Viera</option><option id="option2" value="2">Honduras Medical Center</option><option id="option3" value="3">Instituto Hondureño de Seguridad Social (IHSS)</option><option id="option4" value="4">Clínicas Bendaña</option><option id="option5" value="5">Hospital Del Valle</option><option id="option6" value="6">Hospital D´Antoni</option><option id="option7" value="7">Clínicas Medicentro</option><option id="option8" value="8">La Policlínica </option><option id="option9" value="9">Traumacentro</option><option id="option10" value="10">Hospital y Clínica San Jorge</option></select></div></div></form></div></div><div class="modal-footer"><center><a href="" id="btnSolicitarCita" class="modal-action modal-close waves-effect waves-red btn white-text center" style="background-color: #FC5A5A; font-weight: bold;">Solicitar Cita</a></center></div></div></form></div>' + '</li>');
+                                + '<div id="modal-'+i+'" class="modal"><form id="FormCitas"><div class="modal-content"><div class="modal-content center"><h4>HACER UNA CITA</h4><div class="row"><form class="col s12"><div class="row modal-form-row"><div class="input-field col s12"><input id="fecha_cita-'+i+'" type="text" class="datepicker"><label>Seleccione la fecha</label></div></div><div class="row"><div class="input-field col s12"><input id="hora_cita-'+i+'" type="text" class="timepicker"><label>Seleccione la hora</label></div></div><div class="row"><div class="input-field col s12"><label>Seleccione hospital y clínica</label><br><br><select id="seleccionar_clinica-'+i+'" class="browser-default"><option value="" disabled selected>Seleccione su opción</option><option value="1">Hospital Y Clínicas Viera</option><option value="2">Honduras Medical Center</option><option value="3">Instituto Hondureño de Seguridad Social (IHSS)</option><option value="4">Clínicas Bendaña</option><option value="5">Hospital Del Valle</option><option value="6">Hospital D´Antoni</option><option value="7">Clínicas Medicentro</option><option value="8">La Policlínica </option><option value="9">Traumacentro</option><option value="10">Hospital y Clínica San Jorge</option></select></div></div></form></div></div><div class="modal-footer"><center><a data-doctorid="'+datos[i].doctor_id+'" data-index="'+i+'" class="solicitar_cita waves-effect waves-red btn white-text center" style="background-color: #FC5A5A; font-weight: bold;">Solicitar Cita</a></center></div></div></form></div>' + '</li>');
                         }
+                        $('.modal').modal();
                     }
-                    $('#btnSolicitarCita').click(function (e) {
-                        e.preventDefault(); //Detiene la acción predeterminada de un elemento.
-                        var fecha_cita = $('#fecha_cita').val();
-                        var hora_cita = $('#hora_cita').val();
-                        var seleccionar_cita = parseInt($('#seleccionar_clinica').val());
+
+                    //Inicialización Materialize css
+                    $('.datepicker').datepicker({
+                        container: 'body'
+                    });
+                    $('.timepicker').timepicker({
+                        container: 'body'
+                    });
+                    $('#datepicker').datepicker().datepicker('setDate', new Date());
+                    $('select').formSelect();
+                    //Obtener cuántos elementos hay en la lista de doctores
+                    //var num = selected.children[0].children.length;
+                    var num = $("#lista_doctores").children().length;
+                    $("#NumberList").text(num);
+
+
+                    $('.solicitar_cita').click(function (el,ev) {
+
+                        var doctor_id = parseInt(el.target.dataset.doctorid);
+                        var index = parseInt(el.target.dataset.index);
+                        console.log(el);
+                        el.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                        var fecha_cita = $("#fecha_cita-"+index).val();
+                        var hora_cita = $("#hora_cita-"+index).val();
 
                         var valido = true;
+                        var error_messages = [];
                         //Validar Citas
                         if (fecha_cita == "" || fecha_cita.length === 0) {
-                            alert("La Fecha Está Vacía");
+                            error_messages.push("<span> - La fecha no puede estar vacia. </span><br>");
                             valido = false;
                         }
 
                         if (hora_cita == "" || hora_cita.length === 0) {
-                            alert("La Hora Está Vacía");
+                            error_messages.push("<span> - La hora no puede estar vacia. </span><br>");
                             valido = false;
                         }
 
                         //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
                         console.log(parseInt(seleccionar_cita));
+                        var seleccionar_cita = parseInt($("#seleccionar_clinica-"+index).val());
 
-                        if (parseInt(seleccionar_cita) != 1 && parseInt(seleccionar_cita) != 2
-                            && parseInt(seleccionar_cita) != 3 && parseInt(seleccionar_cita) != 4
-                            && parseInt(seleccionar_cita) != 5 && parseInt(seleccionar_cita) != 6
-                            && parseInt(seleccionar_cita) != 7 && parseInt(seleccionar_cita) != 8
-                            && parseInt(seleccionar_cita) != 9 && parseInt(seleccionar_cita) != 10) {
-                            alert("Seleccione La Opción De La Clínica");
+                        if (isNaN(seleccionar_cita)){
+                            error_messages.push("<span> - Debe seleccionar una opcion de clinica. </span><br>");
                             valido = false;
                         }
 
+                        //Check if Patient is logged in
+                        var patient_id = -1;
+                        if(localStorage.getItem('patient') === undefined || localStorage.getItem('patient') === null){
+                            valido = false;
+                            Swal.fire({
+                                title: 'No ha iniciado sesión!',
+                                text: "Debe iniciar sesión como paciente para poder solicitar citas con médicos.",
+                                icon: 'error',
+                                confirmButtonText: 'Entendido'
+                            });
+                        }else{
+                            patient_id = JSON.parse(localStorage.getItem("patient")).patient_id;
+                        }
+
+                        if(valido){
+                            $.ajax({
+                            url: 'http://localhost:5000/doctorPatientAppointment/newDoctorPatientAppointment',
+                            dataType: 'json',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({ "hospital_id": seleccionar_cita, "appointment_date": fecha_cita + " " + hora_cita, "doctor_id": doctor_id, "patient_id": patient_id}),
+                            processData: false,
+                            success: function (data) {
+                                console.log(data);
+                                if(data.created){
+                                    Swal.fire({
+                                        title: 'Cita Solicitada',
+                                        text: 'Se ha realizado la solicitud para su cita médica! Esta pendiente su aprobación por parte del médico.',
+                                        icon: 'success',
+                                        confirmButtonText: 'Entendido'
+                                    });
+                                }
+                            },
+                            error: function (error) {
+                                console.log(error);
+                                if (error.status === 403) {
+                                    if (error.responseJSON.login == false){
+                                        if (error.responseJSON.message === "Unknown user!"){
+                                            Swal.fire({
+                                                title: 'Error!',
+                                                text: 'Ha ocurrido un error',
+                                                icon: 'error',
+                                                confirmButtonText: 'Entendido'
+                                            });
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                        }else{
+                            var errors = "<p>" + error_messages.join('') + "</p>";
+                            console.log
+                            Swal.fire({
+                                title: 'Hay errores en el formulario!',
+                                html: errors,
+                                icon: 'error',
+                                confirmButtonText: 'Entendido'
+                            });
+                        }
+
                         $("#FormCitas")[0].reset();
+
+
+
                     });
 
                     //Funciones Pagination
