@@ -679,7 +679,7 @@
                     var fecha_inicial = $("#icon_start_date").val();
                     var fecha_final = $("#icon_end_date").val();
 
-                    var trabaja_actualmente = $("#current_job").val();
+                    var trabaja_actualmente = Boolean($("#current_job").val());
 
                     var valido = true;
                     //Validar Experiencia Laboral
@@ -729,14 +729,21 @@
                                 "location": ubicacion,
                                 "start_date": fecha_inicial,
                                 "end_date": fecha_final,
-                                "current_job": Boolean(trabaja_actualmente),
+                                "current_job": trabaja_actualmente,
                                 "doctor_id": doctor_id
                             }),
                             processData: false,
                             success: function (data) {
                                 console.log(data);
                                 if (data.added) {
-                                    alert("Agregar Nueva Experiencia");
+
+                                    //Mensaje de notificacion personalizado
+                                    Swal.fire({
+                                        title: 'Excelente!',
+                                        text: 'Su experiencia laboral ha sido agregada con éxito',
+                                        icon: 'success',
+                                        confirmButtonText: 'Entendido'
+                                    });
                                     form[0].reset();
                                 }
                             },
