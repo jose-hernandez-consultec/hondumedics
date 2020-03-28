@@ -482,10 +482,9 @@
                                                             </div>
                                                             <div class="input-field col s12">
                                                                 <select id="current_job" class="browser-default">
-                                                                    <option value="" disabled selected>¿Actualmente
-                                                                        trabaja?</option>
-                                                                    <option value="1">Sí</option>
-                                                                    <option value="2">No</option>
+                                                                    <option value="" disabled selected>¿Trabjo Actual?</option>
+                                                                    <option value="true">Sí</option>
+                                                                    <option value="false">No</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -516,7 +515,7 @@
                                             <th>Ubicación</th>
                                             <th>Fecha Inicial</th>
                                             <th>Fecha Final</th>
-                                            <th>¿Trabaja Actualmente?</th>
+                                            <th>¿Trabajo Actual?</th>
                                             <th width="100px">Acciones</th>
                                         </tr>
                                     </thead>
@@ -555,8 +554,6 @@
             if (localStorage.getItem('doctor') !== null) {
                 var doctor_id = JSON.parse(localStorage.getItem("doctor")).doctor_id;
                 var profile_picture = "";
-
-
                 $.ajax({
                     url: 'http://localhost:5000/doctorProfiles/getDoctorProfileByDoctorID',
                     dataType: 'json',
@@ -568,12 +565,14 @@
                         console.log(profile_data);
                         //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
                         $.ajax({
-                            url: 'http://localhost:5000/doctorExperience',
-                            type: 'GET',
+                            url: 'http://localhost:5000/doctorExperience/getDoctorExperienceByDoctorId',
+                            type: 'POST',
                             dataType: 'json', //added data
+                            contentType: 'application/json',
+                            data: JSON.stringify({ "doctor_id": doctor_id }),
                             success: function (data) {
                                 console.log(data);
-                                var datos = data;
+                                var datos = data.experiences;
                                 for (var i = 0; i <= datos.length; i++) {
                                     if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
                                         $('.tooltipped').tooltip();
@@ -679,7 +678,8 @@
                     var ubicacion = $("#location").val();
                     var fecha_inicial = $("#icon_start_date").val();
                     var fecha_final = $("#icon_end_date").val();
-                    var trabaja_actualmente = parseInt($("#current_job").val());
+
+                    var trabaja_actualmente = $("#current_job").val();
 
                     var valido = true;
                     //Validar Experiencia Laboral
@@ -713,13 +713,6 @@
                         valido = false;
                     }
 
-                    console.log(parseInt(trabaja_actualmente));
-
-                    if (parseInt(trabaja_actualmente) != 1 && parseInt(trabaja_actualmente) != 2) {
-                        alert("Seleccione La Opción Trabaja Actualmente");
-                        valido = false;
-                    }
-
                     var form = $("#FormExperiencia");
                     //$("#FormExperiencia")[0].reset();
                     //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
@@ -736,7 +729,7 @@
                                 "location": ubicacion,
                                 "start_date": fecha_inicial,
                                 "end_date": fecha_final,
-                                "current_job": trabaja_actualmente,
+                                "current_job": Boolean(trabaja_actualmente),
                                 "doctor_id": doctor_id
                             }),
                             processData: false,
