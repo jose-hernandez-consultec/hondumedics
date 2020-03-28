@@ -47,7 +47,11 @@ function getQueryVariable(variable) {
 function logout(){
     localStorage.clear();
     window.location.href = "./Login.html";
+}
 
+function logoutDoctor(){
+    localStorage.clear();
+    window.location.href = "./LoginDoctor.html";
 }
 
 $(".picture-upload-doctor").on('change', function (){
