@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="./src/funciones.js"></script>
 
     <!-- Estilos CSS -->
     <style>
@@ -285,8 +287,8 @@
             <div class="user-view">
                 <div class="background">
                     <div class="card-image circular--landscape">
-                        <img
-                            src="data:image/png;base64,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">
+                        <img class="profile_picture"
+                        >
                     </div>
 
                 </div>
@@ -354,7 +356,7 @@
                             <div class="btn green">
                                 <i class="material-icons left white-text">cloud_upload</i>
                                 <span>Seleccionar Archivo</span>
-                                <input type="file" class="picture-upload" />
+                                <input type="file" class="picture-upload-doctor" />
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="Subir Archivo" />
@@ -407,36 +409,19 @@
                                                     NACIMIENTO</label>
                                             </div>
                                             <div class="input-field col s6">
-                                                <i class="material-icons prefix">phone</i>
-                                                <input id="phone_number" type="text" class="validate">
-                                                <label class="active" for="phone_number">TELÉFONO</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s12">
                                                 <i class="material-icons prefix">email</i>
-                                                <input id="email" type="email" class="validate">
-                                                <label class="active" for="email">CORREO ELECTRÓNICO</label>
+                                                <input disabled id="email" value="Correo Electronico" type="text" class="validate">
+                                                <label for="email">CORREO ELECTRÓNICO</label>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="input-field col s6">
-                                                <label>Género</label>
-                                                <br>
-                                                <br>
-                                                <select class="browser-default" id="gender">
-                                                    <option value="" disabled selected>Favor Seleccionar Género
-                                                    </option>
-                                                    <option id="opcion0" value="0">Femenino</option>
-                                                    <option id="opcion1" value="1">Masculino</option>
-                                                </select>
-                                            </div>
-                                            <br>
-                                            <div class="input-field col s6">
-                                                <i class="material-icons prefix">school</i>
-                                                <input id="profession" type="text" class="validate">
-                                                <label class="active" for="profession">PROFESIÓN</label>
-                                            </div>
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <textarea id="description" class="materialize-textarea"></textarea>
+                                                <label for="description">Descripción</label>
+                                              </div>
                                         </div>
                                     </form>
                                 </div>
@@ -444,136 +429,9 @@
                         </div>
                     </div>
                 </div>
-                <!--Card Información de la Clínica-->
-                <div class="row">
-                    <div class="col s12 m6 l2"></div>
-                    <div class="col s12 m6 l10">
-                        <div class="card">
-                            <div class="card-content">
-                                <left>
-                                    <h5><b>Información de la Clínica</b></h5>
-                                </left>
-                                <br>
-                                <div class="row">
-                                    <form class="s12">
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">local_hospital</i>
-                                                <textarea id="clinic_name" class="materialize-textarea"></textarea>
-                                                <label class="active" for="clinic_name">NOMBRE DE LA CLÍNICA</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">location_on</i>
-                                                <textarea id="clinic_address" class="materialize-textarea"></textarea>
-                                                <label class="active" for="clinic_address">DIRECCIÓN DE LA
-                                                    CLÍNICA</label>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Card Especialidades y Experiencia Destacada-->
-                <div class="row">
-                    <div class="col s12 m6 l2"></div>
-                    <div class="col s12 m6 l10">
-                        <div class="card">
-                            <div class="card-content">
-                                <left>
-                                    <h5><b>Especialidades</b></h5>
-                                </left>
-                                <br>
-                                <div class="row">
-                                    <form class="s12">
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">format_align_justify</i>
-                                                <textarea id="specialities" class="materialize-textarea"></textarea>
-                                                <label class="active" for="specialities">ESPECIALIDADES</label>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <left>
-                                    <h5><b>Experiencia Destacada</b></h5>
-                                </left>
-                                <div class="row">
-                                    <form class="s12">
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">star</i>
-                                                <textarea id="outstanding_experience"
-                                                    class="materialize-textarea"></textarea>
-                                                <label class="active" for="outstanding_experience">EXPERIENCIA
-                                                    DESTACADA</label>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Card Educación; Academias, sociedades y colegios; Certificados-->
-                <div class="row">
-                    <div class="col s12 m6 l2"></div>
-                    <div class="col s12 m6 l10">
-                        <div class="card">
-                            <div class="card-content">
-                                <left>
-                                    <h5><b>Educación</b></h5>
-                                </left>
-                                <br>
-                                <div class="row">
-                                    <form class="s12">
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">school</i>
-                                                <textarea id="education" class="materialize-textarea"></textarea>
-                                                <label class="active" for="education">EDUCACIÓN</label>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <left>
-                                    <h5><b>Academias, Sociedades, Colegios</b></h5>
-                                </left>
-                                <div class="row">
-                                    <form class="s12">
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">people_outline</i>
-                                                <textarea id="academies_societies_schools"
-                                                    class="materialize-textarea"></textarea>
-                                                <label class="active" for="academies_societies_schools">ACADEMIAS,
-                                                    SOCIEDADES,
-                                                    COLEGIOS</label>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <left>
-                                    <h5><b>Certificaciones</b></h5>
-                                </left>
-                                <div class="row">
-                                    <form class="s12">
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">library_books</i>
-                                                <textarea id="certifications" class="materialize-textarea"></textarea>
-                                                <label class="active" for="certifications">CERTIFICACIONES</label>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+                
+                
                 <center>
                     <div class="col s12 m4 l4"></div>
                     <div class="col s12 m4 l4">
@@ -592,210 +450,203 @@
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
-            //Inicialización de las propiedades de Materialize css.
-            M.AutoInit();
-            $('.sidenav').sidenav();
-            $('.sidenav-1').sidenav({ edge: 'left' });
-            $('.dropdown-trigger').dropdown({
-                coverTrigger: false,
-                belowOrigin: true
-            });
-            $('.modal').modal();
-            $('.datepicker').datepicker();
 
 
-            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-            var first_name = getQueryVariable("first_name");
-            var last_name = getQueryVariable("last_name");
+            if (localStorage.getItem('doctor') !== null){
 
-            $("#username").text(decodeURIComponent(first_name));
-            $("#UserName1").text(decodeURIComponent(first_name + " " + last_name));
+                var doctor_id = JSON.parse(localStorage.getItem("doctor")).doctor_id;
+                var profile_picture = "";
+                $.ajax({
+                    url: 'http://localhost:5000/doctorProfiles/getDoctorProfileByDoctorID',
+                    dataType: 'json',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ "doctor_id": doctor_id}),
+                    processData: false,
+                    success: function (profile_data) {
+                        console.log(profile_data);
+                        $("#first_name").val(profile_data.doctor_profile.first_name);
+                        $("#last_name").val(profile_data.doctor_profile.last_name);
+                        $("#date_of_birth").val(profile_data.doctor_profile.birthdate);
+                        $("#email").val(profile_data.doctor_profile.email);
+                        $("#description").val(profile_data.doctor_profile.description);
 
-            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
-            function getQueryVariable(variable) {
-                var query = window.location.search.substring(1);
-                var vars = query.split("&");
-                for (var i = 0; i < vars.length; i++) {
-                    var pair = vars[i].split("=");
-                    if (pair[0] == variable) {
-                        return pair[1];
-                    }
-                }
-                return false;
-            }
+                        $("#username").text(profile_data.doctor_profile.first_name);
+                        $("#UserName1").text(profile_data.doctor_profile.first_name + " " + profile_data.doctor_profile.last_name);
 
-            //Evento Click del link con clase llamada link-dashboard-doctores
-            $(".link-dashboard-doctores").click(function () {
+                        //Focus all Editable Fields
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./DashboardDoctores.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
+                        $("#first_name").focus();
+                        $("#last_name").focus();
+                        $("#date_of_birth").focus();
+                        $("#email").focus();
+                        $("#description").focus();
 
-            //Evento Click del link con clase llamada link-dashboard-doctores
-            $(".link-dashboard-doctores").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./DashboardDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-experiencia-laboral
-            $(".link-experiencia-laboral").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./ExperienciaLaboral.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-            //Evento Click del link con clase llamada link-educacion
-            $(".link-educacion").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./Educacion.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-            //Evento Click del link con clase llamada link-certificaciones
-            $(".link-certificaciones").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./Certificaciones.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-citas").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./Citas.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-            //El método click() adjunta una función de controlador de eventos a un elemento HTML.
-            //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
-            $('#btnGuardarCambiosDoctor').click(function (e) {
-                e.preventDefault(); //Detiene la acción predeterminada de un elemento.
-                //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
-                var nombre_doctor = $('#first_name').val();
-                var apellido_doctor = $('#last_name').val();
-                var fecnac_doctor = $('#date_of_birth').val();
-                var telefono_doctor = $('#phone_number').val();
-                var email_doctor = $('#email').val();
-                var seleccionar_genero_doctor = $('#gender').val();
-                var profession_doctor = $('#profession').val();
-                var nombre_clinica = $('#clinic_name').val();
-                var dirrecion_clinica = $('#clinic_address').val();
-                var especialidades = $('#specialities').val();
-                var experiencia_destacada = $('#outstanding_experience').val();
-                var educacion = $('#education').val();
-                var academias_sociedades_colegios = $('#academies_societies_schools').val();
-                var certificaciones = $('#certifications').val();
-
-                //Validar que nada esté vacío
-                var valido = true;
-                if (nombre_doctor == " " || nombre_doctor.length === 0) {
-                    alert('El Nombre Está Vacío');
-                    valido = false;
-                }
-
-                if (apellido_doctor == " " || apellido_doctor.length === 0) {
-                    alert('El Apellido Está Vacío');
-                    valido = false;
-                }
-
-                if (fecnac_doctor == "" || fecnac_doctor.length === 0) {
-                    alert('La Fecha Está Vacía');
-                    valido = false;
-                }
-
-                if (telefono_doctor == " " || telefono_doctor.length === 0) {
-                    alert('El Teléfono Está Vacío');
-                    valido = false;
-                }
-
-                if (email_doctor == " " || email_doctor.length === 0) {
-                    alert('El Correo Electrónico Está Vacío');
-                    valido = false;
-                }
-
-                if (!isValidEmail(email_doctor)) {
-                    alert("Dirección de correo electrónico no válido");
-                }
-
-                //Función es correo electrónico válido
-                function isValidEmail(email_doctor) {
-                    //Verificar la longitud mínima válida de un correo electrónico
-                    if (email_doctor.length <= 2) {
-                        return false;
-                    }
-
-                    //Si el correo electrónico tiene carácter @
-                    if (email_doctor.indexOf("@") == -1) {
-                        return false;
-                    }
-
-                    var partes = email_doctor.split("@");
-                    var punto = partes[1].indexOf(".");
-                    var longitud = partes[1].length;
-                    var divisiones_puntos = partes[1].split(".");
-                    var recuento_puntos = divisiones_puntos.length - 1;
-
-                    //Verificar si el punto está presente y ese mínimo un carácter después de @
-                    if (punto == -1 | punto < 2 || recuento_puntos > 2) {
-                        return false;
-                    }
-
-                    //Comprobar si el punto no es el último carácter y si los puntos no se repiten
-                    for (var i = 0; i < divisiones_puntos.length; i++) {
-                        if (divisiones_puntos[i].length == 0) {
-                            return false;
+                        if (profile_data.doctor_profile.profile_picture !== null){
+                            $(".profile_picture").attr('src', profile_data.doctor_profile.profile_picture)
+                        }else{
+                            $(".profile_picture").attr('src', "data:image/png;base64,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");
                         }
                     }
-                    return true;
-                }
+                });
 
-                console.log(parseInt(seleccionar_genero_doctor));
 
-                if (parseInt(seleccionar_genero_doctor) != 0 && parseInt(seleccionar_genero_doctor) != 1) {
-                    alert("Seleccione La Opción De Género");
-                    valido = false;
-                }
+                //Inicialización de las propiedades de Materialize css.
+                M.AutoInit();
+                $('.sidenav').sidenav();
+                $('.sidenav-1').sidenav({ edge: 'left' });
+                $('.dropdown-trigger').dropdown({
+                    coverTrigger: false,
+                    belowOrigin: true
+                });
+                $('.modal').modal();
+                $('.datepicker').datepicker();
 
-                if (profession_doctor == " " || profession_doctor.length === 0) {
-                    alert('La profesión Está Vacía');
-                    valido = false;
-                }
 
-                if (nombre_clinica == " " || nombre_clinica.length === 0) {
-                    alert('El Nombre De La Clínica Está Vacío');
-                    valido = false;
-                }
+                //Evento Click del link con clase llamada link-dashboard-doctores
+                $(".link-dashboard-doctores").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./DashboardDoctores.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
 
-                if (dirrecion_clinica == " " || dirrecion_clinica.length === 0) {
-                    alert('La Dirección De La Clínica Está Vacía');
-                    valido = false;
-                }
+                //Evento Click del link con clase llamada link-dashboard-doctores
+                $(".link-dashboard-doctores").click(function () {
 
-                if (especialidades == " " || especialidades.length === 0) {
-                    alert('La Especialidad Está Vacía');
-                    valido = false;
-                }
+                    //las variables first_name, last_name y email estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./DashboardDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
 
-                if (experiencia_destacada == " " || experiencia_destacada.length === 0) {
-                    alert('La Experiencia Destacada Está Vacía');
-                    valido = false;
-                }
+                //Evento Click del link con clase llamada link-experiencia-laboral
+                $(".link-experiencia-laboral").click(function () {
 
-                if (educacion == " " || educacion.length === 0) {
-                    alert('La Educación Está Vacía');
-                    valido = false;
-                }
+                    //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./ExperienciaLaboral.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
 
-                if (academias_sociedades_colegios == " " || academias_sociedades_colegios.length === 0) {
-                    alert('Academias, Sociedades, Colegios Están Vacíos');
-                    valido = false;
-                }
+                //Evento Click del link con clase llamada link-educacion
+                $(".link-educacion").click(function () {
 
-                if (certificaciones == " " || certificaciones.length === 0) {
-                    alert('Las Certificaciones Están Vacías');
-                    valido = false;
-                }
-            });
+                    //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./Educacion.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
+
+                //Evento Click del link con clase llamada link-certificaciones
+                $(".link-certificaciones").click(function () {
+
+                    //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./Certificaciones.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-citas").click(function () {
+
+                    //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./Citas.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
+
+                $(".picture-upload-doctor").on('change', function (){
+
+                    //Abrir el lector de archivos del navegador
+                    var fileReader = new FileReader();
+                    fileReader.onload = function() {
+                        var data = fileReader.result; //obtiene la foto en formato base64 y envia ese formato al servidor donde va a ser subida
+                        $.ajax({
+                            url: 'http://localhost:5000/doctorProfiles/updateDoctorProfilePictureByDoctorId',
+                            dataType: 'json',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                "doctor_id": doctor_id,
+                                "profile_picture": data,
+                            }),
+                            processData: false,
+                            success: function (result) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Excelente!',
+                                    text: 'Su foto de perfil ha sido actualizada!',
+                                    confirmButtonText: 'Entendido'
+                                }).then((result2) => {
+                                    if (result2.value) {
+                                        $(".profile_picture").attr('src', result.image);
+                                    }
+                                });
+                            },
+                            error: function (error){
+
+                            }
+                        });
+                     };
+                     fileReader.readAsDataURL($('.picture-upload-doctor').prop('files')[0]);
+                });
+
+                //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
+                $('#btnGuardarCambiosDoctor').click(function (e) {
+                    e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                    //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
+
+                    //Validar que nada esté vacío
+                    var valido = true;
+                    var error_messages = [];
+                    if ($('#first_name').val() == "" || $('#first_name').val().length === 0) {
+                        error_messages.push("<span> - El campo de nombre no puede estar vacio. </span><br>");
+                        valido = false;
+                    }
+
+                    if ($('#last_name').val() == "" || $('#last_name').val().length === 0) {
+                        error_messages.push("<span> - El campo de apellido no puede estar vacio. </span><br>");
+                        valido = false;
+                    }
+
+                    if ($('#date_of_birth').val() == "" || $('#date_of_birth').val().length === 0) {
+                        error_messages.push("<span> - El campo de fecha de nacimiento no puede estar vacio. </span><br>");
+                        valido = false;
+                    }
+
+                    if ($('#description').val() == "" || $('#description').val().length === 0) {
+                        error_messages.push("<span> - La descripcion  no puede estar vacia. </span><br>");
+                        valido = false;
+                    }
+
+                    if (valido){
+                        $.ajax({
+                            url: 'http://localhost:5000/doctorProfiles/updateDoctorProfileByDoctorID',
+                            dataType: 'json',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                "doctor_id": doctor_id,
+                                "first_name": $('#first_name').val(),
+                                "last_name": $('#last_name').val(),
+                                "birthdate": $('#date_of_birth').val(),
+                                "description": $('#description').val(),
+                            }),
+                            processData: false,
+                            success: function (result) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Excelente!',
+                                    text: 'Los datos de su perfil han sido actualizados!',
+                                    confirmButtonText: 'Entendido'
+                                })
+                            }
+                        });
+                    }else{
+                        var errors = "<p>" + error_messages.join('') + "</p>";
+                        Swal.fire({
+                            title: 'Hay errores en el formulario!',
+                            html: errors,
+                            icon: 'error',
+                            confirmButtonText: 'Entendido'
+                        });
+                    }
+
+
+                });
+            }else{
+                window.location.href = "./LoginDoctor.html";
+            }
         }); 
     </script>
 </body>

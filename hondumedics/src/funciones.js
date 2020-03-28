@@ -49,3 +49,43 @@ function logout(){
     window.location.href = "./Login.html";
 
 }
+
+$(".picture-upload-doctor").on('change', function (){
+    if (localStorage.getItem('doctor') !== null){
+        //Abrir el lector de archivos del navegador
+        var doctor_id = JSON.parse(localStorage.getItem("doctor")).doctor_id;
+        var fileReader = new FileReader();
+        fileReader.onload = function() {
+            var data = fileReader.result; //obtiene la foto en formato base64 y envia ese formato al servidor donde va a ser subida
+            $.ajax({
+                url: 'http://localhost:5000/doctorProfiles/updateDoctorProfilePictureByDoctorId',
+                dataType: 'json',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    "doctor_id": doctor_id,
+                    "profile_picture": data,
+                }),
+                processData: false,
+                success: function (result) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Excelente!',
+                        text: 'Su foto de perfil ha sido actualizada!',
+                        confirmButtonText: 'Entendido'
+                    }).then((result2) => {
+                        if (result2.value) {
+                            $(".profile_picture").attr('src', result.image);
+                        }
+                    });
+                },
+                error: function (error){
+
+                }
+            });
+        };
+        fileReader.readAsDataURL($('.picture-upload-doctor').prop('files')[0]);
+    }else{
+
+    }
+});

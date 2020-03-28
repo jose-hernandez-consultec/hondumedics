@@ -647,105 +647,110 @@
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function (e) {
-            //Inicialización de las propiedades de Materialize css.
-            M.AutoInit();
-            $('.sidenav').sidenav();
-            $('.sidenav-1').sidenav({ edge: 'left' });
-            $('.dropdown-trigger').dropdown({
-                coverTrigger: false,
-                belowOrigin: true
-            });
 
-            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-            var first_name = getQueryVariable("first_name");
-            var last_name = getQueryVariable("last_name");
-
-            $("#username").text(decodeURIComponent(first_name));
-            $("#UserName1").text(decodeURIComponent(first_name + " " + last_name));
-
-            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
-            function getQueryVariable(variable) {
-                var query = window.location.search.substring(1);
-                var vars = query.split("&");
-                for (var i = 0; i < vars.length; i++) {
-                    var pair = vars[i].split("=");
-                    if (pair[0] == variable) {
-                        return pair[1];
-                    }
-                }
-                return false;
-            }
-
-            //Evento Click del link con clase llamada link-dashboard-doctores
-            $(".link-dashboard-doctores").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./DashboardDoctores.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-            //Evento Click del link con clase llamada link-perfil-doctores
-            $(".link-perfil-doctores").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./PerfilDeDoctor.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-            //Evento Click del link con clase llamada link-experiencia-laboral
-            $(".link-experiencia-laboral").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./ExperienciaLaboral.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-            //Evento Click del link con clase llamada link-educacion
-            $(".link-educacion").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./Educacion.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-            //Evento Click del link con clase llamada link-certificaciones
-            $(".link-certificaciones").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./Certificaciones.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-citas").click(function () {
-
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./Citas.html?first_name=" + first_name + "&last_name=" + last_name;
-            });
-
-
-            //Gráfico Circular o Dona
-            function animateElements() {
-                $('.progressbar').each(function () {
-                    var elementPos = $(this).offset().top;
-                    var topOfWindow = $(window).scrollTop();
-                    var percent = $(this).find('.circle').attr('data-percent');
-                    var percentage = parseInt(percent, 10) / parseInt(100, 10);
-                    var animate = $(this).data('animate');
-                    if (elementPos < topOfWindow + $(window).height() - 30 && !animate) {
-                        $(this).data('animate', true);
-                        $(this).find('.circle').circleProgress({
-                            startAngle: -Math.PI / 2,
-                            value: percent / 100,
-                            thickness: 14,
-                            fill: {
-                                color: '#01579b'
-                            }
-                        }).on('circle-animation-progress', function (event, progress, stepValue) {
-                            $(this).find('div').text((stepValue * 100).toFixed(0) + "%");
-                        }).stop();
-                    }
+            if (localStorage.getItem('doctor') !== null){
+                //Inicialización de las propiedades de Materialize css.
+                M.AutoInit();
+                $('.sidenav').sidenav();
+                $('.sidenav-1').sidenav({ edge: 'left' });
+                $('.dropdown-trigger').dropdown({
+                    coverTrigger: false,
+                    belowOrigin: true
                 });
-            }
 
-            // Show animated elements
-            animateElements();
-            $(window).scroll(animateElements);
+                //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+                var first_name = getQueryVariable("first_name");
+                var last_name = getQueryVariable("last_name");
+
+                $("#username").text(decodeURIComponent(first_name));
+                $("#UserName1").text(decodeURIComponent(first_name + " " + last_name));
+
+                //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
+                function getQueryVariable(variable) {
+                    var query = window.location.search.substring(1);
+                    var vars = query.split("&");
+                    for (var i = 0; i < vars.length; i++) {
+                        var pair = vars[i].split("=");
+                        if (pair[0] == variable) {
+                            return pair[1];
+                        }
+                    }
+                    return false;
+                }
+
+                //Evento Click del link con clase llamada link-dashboard-doctores
+                $(".link-dashboard-doctores").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./DashboardDoctores.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
+
+                //Evento Click del link con clase llamada link-perfil-doctores
+                $(".link-perfil-doctores").click(function () {
+
+                    //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./PerfilDeDoctor.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
+
+                //Evento Click del link con clase llamada link-experiencia-laboral
+                $(".link-experiencia-laboral").click(function () {
+
+                    //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./ExperienciaLaboral.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
+
+                //Evento Click del link con clase llamada link-educacion
+                $(".link-educacion").click(function () {
+
+                    //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./Educacion.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
+
+                //Evento Click del link con clase llamada link-certificaciones
+                $(".link-certificaciones").click(function () {
+
+                    //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./Certificaciones.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-citas").click(function () {
+
+                    //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./Citas.html?first_name=" + first_name + "&last_name=" + last_name;
+                });
+
+
+                //Gráfico Circular o Dona
+                function animateElements() {
+                    $('.progressbar').each(function () {
+                        var elementPos = $(this).offset().top;
+                        var topOfWindow = $(window).scrollTop();
+                        var percent = $(this).find('.circle').attr('data-percent');
+                        var percentage = parseInt(percent, 10) / parseInt(100, 10);
+                        var animate = $(this).data('animate');
+                        if (elementPos < topOfWindow + $(window).height() - 30 && !animate) {
+                            $(this).data('animate', true);
+                            $(this).find('.circle').circleProgress({
+                                startAngle: -Math.PI / 2,
+                                value: percent / 100,
+                                thickness: 14,
+                                fill: {
+                                    color: '#01579b'
+                                }
+                            }).on('circle-animation-progress', function (event, progress, stepValue) {
+                                $(this).find('div').text((stepValue * 100).toFixed(0) + "%");
+                            }).stop();
+                        }
+                    });
+                }
+
+                // Show animated elements
+                animateElements();
+                $(window).scroll(animateElements);
+            }else{
+                window.location.href = "./LoginDoctor.html";
+            }
 
         }); 
     </script>
