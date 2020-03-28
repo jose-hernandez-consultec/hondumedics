@@ -70,8 +70,18 @@
             margin-left: -50px;
         }
 
+        .circular--landscape {
+            display: block;
+            position: relative;
+            width: 120px;
+            height: 120px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin: auto;
+        }
+
         .circular--landscape img {
-            width: auto;
+            width: 100%;
             height: 100%;
             margin-left: 0%;
         }
@@ -87,15 +97,6 @@
 
         .container-1>.row>.col {
             padding: 0;
-        }
-
-        .sidenav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 17%;
-            will-change: opacity;
         }
 
         /*Circular Progress bar*/
@@ -228,6 +229,15 @@
         .modal-form-row {
             margin-bottom: 0px;
         }
+
+        .sidenav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 22%;
+            will-change: opacity;
+        }
     </style>
 </head>
 
@@ -238,8 +248,8 @@
             <div class="nav-wrapper">
                 <a href="" class="left sidenav-trigger hide-on-medium-and-up" data-target="sidenav-1">
                     <i class="material-icons">menu</i></a>
-                <div class="col s2"></div>
-                <div class="col s10">
+                <div class="col s3"></div>
+                <div class="col s9">
                     <a href="index.html" class="brand-logo">HoduMedics</a>
                     <ul class="right hide-on-med-and-down">
                         <!-- Notifications -->
@@ -351,7 +361,7 @@
         <li>
             <div class="user-view">
                 <div class="background">
-                    <div class="card-image circular--landscape">
+                    <div class="circular--landscape">
                         <img class="profile_picture-doctor">                    
                     </div>
                 </div>
@@ -374,7 +384,7 @@
         </li>
 
         <li>
-            <a style="font-size: 0.8em;" class="link-experiencia-laboral"><i
+            <a class="link-experiencia-laboral"><i
                     class="material-icons black-text">assignment</i>Experiencia Laboral
             </a>
         </li>
@@ -392,7 +402,7 @@
         </li>
         <div class="divider"></div>
         <li>
-            <a style="font-size: 0.86em;" onclick="logoutDoctor();"><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            <a onclick="logoutDoctor();"><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
         </li>
     </ul>
@@ -405,8 +415,8 @@
         <div class="container-1">
             <div class="page-header">
                 <div class="row">
-                    <div class="col s12 m6 l2"></div>
-                    <div class="col s12 m6 l10">
+                    <div class="col s12 m6 l3"></div>
+                    <div class="col s12 m6 l9">
                         <!--Card Certificaciones-->
                         <div class="card">
                             <div class="card-content">
