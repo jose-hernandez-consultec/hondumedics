@@ -1161,7 +1161,8 @@
                         el.preventDefault(); //Detiene la acción predeterminada de un elemento.
                         var fecha_cita = $("#fecha_cita-"+index).val();
                         var hora_cita = $("#hora_cita-"+index).val();
-
+                        var hospital_id = $("#seleccionar_clinica-"+index).val();
+                        var hospital_name = $('#seleccionar_clinica-'+index+' option:selected').text();
                         var valido = true;
                         var error_messages = [];
                         //Validar Citas
@@ -1199,7 +1200,7 @@
                             dataType: 'json',
                             type: 'POST',
                             contentType: 'application/json',
-                            data: JSON.stringify({ "hospital_id": seleccionar_cita, "appointment_date": fecha_cita + " " + hora_cita, "doctor_id": doctor_id, "patient_id": patient_id}),
+                            data: JSON.stringify({ "hospital_id": seleccionar_cita, "appointment_date": fecha_cita + " " + hora_cita, "doctor_id": doctor_id, "patient_id": patient_id, "hospital_id": hospital_id, "hospital_name": hospital_name}),
                             processData: false,
                             success: function (data) {
                                 console.log(data);
