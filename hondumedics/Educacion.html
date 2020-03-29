@@ -517,7 +517,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <!--<tr>
                                             <td>Instituto San José Del Carmen</td>
                                             <td>Bachillerato En Ciencias Y Letras</td>
                                             <td>Descripción General</td>
@@ -533,7 +533,7 @@
                                                     class="btnRechazar btn-floating btn-small waves-effect waves-light red btn tooltipped center"
                                                     data-position="bottom" data-tooltip="Eliminar">
                                                     <i class="material-icons">clear</i></a></td>
-                                        </tr>
+                                        </tr>-->
                                     </tbody>
                                 </table>
                             </div>
@@ -548,12 +548,9 @@
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
-
-
             if (localStorage.getItem('doctor') !== null) {
                 var doctor_id = JSON.parse(localStorage.getItem("doctor")).doctor_id;
                 var profile_picture = "";
-
                 $.ajax({
                     url: 'http://localhost:5000/doctorProfiles/getDoctorProfileByDoctorID',
                     dataType: 'json',
@@ -563,6 +560,86 @@
                     processData: false,
                     success: function (profile_data) {
                         console.log(profile_data);
+                         //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
+                         $.ajax({
+                            url: 'http://localhost:5000/doctorEducation/getDoctorEducationByDoctorId',
+                            type: 'POST',
+                            dataType: 'json', //added data
+                            contentType: 'application/json',
+                            data: JSON.stringify({ "doctor_id": doctor_id }),
+                            success: function (data) {
+                                console.log(data);
+                                var datos = data;
+                                for (var i = 0; i <= datos.length; i++) {
+                                    if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
+                                        $('.tooltipped').tooltip();
+
+                                        //Se eliminó el atributo ID y el id se agregó como una clase
+                                        //Se le agregó el atributo data-adminid a cada uno de los 3 botones
+                                        $("#table1").append('<tr>' + '<td>' + datos[i].institute_name + '</td>' +
+                                            '<td>' + datos[i].degree_obtained + '</td>' +
+                                            '<td>' + datos[i].description + '</td>' +
+                                            '<td>' + datos[i].location + '</td>' +
+                                            '<td>' + datos[i].start_date + '</td>' +
+                                            '<td>' + datos[i].end_date + '</td>' +
+                                            '<td>' + datos[i].current_education + '</td>' +
+                                            '<td><a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-doctoreducationid=' + datos[i].education_id + ' data-doctorinstitutename=' + datos[i].institute_name + ' data-doctorjobtitle=' + datos[i].job_title + ' data-doctordescription=' + datos[i].description + ' data-doctorlocation=' + datos[i].location + ' data-doctorstartdate=' + datos[i].start_date + ' data-doctorenddate=' + datos[i].end_date + ' data-doctorcurrenteducation=' + datos[i].current_education + ' data-doctorid=' + datos[i].doctor_id + '><i class="material-icons">edit</i></a><a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Eliminar" data-doctorid=' + datos[i].doctor_id + '><i class="material-icons">delete_forever</i></a></td>' + '</tr>');
+                                    }
+
+                                }
+
+                                //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                                //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
+                                //Función Click del boton Editar
+                                $(".btnEditar").click(function () {
+                                    var education_id = parseInt($(this).attr("data-doctoreducationid"));
+                                    var doctor_education_institute_name = String($(this).attr("data-doctorinstitutename"));
+                                    var doctor_education_degree_obtained = String($(this).attr("data-doctordegreeobtained"));
+                                    var doctor_education_description = String($(this).attr("data-doctordescription"));
+                                    var doctor_education_location = String($(this).attr("data-doctorlocation"));
+                                    var doctor_education_start_date = String($(this).attr("data-doctorstartdate"));
+                                    var doctor_education_end_date = String($(this).attr("data-doctorenddate"));
+                                    var doctor_education_current_job = Boolean($(this).attr("data-doctorcurrenteducation"));
+                                    var doctor_id = parseInt($(this).attr("data-doctorid"));
+                                    console.log(education_id);
+                                    console.log("Editar");
+
+                                    //Redireccionando a editarAdministrador.html y enviando dos parámetros hacia esa página: first_name y last_name
+                                    //window.location.href = "./editarAdministrador.html?first_name=" + admin_first_name + "&last_name=" + admin_last_name;
+                                    window.location.href = "./editarEducacion.html?experience_id=" + education_id + "&institute_name=" + doctor_education_institute_name + "&degree_obtained=" + doctor_education_degree_obtained + "&description=" + doctor_education_description + "&location=" + doctor_education_location + "&start_date=" + doctor_education_start_date + "&end_date=" + doctor_education_end_date + "&doctor_id=" + doctor_id;
+                                });
+
+                                //Función Click del boton Eliminar
+                                $(".btnEliminar").click(function () {
+                                    //Declarar variable eliminar
+                                    var eliminar = this;
+
+                                    //Eliminar ID con atributo data
+                                    var doctor_id = $(this).data("doctorid");
+                                    console.log(admin_id);
+                                    console.log("Eliminar");
+
+                                    if (confirm("¿Estás seguro de que deseas eliminar esta fila?")) {
+
+                                        //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
+                                        $.ajax({
+                                            url: 'http://localhost:5000/doctorEducation/deleteDoctorEducation',
+                                            type: 'POST',
+                                            dataType: "json",
+                                            contentType: "application/json",
+                                            data: JSON.stringify({ "doctor_id": doctor_id }),
+                                            success: function () {
+                                                //Eliminando la fila de la tabla HTML
+                                                $(eliminar).closest('tr').fadeOut(1000, function () {
+                                                    $(this).remove();
+                                                });
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+
                         $("#username").text(profile_data.doctor_profile.first_name);
                         $("#UserName1").text(profile_data.doctor_profile.first_name + " " + profile_data.doctor_profile.last_name);
 
@@ -597,7 +674,7 @@
                     var ubicacion = $("#location").val();
                     var fecha_inicial = $("#icon_start_date").val();
                     var fecha_final = $("#icon_end_date").val();
-                    var cursando_actualmente = parseInt($("#current_education").val());
+                    var cursando_actualmente = Boolean($("#current_education").val());
 
                     var valido = true;
                     //Validar Experiencia Laboral
@@ -631,14 +708,51 @@
                         valido = false;
                     }
 
-                    console.log(parseInt(cursando_actualmente));
+                    var form = $("#FormEducation");
+                    //$("#FormExperiencia")[0].reset();
+                    //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
+                    if (valido) {
+                        $.ajax({
+                            url: 'http://localhost:5000/doctorEducation/newDoctorEducation',
+                            dataType: 'json',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                "institute_name": nombre_institucion,
+                                "degree_obtained": titulo_obtenido,
+                                "description": descripcion,
+                                "location": ubicacion,
+                                "start_date": fecha_inicial,
+                                "end_date": fecha_final,
+                                "current_education": cursando_actualmente,
+                                "doctor_id": doctor_id
+                            }),
+                            processData: false,
+                            success: function (data) {
+                                console.log(data);
+                                if (data.added) {
 
-                    if (parseInt(cursando_actualmente) != 1 && parseInt(cursando_actualmente) != 2) {
-                        alert("Seleccione La Opción Cursando Actualmente");
-                        valido = false;
+                                    //Mensaje de notificacion personalizado
+                                    Swal.fire({
+                                        title: 'Excelente!',
+                                        text: 'Su Educación ha sido agregada con éxito',
+                                        icon: 'success',
+                                        confirmButtonText: 'Entendido'
+                                    });
+                                    form[0].reset();
+                                }
+                            },
+                            error: function (error) {
+                                console.log(error);
+                                if (error.status === 403) {
+                                    alert("Ya existe esta educación");
+                                }
+                            }
+                        });
+                    } else {
+                        alert("Hay errores en el formulario");
                     }
 
-                    $("#FormEducacion")[0].reset();
                 });
 
                 $('.btnCancelar').click(function () {

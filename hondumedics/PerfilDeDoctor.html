@@ -435,13 +435,6 @@
                                                 <label for="description">Descripción</label>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">location_on</i>
-                                                <textarea id="address" class="materialize-textarea"></textarea>
-                                                <label for="address">Dirección</label>
-                                            </div>
-                                        </div>
                                         <div class="col s12 m6 l12 center">
                                             <a id="btnGuardarCambiosDoctor" href="#!"
                                                 class="btn waves-effect waves-green btn-flat blue white-text"><i
@@ -482,7 +475,6 @@
                         $("#date_of_birth").val(profile_data.doctor_profile.birthdate);
                         $("#email").val(profile_data.doctor_profile.email);
                         $("#description").val(profile_data.doctor_profile.description);
-                        $("#address").val(profile_data.doctor_profile.address);
 
                         $("#username").text(profile_data.doctor_profile.first_name);
                         $("#UserName1").text(profile_data.doctor_profile.first_name + " " + profile_data.doctor_profile.last_name);
@@ -494,7 +486,6 @@
                         $("#date_of_birth").focus();
                         $("#email").focus();
                         $("#description").focus();
-                        $("#address").focus();
 
                         if (profile_data.doctor_profile.profile_picture !== null) {
                             $(".profile_picture").attr('src', profile_data.doctor_profile.profile_picture)
@@ -625,11 +616,6 @@
                         valido = false;
                     }
 
-                    if ($('#address').val() == "" || $('#address').val().length === 0) {
-                        error_messages.push("<span> - La dirección  no puede estar vacia. </span><br>");
-                        valido = false;
-                    }
-
                     if (valido) {
                         $.ajax({
                             url: 'http://localhost:5000/doctorProfiles/updateDoctorProfileByDoctorID',
@@ -642,7 +628,6 @@
                                 "last_name": $('#last_name').val(),
                                 "birthdate": $('#date_of_birth').val(),
                                 "description": $('#description').val(),
-                                "address": $('#address').val(),
                             }),
                             processData: false,
                             success: function (result) {
