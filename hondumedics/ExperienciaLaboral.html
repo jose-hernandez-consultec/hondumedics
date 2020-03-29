@@ -579,13 +579,14 @@
 
                                         //Se eliminó el atributo ID y el id se agregó como una clase
                                         //Se le agregó el atributo data-adminid a cada uno de los 3 botones
+                                        var current_job = datos[i].current_job ? "Si" : "No";
                                         $("#table1").append('<tr>' + '<td>' + datos[i].company_name + '</td>' +
                                             '<td>' + datos[i].job_title + '</td>' +
                                             '<td>' + datos[i].description + '</td>' +
                                             '<td>' + datos[i].location + '</td>' +
                                             '<td>' + datos[i].start_date + '</td>' +
                                             '<td>' + datos[i].end_date + '</td>' +
-                                            '<td>' + datos[i].current_job + '</td>' +
+                                            '<td>' + current_job + '</td>' +
                                             '<td><a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-doctorexperienceid=' + datos[i].experience_id + ' data-doctorcompanyname=' + datos[i].company_name + ' data-doctorjobtitle=' + datos[i].job_title + ' data-doctordescription=' + datos[i].description + ' data-doctorlocation=' + datos[i].location + ' data-doctorstartdate=' + datos[i].start_date + ' data-doctorenddate=' + datos[i].end_date + ' data-doctorcurrentjob=' + datos[i].current_job + ' data-doctorid=' + datos[i].doctor_id + '><i class="material-icons">edit</i></a><a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Eliminar" data-doctorid=' + datos[i].doctor_id + '><i class="material-icons">delete_forever</i></a></td>' + '</tr>');
                                     }
 
@@ -679,7 +680,7 @@
                     var fecha_inicial = $("#icon_start_date").val();
                     var fecha_final = $("#icon_end_date").val();
 
-                    var trabaja_actualmente = Boolean($("#current_job").val());
+                    var trabaja_actualmente = $("#current_job").val();
 
                     var valido = true;
                     //Validar Experiencia Laboral
@@ -735,10 +736,8 @@
                             processData: false,
                             success: function (data) {
                                 console.log(data);
-                                if (data.added) {
+                                if (data.created) {
                                     var experience = data.experience;
-
-
                                     //Mensaje de notificacion personalizado
                                     Swal.fire({
                                         title: 'Excelente!',
@@ -746,6 +745,8 @@
                                         icon: 'success',
                                         confirmButtonText: 'Entendido'
                                     });
+
+                                    var current_job = experience.current_job ? "Si" : "No";
                                     $("#table1").append('<tr>' + '<td>' + experience.company_name + '</td>' +
                                         '<td>' + experience.job_title + '</td>' +
                                         '<td>' + experience.description + '</td>' +
@@ -753,7 +754,7 @@
                                         '<td>' + experience.start_date + '</td>' +
                                         '<td>' + experience.end_date + '</td>' +
                                         '<td>' + experience.current_job + '</td>' +
-                                        '<td><a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-doctorexperienceid=' + experience.experience_id + ' data-doctorcompanyname=' + experience.company_name + ' data-doctorjobtitle=' + experience.job_title + ' data-doctordescription=' + experience.description + ' data-doctorlocation=' + experience.location + ' data-doctorstartdate=' + experience.start_date + ' data-doctorenddate=' + experience.end_date + ' data-doctorcurrentjob=' + experience.current_job + ' data-doctorid=' + experience.doctor_id + '><i class="material-icons">edit</i></a><a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Eliminar" data-doctorid=' + experience.doctor_id + '><i class="material-icons">delete_forever</i></a></td>' + '</tr>');
+                                        '<td><a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-doctorexperienceid=' + experience.experience_id + ' data-doctorcompanyname=' + experience.company_name + ' data-doctorjobtitle=' + experience.job_title + ' data-doctordescription=' + experience.description + ' data-doctorlocation=' + experience.location + ' data-doctorstartdate=' + experience.start_date + ' data-doctorenddate=' + experience.end_date + ' data-doctorcurrentjob=' + current_job + ' data-doctorid=' + experience.doctor_id + '><i class="material-icons">edit</i></a><a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Eliminar" data-doctorid=' + experience.doctor_id + '><i class="material-icons">delete_forever</i></a></td>' + '</tr>');
                                     form[0].reset();
                                 }
                             },
