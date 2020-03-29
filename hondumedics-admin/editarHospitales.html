@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Solicitudes Rechazadas de Doctores / Administrador</title>
+    <title>Editar Hospital / Administrador</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- JQuery JavaScript -->
@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Estilos CSS -->
+
     <style>
         .nav-wrapper {
             background-color: #464646;
@@ -109,10 +110,6 @@
             -ms-overflow-style: -ms-autohiding-scrollbar;
         }
 
-        table.striped>tbody>tr:nth-child(odd) {
-            background-color: white;
-        }
-
         .imgRedonda {
             width: 60px;
             height: 60px;
@@ -148,13 +145,27 @@
             text-align: center;
         }
 
-        .content {
-            padding-left: 300px;
-            height: 100%;
+        .modal {
+            left: 0;
+            right: 0;
+            background-color: white;
+            padding: 0;
+            width: 50%;
+            will-change: top, opacity;
+            max-height: 100%;
         }
 
-        h1 {
-            color: #448aff;
+        .modal .modal-footer {
+            border-radius: 0 0 2px 2px;
+            background-color: white;
+            padding: 4px 6px;
+            height: 45px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .modal-form-row {
+            margin-bottom: 0px;
         }
 
         .sidenav {
@@ -169,7 +180,7 @@
 </head>
 
 <body>
-    <!--Formulario de Solicitudes Rechazadas-->
+    <!--Formulario de Editar Hospitales-->
     <!--Navbar-->
     <div class="row">
         <nav class="nav-wrapper">
@@ -180,7 +191,6 @@
                 <div class="col s9">
                     <a class="brand-logo link-dashboard">HM Admin Panel</a>
                     <ul class="right hide-on-med-and-down">
-
                         <!-- Dropdown Trigger -->
                         <li>
                             <a href="#" class="dropdown-trigger" data-target="dropdown1">
@@ -210,9 +220,8 @@
                     <img src="https://hdblackwallpaper.com/wallpaper/2015/04/1200-x-900-solid-black-wallpaper-22-wide-wallpaper.jpg"
                         style="height: 100%; width: 100%;" alt="" class="responsive-img">
                 </div>
-                <span class="white-text name"><span style="font-size: 15px; font-weight: bold;"
-                        id="username1"></span></span>
-                <span class="white-text email"><span id="email1"></span>
+                <span class="white-text name"><span style="font-size: 15px; font-weight: bold;" id="username1"></span>
+                    <span class="white-text email"><span id="email1"></span>
             </div>
         </li>
         <li>
@@ -261,64 +270,70 @@
     </ul>
     <!--SideNav Finished-->
 
-    <!--Panel de Solicitudes Rechazadas-->
+    <!--Panel Hospitales-->
     <div class="" style="min-height: 657px;">
-        <form id="form1">
-            <div class="container-1">
-                <!-- Page Header -->
-                <div class="page-header">
-                    <div class="row">
-                        <div class="col s3"></div>
-                        <div class="col s9">
-                            <h3 class="black-text center">Solicitudes Rechazadas De Doctores</h3>
-                            <!--<h6 class="blue-text center"><b>Dashboard /</b> Solicitudes</h6>-->
-                        </div>
-                        <!--Lista de Solicitudes-->
-                        <div class="row">
-                            <div class="col s3"></div>
-                            <div class="col s9 l9">
-                                <br>
-                                <br>
-                                <br>
-                                <div class="card">
-                                    <div class="card-content">
-                                        <table id="example" class="striped centered">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>NOMBRES</th>
-                                                    <th>APELLIDO</th>
-                                                    <th>ESPECIALIDAD</th>
-                                                    <th>CORREO</th>
-                                                    <th>TELÉFONO</th>
-                                                    <th>NÚMERO DE COLEGIACIÓN</th>
-                                                    <th>ACCIONES</th>
-                                                </tr>
-                                            </thead>
-                                            <!--<tbody>
-                                            <tr>
-                                                <td>PT001</td>
-                                                <td><a href="UserProfilePatient.html">
-                                                        <img src="http://cdn2.upsocl.com/wp-content/uploads/2045/06/mujer-372x248.jpg"
-                                                            class="imgRedonda" /></a><br><a href="#">Gina
-                                                        Padilla</a></td>
-                                                <td>35</td>
-                                                <td>0101 - La ensenada, La Ceiba, Atántida</td>
-                                                <td>99999999</td>
-                                                <td>21 Sep 2919</td>
-                                                <td>$150.00</td>
-                                            </tr>
-                                        </tbody>-->
-                                        </table>
-                                    </div>
+        <div class="container-1">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col s12 m6 l3"></div>
+                    <div class="col s12 m6 l9">
+                        <!--Card Hospitales-->
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="row">
+                                    <form class="col s12 m12 l12 justify">
+                                        <left>
+                                            <h5><b>Editar Hospitales</b></h5>
+                                        </left>
+                                        <br>
+                                        <!--Editar Hospitales-->
+                                        <div class="row">
+                                            <form class="col s12" id="#FormHospital">
+                                                <div class="row modal-form-row">
+                                                    <div class="input-field col s12">
+                                                        <input id="hospital_name" type="text"
+                                                            class="validate">
+                                                        <label for="hospital_name">Nombre del Hospital</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input id="city" type="text"
+                                                            class="validate">
+                                                        <label for="city">Ciudad</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input id="department" type="text"
+                                                            class="validate">
+                                                        <label for="department">Departamento</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input id="directions" type="text"
+                                                            class="validate">
+                                                        <label for="directions">Dirección</label>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <input id="country" type="text"
+                                                            class="validate">
+                                                        <label for="country">País</label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="center">
+                                            <a href="" class="btnGuardar waves-effect waves-red btn white-text center"
+                                                style="background-color: #2196f3; font-weight: bold;">Guardar Cambios</a>
+                                            <a  class="link-certificaciones waves-effect waves-red btn white-text center"
+                                                style="background-color: red; font-weight: bold;">Cancelar</a>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
+
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
@@ -331,6 +346,7 @@
                 coverTrigger: false,
                 belowOrigin: true
             });
+            $('.modal').modal();
 
             //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
             var first_name = getQueryVariable("first_name");
@@ -340,8 +356,6 @@
             $("#username").text(decodeURIComponent(first_name));
             $("#username1").text(decodeURIComponent(first_name + " " + last_name));
             $("#email1").text(decodeURIComponent(email));
-
-
 
             //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
             function getQueryVariable(variable) {
@@ -359,42 +373,42 @@
             //Evento Click del link con clase llamada link-dashboard
             $(".link-dashboard").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
                 window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-pacientes
             $(".link-pacientes").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
                 window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-doctores
             $(".link-doctores").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
                 window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-solicitudes
             $(".link-solicitudes").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
                 window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-solicitudes-rechazadas
             $(".link-solicitudes-rechazadas").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
                 window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
             //Evento Click del link con clase llamada link-citas
             $(".link-citas").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
                 window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
@@ -415,55 +429,57 @@
             //Evento Click del link con clase llamada link-agregar-nuevo-usuario
             $(".link-agregar-nuevo-usuario").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
+                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
                 window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
             });
 
+            //Evento Click del link con clase llamada link-perfil-doctor
+            $(".link-perfil-doctor").click(function () {
 
-            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
-            $.ajax({
-                url: 'http://localhost:5000/doctorRequests',
-                type: 'GET',
-                dataType: 'json', //added data
-                success: function (data) {
-                    console.log(data);
-                    var datos = data;
-                    for (var i = 0; i <= datos.length; i++) {
-                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
-                            if (datos[i].requestApproved == 0) {
-                                $('.tooltipped').tooltip();
+                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                window.location.href = "./UserProfileDoctor.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+            });
 
-                                $("#example").append('<tr>' + '<td>' + datos[i].request_id + '</td>' + '<td>' + datos[i].first_name + '</td>' + '<td>'
-                                    + datos[i].last_name + '</td>' + '<td>' + datos[i].speciality_name + '</td>' + '<td>' + datos[i].email + '</td>'
-                                    + '<td>' + datos[i].phone_number + '</td>' + '<td>' + datos[i].doctor_number + '</td>'
-                                    + '<td><a style="position:relative;z-index:0;" class="btnAprobado btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Aprobar" data-requestid=' + datos[i].request_id + '><i class="material-icons">check</i></a></td>' + '</tr>');
-                            }
-                        }
-                    }
-                    //Función Click del botón Aprobar
-                    $(".btnAprobado").click(function () {
-                        //Aprobar ID con atributo data
-                        var request_id = parseInt($(this).attr("data-requestid"));
-                        console.log(request_id);
-                        console.log("Aprobar");
+            //Declaraciones de variables
+            $("#btnGuardar").click(function (e) {
+                e.preventDefault();
+                var nombre_hospital = $("#hospital_name").val();
+                var ciudad = $("#city").val();
+                var departamento = $("#department").val();
+                var direccion = $("#directions").val();
+                var pais = $("#country").val();
 
-                        $.ajax({
-                            url: 'http://localhost:5000/doctorRequests/approveRequest',
-                            dataType: 'json',
-                            type: 'POST',
-                            contentType: 'application/json',
-                            data: JSON.stringify({ "request_id": request_id }),
-                            processData: false,
-                            success: function () {
-                                alert("Solicitud aprobada.");
-                            },
-                            error: function () {
-                                alert('Se ha producido un error.');
-                            }
-                        });
-                    });
+                var valido = true;
+                //Validar Hospitales
+                if (nombre_hospital == "" || nombre_hospital.length === 0) {
+                    alert("El Nombre Del Hospital Está Vacío");
+                    valido = false;
+                }
+
+                if (ciudad == "" || ciudad.length === 0) {
+                    alert("La Ciudad Está Vacío");
+                    valido = false;
+                }
+
+                if (departamento == "" || departamento.length === 0) {
+                    alert("El Departamento Está Vacía");
+                    valido = false;
+                }
+
+                if (direccion == "" || direccion.length === 0) {
+                    alert("La Dirección Está Vacía");
+                    valido = false;
+                }
+
+                if (pais == "" || pais.length === 0) {
+                    alert("El País Está Vacío");
+                    valido = false;
                 }
             });
+
+            $('.btnCancelar').click(function () {
+                    $("#FormHospital")[0].reset();
+                });
         });
     </script>
 </body>

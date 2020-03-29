@@ -230,7 +230,7 @@
                 <div class="background">
                     <img src="https://hdblackwallpaper.com/wallpaper/2015/04/1200-x-900-solid-black-wallpaper-22-wide-wallpaper.jpg"
                         style="height: 100%; width: 100%;" alt="" class="responsive-img">
-                </div><br>
+                </div>
                 <span class="white-text name"><span style="font-size: 15px; font-weight: bold;"
                         id="UserName1"></span></span>
                 <span class="white-text email"><span id="email1"></span>
@@ -259,6 +259,14 @@
         </li>
         <li>
             <a class="link-citas"><i class="material-icons black-text">date_range</i>Citas
+            </a>
+        </li>
+        <li>
+            <a class="link-hospitales"><i class="material-icons black-text">local_hospital</i>Hospitales
+            </a>
+        </li>
+        <li>
+            <a class="link-especialidades"><i class="material-icons black-text">colorize</i>Especialidades
             </a>
         </li>
         <div class="divider"></div>
@@ -818,6 +826,20 @@
                     window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                 });
 
+                //Evento Click del link con clase llamada link-citas
+                $(".link-hospitales").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Hospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-especialidades").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Especialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
                 //Evento Click del link con clase llamada link-agregar-nuevo-usuario
                 $(".link-agregar-nuevo-usuario").click(function () {
 
@@ -825,14 +847,14 @@
                     window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                 });
 
-                 //Evento Click del link con clase llamada link-perfil-doctor
+                //Evento Click del link con clase llamada link-perfil-doctor
                 $(".link-perfil-doctor").click(function () {
 
                     //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
                     window.location.href = "./UserProfileDoctor.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
                 });
 
-                 //Evento Click del link con clase llamada link-perfil-paciente
+                //Evento Click del link con clase llamada link-perfil-paciente
                 $(".link-perfil-paciente").click(function () {
 
                     //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
