@@ -731,7 +731,7 @@
                             success: function (data) {
                                 console.log(data);
                                 if (data.added) {
-
+                                    var education = data.education;
                                     //Mensaje de notificacion personalizado
                                     Swal.fire({
                                         title: 'Excelente!',
@@ -739,6 +739,14 @@
                                         icon: 'success',
                                         confirmButtonText: 'Entendido'
                                     });
+                                    $("#table1").append('<tr>' + '<td>' + education.institute_name + '</td>' +
+                                        '<td>' + education.degree_obtained + '</td>' +
+                                        '<td>' + education.description + '</td>' +
+                                        '<td>' + education.location + '</td>' +
+                                        '<td>' + education.start_date + '</td>' +
+                                        '<td>' + education.end_date + '</td>' +
+                                        '<td>' + education.current_education + '</td>' +
+                                        '<td><a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-doctoreducationid=' + education.education_id + ' data-doctorinstitutename=' + education.institute_name + ' data-doctorjobtitle=' + education.job_title + ' data-doctordescription=' + education.description + ' data-doctorlocation=' + education.location + ' data-doctorstartdate=' + education.start_date + ' data-doctorenddate=' + education.end_date + ' data-doctorcurrenteducation=' + education.current_education + ' data-doctorid=' + education.doctor_id + '><i class="material-icons">edit</i></a><a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped right" data-position="bottom" data-tooltip="Eliminar" data-doctorid=' + education.doctor_id + '><i class="material-icons">delete_forever</i></a></td>' + '</tr>');
                                     form[0].reset();
                                 }
                             },
