@@ -54,6 +54,11 @@ function logoutDoctor(){
     window.location.href = "./LoginDoctor.html";
 }
 
+function logoutAdmin(){
+    localStorage.clear();
+    window.location.href = "./LoginAdmin.html";
+}
+
 $(".picture-upload-doctor").on('change', function (){
     if (localStorage.getItem('doctor') !== null){
         //Abrir el lector de archivos del navegador

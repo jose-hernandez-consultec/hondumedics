@@ -13,6 +13,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- Estilos CSS -->
     <style>
@@ -195,12 +196,20 @@
                                 console.log(data);
                                 if (data.auth) {
                                     var admin = data.admin;
-                                    alert("Bienvenido");
-
-                                    //Redireccionando a dashboard.html y enviando dos paraemtros hacia esa pagina: first_name, last_name, email
-                                    window.location.href = "./dashboard.html?first_name=" + admin.first_name + "&last_name=" + admin.last_name + "&email=" + admin.email;
-
-                                    //form[0].reset();
+                                    Swal.fire({
+                                        title: "Bienvenido de vuelta, " +admin.first_name + " " + admin.last_name + "!",
+                                        icon: 'success',
+                                        confirmButtonText: 'Entendido'
+                                    }).then((result) => {
+                                                if (result.value) {
+                                                    if (localStorage.getItem("admin") === null || localStorage.getItem("admin") === undefined){
+                                                        localStorage.setItem("admin", JSON.stringify({
+                                                            admin_id: data.admin.admin_id,
+                                                        }));
+                                                    }
+                                                    window.location.href = "./dashboard.html";
+                                                }
+                                        });
                                 }
                             },
                             error: function (error) {

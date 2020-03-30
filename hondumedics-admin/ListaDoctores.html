@@ -185,7 +185,7 @@
     </div>
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="CerrarSesion.html">
+        <li><a onclick="logoutAdmin();">
                 <span style="color: #464646;">
                     <center>Cerrar Sesión</center>
                 </span>
@@ -244,7 +244,7 @@
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            <a onclick="logoutAdmin();"><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
         </li>
     </ul>
@@ -274,6 +274,7 @@
                                         <table id="example" class="display highlight" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
+                                                    <th>ID DOCTOR</th>
                                                     <th>NOMBRES</th>
                                                     <th>APELLIDO</th>
                                                     <th>CORREO</th>
@@ -293,159 +294,159 @@
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
-            //Inicialización de las propiedades de Materialize css.
-            M.AutoInit();
-            $('.sidenav').sidenav();
-            $('.sidenav-1').sidenav({ edge: 'left' });
-            $('.sidenav-trigger').sidenav();
-            $('.dropdown-trigger').dropdown({
-                coverTrigger: false,
-                belowOrigin: true
-            });
 
-            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-            var first_name = getQueryVariable("first_name");
-            var last_name = getQueryVariable("last_name");
-            var email = getQueryVariable("email");
 
-            $("#username").text(decodeURIComponent(first_name));
-            $("#username1").text(decodeURIComponent(first_name + " " + last_name));
-            $("#email1").text(decodeURIComponent(email));
+            if (localStorage.getItem('admin') !== undefined && localStorage.getItem('admin') !== null) {
+                //Get Patient ID From Local Storage
+                var admin_id = JSON.parse(localStorage.getItem("admin")).admin_id;
+                $.ajax({
+                    url: 'http://localhost:5000/admins/getAdminByid',
+                    dataType: 'json',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ "admin_id": admin_id }),
+                    processData: false,
+                    success: function (admin_data) {
+                        if (admin_data.found) {
+                            console.log(admin_data);
+                            //Inicialización de las propiedades de Materialize css.
+                            M.AutoInit();
+                            $('.sidenav').sidenav();
+                            $('.sidenav-1').sidenav({ edge: 'left' });
+                            $('.sidenav-trigger').sidenav();
+                            $('.dropdown-trigger').dropdown({
+                                coverTrigger: false,
+                                belowOrigin: true
+                            });
 
-            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
-            function getQueryVariable(variable) {
-                var query = window.location.search.substring(1);
-                var vars = query.split("&");
-                for (var i = 0; i < vars.length; i++) {
-                    var pair = vars[i].split("=");
-                    if (pair[0] == variable) {
-                        return pair[1];
-                    }
-                }
-                return false;
-            }
+                            $("#username1").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#usernameAdmin").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#username").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#email1").text(admin_data.admin.email);
 
-            //Evento Click del link con clase llamada link-dashboard
-            $(".link-dashboard").click(function () {
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
+                            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
+                            $.ajax({
+                                url: 'http://localhost:5000/doctors',
+                                type: 'GET',
+                                dataType: 'json', //added data
+                                success: function (data) {
+                                    console.log(data);
+                                    var datos = data;
+                                    var tabla;
+                                    tabla = $("#example").DataTable();
+                                    for (var i = 0; i <= datos.length; i++) {
+                                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
 
-            //Evento Click del link con clase llamada link-pacientes
-            $(".link-pacientes").click(function () {
+                                            tabla.row.add([datos[i].doctor_id, datos[i].first_name, datos[i].last_name, datos[i].email]);
+                                        }
+                                        tabla.draw();
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
+                                    }
+                                }
+                            });
 
-            //Evento Click del link con clase llamada link-doctores
-            $(".link-doctores").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes
-            $(".link-solicitudes").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes-rechazadas
-            $(".link-solicitudes-rechazadas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-citas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-hospitales").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Hospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-especialidades").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Especialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-agregar-nuevo-usuario
-            $(".link-agregar-nuevo-usuario").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-perfil-doctor
-            $(".link-perfil-doctor").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./UserProfileDoctor.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
-            $.ajax({
-                url: 'http://localhost:5000/doctors',
-                type: 'GET',
-                dataType: 'json', //added data
-                success: function (data) {
-                    console.log(data);
-                    var datos = data;
-                    var tabla;
-                    tabla = $("#example").DataTable();
-                    for (var i = 0; i <= datos.length; i++) {
-                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
-
-                            tabla.row.add([/*datos[i].patient_id,*/ datos[i].first_name, datos[i].last_name, datos[i].email]);
+                            //Inicializar la tabla dinámica
+                            $('#example').DataTable({
+                                "language": {
+                                    "sProcessing": "Procesando...",
+                                    "sLengthMenu": "Mostrar _MENU_ registros",
+                                    "sZeroRecords": "No se encontraron resultados",
+                                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                                    "sInfoPostFix": "",
+                                    "sSearch": "Buscar:",
+                                    "sUrl": "",
+                                    "sInfoThousands": ",",
+                                    "sLoadingRecords": "Cargando...",
+                                    "oPaginate": {
+                                        "sFirst": "Primero",
+                                        "sLast": "Último",
+                                        "sNext": "Siguiente",
+                                        "sPrevious": "Anterior"
+                                    },
+                                    "oAria": {
+                                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                                    }
+                                }
+                            });
                         }
-                        tabla.draw();
-
                     }
-                }
-            });
+                });
 
-            //Inicializar la tabla dinámica
-            $('#example').DataTable({
-                "language": {
-                    "sProcessing": "Procesando...",
-                    "sLengthMenu": "Mostrar _MENU_ registros",
-                    "sZeroRecords": "No se encontraron resultados",
-                    "sEmptyTable": "Ningún dato disponible en esta tabla",
-                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Buscar:",
-                    "sUrl": "",
-                    "sInfoThousands": ",",
-                    "sLoadingRecords": "Cargando...",
-                    "oPaginate": {
-                        "sFirst": "Primero",
-                        "sLast": "Último",
-                        "sNext": "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                    }
-                }
-            });
-            $("select").val('10');
-            $('select').addClass("browser-default");
-            $('select').material_select();
+
+                //Evento Click del link con clase llamada link-dashboard
+                $(".link-dashboard").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./dashboard.html"
+                });
+
+                //Evento Click del link con clase llamada link-pacientes
+                $(".link-pacientes").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaPacientes.html"
+                });
+
+                //Evento Click del link con clase llamada link-doctores
+                $(".link-doctores").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaDoctores.html"
+                });
+
+                //Evento Click del link con clase llamada link-solicitudes
+                $(".link-solicitudes").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./SolicitudesDeDoctores.html"
+                });
+
+                //Evento Click del link con clase llamada link-solicitudes-rechazadas
+                $(".link-solicitudes-rechazadas").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./SolicitudesRechazadas.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-citas").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaCitas.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-hospitales").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Hospitales.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-especialidades").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Especialidades.html"
+                });
+
+                //Evento Click del link con clase llamada link-agregar-nuevo-usuario
+                $(".link-agregar-nuevo-usuario").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./AgregarNuevoUsuario.html"
+                });
+
+                //Evento Click del link con clase llamada link-perfil-doctor
+                $(".link-perfil-doctor").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./UserProfileDoctor.html"
+                });
+
+                //Evento Click del link con clase llamada link-perfil-paciente
+                $(".link-perfil-paciente").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./UserProfilePatient.html"
+                });
+
+            } else {
+                window.location.href = "./LoginAdmin.html";
+            }
         });
     </script>
 </body>

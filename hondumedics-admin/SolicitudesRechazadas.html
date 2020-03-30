@@ -195,7 +195,7 @@
     </div>
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="CerrarSesion.html">
+        <li><a onclick="logoutAdmin();">
                 <span style="color: #464646;">
                     <center>Cerrar Sesión</center>
                 </span>
@@ -255,7 +255,7 @@
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            <a onclick="logoutAdmin();"><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
         </li>
     </ul>
@@ -285,10 +285,8 @@
                                         <table id="example" class="striped centered">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>NOMBRES</th>
+                                                    <th>NOMBRE</th>
                                                     <th>APELLIDO</th>
-                                                    <th>ESPECIALIDAD</th>
                                                     <th>CORREO</th>
                                                     <th>TELÉFONO</th>
                                                     <th>NÚMERO DE COLEGIACIÓN</th>
@@ -322,148 +320,177 @@
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
-            //Inicialización de las propiedades de Materialize css.
-            M.AutoInit();
-            $('.sidenav').sidenav();
-            $('.sidenav-1').sidenav({ edge: 'left' });
-            $('.sidenav-trigger').sidenav();
-            $('.dropdown-trigger').dropdown({
-                coverTrigger: false,
-                belowOrigin: true
-            });
+            if (localStorage.getItem('admin') !== undefined && localStorage.getItem('admin') !== null) {
+                //Get Patient ID From Local Storage
+                var admin_id = JSON.parse(localStorage.getItem("admin")).admin_id;
+                $.ajax({
+                    url: 'http://localhost:5000/admins/getAdminByid',
+                    dataType: 'json',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ "admin_id": admin_id }),
+                    processData: false,
+                    success: function (admin_data) {
+                        if (admin_data.found) {
+                            console.log(admin_data);
+                            //Inicialización de las propiedades de Materialize css.
+                            M.AutoInit();
+                            $('.sidenav').sidenav();
+                            $('.sidenav-1').sidenav({ edge: 'left' });
+                            $('.sidenav-trigger').sidenav();
+                            $('.dropdown-trigger').dropdown({
+                                coverTrigger: false,
+                                belowOrigin: true
+                            });
 
-            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-            var first_name = getQueryVariable("first_name");
-            var last_name = getQueryVariable("last_name");
-            var email = getQueryVariable("email");
-
-            $("#username").text(decodeURIComponent(first_name));
-            $("#username1").text(decodeURIComponent(first_name + " " + last_name));
-            $("#email1").text(decodeURIComponent(email));
-
-
-
-            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
-            function getQueryVariable(variable) {
-                var query = window.location.search.substring(1);
-                var vars = query.split("&");
-                for (var i = 0; i < vars.length; i++) {
-                    var pair = vars[i].split("=");
-                    if (pair[0] == variable) {
-                        return pair[1];
-                    }
-                }
-                return false;
-            }
-
-            //Evento Click del link con clase llamada link-dashboard
-            $(".link-dashboard").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
-                window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-pacientes
-            $(".link-pacientes").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
-                window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-doctores
-            $(".link-doctores").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
-                window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes
-            $(".link-solicitudes").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
-                window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes-rechazadas
-            $(".link-solicitudes-rechazadas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
-                window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-citas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
-                window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-hospitales").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Hospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-especialidades").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Especialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-agregar-nuevo-usuario
-            $(".link-agregar-nuevo-usuario").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 441, 442 y 443 respectivamente
-                window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
+                            $("#username1").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#usernameAdmin").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#username").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#email1").text(admin_data.admin.email);
 
 
-            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
-            $.ajax({
-                url: 'http://localhost:5000/doctorRequests',
-                type: 'GET',
-                dataType: 'json', //added data
-                success: function (data) {
-                    console.log(data);
-                    var datos = data;
-                    for (var i = 0; i <= datos.length; i++) {
-                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
-                            if (datos[i].requestApproved == 0) {
-                                $('.tooltipped').tooltip();
+                            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
+                            $.ajax({
+                                url: 'http://localhost:5000/doctorRequests',
+                                type: 'GET',
+                                dataType: 'json', //added data
+                                success: function (data) {
+                                    console.log(data);
+                                    var datos = data;
+                                    for (var i = 0; i <= datos.length; i++) {
+                                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
+                                            if (datos[i].requestApproved === 0) {
+                                                $('.tooltipped').tooltip();
+                                                $("#example").append('<tr>' + '<td>' + datos[i].first_name + '</td>' + '<td>'
+                                                    + datos[i].last_name + '</td>'  + '<td>' + datos[i].email + '</td>'
+                                                    + '<td>' + datos[i].phone_number + '</td>' + '<td>' + datos[i].doctor_number + '</td>');
+                                            }
+                                        }
 
-                                $("#example").append('<tr>' + '<td>' + datos[i].request_id + '</td>' + '<td>' + datos[i].first_name + '</td>' + '<td>'
-                                    + datos[i].last_name + '</td>' + '<td>' + datos[i].speciality_name + '</td>' + '<td>' + datos[i].email + '</td>'
-                                    + '<td>' + datos[i].phone_number + '</td>' + '<td>' + datos[i].doctor_number + '</td>'
-                                    + '<td><a style="position:relative;z-index:0;" class="btnAprobado btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Aprobar" data-requestid=' + datos[i].request_id + '><i class="material-icons">check</i></a></td>' + '</tr>');
-                            }
+                                    }
+
+                                    //Función Click del botón Aprobar
+                                    $(".btnAprobado").click(function () {
+                                        //Aprobar ID con atributo data
+                                        var request_id = parseInt($(this).attr("data-requestid"));
+                                        console.log(request_id);
+                                        console.log("Aprobar");
+
+                                        $.ajax({
+                                            url: 'http://localhost:5000/doctorRequests/approveRequest',
+                                            dataType: 'json',
+                                            type: 'POST',
+                                            contentType: 'application/json',
+                                            data: JSON.stringify({ "request_id": request_id }),
+                                            processData: false,
+                                            success: function () {
+                                                alert("Solicitud aprobada.");
+                                            },
+                                            error: function () {
+                                                alert('Se ha producido un error.');
+                                            }
+                                        });
+
+                                    });
+
+                                    //Función Click del botón Rechazar
+                                    $(".btnRechazar").click(function () {
+                                        //Rechazar ID con atributo data
+                                        var request_id = parseInt($(this).attr("data-requestid"));
+                                        console.log(request_id);
+                                        console.log("Rechazar");
+
+                                        $.ajax({
+                                            url: 'http://localhost:5000/doctorRequests/rejectRequest',
+                                            dataType: 'json',
+                                            type: 'POST',
+                                            contentType: 'application/json',
+                                            data: JSON.stringify({ "request_id": request_id }),
+                                            processData: false,
+                                            success: function () {
+                                                alert("Solicitud rechazada.");
+                                            },
+                                            error: function () {
+                                                alert('Se ha producido un error.');
+                                            }
+                                        });
+                                    });
+                                }
+                            });
                         }
                     }
-                    //Función Click del botón Aprobar
-                    $(".btnAprobado").click(function () {
-                        //Aprobar ID con atributo data
-                        var request_id = parseInt($(this).attr("data-requestid"));
-                        console.log(request_id);
-                        console.log("Aprobar");
+                });
 
-                        $.ajax({
-                            url: 'http://localhost:5000/doctorRequests/approveRequest',
-                            dataType: 'json',
-                            type: 'POST',
-                            contentType: 'application/json',
-                            data: JSON.stringify({ "request_id": request_id }),
-                            processData: false,
-                            success: function () {
-                                alert("Solicitud aprobada.");
-                            },
-                            error: function () {
-                                alert('Se ha producido un error.');
-                            }
-                        });
-                    });
-                }
-            });
+
+                //Evento Click del link con clase llamada link-dashboard
+                $(".link-dashboard").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./dashboard.html"
+                });
+
+                //Evento Click del link con clase llamada link-pacientes
+                $(".link-pacientes").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaPacientes.html"
+                });
+
+                //Evento Click del link con clase llamada link-doctores
+                $(".link-doctores").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaDoctores.html"
+                });
+
+                //Evento Click del link con clase llamada link-solicitudes
+                $(".link-solicitudes").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./SolicitudesDeDoctores.html"
+                });
+
+                //Evento Click del link con clase llamada link-solicitudes-rechazadas
+                $(".link-solicitudes-rechazadas").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./SolicitudesRechazadas.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-citas").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaCitas.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-hospitales").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Hospitales.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-especialidades").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Especialidades.html"
+                });
+
+                //Evento Click del link con clase llamada link-agregar-nuevo-usuario
+                $(".link-agregar-nuevo-usuario").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./AgregarNuevoUsuario.html"
+                });
+
+                //Evento Click del link con clase llamada link-perfil-doctor
+                $(".link-perfil-doctor").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./UserProfileDoctor.html"
+                });
+
+                //Evento Click del link con clase llamada link-perfil-paciente
+                $(".link-perfil-paciente").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./UserProfilePatient.html"
+                });
+
+            } else {
+                window.location.href = "./LoginAdmin.html";
+            }  
         });
     </script>
 </body>

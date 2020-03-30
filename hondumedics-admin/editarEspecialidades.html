@@ -207,7 +207,7 @@
     </div>
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="CerrarSesion.html">
+        <li><a onclick="logoutAdmin();">
                 <span style="color: #464646;">
                     <center>Cerrar Sesión</center>
                 </span>
@@ -266,7 +266,7 @@
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            <a onclick="logoutAdmin();"><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
         </li>
     </ul>
@@ -321,21 +321,21 @@
         $(document).ready(function () {
             //Inicialización de las propiedades de Materialize css.
 
-            if (localStorage.getItem("specialization") !== undefined && localStorage.getItem("specialization") !== null) {
-                var specialization_id = JSON.parse(localStorage.getItem("specialization"));
-                specialization_id = specialization_id.specialization_id;
+
+            if (localStorage.getItem('admin') !== undefined && localStorage.getItem('admin') !== null) {
+                //Get Patient ID From Local Storage
+                var admin_id = JSON.parse(localStorage.getItem("admin")).admin_id;
                 $.ajax({
-                    url: 'http://localhost:5000/specializations/getSpecializationInfoById',
-                    type: 'POST',
+                    url: 'http://localhost:5000/admins/getAdminByid',
                     dataType: 'json',
+                    type: 'POST',
                     contentType: 'application/json',
-                    data: JSON.stringify({ specialization_id: specialization_id }),
-                    success: function (data) {
-                        console.log(data);
-                        if (data.found){
-                            var specialization = data.specialization;
-                            $("#specialization_name").val(specialization.specialization_name);
-                            $("#specialization_name").focus();
+                    data: JSON.stringify({ "admin_id": admin_id }),
+                    processData: false,
+                    success: function (admin_data) {
+                        if (admin_data.found) {
+                            console.log(admin_data);
+                            //Inicialización de las propiedades de Materialize css.
                             M.AutoInit();
                             $('.sidenav').sidenav();
                             $('.sidenav-1').sidenav({ edge: 'left' });
@@ -345,146 +345,171 @@
                                 belowOrigin: true
                             });
                             $('.modal').modal();
-                        }
-                        
-                    }
-                });
+
+                            $("#username1").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#usernameAdmin").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#username").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#email1").text(admin_data.admin.email);
+
+
+                            if (localStorage.getItem("specialization") !== undefined && localStorage.getItem("specialization") !== null) {
+                                var specialization_id = JSON.parse(localStorage.getItem("specialization"));
+                                specialization_id = specialization_id.specialization_id;
+                                $.ajax({
+                                    url: 'http://localhost:5000/specializations/getSpecializationInfoById',
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    data: JSON.stringify({ specialization_id: specialization_id }),
+                                    success: function (data) {
+                                        console.log(data);
+                                        if (data.found){
+                                            var specialization = data.specialization;
+                                            $("#specialization_name").val(specialization.specialization_name);
+                                            $("#specialization_name").focus();
+                                            M.AutoInit();
+                                            $('.sidenav').sidenav();
+                                            $('.sidenav-1').sidenav({ edge: 'left' });
+                                            $('.sidenav-trigger').sidenav();
+                                            $('.dropdown-trigger').dropdown({
+                                                coverTrigger: false,
+                                                belowOrigin: true
+                                            });
+                                            $('.modal').modal();
+                                        }
+                                        
+                                    }
+                                });
 
 
 
-                //Declaraciones de variables
-                $(".btnGuardar").click(function (e) {
-                    e.preventDefault();
-                    var nombre_especialidad = $("#specialization_name").val();
-                    
-
-                    var valido = true;
-                    //Validar Hospitales
-                    if (nombre_especialidad == "" || nombre_especialidad.length === 0) {
-                        alert("El Nombre De la especialidad está vacío");
-                        valido = false;
-                    }
-
-                    if (valido) {
-                        $.ajax({
-                            url: 'http://localhost:5000/specializations/updateSpecializationInformation',
-                            type: 'POST',
-                            dataType: 'json',
-                            contentType: 'application/json',
-                            data: JSON.stringify(
-                                { 
-                                    "specialization_id": specialization_id,
-                                    "specialization_name": nombre_especialidad, 
+                                //Declaraciones de variables
+                                $(".btnGuardar").click(function (e) {
+                                    e.preventDefault();
+                                    var nombre_especialidad = $("#specialization_name").val();
                                     
-                                }
-                            ),
-                            success: function (data) {
-                                console.log(data);
-                                if (data.updated){
-                                    Swal.fire(
-                                        'Datos Actualizados!',
-                                        'Los datos de la especialidad han sido actualizados',
-                                        'success'
-                                    )
-                                }
+
+                                    var valido = true;
+                                    //Validar Hospitales
+                                    if (nombre_especialidad == "" || nombre_especialidad.length === 0) {
+                                        alert("El Nombre De la especialidad está vacío");
+                                        valido = false;
+                                    }
+
+                                    if (valido) {
+                                        $.ajax({
+                                            url: 'http://localhost:5000/specializations/updateSpecializationInformation',
+                                            type: 'POST',
+                                            dataType: 'json',
+                                            contentType: 'application/json',
+                                            data: JSON.stringify(
+                                                { 
+                                                    "specialization_id": specialization_id,
+                                                    "specialization_name": nombre_especialidad, 
+                                                    
+                                                }
+                                            ),
+                                            success: function (data) {
+                                                console.log(data);
+                                                if (data.updated){
+                                                    Swal.fire(
+                                                        'Datos Actualizados!',
+                                                        'Los datos de la especialidad han sido actualizados',
+                                                        'success'
+                                                    )
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+
+                                //Evento Click del link con clase llamada link-dashboard
+                                $(".link-dashboard").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./dashboard.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-pacientes
+                                $(".link-pacientes").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./ListaPacientes.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-doctores
+                                $(".link-doctores").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./ListaDoctores.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-solicitudes
+                                $(".link-solicitudes").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./SolicitudesDeDoctores.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-solicitudes-rechazadas
+                                $(".link-solicitudes-rechazadas").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./SolicitudesRechazadas.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-citas
+                                $(".link-citas").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./ListaCitas.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-citas
+                                $(".link-hospitales").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                                    window.location.href = "./Hospitales.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-citas
+                                $(".link-especialidades").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                                    window.location.href = "./Especialidades.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-agregar-nuevo-usuario
+                                $(".link-agregar-nuevo-usuario").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./AgregarNuevoUsuario.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-perfil-doctor
+                                $(".link-perfil-doctor").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                                    window.location.href = "./UserProfileDoctor.html";
+                                });
+
+                                
+
+                                $('.btnCancelar').click(function () {
+                                    window.location.href = "./Especialidades.html"
+                                });
+                            }else{
+                                window.location.href = "./Especialidades.html"
                             }
-                        });
+                            
+                        }
                     }
                 });
             }else{
-                window.location.href = "./Especialidades.html"
+                window.location.href = "./AdminLogin.html"
             }
+
             
-
-
-            //Evento Click del link con clase llamada link-dashboard
-            $(".link-dashboard").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./dashboard.html";
-            });
-
-            //Evento Click del link con clase llamada link-pacientes
-            $(".link-pacientes").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaPacientes.html";
-            });
-
-            //Evento Click del link con clase llamada link-doctores
-            $(".link-doctores").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaDoctores.html";
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes
-            $(".link-solicitudes").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./SolicitudesDeDoctores.html";
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes-rechazadas
-            $(".link-solicitudes-rechazadas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./SolicitudesRechazadas.html";
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-citas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaCitas.html";
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-hospitales").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Hospitales.html";
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-especialidades").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Especialidades.html";
-            });
-
-            //Evento Click del link con clase llamada link-agregar-nuevo-usuario
-            $(".link-agregar-nuevo-usuario").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./AgregarNuevoUsuario.html";
-            });
-
-            //Evento Click del link con clase llamada link-perfil-doctor
-            $(".link-perfil-doctor").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./UserProfileDoctor.html";
-            });
-
-            //Declaraciones de variables
-            $("#btnGuardar").click(function (e) {
-                e.preventDefault();
-                var nombre_especialidad = $("#specialization_name").val();
-               
-
-                var valido = true;
-                //Validar Hospitales
-                if (nombre_especialidad == "" || nombre_especialidad.length === 0) {
-                    alert("El Nombre De La Especialidad Está Vacío");
-                    valido = false;
-                }
-
-            });
-
-            $('.btnCancelar').click(function () {
-                window.location.href = "./Especialidades.html"
-            });
         });
     </script>
 </body>

@@ -17,6 +17,7 @@
     <!--Charts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
+    <style src="../hondumedics/src/styles.css"></style>
 
     <!-- Estilos CSS -->
     <style>
@@ -216,7 +217,7 @@
     </div>
     <!-- Dropdown Structure Menú Administrador-->
     <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="CerrarSesion.html">
+        <li><a onclick="logoutAdmin();">
                 <span style="color: #464646;">
                     <center>Cerrar Sesión</center>
                 </span>
@@ -276,32 +277,23 @@
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            <a onclick="logoutAdmin();"><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
         </li>
     </ul>
     <!--SideNav Finished-->
 
     <!--Dashboard-->
-    <div class="" style="min-height: 657px;">
+    <div class="dashboard" style="min-height: 657px;padding-left: 300px;">
         <div class="container-1">
             <!-- Page Header -->
             <div class="page-header">
                 <div class="row">
                     <div class="col s3"></div>
-                    <div class="col s9">
-                        <h2 class="black-text left">Bienvenido <span id="UserName"></span></h2>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-
-                        <h4 class="blue-text center">Administrador</h4>
+                    <div class="col s9">                        
                     </div>
                     <div class="row">
-                        <div class="col s4"></div>
-                        <div class="col s12 m6 l2">
+                        <div class="col s12 m3 l3">
                             <div class="card">
                                 <center>
                                     <div class="card-content green white-text">
@@ -312,14 +304,10 @@
                                         <h4>168</h4>
                                     </div>
                                 </center>
-                                <div class="card-action green darken-2">
-                                    <div class="progress">
-                                        <div class="determinate" style="width: 34%"></div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
-                        <div class="col s12 m6 l2">
+                        <div class="col s12 m3 l3">
                             <div class="card">
                                 <center>
                                     <div class="card-content purple white-text">
@@ -330,14 +318,10 @@
                                         <h4>110</h4>
                                     </div>
                                 </center>
-                                <div class="card-action purple darken-2">
-                                    <div class="progress">
-                                        <div class="determinate" style="width: 23%"></div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
-                        <div class="col s12 m6 l2">
+                        <div class="col s12 m3 l3">
                             <div class="card">
                                 <center>
                                     <div class="card-content blue-grey white-text">
@@ -348,31 +332,24 @@
                                         <h4>56</h4>
                                     </div>
                                 </center>
-                                <div class="card-action blue-grey darken-2">
-                                    <div class="progress">
-                                        <div class="determinate" style="width: 13%"></div>
+                                
+                            </div>
+                        </div>
+                        <div class="col s12 m3 l3">
+                            <div class="card">
+                                <center>
+                                    <div class="card-content light-blue white-text">
+                                        <a id="back3"
+                                            class="btn-floating btn-large waves-effect waves-light light-blue btn-bordes"><i
+                                                class="material-icons">markunread</i></a>
+                                        <br><span><b>Solicitudes Pendientes</b></span>
+                                        <h4>56</h4>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s3"></div>
-                        <div class="col l4 m6 s12">
-                            <div class="card card-bg">
-                                <div class="card-content">
-                                    <canvas id="myChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l4 m6 s12">
-                            <div class="card card-bg">
-                                <div class="card-content">
-                                    <canvas id="myChart2"></canvas>
-                                </div>
+                                </center>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s3"></div>
                         <div class="col s12 m6 l9">
                             <div class="card">
                                 <div class="card-content">
@@ -511,7 +488,6 @@
 
                             </div>
                         </div>
-                        <div class="col s3"></div>
                         <div class="col s12 m6 l9">
                             <div class="card">
                                 <div class="card-content">
@@ -586,7 +562,6 @@
                     </div>
                     <!--Lista de citas-->
                     <div class="row">
-                        <div class="col s3"></div>
                         <div class="col s9 l9">
                             <div class="card">
                                 <div class="card-content">
@@ -749,174 +724,118 @@
         <script>
             //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
             $(document).ready(function () {
-                //Inicialización de las propiedades de Materialize css.
-                M.AutoInit();
-                $('.sidenav').sidenav();
-                $('.sidenav-1').sidenav({ edge: 'left' });
-                $('.sidenav-trigger').sidenav();
-                $('.modal').modal();
-                $('select').formSelect();
-                $('.dropdown-trigger').dropdown({
-                    coverTrigger: false,
-                    belowOrigin: true
-                });
 
-                //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-                var first_name = getQueryVariable("first_name");
-                var last_name = getQueryVariable("last_name");
-                var email = getQueryVariable("email");
+                if (localStorage.getItem('admin') !== undefined && localStorage.getItem('admin') !== null){
+                    //Get Patient ID From Local Storage
+                    var admin_id = JSON.parse(localStorage.getItem("admin")).admin_id;
+                    $.ajax({
+                        url: 'http://localhost:5000/admins/getAdminByid',
+                        dataType: 'json',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ "admin_id": admin_id}),
+                        processData: false,
+                        success: function (admin_data) {
+                            if (admin_data.found){
+                                console.log(admin_data);
+                                //Inicialización de las propiedades de Materialize css.
+                                M.AutoInit();
+                                $('.sidenav').sidenav();
+                                $('.sidenav-1').sidenav({ edge: 'left' });
+                                $('.sidenav-trigger').sidenav();
+                                $('.modal').modal();
+                                $('select').formSelect();
+                                $('.dropdown-trigger').dropdown({
+                                    coverTrigger: false,
+                                    belowOrigin: true
+                                });
 
-                $("#UserName").text(decodeURIComponent(first_name + " " + last_name));
-                $("#UserName1").text(decodeURIComponent(first_name + " " + last_name));
-                $("#username").text(decodeURIComponent(first_name));
-                $("#email1").text(decodeURIComponent(email));
-
-                //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
-                function getQueryVariable(variable) {
-                    var query = window.location.search.substring(1);
-                    var vars = query.split("&");
-                    for (var i = 0; i < vars.length; i++) {
-                        var pair = vars[i].split("=");
-                        if (pair[0] == variable) {
-                            return pair[1];
+                                $("#UserName").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                                $("#UserName1").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                                $("#username").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                                $("#email1").text(admin_data.admin.email);
+                            }
+                            
                         }
-                    }
-                    return false;
+                    });
+
+
+                    //Evento Click del link con clase llamada link-dashboard
+                    $(".link-dashboard").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./dashboard.html"
+                    });
+
+                    //Evento Click del link con clase llamada link-pacientes
+                    $(".link-pacientes").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./ListaPacientes.html"
+                    });
+
+                    //Evento Click del link con clase llamada link-doctores
+                    $(".link-doctores").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./ListaDoctores.html"
+                    });
+
+                    //Evento Click del link con clase llamada link-solicitudes
+                    $(".link-solicitudes").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./SolicitudesDeDoctores.html"
+                    });
+
+                    //Evento Click del link con clase llamada link-solicitudes-rechazadas
+                    $(".link-solicitudes-rechazadas").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./SolicitudesRechazadas.html"
+                    });
+
+                    //Evento Click del link con clase llamada link-citas
+                    $(".link-citas").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./ListaCitas.html"
+                    });
+
+                    //Evento Click del link con clase llamada link-citas
+                    $(".link-hospitales").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./Hospitales.html"
+                    });
+
+                    //Evento Click del link con clase llamada link-citas
+                    $(".link-especialidades").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./Especialidades.html"
+                    });
+
+                    //Evento Click del link con clase llamada link-agregar-nuevo-usuario
+                    $(".link-agregar-nuevo-usuario").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./AgregarNuevoUsuario.html"
+                    });
+
+                    //Evento Click del link con clase llamada link-perfil-doctor
+                    $(".link-perfil-doctor").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./UserProfileDoctor.html"
+                    });
+
+                    //Evento Click del link con clase llamada link-perfil-paciente
+                    $(".link-perfil-paciente").click(function () {
+                        //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                        window.location.href = "./UserProfilePatient.html"
+                    });
+
+                }else{
+                    window.location.href = "./LoginAdmin.html";
                 }
+                
 
-                //Evento Click del link con clase llamada link-dashboard
-                $(".link-dashboard").click(function () {
 
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
+                
 
-                //Evento Click del link con clase llamada link-pacientes
-                $(".link-pacientes").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
-
-                //Evento Click del link con clase llamada link-doctores
-                $(".link-doctores").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
-
-                //Evento Click del link con clase llamada link-solicitudes
-                $(".link-solicitudes").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
-
-                //Evento Click del link con clase llamada link-solicitudes-rechazadas
-                $(".link-solicitudes-rechazadas").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
-
-                //Evento Click del link con clase llamada link-citas
-                $(".link-citas").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
-
-                //Evento Click del link con clase llamada link-citas
-                $(".link-hospitales").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./Hospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
-
-                //Evento Click del link con clase llamada link-citas
-                $(".link-especialidades").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./Especialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
-
-                //Evento Click del link con clase llamada link-agregar-nuevo-usuario
-                $(".link-agregar-nuevo-usuario").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
-
-                //Evento Click del link con clase llamada link-perfil-doctor
-                $(".link-perfil-doctor").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./UserProfileDoctor.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
-
-                //Evento Click del link con clase llamada link-perfil-paciente
-                $(".link-perfil-paciente").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./UserProfilePatient.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-                });
-
-                //Obtener las gráficas de barras
-                var chr = document.getElementById("myChart").getContext("2d");
-                var chr2 = document.getElementById("myChart2").getContext("2d");
-                var myChart = new Chart(chr, {
-                    type: 'bar',
-                    data: {
-                        labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019'],
-                        datasets: [{
-                            label: 'Ingresos',
-                            data: [10000, 30000, 50000, 20000, 60000, 40000, 70000],
-                            backgroundColor: 'rgba(0,0,255,0.6)',
-                            borderColor: '#000000',
-                            borderWidth: 1,
-                        }]
-                    },
-                    options: {
-                        legend: {
-                            labels: {
-                                fontColor: '#000000',
-                            }
-
-                        }
-                    }
-                });
-
-                //Obtener las gráficas lineales
-                var myChart2 = new Chart(chr2, {
-                    type: 'bar',
-                    data: {
-                        labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019'],
-                        datasets: [{
-                            label: 'Médico',
-                            data: [10, 250, 300, 150, 100, 50, 200],
-                            backgroundColor: 'rgba(0,0,255,0.6)',
-                            borderColor: '#000000',
-                            borderWidth: 1,
-                        },
-                        {
-                            label: 'Paciente',
-                            data: [20, 210, 304, 458, 223, 123, 180],
-                            backgroundColor: 'rgba(249, 255, 138, 1)',
-                            borderColor: '#000000',
-                            borderWidth: 1,
-                        }]
-                    },
-                    options: {
-                        legend: {
-                            labels: {
-                                fontColor: '#000000',
-                            }
-                        }
-                    }
-                });
+                
             });
-
-
 
         </script>
 </body>

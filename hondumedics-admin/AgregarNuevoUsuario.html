@@ -17,6 +17,9 @@
     <!--Charts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="../hondumedics/src/funciones.js"></script>
+
     <!--Estilos CSS-->
     <style>
         .nav-wrapper {
@@ -197,7 +200,7 @@
     </div>
     <!-- Dropdown Structure Lista de menú de Administrador-->
     <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="CerrarSesion.html">
+        <li><a onclick="logoutAdmin();">
                 <span style="color: #464646;">
                     <center>Cerrar Sesión</center>
                 </span>
@@ -256,7 +259,7 @@
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            <a onclick="logoutAdmin();"><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
         </li>
     </ul>
@@ -340,219 +343,241 @@
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
-            //Inicialización de las propiedades de Materialize css.
-            M.AutoInit();
-            $('.sidenav').sidenav();
-            $('.sidenav-trigger').sidenav();
-            $('.sidenav-1').sidenav({ edge: 'left' });
-            $('select').formSelect();
-            $('.dropdown-trigger').dropdown({
-                coverTrigger: false,
-                belowOrigin: true
-            });
 
-            //Cancelar o limpiar el formulario.
-            $("#btnCancelar").click(function () {
-                $("#formulario")[0].reset();
 
-            });
+            if (localStorage.getItem('admin') !== undefined && localStorage.getItem('admin') !== null){
+                //Get Patient ID From Local Storage
+                var admin_id = JSON.parse(localStorage.getItem("admin")).admin_id;
+                $.ajax({
+                    url: 'http://localhost:5000/admins/getAdminByid',
+                    dataType: 'json',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ "admin_id": admin_id }),
+                    processData: false,
+                    success: function (admin_data) {
+                        if (admin_data.found) {
+                            console.log(admin_data);
+                            //Inicialización de las propiedades de Materialize css.
+                            M.AutoInit();
+                            $('.sidenav').sidenav();
+                            $('.sidenav-trigger').sidenav();
+                            $('.sidenav-1').sidenav({ edge: 'left' });
+                            $('select').formSelect();
+                            $('.dropdown-trigger').dropdown({
+                                coverTrigger: false,
+                                belowOrigin: true
+                            });
 
-            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-            var first_name = getQueryVariable("first_name");
-            var last_name = getQueryVariable("last_name");
-            var email = getQueryVariable("email");
+                            $("#UserName").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#UserName1").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#username").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#email1").text(admin_data.admin.email);
+                        }
 
-            $("#username").text(decodeURIComponent(first_name));
-            $("#username1").text(decodeURIComponent(first_name + " " + last_name));
-            $("#email1").text(decodeURIComponent(email));
-
-            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
-            function getQueryVariable(variable) {
-                var query = window.location.search.substring(1);
-                var vars = query.split("&");
-                for (var i = 0; i < vars.length; i++) {
-                    var pair = vars[i].split("=");
-                    if (pair[0] == variable) {
-                        return pair[1];
                     }
-                }
-                return false;
-            }
+                });
 
-            //Evento Click del link con clase llamada link-dashboard
-            $(".link-dashboard").click(function () {
+                //Cancelar o limpiar el formulario.
+                $("#btnCancelar").click(function () {
+                    $("#formulario")[0].reset();
+                });
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
-                window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
+                var form = $("#formulario");
 
-            //Evento Click del link con clase llamada link-pacientes
-            $(".link-pacientes").click(function () {
+                //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
+                $("#btnAgregar").click(function (e) {
+                    e.preventDefault(); //Detiene la acción predeterminada de un elemento.
+                    //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
+                    var nombre_usuario = $('#first_name').val();
+                    var apellido_usuario = $('#last_name').val();
+                    var email_usuario = $('#email').val();
+                    var pass_usuario = $('#password').val();
+                    var username_usuario = $('#username_text').val();
+                    var seleccionar_usuario = $('#access').val();
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
-                window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
+                    var error_messages = [];
 
-            //Evento Click del link con clase llamada link-doctores
-            $(".link-doctores").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
-                window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes
-            $(".link-solicitudes").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
-                window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes-rechazadas
-            $(".link-solicitudes-rechazadas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
-                window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-citas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
-                window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-hospitales").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Hospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-especialidades").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Especialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-agregar-nuevo-usuario
-            $(".link-agregar-nuevo-usuario").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 481, 482 y 483 respectivamente
-                window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            var form = $("#formulario");
-
-            //El método click() adjunta una función de controlador de eventos a un elemento HTML.
-            //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
-            $("#btnAgregar").click(function (e) {
-                e.preventDefault(); //Detiene la acción predeterminada de un elemento.
-                //Obtener campos de entradas del formulario, Obtener el valor de un elemento .val()
-                var nombre_usuario = $('#first_name').val();
-                var apellido_usuario = $('#last_name').val();
-                var email_usuario = $('#email').val();
-                var pass_usuario = $('#password').val();
-                var username_usuario = $('#username_text').val();
-                var seleccionar_usuario = $('#access').val();
-
-                //Validar que nada este vacio
-                var valido = true;
-                if (nombre_usuario === "" || nombre_usuario.length === 0) {
-                    alert("El nombre esta vacio");
-                    valido = false;
-                }
-
-                if (apellido_usuario == "" || apellido_usuario.length === 0) {
-                    alert("El apellido esta vacio");
-                    valido = false;
-                }
-                if (email_usuario == "" || email_usuario.length === 0) {
-                    alert("El Correo Está Vacío");
-                    valido = false;
-                }
-
-                if (!isValidEmail(email_usuario)) {
-                    alert("Dirección de correo electrónico no válido");
-                }
-
-                //Función es correo electrónico válido
-                function isValidEmail(email_usuario) {
-                    //Verificar la longitud mínima válida de un correo electrónico
-                    if (email_usuario.length <= 2) {
-                        return false;
+                    //Validar que nada este vacio
+                    var valido = true;
+                    if (nombre_usuario === "" || nombre_usuario.length === 0) {
+                        error_messages.push("<span> - El nombre no puede estar vacío. </span><br>");
+                        valido = false;
                     }
 
-                    //Si el correo electrónico tiene carácter @
-                    if (email_usuario.indexOf("@") == -1) {
-                        return false;
+                    if (apellido_usuario == "" || apellido_usuario.length === 0) {
+                        error_messages.push("<span> - El apellido no puede estar vacío. </span><br>");
+                        valido = false;
+                    }
+                    if (email_usuario == "" || email_usuario.length === 0) {
+                        error_messages.push("<span> - El correo electrónico no puede estar vacío. </span><br>");
+                        valido = false;
+                    }else{
+                        if (!isValidEmail(email_usuario)) {
+                            error_messages.push("<span> - El correo electrónico es inválido. </span><br>");
+                            valid = false;
+                        }
                     }
 
-                    var partes = email_usuario.split("@");
-                    var punto = partes[1].indexOf(".");
-                    var longitud = partes[1].length;
-                    var divisiones_puntos = partes[1].split(".");
-                    var recuento_puntos = divisiones_puntos.length - 1;
+                    
 
-                    //Verificar si el punto está presente y ese mínimo un carácter después de @
-                    if (punto == -1 | punto < 2 || recuento_puntos > 2) {
-                        return false;
-                    }
-
-                    //Comprobar si el punto no es el último carácter y si los puntos no se repiten
-                    for (var i = 0; i < divisiones_puntos.length; i++) {
-                        if (divisiones_puntos[i].length == 0) {
+                    //Función es correo electrónico válido
+                    function isValidEmail(email_usuario) {
+                        //Verificar la longitud mínima válida de un correo electrónico
+                        if (email_usuario.length <= 2) {
                             return false;
                         }
-                    }
-                    return true;
-                }
 
-                if (pass_usuario == "" || pass_usuario.length === 0) {
-                    alert("La Contraseña Está Vacía");
-                    valido = false;
-                }
+                        //Si el correo electrónico tiene carácter @
+                        if (email_usuario.indexOf("@") == -1) {
+                            return false;
+                        }
 
-                if (username_usuario == "" || username_usuario.length === 0) {
-                    alert("El Nombre De Usuario Está Vacío");
-                    valido = false;
-                }
+                        var partes = email_usuario.split("@");
+                        var punto = partes[1].indexOf(".");
+                        var longitud = partes[1].length;
+                        var divisiones_puntos = partes[1].split(".");
+                        var recuento_puntos = divisiones_puntos.length - 1;
 
-                //parseInt() es una función de alto nivel que sirve para parsear una cadena e intentar obtener un valor numérico.
-                console.log(parseInt(seleccionar_usuario));
+                        //Verificar si el punto está presente y ese mínimo un carácter después de @
+                        if (punto == -1 | punto < 2 || recuento_puntos > 2) {
+                            return false;
+                        }
 
-                if (parseInt(seleccionar_usuario) != 0 && parseInt(seleccionar_usuario) != 1) {
-                    alert("Seleccione La Opción De Tipo de Usuario");
-                    valido = false;
-                }
-
-                //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
-                if (valido) {
-                    $.ajax({
-                        url: 'http://localhost:5000/admins/addNewAdmin',
-                        dataType: 'json',
-                        type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify({ "first_name": nombre_usuario, "last_name": apellido_usuario, "email": email_usuario, "password": pass_usuario, "username": username_usuario, "access": seleccionar_usuario }),
-                        processData: false,
-                        success: function (data) {
-                            console.log(data);
-                            if (data.auth) {
-                                alert("Agregue nuevo usuario");
-                                form[0].reset();
-                            }
-                        },
-                        error: function (error) {
-                            console.log(error);
-                            if (error.status === 403) {
-                                alert("Ya existe un usuario con ese correo electrónico!");
+                        //Comprobar si el punto no es el último carácter y si los puntos no se repiten
+                        for (var i = 0; i < divisiones_puntos.length; i++) {
+                            if (divisiones_puntos[i].length == 0) {
+                                return false;
                             }
                         }
-                    });
-                } else {
-                    alert("Hay errores en el formulario");
-                }
-            });
+                        return true;
+                    }
+
+                    if (pass_usuario == "" || pass_usuario.length === 0) {
+                        error_messages.push("<span> - La contraseña no puede estar vacía. </span><br>");
+                        valido = false;
+                    }
+
+                    if (username_usuario == "" || username_usuario.length === 0) {
+                        error_messages.push("<span> - El nombre de usuario no puede estar vacío. </span><br>");
+                        valido = false;
+                    }
+
+                    if (parseInt(seleccionar_usuario) != 0 && parseInt(seleccionar_usuario) != 1) {
+                        error_messages.push("<span> - Debe seleccionar una opcíon de tipo de usuario. </span><br>");
+                        valido = false;
+                    }
+
+                    //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
+                    if (valido) {
+                        $.ajax({
+                            url: 'http://localhost:5000/admins/addNewAdmin',
+                            dataType: 'json',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({ "first_name": nombre_usuario, "last_name": apellido_usuario, "email": email_usuario, "password": pass_usuario, "username": username_usuario, "access": seleccionar_usuario }),
+                            processData: false,
+                            success: function (data) {
+                                console.log(data);
+                                if (data.auth) {
+                                    Swal.fire({
+                                        title: "Nuevo Usuario Agregado!",
+                                        icon: 'success',
+                                        confirmButtonText: 'Entendido'
+                                    });
+                                }
+                            },
+                            error: function (error) {
+                                console.log(error);
+                                if (error.status === 403) {
+                                    Swal.fire({
+                                        title: "Ya existe un usuario con ese correo electronico!",
+                                        icon: 'warning',
+                                        confirmButtonText: 'Entendido'
+                                    });
+                                }
+                            }
+                        });
+                    } else {
+                        var errors = "<p>" + error_messages.join('') + "</p>";
+                        Swal.fire({
+                            title: 'Hay errores en el formulario!',
+                            html: errors,
+                            icon: 'error',
+                            confirmButtonText: 'Entendido'
+                        });
+                    }
+                });
+
+                //Evento Click del link con clase llamada link-dashboard
+                $(".link-dashboard").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./dashboard.html"
+                });
+
+                //Evento Click del link con clase llamada link-pacientes
+                $(".link-pacientes").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaPacientes.html"
+                });
+
+                //Evento Click del link con clase llamada link-doctores
+                $(".link-doctores").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaDoctores.html"
+                });
+
+                //Evento Click del link con clase llamada link-solicitudes
+                $(".link-solicitudes").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./SolicitudesDeDoctores.html"
+                });
+
+                //Evento Click del link con clase llamada link-solicitudes-rechazadas
+                $(".link-solicitudes-rechazadas").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./SolicitudesRechazadas.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-citas").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaCitas.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-hospitales").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Hospitales.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-especialidades").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Especialidades.html"
+                });
+
+                //Evento Click del link con clase llamada link-agregar-nuevo-usuario
+                $(".link-agregar-nuevo-usuario").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./AgregarNuevoUsuario.html"
+                });
+
+                //Evento Click del link con clase llamada link-perfil-doctor
+                $(".link-perfil-doctor").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./UserProfileDoctor.html"
+                });
+
+                //Evento Click del link con clase llamada link-perfil-paciente
+                $(".link-perfil-paciente").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./UserProfilePatient.html"
+                });
+            }else{
+                window.location.href = "./AdminLogin.html"
+            }
         });
     </script>
 </body>

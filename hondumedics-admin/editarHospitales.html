@@ -206,7 +206,7 @@
     </div>
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="CerrarSesion.html">
+        <li><a onclick="logoutAdmin();">
                 <span style="color: #464646;">
                     <center>Cerrar Sesión</center>
                 </span>
@@ -265,7 +265,7 @@
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            <a onclick="logoutAdmin();"><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
         </li>
     </ul>
@@ -334,36 +334,20 @@
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
-            
 
-            if (localStorage.getItem("hospital") !== undefined && localStorage.getItem("hospital") !== null) {
-                
-                var hospital_id = JSON.parse(localStorage.getItem("hospital"));
-                hospital_id = hospital_id.hospital_id;
+            if (localStorage.getItem('admin') !== undefined && localStorage.getItem('admin') !== null) {
+                //Get Patient ID From Local Storage
+                var admin_id = JSON.parse(localStorage.getItem("admin")).admin_id;
                 $.ajax({
-                    url: 'http://localhost:5000/hospitals/getHospitalInfoById',
-                    type: 'POST',
+                    url: 'http://localhost:5000/admins/getAdminByid',
                     dataType: 'json',
+                    type: 'POST',
                     contentType: 'application/json',
-                    data: JSON.stringify({ hospital_id: hospital_id }),
-                    success: function (data) {
-                        console.log(data);
-                        if (data.found){
-
-                            var hospital = data.hospital;
-                            $("#hospital_name").val(hospital.hospital_name);
-                            $("#city").val(hospital.city);
-                            $("#department").val(hospital.department);
-                            $("#directions").val(hospital.directions);
-                            $("#country").val(hospital.country);
-
-                            $("#hospital_name").focus();
-                            $("#city").focus();
-                            $("#department").focus();
-                            $("#directions").focus();
-                            $("#country").focus();
-
-
+                    data: JSON.stringify({ "admin_id": admin_id }),
+                    processData: false,
+                    success: function (admin_data) {
+                        if (admin_data.found) {
+                            console.log(admin_data);
                             //Inicialización de las propiedades de Materialize css.
                             M.AutoInit();
                             $('.sidenav').sidenav();
@@ -374,155 +358,206 @@
                                 belowOrigin: true
                             });
                             $('.modal').modal();
-                        }
-                        
-                    }
-                });
 
-                //Declaraciones de variables
-                $(".btnGuardar").click(function (e) {
-                    e.preventDefault();
-                    var nombre_hospital = $("#hospital_name").val();
-                    var ciudad = $("#city").val();
-                    var departamento = $("#department").val();
-                    var direccion = $("#directions").val();
-                    var pais = $("#country").val();
+                            $("#username1").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#usernameAdmin").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#username").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#email1").text(admin_data.admin.email);
+            
 
-                    var valido = true;
-                    //Validar Hospitales
-                    if (nombre_hospital == "" || nombre_hospital.length === 0) {
-                        alert("El Nombre Del Hospital Está Vacío");
-                        valido = false;
-                    }
+                            if (localStorage.getItem("hospital") !== undefined && localStorage.getItem("hospital") !== null) {
+                
+                                var hospital_id = JSON.parse(localStorage.getItem("hospital"));
+                                hospital_id = hospital_id.hospital_id;
+                                $.ajax({
+                                    url: 'http://localhost:5000/hospitals/getHospitalInfoById',
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    data: JSON.stringify({ hospital_id: hospital_id }),
+                                    success: function (data) {
+                                        console.log(data);
+                                        if (data.found){
 
-                    if (ciudad == "" || ciudad.length === 0) {
-                        alert("La Ciudad Está Vacío");
-                        valido = false;
-                    }
+                                            var hospital = data.hospital;
+                                            $("#hospital_name").val(hospital.hospital_name);
+                                            $("#city").val(hospital.city);
+                                            $("#department").val(hospital.department);
+                                            $("#directions").val(hospital.directions);
+                                            $("#country").val(hospital.country);
 
-                    if (departamento == "" || departamento.length === 0) {
-                        alert("El Departamento Está Vacía");
-                        valido = false;
-                    }
-
-                    if (direccion == "" || direccion.length === 0) {
-                        alert("La Dirección Está Vacía");
-                        valido = false;
-                    }
-
-                    if (pais == "" || pais.length === 0) {
-                        alert("El País Está Vacío");
-                        valido = false;
-                    }
+                                            $("#hospital_name").focus();
+                                            $("#city").focus();
+                                            $("#department").focus();
+                                            $("#directions").focus();
+                                            $("#country").focus();
 
 
-                    if (valido) {
-                        $.ajax({
-                            url: 'http://localhost:5000/hospitals/updateHospitalInformation',
-                            type: 'POST',
-                            dataType: 'json',
-                            contentType: 'application/json',
-                            data: JSON.stringify(
-                                { 
-                                    "hospital_id": hospital_id,
-                                    "hospital_name": nombre_hospital, 
-                                    "city": ciudad, 
-                                    "department": departamento, 
-                                    "directions": direccion, 
-                                    "country": pais
-                                }
-                            ),
-                            success: function (data) {
-                                console.log(data);
-                                if (data.updated){
-                                    Swal.fire(
-                                        'Datos Actualizados!',
-                                        'Los datos del hospital han sido actualizados',
-                                        'success'
-                                    )
-                                }
-                                
+                                            //Inicialización de las propiedades de Materialize css.
+                                            M.AutoInit();
+                                            $('.sidenav').sidenav();
+                                            $('.sidenav-1').sidenav({ edge: 'left' });
+                                            $('.sidenav-trigger').sidenav();
+                                            $('.dropdown-trigger').dropdown({
+                                                coverTrigger: false,
+                                                belowOrigin: true
+                                            });
+                                            $('.modal').modal();
+                                        }
+                                        
+                                    }
+                                });
+
+                                //Declaraciones de variables
+                                $(".btnGuardar").click(function (e) {
+                                    e.preventDefault();
+                                    var nombre_hospital = $("#hospital_name").val();
+                                    var ciudad = $("#city").val();
+                                    var departamento = $("#department").val();
+                                    var direccion = $("#directions").val();
+                                    var pais = $("#country").val();
+
+                                    var valido = true;
+                                    //Validar Hospitales
+                                    if (nombre_hospital == "" || nombre_hospital.length === 0) {
+                                        alert("El Nombre Del Hospital Está Vacío");
+                                        valido = false;
+                                    }
+
+                                    if (ciudad == "" || ciudad.length === 0) {
+                                        alert("La Ciudad Está Vacío");
+                                        valido = false;
+                                    }
+
+                                    if (departamento == "" || departamento.length === 0) {
+                                        alert("El Departamento Está Vacía");
+                                        valido = false;
+                                    }
+
+                                    if (direccion == "" || direccion.length === 0) {
+                                        alert("La Dirección Está Vacía");
+                                        valido = false;
+                                    }
+
+                                    if (pais == "" || pais.length === 0) {
+                                        alert("El País Está Vacío");
+                                        valido = false;
+                                    }
+
+
+                                    if (valido) {
+                                        $.ajax({
+                                            url: 'http://localhost:5000/hospitals/updateHospitalInformation',
+                                            type: 'POST',
+                                            dataType: 'json',
+                                            contentType: 'application/json',
+                                            data: JSON.stringify(
+                                                { 
+                                                    "hospital_id": hospital_id,
+                                                    "hospital_name": nombre_hospital, 
+                                                    "city": ciudad, 
+                                                    "department": departamento, 
+                                                    "directions": direccion, 
+                                                    "country": pais
+                                                }
+                                            ),
+                                            success: function (data) {
+                                                console.log(data);
+                                                if (data.updated){
+                                                    Swal.fire(
+                                                        'Datos Actualizados!',
+                                                        'Los datos del hospital han sido actualizados',
+                                                        'success'
+                                                    )
+                                                }
+                                                
+                                            }
+                                        });
+                                    }
+                                });
+
+
+                                //Evento Click del link con clase llamada link-dashboard
+                                $(".link-dashboard").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./dashboard.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-pacientes
+                                $(".link-pacientes").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./ListaPacientes.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-doctores
+                                $(".link-doctores").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./ListaDoctores.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-solicitudes
+                                $(".link-solicitudes").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./SolicitudesDeDoctores.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-solicitudes-rechazadas
+                                $(".link-solicitudes-rechazadas").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./SolicitudesRechazadas.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-citas
+                                $(".link-citas").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./ListaCitas.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-citas
+                                $(".link-hospitales").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                                    window.location.href = "./Hospitales.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-citas
+                                $(".link-especialidades").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                                    window.location.href = "./Especialidades.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-agregar-nuevo-usuario
+                                $(".link-agregar-nuevo-usuario").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                                    window.location.href = "./AgregarNuevoUsuario.html";
+                                });
+
+                                //Evento Click del link con clase llamada link-perfil-doctor
+                                $(".link-perfil-doctor").click(function () {
+
+                                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                                    window.location.href = "./UserProfileDoctor.html";
+                                });
+
+                                $('.btnCancelar').click(function () {
+                                    window.location.href = "./Hospitales.html"
+                                });
+                            } else {
+                                window.location.href = "./Hospitales.html"
                             }
-                        });
+                        }
                     }
                 });
-
-
-                //Evento Click del link con clase llamada link-dashboard
-                $(".link-dashboard").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                    window.location.href = "./dashboard.html";
-                });
-
-                //Evento Click del link con clase llamada link-pacientes
-                $(".link-pacientes").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                    window.location.href = "./ListaPacientes.html";
-                });
-
-                //Evento Click del link con clase llamada link-doctores
-                $(".link-doctores").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                    window.location.href = "./ListaDoctores.html";
-                });
-
-                //Evento Click del link con clase llamada link-solicitudes
-                $(".link-solicitudes").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                    window.location.href = "./SolicitudesDeDoctores.html";
-                });
-
-                //Evento Click del link con clase llamada link-solicitudes-rechazadas
-                $(".link-solicitudes-rechazadas").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                    window.location.href = "./SolicitudesRechazadas.html";
-                });
-
-                //Evento Click del link con clase llamada link-citas
-                $(".link-citas").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                    window.location.href = "./ListaCitas.html";
-                });
-
-                //Evento Click del link con clase llamada link-citas
-                $(".link-hospitales").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./Hospitales.html";
-                });
-
-                //Evento Click del link con clase llamada link-citas
-                $(".link-especialidades").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./Especialidades.html";
-                });
-
-                //Evento Click del link con clase llamada link-agregar-nuevo-usuario
-                $(".link-agregar-nuevo-usuario").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                    window.location.href = "./AgregarNuevoUsuario.html";
-                });
-
-                //Evento Click del link con clase llamada link-perfil-doctor
-                $(".link-perfil-doctor").click(function () {
-
-                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                    window.location.href = "./UserProfileDoctor.html";
-                });
-
-                $('.btnCancelar').click(function () {
-                    window.location.href = "./Hospitales.html"
-                });
-            } else {
-                window.location.href = "./Hospitales.html"
+            }else{
+                window.location.href = "./LoginAdmin.html"
             }
         });
     </script>

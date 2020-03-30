@@ -206,7 +206,7 @@
     </div>
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
-        <li><a href="CerrarSesion.html">
+        <li><a onclick="logoutAdmin();">
                 <span style="color: #464646;">
                     <center>Cerrar Sesión</center>
                 </span>
@@ -265,7 +265,7 @@
             </a>
         </li>
         <li>
-            <a href=""><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
+            <a onclick="logoutAdmin();"><i class="material-icons black-text">exit_to_app</i>Cerrar Sesión
             </a>
         </li>
     </ul>
@@ -348,217 +348,276 @@
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
-            //Inicialización de las propiedades de Materialize css.
-            M.AutoInit();
-            $('.sidenav').sidenav();
-            $('.sidenav-1').sidenav({ edge: 'left' });
-            $('.sidenav-trigger').sidenav();
-            $('.dropdown-trigger').dropdown({
-                coverTrigger: false,
-                belowOrigin: true
-            });
-            $('.modal').modal();
 
+            if (localStorage.getItem('admin') !== undefined && localStorage.getItem('admin') !== null) {
+                //Get Patient ID From Local Storage
+                var admin_id = JSON.parse(localStorage.getItem("admin")).admin_id;
+                $.ajax({
+                    url: 'http://localhost:5000/admins/getAdminByid',
+                    dataType: 'json',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ "admin_id": admin_id }),
+                    processData: false,
+                    success: function (admin_data) {
+                        if (admin_data.found) {
+                            console.log(admin_data);
+                            //Inicialización de las propiedades de Materialize css.
+                            M.AutoInit();
+                            $('.sidenav').sidenav();
+                            $('.sidenav-1').sidenav({ edge: 'left' });
+                            $('.sidenav-trigger').sidenav();
+                            $('.dropdown-trigger').dropdown({
+                                coverTrigger: false,
+                                belowOrigin: true
+                            });
+                            $('.modal').modal();
 
-            //Evento Click del link con clase llamada link-dashboard
-            $(".link-dashboard").click(function () {
+                            $("#username1").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#usernameAdmin").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#username").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#email1").text(admin_data.admin.email);
 
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-pacientes
-            $(".link-pacientes").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-doctores
-            $(".link-doctores").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes
-            $(".link-solicitudes").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes-rechazadas
-            $(".link-solicitudes-rechazadas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-citas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-hospitales").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Hospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-especialidades").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Especialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-agregar-nuevo-usuario
-            $(".link-agregar-nuevo-usuario").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-perfil-doctor
-            $(".link-perfil-doctor").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./UserProfileDoctor.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-editar-especialidades").click(function () {
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./editarEspecialidades.html";
-            });
-
-            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
-            $.ajax({
-                url: 'http://localhost:5000/specializations',
-                type: 'GET',
-                dataType: 'json', //added data
-                success: function (data) {
-                    console.log(data);
-                    var datos = data;
-                    for (var i = 0; i <= datos.length; i++) {
-                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
-                            $('.tooltiped').tooltip();
-                            //Se eliminó el atributo ID y el id se agregó como una clase
-                            //Se le agregó el atributo data-adminid a cada uno de los 3 botones
-                            $("#tablaEspecialidades").append('<tr class="especialidad-'+datos[i].specialization_id+'">' + '<td>' + datos[i].specialization_name + '</td>' +
-                                '<td><a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-specializationid=' + datos[i].specialization_id+'><i class="material-icons" data-specializationid=' + datos[i].specialization_id+'>edit</i></a><a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped center" data-position="bottom" data-tooltip="Eliminar" data-specializationid=' + datos[i].specialization_id+'><i class="material-icons" data-specializationid=' + datos[i].specialization_id+'>delete_forever</i></a></td>' + '</tr>');
-
-                        }
-
-
-                    }
-                    //El método click() adjunta una función de controlador de eventos a un elemento HTML.
-                    //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
-                    //Función Click del boton Editar
-                    $(".btnEditar").click(function (el) {
-                        var specialization_id = el.target.dataset.specializationid;
-                        if(localStorage.getItem("specialization") !== null){
-                            localStorage.removeItem("specialization");
-                        }
-                        localStorage.setItem("specialization", JSON.stringify({
-                            specialization_id: specialization_id,
-                        }));
-                        window.location.href = "./editarEspecialidades.html";
-                    });
-
-                    //Función Click del boton Eliminar
-                    $(".btnEliminar").click(function (el) {
-                        //Declarar variable eliminar
-                        var specialization_id = el.target.dataset.specializationid;
-                        Swal.fire({
-                            title: 'Esta seguro que desea eliminar esta Especialidad?',
-                            text: "Una vez eliminada, no se podra recuperar!",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Si, borrarla!',
-                            reverseButtons: true
-                        }).then((result) => {
-                            if (result.value) {
-                                $.ajax({
-                                    url: 'http://localhost:5000/specializations/deleteSpecializationById',
-                                    type: 'POST',
-                                    dataType: "json",
-                                    contentType: "application/json",
-                                    data: JSON.stringify({ "specialization_id": specialization_id }),
-                                    success: function (response) {
-                                        if (response.deleted) {
-                                            $(`.especialidad-${specialization_id}`).remove();
-                                            Swal.fire(
-                                                'Eliminada!',
-                                                'La Especialidad ha sido eliminado',
-                                                'success'
-                                            )
+                            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
+                            $.ajax({
+                                url: 'http://localhost:5000/specializations',
+                                type: 'GET',
+                                dataType: 'json', //added data
+                                success: function (data) {
+                                    console.log(data);
+                                    var datos = data;
+                                    for (var i = 0; i <= datos.length; i++) {
+                                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
+                                            $('.tooltiped').tooltip();
+                                            //Se eliminó el atributo ID y el id se agregó como una clase
+                                            //Se le agregó el atributo data-adminid a cada uno de los 3 botones
+                                            $("#tablaEspecialidades").append('<tr class="especialidad-'+datos[i].specialization_id+'">' + '<td>' + datos[i].specialization_name + '</td>' +
+                                                '<td><a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-specializationid=' + datos[i].specialization_id+'><i class="material-icons" data-specializationid=' + datos[i].specialization_id+'>edit</i></a><a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped center" data-position="bottom" data-tooltip="Eliminar" data-specializationid=' + datos[i].specialization_id+'><i class="material-icons" data-specializationid=' + datos[i].specialization_id+'>delete_forever</i></a></td>' + '</tr>');
                                         }
                                     }
-                                });
-                            }
-                        });
-                    });
-                }
-            });
+                                    //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                                    //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
+                                    //Función Click del boton Editar
+                                    $(".btnEditar").click(function (el) {
+                                        var specialization_id = el.target.dataset.specializationid;
+                                        if(localStorage.getItem("specialization") !== null){
+                                            localStorage.removeItem("specialization");
+                                        }
+                                        localStorage.setItem("specialization", JSON.stringify({
+                                            specialization_id: specialization_id,
+                                        }));
+                                        window.location.href = "./editarEspecialidades.html";
+                                    });
 
-            //Declaraciones de variables
-            $(".btnAgregar").click(function (el) {
-                e.preventDefault();
-                var nombre_especialidad = $("#specialization_name").val();
+                                    //Función Click del boton Eliminar
+                                    $(".btnEliminar").click(function (el) {
+                                        //Declarar variable eliminar
+                                        var specialization_id = el.target.dataset.specializationid;
+                                        Swal.fire({
+                                            title: 'Esta seguro que desea eliminar esta Especialidad?',
+                                            text: "Una vez eliminada, no se podra recuperar!",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#d33',
+                                            confirmButtonText: 'Si, borrarla!',
+                                            reverseButtons: true
+                                        }).then((result) => {
+                                            if (result.value) {
+                                                $.ajax({
+                                                    url: 'http://localhost:5000/specializations/deleteSpecializationById',
+                                                    type: 'POST',
+                                                    dataType: "json",
+                                                    contentType: "application/json",
+                                                    data: JSON.stringify({ "specialization_id": specialization_id }),
+                                                    success: function (response) {
+                                                        if (response.deleted) {
+                                                            $(`.especialidad-${specialization_id}`).remove();
+                                                            Swal.fire(
+                                                                'Eliminada!',
+                                                                'La Especialidad ha sido eliminado',
+                                                                'success'
+                                                            )
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    });
+                                }
+                            });
 
+                            //Declaraciones de variables
+                            $(".btnAgregar").click(function (el) {
+                                el.preventDefault();
+                                var nombre_especialidad = $("#specialization_name").val();
+                                var valido = true;
+                                //Validar Especialidades
+                                if (nombre_especialidad == "" || nombre_especialidad.length === 0) {
+                                    alert("El Nombre De La Especialidad Está Vacía");
+                                    valido = false;
+                                }
 
-                var valido = true;
-                //Validar Especialidades
-                if (nombre_especialidad == "" || nombre_especialidad.length === 0) {
-                    alert("El Nombre De La Especialidad Está Vacía");
-                    valido = false;
-                }
+                                if (valido) {
+                                    $.ajax({
+                                        url: 'http://localhost:5000/specializations/newSpecialization',
+                                        dataType: 'json',
+                                        type: 'POST',
+                                        contentType: 'application/json',
+                                        data: JSON.stringify({ "specialization_name": nombre_especialidad }),
+                                        processData: false,
+                                        success: function (data) {
+                                            console.log(data);
+                                            if (data.added) {
+                                                Swal.fire(
+                                                    'Excelente!',
+                                                    'La Especialidad ha sido agregado',
+                                                    'success'
+                                                );
 
-                if (valido) {
-                    $.ajax({
-                        url: 'http://localhost:5000/specializations/newSpecialization',
-                        dataType: 'json',
-                        type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify({ "specialization_name": nombre_especialidad }),
-                        processData: false,
-                        success: function (data) {
-                            console.log(data);
-                            if (data.added) {
-                                Swal.fire(
-                                    'Excelente!',
-                                    'La Especialidad ha sido agregado',
-                                    'success'
-                                );
+                                                var html = `'<tr class="especialidad-${data.specialization.specialization_id}">
+                                                            <td>${data.specialization.specialization_name}</td>
+                                                            <td>
+                                                                <a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-specializationid=${data.specialization.specialization_id}><i class="material-icons" data-specializationid=${data.specialization.specialization_id}>edit</i>
+                                                                </a>
+                                                                <a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped center" data-position="bottom" data-tooltip="Eliminar" ata-specializationid=${data.specialization.specialization_id}><i class="material-icons" data-specializationid=${data.specialization.specialization_id}>delete_forever</i></a>
+                                                            </td>
+                                                        </tr>`;
+                                                $("#tablaEspecialidades").append(html);
+                                                $("#specialization_name").val("");
 
-                                var html = `'<tr class="especialidad-${data.specialization.specialization_id}">
-                                            <td>${data.specialization.specialization_name}</td>
-                                            <td>
-                                                <a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-specializationid=${data.specialization.specialization_id}><i class="material-icons" ata-specializationid=${data.specialization.specialization_id}>edit</i>
-                                                </a>
-                                                <a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped center" data-position="bottom" data-tooltip="Eliminar" ata-specializationid=${data.specialization.specialization_id}><i class="material-icons" ata-specializationid=${data.specialization.specialization_id}>delete_forever</i></a>
-                                            </td>
-                                        </tr>`;
-                                $("#tablaEspecialidades").append(html);
-                                $("#specialization_name").val("");
-                            }
-                        },
-                        error: function (error) {
-                            console.log(error);
-                            if (error.status === 403) {
-                                alert("Ya existe un hospital");
-                            }
+                                                $(".btnEditar").click(function (el) {
+                                                    var specialization_id = el.target.dataset.specializationid;
+                                                    if(localStorage.getItem("specialization") !== null){
+                                                        localStorage.removeItem("specialization");
+                                                    }
+                                                    localStorage.setItem("specialization", JSON.stringify({
+                                                        specialization_id: specialization_id,
+                                                    }));
+                                                    window.location.href = "./editarEspecialidades.html";
+                                                });
+
+                                                //Función Click del boton Eliminar
+                                                $(".btnEliminar").click(function (el) {
+                                                    //Declarar variable eliminar
+                                                    var specialization_id = el.target.dataset.specializationid;
+                                                    Swal.fire({
+                                                        title: 'Esta seguro que desea eliminar esta Especialidad?',
+                                                        text: "Una vez eliminada, no se podra recuperar!",
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#3085d6',
+                                                        cancelButtonColor: '#d33',
+                                                        confirmButtonText: 'Si, borrarla!',
+                                                        reverseButtons: true
+                                                    }).then((result) => {
+                                                        if (result.value) {
+                                                            $.ajax({
+                                                                url: 'http://localhost:5000/specializations/deleteSpecializationById',
+                                                                type: 'POST',
+                                                                dataType: "json",
+                                                                contentType: "application/json",
+                                                                data: JSON.stringify({ "specialization_id": specialization_id }),
+                                                                success: function (response) {
+                                                                    if (response.deleted) {
+                                                                        $(`.especialidad-${specialization_id}`).remove();
+                                                                        Swal.fire(
+                                                                            'Eliminada!',
+                                                                            'La Especialidad ha sido eliminado',
+                                                                            'success'
+                                                                        )
+                                                                    }
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                                });
+                                            }
+                                        },
+                                        error: function (error) {
+                                            console.log(error);
+                                            if (error.status === 403) {
+                                                alert("Ya existe un hospital");
+                                            }
+                                        }
+                                    });
+                                }
+                            });
                         }
-                    });
-                }
-            });
+                    }
+                });
+
+
+                //Evento Click del link con clase llamada link-dashboard
+                $(".link-dashboard").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./dashboard.html"
+                });
+
+                //Evento Click del link con clase llamada link-pacientes
+                $(".link-pacientes").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaPacientes.html"
+                });
+
+                //Evento Click del link con clase llamada link-doctores
+                $(".link-doctores").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaDoctores.html"
+                });
+
+                //Evento Click del link con clase llamada link-solicitudes
+                $(".link-solicitudes").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./SolicitudesDeDoctores.html"
+                });
+
+                //Evento Click del link con clase llamada link-solicitudes-rechazadas
+                $(".link-solicitudes-rechazadas").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./SolicitudesRechazadas.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-citas").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./ListaCitas.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-hospitales").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Hospitales.html"
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-especialidades").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Especialidades.html"
+                });
+
+                //Evento Click del link con clase llamada link-agregar-nuevo-usuario
+                $(".link-agregar-nuevo-usuario").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./AgregarNuevoUsuario.html"
+                });
+
+                //Evento Click del link con clase llamada link-perfil-doctor
+                $(".link-perfil-doctor").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./UserProfileDoctor.html"
+                });
+
+                //Evento Click del link con clase llamada link-perfil-paciente
+                $(".link-perfil-paciente").click(function () {
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./UserProfilePatient.html"
+                });
+
+            }else{
+                window.location.href = "./LoginAdmin.html";
+            }   
+            
         });
     </script>
 </body>
