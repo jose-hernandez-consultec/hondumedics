@@ -14,9 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--DataTable-->
-    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <!-- Estilos CSS -->
 
@@ -333,10 +332,10 @@
                                         </div>
                                         <div class="modal-footer">
                                             <center>
-                                                <a href=""
-                                                    class="btnAgregar modal-action modal-close waves-effect waves-red btn white-text center"
+                                                <a
+                                                    class="btnAgregar waves-effect waves-red btn white-text center"
                                                     style="background-color: #2196f3; font-weight: bold;">Agregar</a>
-                                                <a href=""
+                                                <a
                                                     class=" btnCancelar modal-action modal-close waves-effect waves-red btn white-text center"
                                                     style="background-color: red; font-weight: bold;">Cancelar</a>
                                             </center>
@@ -346,7 +345,7 @@
 
                                 <div class="card">
                                     <div class="card-content">
-                                        <table id="example" class="display highlight" cellspacing="0" width="100%">
+                                        <table id="tablaHospitales" class="display highlight" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
                                                     <th>NOMBRE</th>
@@ -371,309 +370,277 @@
     <script>
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
-            //Inicialización de las propiedades de Materialize css.
-            M.AutoInit();
-            $('.sidenav').sidenav();
-            $('.sidenav-1').sidenav({ edge: 'left' });
-            $('.sidenav-trigger').sidenav();
-            $('.dropdown-trigger').dropdown({
-                coverTrigger: false,
-                belowOrigin: true
-            });
-            $('.modal').modal();
+                //Inicialización de las propiedades de Materialize css.
+                M.AutoInit();
+                $('.sidenav').sidenav();
+                $('.sidenav-1').sidenav({ edge: 'left' });
+                $('.sidenav-trigger').sidenav();
+                $('.dropdown-trigger').dropdown({
+                    coverTrigger: false,
+                    belowOrigin: true
+                });
+                $('.modal').modal();
 
-            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-            var first_name = getQueryVariable("first_name");
-            var last_name = getQueryVariable("last_name");
-            var email = getQueryVariable("email");
+                //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
+                var first_name = getQueryVariable("first_name");
+                var last_name = getQueryVariable("last_name");
+                var email = getQueryVariable("email");
 
-            $("#username").text(decodeURIComponent(first_name));
-            $("#username1").text(decodeURIComponent(first_name + " " + last_name));
-            $("#email1").text(decodeURIComponent(email));
+                $("#username").text(decodeURIComponent(first_name));
+                $("#username1").text(decodeURIComponent(first_name + " " + last_name));
+                $("#email1").text(decodeURIComponent(email));
 
-            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
-            function getQueryVariable(variable) {
-                var query = window.location.search.substring(1);
-                var vars = query.split("&");
-                for (var i = 0; i < vars.length; i++) {
-                    var pair = vars[i].split("=");
-                    if (pair[0] == variable) {
-                        return pair[1];
-                    }
-                }
-                return false;
-            }
-
-            //Evento Click del link con clase llamada link-dashboard
-            $(".link-dashboard").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-pacientes
-            $(".link-pacientes").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-doctores
-            $(".link-doctores").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes
-            $(".link-solicitudes").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-solicitudes-rechazadas
-            $(".link-solicitudes-rechazadas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-citas").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-hospitales").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Hospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-especialidades").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Especialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-agregar-nuevo-usuario
-            $(".link-agregar-nuevo-usuario").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-perfil-doctor
-            $(".link-perfil-doctor").click(function () {
-
-                //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./UserProfileDoctor.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
-            });
-
-            //Evento Click del link con clase llamada link-citas
-            $(".link-editar-hospitales").click(function () {
-                //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
-                window.location.href = "./editarHospitales.html";
-            });
-
-            $.ajax({
-                url: 'http://localhost:5000/hospitals',
-                type: 'GET',
-                dataType: 'json', //added data
-                success: function (data) {
-                    console.log(data);
-                    var datos = data;
-                    var tabla;
-                    tabla = $("#example").DataTable();
-                    for (var i = 0; i <= datos.length; i++) {
-                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
-
-                            tabla.row.add([/*datos[i].patient_id,*/ datos[i].hospital_name, datos[i].city, datos[i].department, datos[i].direction, datos[i].country]);
+                //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
+                function getQueryVariable(variable) {
+                    var query = window.location.search.substring(1);
+                    var vars = query.split("&");
+                    for (var i = 0; i < vars.length; i++) {
+                        var pair = vars[i].split("=");
+                        if (pair[0] == variable) {
+                            return pair[1];
                         }
-                        tabla.draw();
-
                     }
+                    return false;
                 }
-            });
 
-            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
-            $.ajax({
-                url: '',
-                type: 'GET',
-                dataType: 'json', //added data
-                success: function (data) {
-                    console.log(data);
-                    var datos = data;
-                    var tabla;
-                    tabla = $("#example").DataTable();
-                    for (var i = 0; i <= datos.length; i++) {
-                        if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
-                            $('.tooltiped').tooltip();
-                            //Se eliminó el atributo ID y el id se agregó como una clase
-                            //Se le agregó el atributo data-adminid a cada uno de los 3 botones
-                            $("#example").append('<tr>' + '<td>' + datos[i].hospital_name + '</td>' +
-                                '<td>' + datos[i].city + '</td>' +
-                                '<td>' + datos[i].department + '</td>' +
-                                '<td>' + datos[i].directions + '</td>' +
-                                '<td>' + datos[i].country + '</td>' +
-                                '<td><a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-hospitalid=' + datos[i].hospital_id + ' data-hospitalname=' + datos[i].hospital_name + ' data-city=' + datos[i].city + ' data-department=' + datos[i].department + ' data-directions=' + datos[i].directions + ' data-country=' + datos[i].country + '><i class="material-icons">edit</i></a><a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped center" data-position="bottom" data-tooltip="Eliminar" data-hospitalid=' + datos[i].hospital_id + '><i class="material-icons">delete_forever</i></a></td>' + '</tr>');
+                //Evento Click del link con clase llamada link-dashboard
+                $(".link-dashboard").click(function () {
 
+                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                    window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-pacientes
+                $(".link-pacientes").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                    window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-doctores
+                $(".link-doctores").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                    window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-solicitudes
+                $(".link-solicitudes").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                    window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-solicitudes-rechazadas
+                $(".link-solicitudes-rechazadas").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                    window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-citas").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                    window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-hospitales").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Hospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-especialidades").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./Especialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-agregar-nuevo-usuario
+                $(".link-agregar-nuevo-usuario").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
+                    window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-perfil-doctor
+                $(".link-perfil-doctor").click(function () {
+
+                    //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
+                    window.location.href = "./UserProfileDoctor.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                });
+
+                //Evento Click del link con clase llamada link-citas
+                $(".link-editar-hospitales").click(function () {
+                    //las variables first_name y last_name estan declaradas en las lineas 667 y 668 respectivamente
+                    window.location.href = "./editarHospitales.html";
+                });
+
+
+                //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
+                $.ajax({
+                    url: 'http://localhost:5000/hospitals',
+                    type: 'GET',
+                    dataType: 'json', //added data
+                    success: function (data) {
+                        console.log(data);
+                        var datos = data;
+                        for (var i = 0; i <= datos.length; i++) {
+                            if (datos[i] != undefined) { //Validar de que el ID no venga nulo o indefinido
+                                $('.tooltiped').tooltip();
+                                //Se eliminó el atributo ID y el id se agregó como una clase
+                                //Se le agregó el atributo data-adminid a cada uno de los 3 botones
+                                var html = `'<tr class="hospital-${datos[i].hospital_id}">
+                                            <td>${datos[i].hospital_name}</td>
+                                            <td>${datos[i].city}</td>
+                                            <td>${datos[i].department}</td>
+                                            <td>${datos[i].directions}</td>
+                                            <td>${datos[i].country}</td>
+                                            <td>
+                                                <a style="position:relative; z-index:0;" class="btnEditar btn-floating btn-small waves-effect waves-light green btn tooltipped center" data-position="bottom" data-tooltip="Editar" data-hospitalid=${datos[i].hospital_id}><i class="material-icons" data-hospitalid=${datos[i].hospital_id}>edit</i>
+                                                </a>
+                                                <a style="position:relative; z-index:0;" class="btnEliminar btn-floating btn-small waves-effect waves-light red btn tooltipped center" data-position="bottom" data-tooltip="Eliminar" data-hospitalid=${datos[i].hospital_id}><i class="material-icons" data-hospitalid=${datos[i].hospital_id}>delete_forever</i></a>
+                                            </td>
+                                        </tr>`;
+                                $("#tablaHospitales").append(html)
+                            }
                         }
+                        //El método click() adjunta una función de controlador de eventos a un elemento HTML.
+                        //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
+                        //Función Click del boton Editar
+                        $(".btnEditar").click(function (el) {
+                            var hospital_id = el.target.dataset.hospitalid;
+                            console.log(hospital_id);
 
+                            if(localStorage.getItem("hospital") !== null){
+                                localStorage.removeItem("hospital");
+                            }
+                            localStorage.setItem("hospital", JSON.stringify({
+                                hospital_id: hospital_id,
+                            }));
 
-                    }
-                    //El método click() adjunta una función de controlador de eventos a un elemento HTML.
-                    //La función se ejecuta cuando el usuario hace clic en el elemento HTML.
-                    //Función Click del boton Editar
-                    $(".btnEditar").click(function () {
-                        var hospital_id = parseInt($(this).attr("data-hospitalid"));
-                        var hospital_name = String($(this).attr("data-hospitalname"));
-                        var city = String($(this).attr("data-city"));
-                        var department = String($(this).attr("data-department"));
-                        var directions = String($(this).attr("data-directions"));
-                        var country = String($(this).attr("data-country"));
-                        console.log(hospital_id);
-                        console.log("Editar");
+                            //Redireccionando a editarAdministrador.html y enviando dos parámetros hacia esa página: first_name y last_name
+                            //window.location.href = "./editarAdministrador.html?first_name=" + admin_first_name + "&last_name=" + admin_last_name;
+                            window.location.href = "./editarHospitales.html"
+                        });
 
-                        //Redireccionando a editarAdministrador.html y enviando dos parámetros hacia esa página: first_name y last_name
-                        //window.location.href = "./editarAdministrador.html?first_name=" + admin_first_name + "&last_name=" + admin_last_name;
-                        window.location.href = "./editarHospitales.html?hospital_id=" + hospital_id + "&hospital_name=" + hospital_name + "&city=" + city + "&department=" + department + "&directions=" + directions + "&country=" + country;
-                    });
+                        //Función Click del boton Eliminar
+                        $(".btnEliminar").click(function (el) {
+                            //Declarar variable eliminar
+                            var hospital_id = el.target.dataset.hospitalid;
+                            console.log(hospital_id);
 
-                    //Función Click del boton Eliminar
-                    $(".btnEliminar").click(function () {
-                        //Declarar variable eliminar
-                        var eliminar = this;
-
-                        //Eliminar ID con atributo data
-                        var hospital_id = $(this).data("doctorid");
-                        console.log(hospital_id);
-                        console.log("Eliminar");
-
-                        if (confirm("¿Estás seguro de que deseas eliminar esta fila?")) {
-
-                            //Método Ajax, permite al navegador enviar y recibir datos en  el fondo (background).
-                            $.ajax({
-                                url: '',
-                                type: 'POST',
-                                dataType: "json",
-                                contentType: "application/json",
-                                data: JSON.stringify({ "hospital_id": hospital_id }),
-                                success: function () {
-                                    //Eliminando la fila de la tabla HTML
-                                    $(eliminar).closest('tr').fadeOut(1000, function () {
-                                        $(this).remove();
+                            Swal.fire({
+                                title: 'Esta seguro que desea eliminar este Hospital?',
+                                text: "Una vez eliminado, no se podra recuperar!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Si, borrarlo!',
+                                reverseButtons: true
+                            }).then((result) => {
+                                if (result.value) {
+                                    $.ajax({
+                                        url: 'http://localhost:5000/hospitals/deleteHospitalById',
+                                        type: 'POST',
+                                        dataType: "json",
+                                        contentType: "application/json",
+                                        data: JSON.stringify({ "hospital_id": hospital_id }),
+                                        success: function (response) {
+                                            if (response.deleted) {
+                                                $(`.hospital-${hospital_id}`).remove();
+                                                Swal.fire(
+                                                    'Eliminado!',
+                                                    'El Hospital ha sido eliminado',
+                                                    'success'
+                                                )
+                                            }
+                                        }
                                     });
                                 }
                             });
-                        }
-                    });
-                }
-            });
 
-            //Declaraciones de variables
-            $("#btnAgregar").click(function (e) {
-                e.preventDefault();
-                var nombre_hospital = $("#nombre_hospital").val();
-                var ciudad = $("#ciudad").val();
-                var departamento = $("#departamento").val();
-                var direccion = $("#direccion").val();
-                var pais = $("#pais").val();
-
-                var valido = true;
-                //Validar Hospitales
-                if (nombre_hospital == "" || nombre_hospital.length === 0) {
-                    alert("El Nombre Del Hospital Está Vacío");
-                    valido = false;
-                }
-
-                if (ciudad == "" || ciudad.length === 0) {
-                    alert("La Ciudad Está Vacío");
-                    valido = false;
-                }
-
-                if (departamento == "" || departamento.length === 0) {
-                    alert("El Departamento Está Vacía");
-                    valido = false;
-                }
-
-                if (direccion == "" || direccion.length === 0) {
-                    alert("La Dirección Está Vacía");
-                    valido = false;
-                }
-
-                if (pais == "" || pais.length === 0) {
-                    alert("El País Está Vacío");
-                    valido = false;
-                }
-
-                if (valido) {
-                    $.ajax({
-                        url: 'http://localhost:5000/hospitals/newHospital',
-                        dataType: 'json',
-                        type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify({ "hospital_name": nombre_hospital, "city": ciudad, "department": departamento, "directions": direccion, "country": pais }),
-                        processData: false,
-                        success: function (data) {
-                            console.log(data);
-                            if (data.auth) {
-                                alert("Agregue nuevo hospital");
-                                form[0].reset();
-                            }
-                        },
-                        error: function (error) {
-                            console.log(error);
-                            if (error.status === 403) {
-                                alert("Ya existe un hospital");
-                            }
-                        }
-                    });
-                } else {
-                    alert("Hay errores en el formulario");
-                }
-            });
-
-            $('.btnCancelar').click(function () {
-                $("#FormHospital")[0].reset();
-            });
-
-
-            //Inicializar la tabla dinámica
-            $('#example').DataTable({
-                "language": {
-                    "sProcessing": "Procesando...",
-                    "sLengthMenu": "Mostrar _MENU_ registros",
-                    "sZeroRecords": "No se encontraron resultados",
-                    "sEmptyTable": "Ningún dato disponible en esta tabla",
-                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-                    "sInfoPostFix": "",
-                    "sSearch": "Buscar:",
-                    "sUrl": "",
-                    "sInfoThousands": ",",
-                    "sLoadingRecords": "Cargando...",
-                    "oPaginate": {
-                        "sFirst": "Primero",
-                        "sLast": "Último",
-                        "sNext": "Siguiente",
-                        "sPrevious": "Anterior"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        });
                     }
-                }
+                });
+
+
+                
+
+                //Declaraciones de variables
+                $(".btnAgregar").click(function (e) {
+                    e.preventDefault();
+                    var nombre_hospital = $("#nombre_hospital").val();
+                    var ciudad = $("#ciudad").val();
+                    var departamento = $("#departamento").val();
+                    var direccion = $("#direccion").val();
+                    var pais = $("#pais").val();
+
+                    var valido = true;
+                    //Validar Hospitales
+
+                    console.log(nombre_hospital);
+                    if (nombre_hospital === "" || nombre_hospital.length === 0) {
+                        alert("El Nombre Del Hospital Está Vacío");
+                        valido = false;
+                    }
+
+                    if (ciudad == "" || ciudad.length === 0) {
+                        alert("La Ciudad Está Vacío");
+                        valido = false;
+                    }
+
+                    if (departamento == "" || departamento.length === 0) {
+                        alert("El Departamento Está Vacía");
+                        valido = false;
+                    }
+
+                    if (direccion == "" || direccion.length === 0) {
+                        alert("La Dirección Está Vacía");
+                        valido = false;
+                    }
+
+                    if (pais == "" || pais.length === 0) {
+                        alert("El País Está Vacío");
+                        valido = false;
+                    }
+
+                    if (valido) {
+                        $.ajax({
+                            url: 'http://localhost:5000/hospitals/newHospital',
+                            dataType: 'json',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({ "hospital_name": nombre_hospital, "city": ciudad, "department": departamento, "directions": direccion, "country": pais }),
+                            processData: false,
+                            success: function (data) {
+                                console.log(data);
+                                if (data.auth) {
+                                    alert("Agregue nuevo hospital");
+                                    form[0].reset();
+                                }
+                            },
+                            error: function (error) {
+                                console.log(error);
+                                if (error.status === 403) {
+                                    alert("Ya existe un hospital");
+                                }
+                            }
+                        });
+                    } else {
+                        alert("Hay errores en el formulario");
+                    }
+                });
+
+                $('.btnCancelar').click(function () {
+                    $("#FormHospital")[0].reset();
+                });
+
             });
-            $("select").val('10');
-            $('select').addClass("browser-default");
-            //$('select').material_select();
-        });
     </script>
 </body>
 
