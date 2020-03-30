@@ -381,28 +381,6 @@
                 });
                 $('.modal').modal();
 
-                //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-                var first_name = getQueryVariable("first_name");
-                var last_name = getQueryVariable("last_name");
-                var email = getQueryVariable("email");
-
-                $("#username").text(decodeURIComponent(first_name));
-                $("#username1").text(decodeURIComponent(first_name + " " + last_name));
-                $("#email1").text(decodeURIComponent(email));
-
-                //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
-                function getQueryVariable(variable) {
-                    var query = window.location.search.substring(1);
-                    var vars = query.split("&");
-                    for (var i = 0; i < vars.length; i++) {
-                        var pair = vars[i].split("=");
-                        if (pair[0] == variable) {
-                            return pair[1];
-                        }
-                    }
-                    return false;
-                }
-
                 //Evento Click del link con clase llamada link-dashboard
                 $(".link-dashboard").click(function () {
 
@@ -619,9 +597,20 @@
                             processData: false,
                             success: function (data) {
                                 console.log(data);
-                                if (data.auth) {
-                                    alert("Agregue nuevo hospital");
-                                    form[0].reset();
+                                if (data.added) {
+                                    Swal.fire(
+                                        'Excelente!',
+                                        'El Hospital ha sido agregado',
+                                        'success'
+                                    );
+
+                                    $("#pais").val("");
+                                    $("#direccion").val("");
+                                    $("#departamento").val("");
+                                    $("#ciudad").val("");
+                                    $("#nombre_hospital").val("");
+
+
                                 }
                             },
                             error: function (error) {
@@ -634,10 +623,6 @@
                     } else {
                         alert("Hay errores en el formulario");
                     }
-                });
-
-                $('.btnCancelar').click(function () {
-                    $("#FormHospital")[0].reset();
                 });
 
             });
