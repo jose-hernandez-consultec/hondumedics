@@ -15,6 +15,8 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
     <!-- Estilos CSS -->
 
     <style>
@@ -301,7 +303,7 @@
                                         <div class="center">
                                             <a href="" class="btnGuardar waves-effect waves-red btn white-text center"
                                                 style="background-color: #2196f3; font-weight: bold;">Guardar Cambios</a>
-                                            <a  class="link-certificaciones waves-effect waves-red btn white-text center"
+                                            <a  class="btnCancelar waves-effect waves-red btn white-text center"
                                                 style="background-color: red; font-weight: bold;">Cancelar</a>
                                         </div>
                                     </form>
@@ -318,106 +320,151 @@
         //Este método se utiliza para hacer que una función esté disponible después de cargar el documento.
         $(document).ready(function () {
             //Inicialización de las propiedades de Materialize css.
-            M.AutoInit();
-            $('.sidenav').sidenav();
-            $('.sidenav-1').sidenav({ edge: 'left' });
-            $('.sidenav-trigger').sidenav();
-            $('.dropdown-trigger').dropdown({
-                coverTrigger: false,
-                belowOrigin: true
-            });
-            $('.modal').modal();
 
-            //Obteniendo los parametros enviados luego de hacer login, estos vienen en el URL, fueron enviados del archivo de LoginAdmin.html
-            var first_name = getQueryVariable("first_name");
-            var last_name = getQueryVariable("last_name");
-            var email = getQueryVariable("email");
-
-            $("#username").text(decodeURIComponent(first_name));
-            $("#username1").text(decodeURIComponent(first_name + " " + last_name));
-            $("#email1").text(decodeURIComponent(email));
-
-            //Funcion que hace consultas al URL, recibe el nombre del parametro que queres obtener y te devuelve el valor del parametro
-            function getQueryVariable(variable) {
-                var query = window.location.search.substring(1);
-                var vars = query.split("&");
-                for (var i = 0; i < vars.length; i++) {
-                    var pair = vars[i].split("=");
-                    if (pair[0] == variable) {
-                        return pair[1];
+            if (localStorage.getItem("specialization") !== undefined && localStorage.getItem("specialization") !== null) {
+                var specialization_id = JSON.parse(localStorage.getItem("specialization"));
+                specialization_id = specialization_id.specialization_id;
+                $.ajax({
+                    url: 'http://localhost:5000/specializations/getSpecializationInfoById',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ specialization_id: specialization_id }),
+                    success: function (data) {
+                        console.log(data);
+                        if (data.found){
+                            var specialization = data.specialization;
+                            $("#specialization_name").val(specialization.specialization_name);
+                            $("#specialization_name").focus();
+                            M.AutoInit();
+                            $('.sidenav').sidenav();
+                            $('.sidenav-1').sidenav({ edge: 'left' });
+                            $('.sidenav-trigger').sidenav();
+                            $('.dropdown-trigger').dropdown({
+                                coverTrigger: false,
+                                belowOrigin: true
+                            });
+                            $('.modal').modal();
+                        }
+                        
                     }
-                }
-                return false;
+                });
+
+
+
+                //Declaraciones de variables
+                $(".btnGuardar").click(function (e) {
+                    e.preventDefault();
+                    var nombre_especialidad = $("#specialization_name").val();
+                    
+
+                    var valido = true;
+                    //Validar Hospitales
+                    if (nombre_especialidad == "" || nombre_especialidad.length === 0) {
+                        alert("El Nombre De la especialidad está vacío");
+                        valido = false;
+                    }
+
+                    if (valido) {
+                        $.ajax({
+                            url: 'http://localhost:5000/specializations/updateSpecializationInformation',
+                            type: 'POST',
+                            dataType: 'json',
+                            contentType: 'application/json',
+                            data: JSON.stringify(
+                                { 
+                                    "specialization_id": specialization_id,
+                                    "specialization_name": nombre_especialidad, 
+                                    
+                                }
+                            ),
+                            success: function (data) {
+                                console.log(data);
+                                if (data.updated){
+                                    Swal.fire(
+                                        'Datos Actualizados!',
+                                        'Los datos de la especialidad han sido actualizados',
+                                        'success'
+                                    )
+                                }
+                            }
+                        });
+                    }
+                });
+            }else{
+                window.location.href = "./Especialidades.html"
             }
+            
+
 
             //Evento Click del link con clase llamada link-dashboard
             $(".link-dashboard").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./dashboard.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./dashboard.html";
             });
 
             //Evento Click del link con clase llamada link-pacientes
             $(".link-pacientes").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaPacientes.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./ListaPacientes.html";
             });
 
             //Evento Click del link con clase llamada link-doctores
             $(".link-doctores").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./ListaDoctores.html";
             });
 
             //Evento Click del link con clase llamada link-solicitudes
             $(".link-solicitudes").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./SolicitudesDeDoctores.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./SolicitudesDeDoctores.html";
             });
 
             //Evento Click del link con clase llamada link-solicitudes-rechazadas
             $(".link-solicitudes-rechazadas").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./SolicitudesRechazadas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./SolicitudesRechazadas.html";
             });
 
             //Evento Click del link con clase llamada link-citas
             $(".link-citas").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./ListaCitas.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./ListaCitas.html";
             });
 
             //Evento Click del link con clase llamada link-citas
             $(".link-hospitales").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Hospitales.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./Hospitales.html";
             });
 
             //Evento Click del link con clase llamada link-citas
             $(".link-especialidades").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./Especialidades.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./Especialidades.html";
             });
 
             //Evento Click del link con clase llamada link-agregar-nuevo-usuario
             $(".link-agregar-nuevo-usuario").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 612, 613 y 614 respectivamente
-                window.location.href = "./AgregarNuevoUsuario.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./AgregarNuevoUsuario.html";
             });
 
             //Evento Click del link con clase llamada link-perfil-doctor
             $(".link-perfil-doctor").click(function () {
 
                 //las variables first_name, last_name y email estan declaradas en las lineas 890, 891 y 892 respectivamente
-                window.location.href = "./UserProfileDoctor.html?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email;
+                window.location.href = "./UserProfileDoctor.html";
             });
 
             //Declaraciones de variables
@@ -436,8 +483,8 @@
             });
 
             $('.btnCancelar').click(function () {
-                    $("#FormEspecialidades")[0].reset();
-                });
+                window.location.href = "./Especialidades.html"
+            });
         });
     </script>
 </body>
