@@ -497,84 +497,94 @@
                             contentType: 'application/json',
                             data: JSON.stringify({ "doctor_id": doctor_id }),
                             processData: false,
-                            success: function (appointments) {
-                                console.log(appointments);
-                                var promises = [];
-
-                                appointments.forEach(function(key,value){
-                                    var promise= new Promise(function(resolve,reject){
-                                        $.ajax({
-                                            url: 'http://localhost:5000/patientProfiles/getPatientProfileByPatientID',
-                                            dataType: 'json',
-                                            type: 'POST',
-                                            contentType: 'application/json',
-                                            data: JSON.stringify({ "patient_id": key.patient_id }),
-                                            processData: false,
-                                            success: function (patient) {
-                                                resolve(citas_medicas.push({
-                                                    appointment_id: key.appointment_id,
-                                                    appointment_date: key.appointment_date,
-                                                    patient_info: patient
-                                                }));
-                                                
-                                            }
-                                        })
-                                    });
-                                    promises.push(promise);
-                                });
-
-                                console.log(promises)
-                                
-                                Promise.all(promises).then(function(results){
-                                    console.log("complete");
-                                    console.log(citas_medicas);
-
-                                    citas_medicas.forEach(function(key, value){
+                            success: function (citas_medicas) {
+                                citas_medicas.forEach(function(key, value){
+                                    if (key.approved === -1){
                                         var html = `<div class="row">
                                             <div class="col s12">
                                                 <div class="card horizontal">
                                                     <div class="card-image">
-                                                        <img src=${key.patient_info.patient_profile.profile_picture}>
+                                                        <img src=${key.patient_picture}>
                                                     </div>
                                                     <div class="card-stacked">
                                                         <div class="card-content">
-                                                            <span style="font-weight: bold; font-size: 22px;">${key.patient_info.patient_profile.first_name} ${key.patient_info.patient_profile.last_name}</span><br>
+                                                            <span style="font-weight: bold; font-size: 22px;">${key.patient_name}</span><br>
                                                             <p><i class="material-icons left">access_time</i></p>
-                                                            <p>14 Nov, 2019</p><br>
+                                                            <p>${key.appointment_date}</p><br>
                                                             <p><i class="material-icons left">location_on</i></p>
-                                                            <p>${key.patient_info.patient_profile.email}</p><br>
+                                                            <p>${key.hospital_name}</p><br>
                                                             <p><i class="material-icons left">email</i></p>
-                                                            <p>${key.patient_info.patient_profile.email}</p><br>
+                                                            <p>${key.patient_email}</p><br>
                                                             <p><i class="material-icons left">phone</i></p>
-                                                            <p>${key.patient_info.patient_profile.phone_number}</p>
+                                                            <p>${key.patient_number}</p>
                                                         </div>
                                                     </div>
                                                     <div class="card-stacked"><br><br><br><br>
                                                         <div class="col s12 l5">
                                                             <!--Modal Trigger-->
                                                             <!--Buttons Aceptar Y Cancelar-->
-                                                            <a style="background-color: #00e676"
-                                                                class="btn-floating btn-medium waves-effect waves-light btn tooltipped"
-                                                                href="" data-position="bottom" data-tooltip="Aceptar"><i
-                                                                    class="material-icons center">check</i>n</a>
-                                                            <a style="background-color: red"
-                                                                class="btn-floating btn-medium waves-effect waves-light btn tooltipped"
-                                                                href="" data-position="bottom"
+                                                            <a data-id="${key.appointment_id}" style="background-color: #00e676"
+                                                                class="btn-floating btn-medium waves-effect waves-light btn tooltipped aprovar_cita"
+                                                             data-position="bottom" data-tooltip="Aceptar"><i
+                                                                    class="material-icons center" data-id="${key.appointment_id}">check</i>n</a>
+                                                            <a data-id="${key.appointment_id}" style="background-color: red"
+                                                                class="btn-floating btn-medium waves-effect waves-light btn tooltipped rechazar_cita"
+                                                                 data-position="bottom"
                                                                 data-tooltip="Cancelar"><i
-                                                                    class="material-icons center">clear</i>n</a>
-
-                                                           
+                                                                    class="material-icons center" data-id="${key.appointment_id}">clear</i>n</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>`;
                                         $(".appointments").append(html)
-                                    })
-
+                                    }
                                 });
-                                
-                                
+
+                                $(".aprovar_cita").click(function(el){
+                                    appointment_id = parseInt(el.target.dataset.id);
+                                    $.ajax({
+                                        url: 'http://localhost:5000/doctorPatientAppointment/approveAppointment',
+                                        dataType: 'json',
+                                        type: 'POST',
+                                        contentType: 'application/json',
+                                        data: JSON.stringify({ "appointment_id": appointment_id }),
+                                        processData: false,
+                                        success: function (response) {
+
+                                            if (response.approved){
+                                                Swal.fire({
+                                                    title: 'Cita Aceptada',
+                                                    text: 'Ha aceptado la cita con el paciente seleccionado.',
+                                                    icon: 'success',
+                                                    confirmButtonText: 'Entendido'
+                                                });
+                                            }
+                                        }
+                                    })
+                                })
+
+                                $(".rechazar_cita").click(function(el){
+                                    appointment_id = parseInt(el.target.dataset.id);
+                                    $.ajax({
+                                        url: 'http://localhost:5000/doctorPatientAppointment/rejectAppointment',
+                                        dataType: 'json',
+                                        type: 'POST',
+                                        contentType: 'application/json',
+                                        data: JSON.stringify({ "appointment_id": appointment_id }),
+                                        processData: false,
+                                        success: function (response) {
+                                            if (response.approved === false){
+                                                Swal.fire({
+                                                    title: 'Cita Rechazada',
+                                                    text: 'Ha rechazado la cita con el paciente seleccionado.',
+                                                    icon: 'warning',
+                                                    confirmButtonText: 'Entendido'
+                                                });
+                                            }
+                                        }
+                                    })
+                                 })
                             }
                         });
                     }

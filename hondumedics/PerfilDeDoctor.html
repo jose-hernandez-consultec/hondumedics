@@ -309,8 +309,7 @@
 
                 <center><span class="black-text name" style="font-size: 14px; font-weight: bold;">
                         <span style="font-size: 15px; font-weight: bold;" id="UserName1"></span></span></center>
-                <center><span class="black-text especialidad" style="font-size: 13px; text-align: justify;">Cirugía oral
-                        y maxilofacial.
+                <center><span class="black-text nombre-especialidad" style="font-size: 13px; text-align: justify;">
                         <!--<span id="especialidad"></span>--></span></center>
             </div>
         </li>
@@ -429,11 +428,15 @@
 
                                         </div>
                                         <div class="row">
-                                            <div class="input-field col s12">
+                                            <div class="input-field col s6">
                                                 <i class="material-icons prefix">assignment</i>
                                                 <textarea id="description" class="materialize-textarea"></textarea>
                                                 <label for="description">Descripción</label>
                                             </div>
+                                            
+                                            <select class="browser-default col s6 especialidad" >
+                                                <option value="-1" disabled selected>Especialidad</option>
+                                            </select>
                                         </div>
                                         <div class="col s12 m6 l12 center">
                                             <a id="btnGuardarCambiosDoctor" href="#!"
@@ -475,9 +478,12 @@
                         $("#date_of_birth").val(profile_data.doctor_profile.birthdate);
                         $("#email").val(profile_data.doctor_profile.email);
                         $("#description").val(profile_data.doctor_profile.description);
+                        $(".nombre-especialidad").text(profile_data.doctor_profile.specialization_name);
 
                         $("#username").text(profile_data.doctor_profile.first_name);
                         $("#UserName1").text(profile_data.doctor_profile.first_name + " " + profile_data.doctor_profile.last_name);
+
+                        
 
                         //Focus all Editable Fields
 
@@ -503,6 +509,28 @@
                         });
                         $('.modal').modal();
                         $('.datepicker').datepicker();
+
+                        $.ajax({
+                            url: 'http://localhost:5000/specializations',
+                            dataType: 'json',
+                            type: 'GET',
+                            contentType: 'application/json',
+                            processData: false,
+                            success: function (specializations) {
+                                console.log("Specializations");
+                                console.log(specializations);
+
+                                for(var i = 0; i < specializations.length; i++){
+                                    $('.especialidad').append($('<option>', {
+                                        value: specializations[i].specialization_id,
+                                        text: specializations[i].specialization_name
+                                    }));
+                                }
+
+                                $(".especialidad").val(profile_data.doctor_profile.specialization_id).change();
+                            }
+                        });
+
                     }
                 });
 
@@ -614,6 +642,11 @@
                         error_messages.push("<span> - La descripcion  no puede estar vacia. </span><br>");
                         valido = false;
                     }
+                    var selected_option = parseInt($('.especialidad option:selected').val());
+                    if (selected_option === -1) {
+                        error_messages.push("<span> - Debe seleccionar una especialidad. </span><br>");
+                        valido = false;
+                    }
 
                     if (valido) {
                         $.ajax({
@@ -627,6 +660,8 @@
                                 "last_name": $('#last_name').val(),
                                 "birthdate": $('#date_of_birth').val(),
                                 "description": $('#description').val(),
+                                "specialization_name": $('.especialidad').find(":selected").text(),
+                                "specialization_id": selected_option
                             }),
                             processData: false,
                             success: function (result) {

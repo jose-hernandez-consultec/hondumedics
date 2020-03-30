@@ -326,10 +326,7 @@
                                                     class="material-icons left">save</i>Agregar
                                                 Usuario</a>
                                         </div>
-                                        <div class="input-field col s4 m4">
-                                            <a id="btnCancelar" class="waves-effect waves-light btn red"><i
-                                                    class="material-icons left">cancel</i>Cancelar</a>
-                                        </div>
+                                        
                                     </div>
                                 </form>
                             </div>
@@ -369,19 +366,16 @@
                                 belowOrigin: true
                             });
 
-                            $("#UserName").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
-                            $("#UserName1").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
                             $("#username").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#UserName1").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
+                            $("#username1").text(admin_data.admin.first_name + " " + admin_data.admin.last_name);
                             $("#email1").text(admin_data.admin.email);
                         }
 
                     }
                 });
 
-                //Cancelar o limpiar el formulario.
-                $("#btnCancelar").click(function () {
-                    $("#formulario")[0].reset();
-                });
+                
 
                 var form = $("#formulario");
 
